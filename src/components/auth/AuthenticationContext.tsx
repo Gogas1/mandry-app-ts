@@ -37,6 +37,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         const token = localStorage.getItem('token');
         if (token) {
             fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/auth/verify-token`, {
+                method: "POST",
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
