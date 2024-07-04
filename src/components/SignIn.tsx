@@ -2,6 +2,8 @@ import { FormEvent, useContext, useState } from "react";
 import AuthContext from "./auth/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 
+import "../styles/pages/signin/signin.scss"
+
 export default function SignIn() {
     const authContext = useContext(AuthContext);
 
@@ -96,29 +98,31 @@ export default function SignIn() {
 
     return (
         <>
+          <div id="sign-in-page">
             <div className="form">
-                <input 
-                    className="form-input"
-                    placeholder="phone" 
-                    name="phone"
-                    onChange={onPhoneChangeHandle}/>
-                <button
-                    onClick={onPhoneSignInHandle}>Phone SignIn</button>
-            </div>
-            <div className="form">
-                <input 
-                    className="form-input"
-                    placeholder="email" 
-                    name="email"
-                    onChange={onEmailChangeHandle}/>
-                <input 
-                    className="form-input"
-                    placeholder="password" 
-                    name="password"
-                    onChange={onPasswordChangeHandle}/>
-                <button
-                    onClick={onEmailSignInHandle}>Email SignIn</button>
-            </div>
+                  <input 
+                      className="form-input"
+                      placeholder="phone" 
+                      name="phone"
+                      onChange={onPhoneChangeHandle}/>
+                  <button
+                      onClick={onPhoneSignInHandle}>Phone SignIn</button>
+              </div>
+              <div className="form">
+                  <input 
+                      className="form-input"
+                      placeholder="email" 
+                      name="email"
+                      onChange={onEmailChangeHandle}/>
+                  <input 
+                      className="form-input"
+                      placeholder="password" 
+                      name="password"
+                      onChange={onPasswordChangeHandle}/>
+                  <button
+                      onClick={onEmailSignInHandle}>Email SignIn</button>
+              </div>
+          </div> 
         </>
     );
 }

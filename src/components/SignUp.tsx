@@ -1,7 +1,8 @@
 import { FormEvent, useContext, useState } from "react";
 import AuthContext from "./auth/AuthenticationContext";
 
-import "../styles/forms/form.scss"
+import "../styles/forms/form.scss";
+import "../styles/pages/signup/signup.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
@@ -115,44 +116,47 @@ export default function SignUp() {
 
     return (
       <>
+      <div id="sign-up-page">
         <div className="form">
-            <input
-                className="form-input" 
-                placeholder="name" 
-                name="name" 
-                onChange={onNameChangeHandle}/>
-            <input 
-                className="form-input"
-                placeholder="surname" 
-                name="surname" 
-                onChange={onSurnameChangeHandle}/>
-            <input 
-                className="form-input"
-                placeholder="email" 
-                name="phone" 
-                onChange={onEmailChangeHandle}/>
-            <input
-                className="form-input"
-                placeholder="phone"
-                name="phone"
-                onChange={onPhoneChangeHandle}/>
-            <input
-                className="form-input"
-                placeholder="password" 
-                name="password" 
-                onChange={onPasswordChangeHandle}/>
-            <input
-                type="date"
-                className="form-input"
-                value={birthDate ? birthDate.toISOString().substr(0, 10) : ''}
-                onChange={handleDateChange} />
-            <div className="form-button-group">
-                <button 
-                    onClick={onPhoneSignUpHandle}>Phone SignUp</button>
-                <button 
-                    onClick={onEmailSignUpHandle}>Email SignUp</button>
+              <input
+                  className="form-input" 
+                  placeholder="name" 
+                  name="name" 
+                  onChange={onNameChangeHandle}/>
+              <input 
+                  className="form-input"
+                  placeholder="surname" 
+                  name="surname" 
+                  onChange={onSurnameChangeHandle}/>
+              <input 
+                  className="form-input"
+                  placeholder="email" 
+                  name="phone" 
+                  onChange={onEmailChangeHandle}/>
+              <input
+                  className="form-input"
+                  placeholder="phone"
+                  name="phone"
+                  onChange={onPhoneChangeHandle}/>
+              <input
+                  className="form-input"
+                  placeholder="password" 
+                  name="password" 
+                  onChange={onPasswordChangeHandle}/>
+              <input
+                  type="date"
+                  className="form-input"
+                  value={birthDate ? birthDate.toISOString().substr(0, 10) : ''}
+                  onChange={handleDateChange} />
+              <div className="form-button-group">
+                  <button 
+                      onClick={onPhoneSignUpHandle}>Phone SignUp</button>
+                  <button 
+                      onClick={onEmailSignUpHandle}>Email SignUp</button>
             </div>
         </div>
+      </div>
+        
         
         
       </>  
