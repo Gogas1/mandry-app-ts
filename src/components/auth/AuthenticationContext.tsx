@@ -39,7 +39,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/auth/verify-token`, {
                 method: "POST",
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'ngrok-skip-browser-warning': 'true'
                 }
             })
             .then((response) => {

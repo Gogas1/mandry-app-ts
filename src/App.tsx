@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import Features from './components/Features';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/profile/my' element={<Profile />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/signin' element={<SignIn />} />
+            <Route path='/features' element={<Features />} />
           </Routes>
         </Router>
       </AuthProvider>
