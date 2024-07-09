@@ -9,6 +9,7 @@
     position: fixed;
     width: 100%;
     gap: 10px;
+    backdrop-filter: blur(2px);
 
     .navbar-text {
         font-family: 'OrchideaFont', sans-serif;
