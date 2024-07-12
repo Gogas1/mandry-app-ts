@@ -54,4 +54,14 @@
             }
         }
     }
+
+    .language-menu {
+        position: fixed;
+        background-color: white;
+        visibility: hidden;        
+    }
+
+    .language-menu.active {
+        visibility: visible;
+    }
 }

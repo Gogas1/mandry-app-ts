@@ -5,8 +5,11 @@ import ttIcon from '../assets/icons/home/tt_idle.svg';
 import fbIcon from '../assets/icons/home/fb_idle.svg';
 import destIcon from '../assets/icons/home/dest_icn.svg';
 import TextField from './home/TextField';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
+    const { t, i18n } = useTranslation();
+
     return (
         <>
             <div id="home-page">
@@ -33,7 +36,7 @@ export default function Home() {
                             <div id='bottom-panel'>
                                 <div className='bottom-panel-item' id='bottom-panel-destination'>
                                     <img src={destIcon} alt='destination' />
-                                    <TextField label='Напрямок' />
+                                    <TextField label={t('destination')} />
                                 </div>
                                 <div className='bottom-panel-divider'></div>
                                 <div className='bottom-panel-item' id='bottom-panel-dates'>
@@ -41,7 +44,7 @@ export default function Home() {
                                 </div>
                                 <div className='bottom-panel-divider'></div>
                                 <div className='bottom-panel-item' id='bottom-panel-group'>
-
+                                    {t('ueee')}
                                 </div>
                             </div>
                         </div>                
