@@ -23,3 +23,39 @@
     font-weight: normal;
     font-style: italic;
 }
+
+@mixin font-face($font-family, $file-path, $font-weight: normal, $font-style: normal) {
+    @font-face {
+      font-family: $font-family;
+      src: url("#{$file-path}.ttf") format("truetype");
+      font-weight: $font-weight;
+      font-style: $font-style;
+    }
+}
+
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Bold', bold);
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Light', 300);
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Medium', 500);
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Regular', normal);
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-SemiBold', 600);
+@include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-VariableFont_wght', variable);
+
+// Use the mixin to define font faces for Montserrat Alternates
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Black', 900);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-BlackItalic', 900, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Bold', bold);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-BoldItalic', bold, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-ExtraBold', 800);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-ExtraBoldItalic', 800, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-ExtraLight', 200);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-ExtraLightItalic', 200, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Italic', normal, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Light', 300);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-LightItalic', 300, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Medium', 500);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-MediumItalic', 500, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Regular', normal);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-SemiBold', 600);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-SemiBoldItalic', 600, italic);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-Thin', 100);
+@include font-face('Montserrat Alternates', '../../assets/fonts/Montserrat_Alternates/MontserratAlternates-ThinItalic', 100, italic);

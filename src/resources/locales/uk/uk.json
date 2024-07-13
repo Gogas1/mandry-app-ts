@@ -1,5 +1,7 @@
 {
     "nativeName": "Українська",
     "createHousing": "Запропонувати помешкання",
-    "destination": "Напрямок"
+    "destination": "Напрямок",
+    "homeTitle": "Головна",
+    "mainCaption": "Подорожуй разом з нами"
 }

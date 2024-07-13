@@ -1,5 +1,7 @@
 {
     "nativeName": "English",
     "createHousing": "Create housing",
-    "destination": "Destination"
+    "destination": "Destination",
+    "homeTitle": "Home",
+    "mainCaption": "Travel with Us"
 }
