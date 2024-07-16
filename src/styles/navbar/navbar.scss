@@ -3,6 +3,7 @@
 #navbar-wrapper {
     position: absolute;
     display: flex;
+    flex-direction: column;
     z-index: 1000;
     width: 100%;
 }
@@ -24,7 +25,7 @@
     display: flex;
     background-color: rgba(81, 81, 81, 0.8);
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px 20px;   
     width: 100%;
     gap: 10px;
@@ -61,30 +62,34 @@
 
     }
 
-    .language-menu {
-        position: fixed;
-        background-color: white;
-        visibility: hidden;
-        top: 42px;
-    }
-
-    .language-menu.active {
-        visibility: visible;
-    }
-
     #navbar-icons-group {
         display: flex;
         flex-direction: row;
         gap: 20px;
+        flex: 1;
+        justify-content: end;
     }
 
     #home-logo {
         display: flex;
-        
+        justify-content: center;
+        flex: 1;
+    }
+    
+    #housing-offer {
+        display: flex;
+        flex: 1;
     }
 }
 
 .inner-icon {
     width: 24px;
     height: 24px;
+}
+
+.popups-wrapper {
+    width: 100%;
+    padding: 0 100px;
+    height: 10px;
+    
 }

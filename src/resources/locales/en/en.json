@@ -3,5 +3,7 @@
     "createHousing": "Create housing",
     "destination": "Destination",
     "homeTitle": "Home",
-    "mainCaption": "Travel with Us"
+    "mainCaption": "Travel with Us",
+    "navGuest": "Guest",
+    "navOwner": "Owner"
 }

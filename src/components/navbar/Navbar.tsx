@@ -1,44 +1,40 @@
 import { Link } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import "../../styles/navbar/navbar.scss";
-import appLogo from "../../assets/icons/navbar/LOGO.svg";
+
+import appLogo from "../../assets/icons/navbar/Logo2.svg";
 import languageSelectorIcon from "../../assets/icons/navbar/languages.svg";
 import favouritesIcon from "../../assets/icons/navbar/favourites.svg";
 import profileLinkIcon from "../../assets/icons/navbar/profile.svg";
-import { FocusEvent, useState } from "react";
-import { useTranslation } from "react-i18next";
-import i18next from 'i18next';
+
+import ProfilePopup from "./ProfilePopup";
+import LanguagePopup from "./LanguagePopup";
 
 export default function Navbar() {
     const { t } = useTranslation();
-    const resources = i18next.options.resources as Record<string, any>;
-    const lngs = Object.keys(resources).map(code => {
-      return {
-        code: code,
-        name: resources[code].translation.nativeName
-      };
-    });
+    const [openedPopup, setOpenedPopup] = useState('');
 
-    const [focused, setFocused] = useState(false);
-
-    const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-      setFocused(true);
-    };
-  
-    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-      if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-        setFocused(false);
+    const handlePopupOpen = (name: string) => {
+      if(openedPopup === name) {
+        handleClosePopups();
+        return;
       }
-    };
+
+      setOpenedPopup(name);
+    }
+
+    const handleClosePopups = () => {
+      setOpenedPopup('');
+    }
 
     return (
       <>
-
         <nav id="navbar-wrapper">
           <div id="navbar-border">
             <div id="navbar">
-              
-              
-              <Link to="/housing-offer" className="navbar-text">
+              <Link to="/housing-offer" className="navbar-text" id="housing-offer">
                 {t('createHousing')}
               </Link>
               <Link to="/" id="home-logo">
@@ -48,32 +44,23 @@ export default function Navbar() {
                 <div 
                   tabIndex={0}
                   className="navbar-item navbar-icon"
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}>
+                  onClick={() => handlePopupOpen('languagePopup')}>
                   <img src={languageSelectorIcon} alt="languages" className="inner-icon" />
-                  <div className={`language-menu  ${focused ? 'active' : ''}`}>
-                    <select
-                      value={i18next.resolvedLanguage}
-                      onChange={(e) => i18next.changeLanguage(e.target.value)}>
-                      {lngs.map((lng) => (
-                        <option key={lng.code} value={lng.code}>
-                          {lng.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  
                 </div>
-                <Link className="navbar-icon" to="/favourites">
+                <Link to="favourites" className="navbar-item navbar-icon">
                   <img src={favouritesIcon} alt="favourites"  className="inner-icon"/>
                 </Link>
-                <Link className="navbar-icon" to="/profile/my">
+                <div className="navbar-icon navbar-item" onClick={() => handlePopupOpen("profilePopup")}>
                   <img src={profileLinkIcon} alt="profile" className="inner-icon"/>
-                </Link> 
-              </div>
-               
-            </div> 
+                </div> 
+              </div>      
+            </div>
           </div>
-                  
+          <div className="popups-wrapper">
+            <LanguagePopup isOpen={openedPopup === 'languagePopup'} closeAll={handleClosePopups} />
+            <ProfilePopup isOpen={openedPopup === 'profilePopup'} closeAll={handleClosePopups} />
+          </div> 
         </nav>
       </>  
     );

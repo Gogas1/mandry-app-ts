@@ -3,5 +3,7 @@
     "createHousing": "Запропонувати помешкання",
     "destination": "Напрямок",
     "homeTitle": "Головна",
-    "mainCaption": "Подорожуй разом з нами"
+    "mainCaption": "Подорожуй разом з нами",
+    "navGuest": "Гість",
+    "navOwner": "Власник житла"
 }
