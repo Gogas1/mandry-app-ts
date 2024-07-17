@@ -1,10 +1,16 @@
 .dropdown {
     position: relative;
     display: inline-block;
+
+    padding-bottom: 6px;
+    border-bottom: 1px solid #08B1BD;
   }
   
   .dropdown-toggle {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   
   .dropdown-menu {
@@ -30,5 +36,8 @@
   }
   
   .arrow {
-    float: right;
+    transition: transform 0.3s ease;
+    &.opened {
+      transform: rotate(90deg);
+    }
   }

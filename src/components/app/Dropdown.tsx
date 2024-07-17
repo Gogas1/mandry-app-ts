@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import '../../styles/app/dropdown.scss';
 
+import arrowIcon from '../../assets/icons/meta/arrow2.svg';
+
 interface DropdownOption {
   display: string;
   value: any;
@@ -39,7 +41,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div className={`dropdown ${className}`} style={style}>
       <div className="dropdown-toggle" onClick={toggleDropdown}>
         {selectedOption.display}
-        <i className={`arrow ${isOpen ? 'up' : 'down'}`}></i>
+        <img src={arrowIcon} className={`arrow ${isOpen ? 'opened' : ''}`} />
       </div>
       {isOpen && (
         <div className="dropdown-menu">
