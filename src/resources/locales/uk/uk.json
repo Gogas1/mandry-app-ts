@@ -5,5 +5,10 @@
     "homeTitle": "Головна",
     "mainCaption": "Подорожуй разом з нами",
     "navGuest": "Гість",
-    "navOwner": "Власник житла"
+    "navOwner": "Власник житла",
+    "searchDestinationLabel": "Напрямок",
+    "searchDatesLabel": "Прибуття / Виїзд",
+    "searchPeopleSettingsLabel": "Мандрівники",
+    "languageSelectionLabel": "Мова",
+    "currencySelectionLabel": "Валюта"
 }

@@ -1,6 +1,112 @@
-.language-menu {
+@import url('../app/fonts.scss');
+
+.language-popup-wrapper {
     position: absolute;
-    background-color: white;
-    visibility: hidden;
-    top: 42px;
+    width: 15%;
+    top: 137px;
+    right: 226px;
+
+    transition: visibility 0.3s ease;
+
+    &.closed {
+        .popup-panel {
+            max-height: 0;
+            padding: 0 30px;
+            gap: 0;
+        }
+        visibility: collapse;
+    }
+
+    &.opened {
+        .popup-panel {
+            max-height: 200px;
+            
+        }
+        visibility: visible;
+    }
+
+    .popup-border {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid #fff;
+
+        -webkit-mask-image: radial-gradient(circle 23px at calc(100% - 47px) 2px, transparent 100%, black 100%);
+        mask-image: radial-gradient(circle 23px at calc(100% - 47px) 2px, transparent 100%, black 100%);
+    }
+
+    .popup-panel {
+        display: flex;
+        flex-direction: column;
+    
+        transition: max-height 0.2s, padding 0.3s;
+    
+        margin: 6px;
+        padding: 30px;
+        background-color: rgba(81, 81, 81, 0.8);
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+        backdrop-filter: blur(34px);
+        
+        border-radius: 15px;
+        font-family: 'Montserrat Alternates';
+        color: var(--white, #F6F6F6);
+        font-family: "Montserrat Alternates";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+
+        gap: 20px;
+
+        transition: max-width 0.3s, padding 0.3s, gap 0.3s;
+
+        -webkit-mask-image: radial-gradient(circle 24px at calc(100% - 41px) -8px, transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 24px at calc(100% - 41px) -8px, transparent 95%, black 100%);
+
+        // ::before {
+        //     content: '';
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     background-image: radial-gradient(circle at calc(100% - 40.75px) -5px, rgba(255, 245, 245, 0.05) 18.5px, rgba(0, 0, 0, 0) 27px);
+        //     pointer-events: none;
+        //     border-radius: 15px;
+        // }
+
+        .dropdown {
+            color:  #F6F6F6;
+            font-family: 'Comfortaa';
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .popup-hide {
+        cursor: pointer;
+
+        position: absolute;
+        top: -18px;
+        right: 30.5px;
+
+        width: 34px;
+        height: 34px;
+        border-radius: 17.5px;
+        border: 1px solid var(--white, #F6F6F6);
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+        
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 45%;
+        }
+    }
 }

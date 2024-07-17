@@ -1,9 +1,13 @@
 {
     "nativeName": "English",
     "createHousing": "Create housing",
-    "destination": "Destination",
     "homeTitle": "Home",
     "mainCaption": "Travel with Us",
     "navGuest": "Guest",
-    "navOwner": "Owner"
+    "navOwner": "Owner",
+    "searchDestinationLabel": "Destination",
+    "searchDatesLabel": "Arrival/Departure",
+    "searchPeopleSettingsLabel": "Travelers",
+    "languageSelectionLabel": "Language",
+    "currencySelectionLabel": "Currency"
 }

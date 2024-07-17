@@ -1,11 +1,14 @@
-import React, { useState, ChangeEvent, FocusEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import '../../styles/pages/home/text-field.scss'
 
 interface TextFieldProps {
     label: string;
-  }
+    text: string;
+    onFocus: () => void;
+    onBlur: () => void;
+}
 
-export default function TextField({ label }: TextFieldProps) {
+export default function TextField({ label, text, onFocus, onBlur }: TextFieldProps) {
     const [value, setValue] = useState<string>('');
     const [focused, setFocused] = useState<boolean>(false);
 
@@ -13,12 +16,14 @@ export default function TextField({ label }: TextFieldProps) {
         setValue(e.target.value);
       };
     
-      const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+      const handleFocus = () => {
         setFocused(true);
+        onFocus();
       };
     
-      const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+      const handleBlur = () => {
         setFocused(false);
+        onBlur();
       };
 
     return (

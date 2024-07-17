@@ -6,6 +6,13 @@
     flex-direction: column;
     z-index: 1000;
     width: 100%;
+
+    .popups-wrapper {
+        width: 100%;
+        padding: 0 100px;
+        height: 10px;
+        
+    }
 }
 
 #navbar-border {
@@ -87,9 +94,3 @@
     height: 24px;
 }
 
-.popups-wrapper {
-    width: 100%;
-    padding: 0 100px;
-    height: 10px;
-    
-}

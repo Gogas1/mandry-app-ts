@@ -2,25 +2,25 @@
     right: 100px;
     top: 137px;
     position: absolute;
-    width: 22%;
+    width: 15%;
 
     transition: visibility 0.3s ease;
-}
 
-.closed {
-    #profile-popup-panel {
-        max-height: 0;
-        padding: 0 30px;
+    &.closed {
+        #profile-popup-panel {
+            max-height: 0;
+            padding: 0 30px;
+        }
+        visibility: collapse;
     }
-    visibility: collapse;
-}
 
-.opened {
-    #profile-popup-panel {
-        max-height: 300px;
-        
+    &.opened {
+        #profile-popup-panel {
+            max-height: 300px;
+            
+        }
+        visibility: visible;
     }
-    visibility: visible;
 }
 
 #profile-popup-hide {
