@@ -18,8 +18,8 @@ export default function LanguagePopup({ isOpen, closeAll }: PopupProps) {
     const [languageOptions, setLanguageOptions] = useState<{ display: string; value: string }[]>([]);
     const [selectedLangugageOption, setSelectedLanguageOption] = useState<{ display: string; value: string } | undefined>(undefined);
 
-    const [currencyOptions, setCurrencyOptions] = useState<{ display: string; value: string }[]>([]);
-    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState<{ display: string; value: string } | undefined>(undefined);
+    const [currencyOptions] = useState<{ display: string; value: string }[]>([]);
+    const [selectedCurrencyOption] = useState<{ display: string; value: string } | undefined>(undefined);
 
     useEffect(() => {
         const fetchResources = async () => {
