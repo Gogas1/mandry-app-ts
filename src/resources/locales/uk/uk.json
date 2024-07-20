@@ -10,5 +10,20 @@
     "searchDatesLabel": "Прибуття / Виїзд",
     "searchPeopleSettingsLabel": "Мандрівники",
     "languageSelectionLabel": "Мова",
-    "currencySelectionLabel": "Валюта"
+    "currencySelectionLabel": "Валюта",
+    "SignInAuthModalLabel": "Вхід",
+    "WelcomeBackAuthModalLabel": "Раді вітати знов!",
+    "EnterCredsAuthModalLabel": "Введіть ваші дані для входу",
+    "EmailWayAuthModalTab": "Пошта",
+    "PhoneWayAuthModalTab": "Телефон",
+    "EmailFieldAuthModalTab": "*Пошта",
+    "PasswordFieldAuthModalTab": "*Пароль",
+    "CountryCodeFieldAuthModalTab": "*Код країни",
+    "PhoneNumberFieldAuthModalTab": "*Номер телефона",
+    "EnterAuthModalBtn": "Вхід",
+    "OrAuthModalLabel": "Або",
+    "SignUpOfferAuthModalLabel": "Немає аккаунта?",
+    "SignUpAuthModalLabel": "Зареєструйся",
+    "EmailInputAuthModalPlaceholder": "Введіть свою пошту",
+    "PasswordInputAuthModalPlaceholder": "Введіть свій пароль"
 }

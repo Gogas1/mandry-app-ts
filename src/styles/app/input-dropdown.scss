@@ -1,0 +1,45 @@
+@import url('../app/fonts.scss');
+
+.input-dropdown {
+    position: relative;
+
+    .input {
+        padding: 20px;
+        width: 100%;
+
+        border-radius: 15px;
+        border: 1px solid #F6F6F6;
+        background: rgba(0, 0, 0, 0.20);
+    
+        color: #F6F6F6;
+        font-family: 'Comfortaa';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        padding: 20px;
+        width: 100%;
+
+        background-color: rgba(81, 81, 81, 1);
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+        backdrop-filter: blur(34px);
+        border-radius: 15px;
+
+        color: #F6F6F6;
+        font-family: 'Comfortaa';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}

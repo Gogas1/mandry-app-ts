@@ -9,5 +9,20 @@
     "searchDatesLabel": "Arrival/Departure",
     "searchPeopleSettingsLabel": "Travelers",
     "languageSelectionLabel": "Language",
-    "currencySelectionLabel": "Currency"
+    "currencySelectionLabel": "Currency",
+    "SignInAuthModalLabel": "Sign In",
+    "WelcomeBackAuthModalLabel": "Welcome back!",
+    "EnterCredsAuthModalLabel": "Enter your credentials",
+    "EmailWayAuthModalTab": "EMail",
+    "PhoneWayAuthModalTab": "Phone",
+    "EmailFieldAuthModalTab": "*Email",
+    "PasswordFieldAuthModalTab": "*Passowrd",
+    "CountryCodeFieldAuthModalTab": "*Phone code",
+    "PhoneNumberFieldAuthModalTab": "*Phone number",
+    "EnterAuthModalBtn": "Sign IN",
+    "OrAuthModalLabel": "Or",
+    "SignUpOfferAuthModalLabel": "No account?",
+    "SignUpAuthModalLabel": "Sign Up",
+    "EmailInputAuthModalPlaceholder": "Enter your EMail",
+    "PasswordInputAuthModalPlaceholder": "Enter your password"
 }

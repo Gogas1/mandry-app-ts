@@ -6,23 +6,29 @@ import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Features from './components/Features';
+import { ModalProvider } from './components/app/ModalContext';
+import Modal from './components/app/Modal';
 
 function App() {
 
   return (
     <>
       <AuthProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/profile/:id' element={<Profile />} />
-            <Route path='/profile/my' element={<Profile />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/signin' element={<SignIn />} />
-            <Route path='/features' element={<Features />} />
-          </Routes>
-        </Router>
+        <ModalProvider>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/profile/:id' element={<Profile />} />
+              <Route path='/profile/my' element={<Profile />} />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/features' element={<Features />} />
+            </Routes>
+            <Modal />
+          </Router>
+        </ModalProvider>
+        
       </AuthProvider>
     </>
   )

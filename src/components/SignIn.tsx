@@ -86,15 +86,15 @@ export default function SignIn() {
 
     const onEmailChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
-      }
+    }
   
-      const onPhoneChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onPhoneChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPhone(event.target.value);
-      }
+    }
   
-      const onPasswordChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-      }
+    const onPasswordChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword(event.target.value);
+    }
 
     return (
         <>

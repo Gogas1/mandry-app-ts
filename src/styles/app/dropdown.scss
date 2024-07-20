@@ -29,6 +29,9 @@
     padding: 20px;
 
     gap: 20px;
+
+    max-height: 200px;
+    overflow-y: auto;
   }
   
   .dropdown-item {
@@ -37,7 +40,8 @@
   
   .arrow {
     transition: transform 0.3s ease;
+    transform: rotate(90deg);
     &.opened {
-      transform: rotate(90deg);
+      transform: rotate(0deg);
     }
   }
