@@ -168,6 +168,10 @@
                                 &.available {
                                     cursor: pointer;
                                 }
+
+                                &.current {
+                                    color: #08B1BD;
+                                }
                             }
                         }
                     }

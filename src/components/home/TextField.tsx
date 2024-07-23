@@ -8,8 +8,8 @@ interface TextFieldProps {
     onBlur: () => void;
 }
 
-export default function TextField({ label, onFocus, onBlur }: TextFieldProps) {
-    const [value, setValue] = useState<string>('');
+export default function TextField({ label, text, onFocus, onBlur }: TextFieldProps) {
+    const [value, setValue] = useState<string>(text);
     const [focused, setFocused] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -213,7 +213,7 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
                         <div 
                             key={j} 
                             onClick={() => onDateSelected(day.date)}
-                            className={`available ${getSelectionClass(day.date)}`}>
+                            className={`available ${getSelectionClass(day.date)} ${IsDatesQqual(new Date(), day.date) ? 'current' : ''}`}>
                             {day.date.getDate()}
                         </div>
                     );

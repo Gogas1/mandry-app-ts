@@ -8,7 +8,7 @@ import groupIcon from '../assets/icons/home/group_icn.svg';
 import { useTranslation } from 'react-i18next';
 import TextField from './home/TextField';
 import DestinationPopup from './home/DestinationPopup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CalendarPopup from './home/CalendarPopup';
 
 export default function Home() {
