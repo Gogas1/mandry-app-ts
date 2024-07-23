@@ -1,6 +1,5 @@
 .destination-popup {
-    top: 200px;
-    left: 450px;
+    left: 35px;
     position: absolute;
 
     transition: visibility 0.3s ease;
@@ -23,7 +22,10 @@
 
     &.opened {
         .popup-panel {
-            max-width: 300px;
+            max-width: 400px;
+        }
+        .list {
+            min-width: 300px;
         }
         visibility: visible;
     }
@@ -45,7 +47,7 @@
         background-color: rgba(81, 81, 81, 0.80);
         box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
         backdrop-filter: blur(24px);
-        margin: 5px;
+        margin: 6px;
         padding: 30px;
 
         transition: max-width 0.3s, padding 0.3s;

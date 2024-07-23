@@ -10,7 +10,7 @@ import eyeOffIcon from '../../assets/icons/meta/eye-off.svg';
 import "../../styles/auth/auth-modal.scss";
 import React, { useContext, useEffect, useState, FormEvent } from "react";
 
-import phoneCodes from "../../resources/phoneCodes";
+import phoneCodes from "../../helpers/phoneCodes";
 import InputDropdown from "../app/InputDropdown";
 import AuthContext from "./AuthenticationContext";
 

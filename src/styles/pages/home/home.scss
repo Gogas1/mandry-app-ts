@@ -73,6 +73,11 @@
         height: 100%;
         flex: 1;
         align-items: start;
+
+        .popup-wrapper {
+            position: relative;
+            margin-top: 80px;
+        }
     }
 
     .search-panel-border {
@@ -139,4 +144,5 @@
             }
         }        
     }
+    
 }

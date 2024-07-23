@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import TextField from './home/TextField';
 import DestinationPopup from './home/DestinationPopup';
 import { useState } from 'react';
+import CalendarPopup from './home/CalendarPupup';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -27,7 +28,7 @@ export default function Home() {
 
     const onDestinationFieldFocus = () => {
         handleCloseAllPopups();
-        setOpenedPopup('destinationPopup')
+        setOpenedPopup('destinationPopup');
     }
 
     const onDestinationFieldBlur = () => {
@@ -35,6 +36,7 @@ export default function Home() {
 
     const onDatesFieldFocus = () => {
         handleCloseAllPopups();
+        setOpenedPopup('calendarPopup');
     }
 
     const onDatesFieldBlur = () => {
@@ -89,7 +91,14 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className='popup-wrapper'>
-                                <DestinationPopup isOpen={openedPopup === 'destinationPopup'} assignValue={handleDestinationSelection} closeAll={handleCloseAllPopups} />
+                                <DestinationPopup 
+                                    isOpen={openedPopup === 'destinationPopup'} 
+                                    assignValue={handleDestinationSelection} 
+                                    closeAll={handleCloseAllPopups} />
+                                <CalendarPopup 
+                                    isOpen={openedPopup === 'calendarPopup'}
+                                    closeAll={handleCloseAllPopups}
+                                    />
                             </div>
                         </div>
                         <div className='main-caption'>
