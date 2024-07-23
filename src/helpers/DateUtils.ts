@@ -40,3 +40,11 @@ export function GetMonthCode(month: number, getCodeForShort: boolean = false) : 
             return "GetMonthCodeError";
     }
 }
+
+export function IsDatesQqual(first: Date | undefined, second: Date | undefined) : boolean {
+    if(!first || !second) return false;
+
+    return first.getDate() === second.getDate() &&
+        first.getMonth() === second.getMonth() &&
+        first.getFullYear() === second.getFullYear();
+}

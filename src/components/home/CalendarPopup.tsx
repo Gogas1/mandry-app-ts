@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { GetMonthCode } from "../../helpers/DateUtils";
+import { GetMonthCode, IsDatesQqual } from "../../helpers/DateUtils";
 import { useState } from "react";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
@@ -36,8 +36,8 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         month: nextDate.getMonth()
     });
 
-    const [dateOne, setDateOne] = useState<Date>();
-    const [dateTwo, setDateTwo] = useState<Date>();
+    const [dateOne, setDateOne] = useState<Date | undefined>();
+    const [dateTwo, setDateTwo] = useState<Date | undefined>();
 
     const handleSwitching = () => {
         const newFirstMonth = addMonths(new Date(firstMonth.year, firstMonth.month, 1), 2);
@@ -54,13 +54,38 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     const handleDateSelection = (date: Date) => {
+        if(IsDatesQqual(date, dateOne)) {
+            setDateOne(undefined);
+            return;
+        } 
+        if(IsDatesQqual(date, dateTwo)) {
+            setDateTwo(undefined);
+            return;  
+        } 
+
         if(!dateOne && !dateTwo) {
             setDateOne(date);
             return;
         }
 
         if(dateOne && !dateTwo) {
-            setDateTwo(date);
+            if(date > dateOne) {
+                setDateTwo(date);
+            } else if(date < dateOne) {
+                setDateTwo(dateOne);
+                setDateOne(date);
+            }
+            
+            return;
+        }
+
+        if(!dateOne && dateTwo) {
+            if(date < dateTwo) {
+                setDateOne(date);
+            } else if(date > dateTwo) {
+                setDateOne(dateTwo);
+                setDateTwo(date);
+            }
             return;
         }
 
@@ -73,6 +98,19 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         }
     }
 
+    const getSelectToStartValue = (): boolean => {
+        if(!dateOne || !dateTwo) return false;
+
+        if(dateOne.getFullYear() < dateTwo.getFullYear()) {
+            return true;
+        } 
+        if(dateOne.getMonth() < dateTwo.getMonth() && dateOne.getFullYear() === dateTwo.getFullYear()) {
+            return true;
+        }
+
+        return false;
+    }
+
     return (
         <>
             <div className={`calendar-popup ${isOpen ? 'opened' : 'closed'}`}>
@@ -80,11 +118,26 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
                     <div className="calendar-popup-border"></div>
                     <div className="calendar-popup-panel">
                         <div className="calendar-section">
-                            <CalendarSection year={firstMonth.year} month={firstMonth.month} />
+                            <CalendarSection 
+                            year={firstMonth.year} 
+                            month={firstMonth.month} 
+                            selectionStartDate={dateOne}
+                            selectionEndDate={dateTwo}
+                            selectToStart={getSelectToStartValue()}
+                            selectToEnd={getSelectToStartValue()}
+                            onDateSelected={handleDateSelection}
+                            />
                         </div>
                         <div className="divider"></div>
                         <div className="calendar-section">
-                            <CalendarSection year={secondMonth.year} month={secondMonth.month} />
+                            <CalendarSection 
+                                year={secondMonth.year} 
+                                month={secondMonth.month}
+                                selectionStartDate={dateOne}
+                                selectionEndDate={dateTwo}
+                                selectToStart={getSelectToStartValue()}
+                                selectToEnd={getSelectToStartValue()}
+                                onDateSelected={handleDateSelection} />
                         </div>
                     </div>
                     <div className="calendar-popup-close" onClick={handleHiding}>
@@ -108,14 +161,42 @@ interface Day {
 interface CalendarSectionProps {
     year: number;
     month: number;
+    selectionStartDate: Date | undefined;
+    selectionEndDate: Date | undefined;
+    selectToStart: boolean;
+    selectToEnd: boolean;
+
+    onDateSelected: (date: Date) => void;
 }
 
-function CalendarSection({ year, month }: CalendarSectionProps) {
+function CalendarSection({ year, month, selectionStartDate, selectionEndDate, selectToStart, selectToEnd, onDateSelected }: CalendarSectionProps) {
     const { t } = useTranslation();
     const days = GetDaysInMonth(year, month);
     const daysInWeek = 7;
     const startIndex = GetDayOfWeek(new Date(days[0].date));
     const weeks = getWeeks(days, startIndex);
+
+    const getSelectionClass = (date: Date): string => {
+        if(selectionStartDate && selectionEndDate) {
+            if(selectToStart || selectToEnd) {
+                if(IsDatesQqual(date, selectionEndDate)) return 'orange-end';
+                if(IsDatesQqual(date, selectionStartDate)) return 'orange-start';
+                if(date > selectionStartDate && date < selectionEndDate) return 'orange-middle'; 
+                return '';
+            }
+
+            if(date > selectionStartDate && date < selectionEndDate) return 'orange-middle'; 
+        }
+
+        if(!selectionStartDate || !selectionEndDate) {
+            if(IsDatesQqual(date, selectionStartDate) || IsDatesQqual(date, selectionEndDate)) return 'orange-single';
+        }
+
+        if(IsDatesQqual(date, selectionStartDate)) return 'orange-start';
+        if(IsDatesQqual(date, selectionEndDate)) return 'orange-end';
+            
+        return '';
+    }
 
     const renderTableBody = () => {
         const rows = [];
@@ -129,16 +210,19 @@ function CalendarSection({ year, month }: CalendarSectionProps) {
                 if (currentIndex >= 0 && currentIndex < days.length) {
                     const day = days[currentIndex];
                     cells.push(
-                        <td key={j} className="text-center">
+                        <div 
+                            key={j} 
+                            onClick={() => onDateSelected(day.date)}
+                            className={`available ${getSelectionClass(day.date)}`}>
                             {day.date.getDate()}
-                        </td>
+                        </div>
                     );
                 } else {
-                    cells.push(<td key={j}></td>);
+                    cells.push(<div key={j}></div>);
                 }
             }
 
-            rows.push(<tr key={i}>{cells}</tr>);
+            rows.push(<div className="days-row">{cells}</div>);
         }
 
         return rows;
@@ -147,22 +231,20 @@ function CalendarSection({ year, month }: CalendarSectionProps) {
     return (
         <>
             <div className="month-header">{t(GetMonthCode(month))} {year}</div>
-            <table className="days-table">
-                <thead>
-                    <tr>
-                        <th>{t('MondayHeader')}</th>
-                        <th>{t('TuesdayHeader')}</th>
-                        <th>{t('WednesdayHeader')}</th>
-                        <th>{t('ThursdayHeader')}</th>
-                        <th>{t('FridayHeader')}</th>
-                        <th>{t('SaturdayHeader')}</th>
-                        <th>{t('SundayHeader')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderTableBody()}
-                </tbody>
-            </table>
+            <div className="days-table">
+				<div className="days-header">
+					<div>{t('MondayHeader')}</div>
+					<div>{t('TuesdayHeader')}</div>
+					<div>{t('WednesdayHeader')}</div>
+					<div>{t('ThursdayHeader')}</div>
+					<div>{t('FridayHeader')}</div>
+					<div>{t('SaturdayHeader')}</div>
+					<div>{t('SundayHeader')}</div>
+				</div>
+				<div className="days-body">
+					{renderTableBody()}
+				</div>
+			</div>
         </>
     );
 }
