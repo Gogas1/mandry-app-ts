@@ -58,5 +58,8 @@
     "SeptemberShort": "Sept.",
     "OctoberShort": "Oct.",
     "NovemberShort": "Nov.",
-    "DecemberShort:": "Dec."
+    "DecemberShort:": "Dec.",
+
+    "FavouritesPopupHeader": "Add to favourites",
+    "CreateFavsListBtnText": "Create new favourites list"
 }

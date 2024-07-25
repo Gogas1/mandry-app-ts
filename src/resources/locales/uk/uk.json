@@ -58,5 +58,8 @@
     "SeptemberShort": "Верес.",
     "OctoberShort": "Жовт.",
     "NovemberShort": "Листоп.",
-    "DecemberShort:": "Груд."
+    "DecemberShort:": "Груд.",
+
+    "FavouritesPopupHeader": "Додати до вподобань",
+    "CreateFavsListBtnText": "Створити новий список вподобаного"
 }

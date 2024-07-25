@@ -1,0 +1,168 @@
+@import url('../app/fonts.scss');
+
+.favourites-popup {
+    right: 216px;
+    top: 46px;
+    position: absolute;
+    width: 29%;
+
+    transition: visibility 0.3s ease;
+
+    &.closed {
+        .popup-panel {
+            max-height: 0;
+            padding: 0 30px;
+
+            .favourites-list {
+                visibility: collapse;
+            }
+        }
+        visibility: collapse;
+    }
+
+    &.opened {
+
+        .popup-panel {
+            max-height: 900px;
+        }
+        visibility: visible;
+    }
+
+    .popup-border {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid #fff;
+    
+        -webkit-mask-image: radial-gradient(circle 34px at calc(100% - 64px) 0px, transparent 100%, black 100%);
+        mask-image: radial-gradient(circle 34px at calc(100% - 64px) 0px, transparent 100%, black 100%);
+    }
+
+    .popup-panel {
+        display: flex;
+        flex-direction: column;
+    
+        margin: 6px;
+        padding: 30px;
+        background-color: rgba(81, 81, 81, 0.8);
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+        backdrop-filter: blur(34px);
+        
+        border-radius: 15px;
+
+        gap: 20px;
+
+        transition: max-height 0.3s ease-in-out, padding 0.3s;
+
+        -webkit-mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
+
+        .favs-header {
+            text-align: center;
+
+            color: var(--blue, #08B1BD);
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #F6F6F6;
+        }
+
+        .favourites-list {
+            display: flex;
+            flex-wrap: wrap;
+            overflow-y: auto;
+            height: 100%;
+            max-height: 400px;
+            align-items: flex-start;
+            
+
+            gap: 20px;
+            
+
+            .list-item {
+                width: calc(50% - 20px);
+                color: var(--white, #F6F6F6);
+
+                font-family: 'Comfortaa';
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 15px;
+                    border: 1px solid var(--white, #F6F6F6);
+                }
+
+                .text {
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .create-list-popup {
+            display: flex;
+            height: 56px;
+            padding: 7px 60px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            align-self: stretch;      
+
+            border-radius: 15px;
+            background: #08B1BD;
+            box-shadow: 0px 48px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+
+            color: #F6F6F6;
+            font-family: "Montserrat Alternates";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+
+            border: 0;
+
+            &:active {
+                background: linear-gradient(107deg, #08B1BD 31.42%, #FC712C 98.19%);
+                box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;
+            }
+        }
+    }
+
+    .popup-hide {
+        cursor: pointer;
+
+        position: absolute;
+        top: -26px;
+        right: 38px;
+    
+        width: 52px;
+        height: 52px;
+        border-radius: 48px;
+        border: 1px solid var(--white, #F6F6F6);
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+        
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    
+        img {
+            width: 35%;
+        }
+    }
+}
