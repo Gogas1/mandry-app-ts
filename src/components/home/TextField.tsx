@@ -14,7 +14,7 @@ export default function TextField({ label, text, onFocus, onBlur }: TextFieldPro
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
-      };
+    };
     
       const handleFocus = () => {
         setFocused(true);
@@ -27,12 +27,12 @@ export default function TextField({ label, text, onFocus, onBlur }: TextFieldPro
       };
 
     return (
-        <div className={`textfield ${focused || value ? 'focused' : ''}`}>
+        <div className={`textfield ${focused || value || text ? 'focused' : ''}`}>
           <label className="textfield__label">{label}</label>
           <input
             className="textfield__input"
             type="text"
-            value={value}
+            defaultValue={text}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

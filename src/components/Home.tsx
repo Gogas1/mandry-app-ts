@@ -60,7 +60,7 @@ export default function Home() {
                             <div className='search-panel-border'>
                                 <div className='search-panel'>
                                     <div className='search-input-group'>
-                                        <img src={destinationIcon} alt='destination' className='inner-icon' />
+                                        <img src={destinationIcon} alt='destination' className='inner-icon' />                                        
                                         <TextField 
                                             label={t('searchDestinationLabel')}
                                             text={selectedDestination} 
