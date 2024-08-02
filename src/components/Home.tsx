@@ -6,9 +6,9 @@ import calendarIcon from '../assets/icons/home/calendar_icn.svg';
 import groupIcon from '../assets/icons/home/group_icn.svg';
 
 import { useTranslation } from 'react-i18next';
-import TextField from './home/TextField';
+import TextFieldMy from './home/TextFieldMy';
 import DestinationPopup from './home/DestinationPopup';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CalendarPopup from './home/CalendarPopup';
 
 export default function Home() {
@@ -61,7 +61,7 @@ export default function Home() {
                                 <div className='search-panel'>
                                     <div className='search-input-group'>
                                         <img src={destinationIcon} alt='destination' className='inner-icon' />                                        
-                                        <TextField 
+                                        <TextFieldMy 
                                             label={t('searchDestinationLabel')}
                                             text={selectedDestination} 
                                             onFocus={onDestinationFieldFocus}
@@ -70,7 +70,7 @@ export default function Home() {
                                     <div className='divider'></div>
                                     <div className='search-input-group'>
                                         <img src={calendarIcon} alt='destination' className='inner-icon'/>
-                                        <TextField 
+                                        <TextFieldMy 
                                             label={t('searchDatesLabel')}
                                             text=''
                                             onFocus={onDatesFieldFocus}
@@ -79,7 +79,7 @@ export default function Home() {
                                     <div className='divider'></div>
                                     <div className='search-input-group'>
                                         <img src={groupIcon} alt='destination' className='inner-icon'/>
-                                        <TextField 
+                                        <TextFieldMy 
                                             label={t('searchPeopleSettingsLabel')} 
                                             text=''
                                             onFocus={onTravelersFieldFocus}

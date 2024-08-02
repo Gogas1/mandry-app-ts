@@ -8,7 +8,7 @@ interface TextFieldProps {
     onBlur: () => void;
 }
 
-export default function TextField({ label, text, onFocus, onBlur }: TextFieldProps) {
+export default function TextFieldMy({ label, text, onFocus, onBlur }: TextFieldProps) {
     const [value, setValue] = useState<string>(text);
     const [focused, setFocused] = useState<boolean>(false);
 

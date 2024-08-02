@@ -83,7 +83,7 @@ const phoneCodes =
     {
         "c_code": "BV",
         "name": "Bouvet Island",
-        "phone": ""
+        "phone": "55"
     },
     {
         "c_code": "BW",

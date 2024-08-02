@@ -1,0 +1,15 @@
+.dropdown-field-group {
+    position: relative;
+
+    .dropdown-field-dropdown {
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+
+        visibility: collapse;
+
+        &.opened {
+            visibility: visible;
+        }
+    }
+}

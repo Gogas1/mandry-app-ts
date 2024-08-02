@@ -61,5 +61,21 @@
     "DecemberShort:": "Dec.",
 
     "FavouritesPopupHeader": "Add to favourites",
-    "CreateFavsListBtnText": "Create new favourites list"
+    "CreateFavsListBtnText": "Create new favourites list",
+
+    "SignUpFinishHeader": "Complete Registration",
+    "SignUpNamesBlockHeader": "Official Name",
+    "SignUpNameInputLabel": "*Name on ID",
+    "SignUpSurnameInputLabel": "*Surname on ID",
+    "SignUpNamesTextEnd": "The provided data must match your state-issued ID. If you use a different name, you can add your preferred name for address.",
+    "SignUpBirthdateBlockHeader": "Date of Birth",
+    "SignUpBirthDateInputLabel": "*Date of Birth",
+    "SignUpBirthDateTextEnd": "You can register if you are 18 years old. Your birth date will not be shared with other Mandry users.",
+    "SignUpEmailBlockHeader": "Contact Information",
+    "SignUpEmailInputLabel": "*Email Address",
+    "SignUpEmailTextEnd": "We will send you a confirmation email and travel receipts.",
+    "SignUpContinueButtonLabel": "Agree and Continue",
+    "SignUpMarketingAgreement": "Mandry will send you member offers, ideas and inspiration, marketing emails, and push notifications. You can opt out of receiving these messages at any time in your account settings or directly in the marketing message.",
+    "SignUpWaiverText": "I do not want to receive marketing messages from Mandry.",
+    "SignUpAgreement": "By clicking Agree and Continue, I agree to the following Mandry policies: Terms of Service, Payment Terms, Non-Discrimination Policy and Privacy Policy."
 }

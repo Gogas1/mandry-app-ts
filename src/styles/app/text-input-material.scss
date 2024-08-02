@@ -1,0 +1,150 @@
+@import url('../app/fonts.scss');
+
+.text-input-material {
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    vertical-align: top;
+
+    &.focused {
+
+        .label-material {
+            transform: translate(20px, -6px) scale(1);
+
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%; 
+        }
+
+        .input-container {
+            .fieldset {
+                .legend {
+                    max-width: 100%;
+                }
+            }
+        }      
+    }
+
+    .label-material {
+        color: var(--grey-light-300, #AAA);
+        font-family: Comfortaa;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 19.2px */
+
+        padding: 0;
+        display: block;
+        transform-origin: top left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - 24px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(20px, 20px) scale(1);
+        z-index: 1;
+        pointer-events: none;
+
+        // transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        transition: all 0.2s ease;
+    }
+
+    .input-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 15px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.2);
+
+        .input-material {            
+            padding: 20px 10px 20px 20px;
+            color: #F6F6F6;
+            font-family: "Comfortaa";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            border: 0;
+            box-sizing: content-box;
+            background: none;
+            margin: 0;
+            width: 100%;
+            
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .fieldset {
+            text-align: left;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            top: -5px;
+            left: 0;
+            margin: 0;
+            padding: 0 8px;
+            pointer-events: none;
+            border-radius: inherit;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            min-width: 0%;
+            border: 1px solid #F6F6F6;
+            
+
+            .legend {
+                float: unset;
+                width: auto;
+                overflow: hidden;
+                display: block;
+                padding: 0;
+                font-size: 0.75em;
+                max-width: 0%;
+                visibility: hidden;
+                // -webkit-transition: max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+                // transition: max-width 0.05s cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+                transition: all 0.1s ease;
+                white-space: nowrap;
+                margin-left: 6px;
+
+                font-family: 'Comfortaa';
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+
+                span {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    display: inline-block;
+                    opacity: 0;
+                    visibility: visible;
+                }
+            }
+        }
+
+        img {
+            margin: 20px 20px 20px 10px;
+            width: 18px;
+            height: 18px;
+
+            &.pointer {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+
+
+

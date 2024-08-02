@@ -44,7 +44,7 @@ export default function InputDropdown({
                 onChange={filterOptions} />
             {isOpened && (
                 <div className="dropdown-menu">
-                    {filteredOptions.length < 0 ? 
+                    {filteredOptions.length < 1 ? 
                     options.map((option, index) => (
                         <div 
                             key={index} 

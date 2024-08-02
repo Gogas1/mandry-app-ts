@@ -25,7 +25,7 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
 
         return (
             <>
-                {newItems.map((item, index) => (
+                {newItems.map((item) => (
                     item
                 ))}
             </>
