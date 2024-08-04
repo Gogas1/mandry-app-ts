@@ -11,6 +11,7 @@ import profileLinkIcon from "../../assets/icons/navbar/profile.svg";
 
 import ProfilePopup from "./ProfilePopup";
 import LanguagePopup from "./LanguagePopup";
+import FavouritesPopup from "./FavouritesPopup";
 
 export default function Navbar() {
     const { t } = useTranslation();
@@ -48,9 +49,9 @@ export default function Navbar() {
                   <img src={languageSelectorIcon} alt="languages" className="inner-icon" />
                   
                 </div>
-                <Link to="favourites" className="navbar-item navbar-icon">
+                <div className="navbar-item navbar-icon" onClick={() => handlePopupOpen("favsPopup")}>
                   <img src={favouritesIcon} alt="favourites"  className="inner-icon"/>
-                </Link>
+                </div>
                 <div className="navbar-icon navbar-item" onClick={() => handlePopupOpen("profilePopup")}>
                   <img src={profileLinkIcon} alt="profile" className="inner-icon"/>
                 </div> 
@@ -59,6 +60,7 @@ export default function Navbar() {
           </div>
           <div className="popups-wrapper">
             <LanguagePopup isOpen={openedPopup === 'languagePopup'} closeAll={handleClosePopups} />
+            <FavouritesPopup isOpen={openedPopup === 'favsPopup'} closeAll={handleClosePopups}/>
             <ProfilePopup isOpen={openedPopup === 'profilePopup'} closeAll={handleClosePopups} />
           </div> 
         </nav>

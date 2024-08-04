@@ -26,53 +26,53 @@
     // min-width: 475px;
   }
 
-  .modal-border {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #f6f6f6;
-    border-radius: 15px;
+  // .modal-border {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  //   border: 1px solid #f6f6f6;
+  //   border-radius: 15px;
 
-    -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
-    mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
-  }
+  //   -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
+  //   mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
+  // }
 
-  .modal-panel {
-    background: rgba(81, 81, 81, 0.80);
-    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
-    backdrop-filter: blur(24px);
-    border-radius: 15px;
-    margin: 6px;
-    padding: 30px;
+  // .modal-panel {
+  //   background: rgba(81, 81, 81, 0.80);
+  //   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+  //   backdrop-filter: blur(24px);
+  //   border-radius: 15px;
+  //   margin: 6px;
+  //   padding: 30px;
 
-    background-image: radial-gradient(circle at calc(100% - 50.5px) -5px, rgba(255, 245, 245, 0.075) 30.5px, rgba(0, 0, 0, 0) 37px);
+  //   background-image: radial-gradient(circle at calc(100% - 50.5px) -5px, rgba(255, 245, 245, 0.075) 30.5px, rgba(0, 0, 0, 0) 37px);
 
-    -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%);
-    mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%);    
-  }
+  //   -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%);
+  //   mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%);    
+  // }
   
-  .close-button {
-    cursor: pointer;
-    position: absolute;
+  // .close-button {
+  //   cursor: pointer;
+  //   position: absolute;
 
-    top: -26px;
-    right: 30.5px;
+  //   top: -26px;
+  //   right: 30.5px;
 
-    width: 52px;
-    height: 52px;
-    border-radius: 48px;
-    border: 1px solid var(--white, #F6F6F6);
-    background: var(--grey-80, rgba(81, 81, 81, 0.80));
-    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
-    backdrop-filter: blur(24px);
+  //   width: 52px;
+  //   height: 52px;
+  //   border-radius: 48px;
+  //   border: 1px solid var(--white, #F6F6F6);
+  //   background: var(--grey-80, rgba(81, 81, 81, 0.80));
+  //   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+  //   backdrop-filter: blur(24px);
         
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  //   display: inline-flex;
+  //   align-items: center;
+  //   justify-content: center;
 
-    img {
-      width: 24px;
-      height: auto;
-    }
-  }
+  //   img {
+  //     width: 24px;
+  //     height: auto;
+  //   }
+  // }
 }

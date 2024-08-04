@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import facebookIcon from "../../assets/icons/auth/facebook.svg";
 import googleIcon from "../../assets/icons/auth/google.svg";
 import appleIcon from "../../assets/icons/auth/apple.svg";
 import eyeIcon from '../../assets/icons/meta/eye.svg';
 import eyeOffIcon from '../../assets/icons/meta/eye-off.svg';
+import closeIcon from '../../assets/icons/meta/close-cross.svg';
 
 import "../../styles/auth/auth-modal.scss";
 import React, { useContext, useEffect, useState, FormEvent } from "react";
@@ -13,6 +14,12 @@ import React, { useContext, useEffect, useState, FormEvent } from "react";
 import phoneCodes from "../../helpers/phoneCodes";
 import InputDropdown from "../app/InputDropdown";
 import AuthContext from "./AuthenticationContext";
+import { useModal } from "../app/ModalContext";
+import SignupModal from "./SignupModal";
+import TextInputMaterial from "../app/TextInputMaterial";
+import { TextField } from "@mui/material";
+import DropdownAddition, { DropdownOption } from "../app/DropdownAddition";
+import DropdownField from "../app/DropdownField";
 
 interface AuthModalProps {
     hideModal: () => void;
@@ -36,6 +43,12 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     
     const { login } = authContext;
     const navigate = useNavigate();
+
+    const { showModal } = useModal();
+
+    const handleSignUpModalCall = () => {
+        showModal((hideModal) => <SignupModal hideModal={hideModal} />)
+    }
 
     useEffect(() => {
         const setupOptions = () => {
@@ -120,117 +133,117 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
         setPhoneNumber(value);
     }
 
-    const onEmailChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
+    const onEmailChangeHandle = (value: string) => {
+        setEmail(value);
     }
   
-    const onPasswordChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(event.target.value);
+    const onPasswordChangeHandle = (value: string) => {
+      setPassword(value);
     }
 
     return (
         <>
-            <div className="auth-modal">
-                <div className="signin-main-label">{t('SignInAuthModalLabel')}</div>
-                <div className="welcome-label-group">
-                    <div className="welcome-label">{t('WelcomeBackAuthModalLabel')}</div>
-                    <div className="enter-creds-label">{t('EnterCredsAuthModalLabel')}</div>
-                </div>
-                <div className="tabs-switch-group">
-                    <div className="switch-group">
-                        <div 
-                        className={`tab-label ${activeTab === 0 ? 'active' : ''}`} 
-                        onClick={() => handleTabSwitch(0)}>
-                            {t('EmailWayAuthModalTab')}
-                        </div>
-                        <div 
-                        className={`tab-label ${activeTab === 1 ? 'active' : ''}`} 
-                        onClick={() => handleTabSwitch(1)}>
-                            {t('PhoneWayAuthModalTab')}
-                        </div>
+            <div className='auth-modal-border'></div>
+            <div className='auth-modal-panel'>
+                <div className="auth-modal">
+                    <div className="signin-main-label">{t('SignInAuthModalLabel')}</div>
+                    <div className="welcome-label-group">
+                        <div className="welcome-label">{t('WelcomeBackAuthModalLabel')}</div>
+                        <div className="enter-creds-label">{t('EnterCredsAuthModalLabel')}</div>
                     </div>
-                    <div className={`tabs-underline`}></div>
-                    <div className="underline-paint" style={{transform: `translateX(${activeTab * 100}%)`}}></div>
-                </div>
-                <div className="tab-content-wrapper">
-                    {activeTab === 0 ? 
-                    <div className="tab-content">
-                        <div className="input-group">
-                            <label>{t('EmailFieldAuthModalTab')}</label>
-                            <input 
-                                className="input" 
-                                placeholder={t('EmailInputAuthModalPlaceholder')}
-                                onChange={onEmailChangeHandle}/>
-                            
-                        </div>
-                        <div className="input-group">
-                            <label>{t('PasswordFieldAuthModalTab')}</label>
-                            <div className="password-input">
-                                <input 
-                                    type={!showPassword ? 'password' : 'text'}
-                                    placeholder={t('PasswordInputAuthModalPlaceholder')}
-                                    onChange={onPasswordChangeHandle}/>
-                                <img src={!showPassword ? eyeOffIcon : eyeIcon} onClick={() => setShowPassword(!showPassword)}/>
+                    <div className="tabs-switch-group">
+                        <div className="switch-group">
+                            <div 
+                            className={`tab-label ${activeTab === 0 ? 'active' : ''}`} 
+                            onClick={() => handleTabSwitch(0)}>
+                                {t('EmailWayAuthModalTab')}
+                            </div>
+                            <div 
+                            className={`tab-label ${activeTab === 1 ? 'active' : ''}`} 
+                            onClick={() => handleTabSwitch(1)}>
+                                {t('PhoneWayAuthModalTab')}
                             </div>
                         </div>
-                        <button 
-                            className="sign-in-btn"
-                            onClick={onEmailSignInHandle}>
-                            {t('EnterAuthModalBtn')}
-                        </button>
-                    </div> : ''}
-                    {activeTab === 1 ? 
-                    <div className="tab-content">
-                        <div className="input-group">
-                            <label>{t('CountryCodeFieldAuthModalTab')}</label>
-                            <InputDropdown 
-                                options={phoneCodesOptions}
-                                defaultValue={phoneCodesOptions[0]}
-                                onChange={handleCodeChoose}/>
-                        </div>
-                        <div className="input-group">
-                            <label>{t('PhoneNumberFieldAuthModalTab')}</label>
-                            <input 
-                                value={phoneNumber}
-                                className="input"
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}/>
-                        </div>
-                        <button 
-                            className="sign-in-btn"
-                            onClick={onPhoneSignInHandle}>
-                            {t('EnterAuthModalBtn')}
-                        </button>
-                    </div> : ''}
-                </div>
-                
-                {/* <button 
-                    className="sign-in-btn">
-                    {t('EnterAuthModalBtn')}
-                </button> */}
-                <div className="oauth-group">
-                    <div className="top-divider-group">
-                        <div className="divider"></div>
-                        <div className="top-divider-label">{t('OrAuthModalLabel')}</div>
-                        <div className="divider"></div>
+                        <div className={`tabs-underline`}></div>
+                        <div className="underline-paint" style={{transform: `translateX(${activeTab * 100}%)`}}></div>
                     </div>
-                    <div className="oauth-buttons-group">
-                        <div className="oauth-button facebook-button">
-                            <img src={facebookIcon} alt="facebook"/>
-                        </div>
-                        <div className="oauth-button google-button">
-                            <img src={googleIcon} alt="google"/>
-                        </div>
-                        <div className="oauth-button apple-button">
-                            <img src={appleIcon} alt="apple"/>
-                        </div>
+                    <div className="tab-content-wrapper">
+                        {activeTab === 0 ? 
+                        <div className="tab-content">
+                            <div className="input-group">
+                                <TextInputMaterial 
+                                    label={t('EmailInputAuthModalPlaceholder')}
+                                    onChange={onEmailChangeHandle} />       
+                            </div>
+                            <div className="input-group">
+                                <TextInputMaterial 
+                                    label={t('PasswordInputAuthModalPlaceholder')}
+                                    onChange={onPasswordChangeHandle}
+                                    hideText={!showPassword}
+                                    icon={!showPassword ? eyeOffIcon : eyeIcon}
+                                    iconCursorPointer={true}
+                                    onIconClick={() => setShowPassword(!showPassword)}
+                                />
+                            </div>
+                            <button 
+                                className="sign-in-btn"
+                                onClick={onEmailSignInHandle}>
+                                {t('EnterAuthModalBtn')}
+                            </button>
+                        </div> : ''}
+                        {activeTab === 1 ? 
+                        <div className="tab-content">
+                            <div className="input-group phone-input-group">
+                                <DropdownField
+                                    label={t('CountryCodeFieldAuthModalTab')}
+                                    onChange={handleCodeChoose} 
+                                    options={phoneCodesOptions}
+                                    />
+                            </div>
+                            <div className="input-group">
+                                {/* <label className="label">{t('PhoneNumberFieldAuthModalTab')}</label> */}
+                                <TextInputMaterial 
+                                    label={t('PhoneNumberFieldAuthModalTab')}
+                                    onChange={setPhoneNumber}
+                                    outerValue={phoneNumber}
+                                />
+                            </div>
+                            <button 
+                                className="sign-in-btn"
+                                onClick={onPhoneSignInHandle}>
+                                {t('EnterAuthModalBtn')}
+                            </button>
+                        </div> : ''}
                     </div>
-                    <div className="divider-bottom"></div>
-                </div>
-                <div className="signup-group">
-                    <div className="signup-text">{t('SignUpOfferAuthModalLabel')}</div>
-                    <Link to='signup'>{t('SignUpAuthModalLabel')}</Link>
+                    <div className="oauth-group">
+                        <div className="top-divider-group">
+                            <div className="divider"></div>
+                            <div className="top-divider-label">{t('OrAuthModalLabel')}</div>
+                            <div className="divider"></div>
+                        </div>
+                        <div className="oauth-buttons-group">
+                            <div className="oauth-button facebook-button">
+                                <img src={facebookIcon} alt="facebook"/>
+                            </div>
+                            <div className="oauth-button google-button">
+                                <img src={googleIcon} alt="google"/>
+                            </div>
+                            <div className="oauth-button apple-button">
+                                <img src={appleIcon} alt="apple"/>
+                            </div>
+                        </div>
+                        <div className="divider-bottom"></div>
+                    </div>
+                    <div className="signup-group">
+                        <div className="signup-text">{t('SignUpOfferAuthModalLabel')}</div>
+                        <div className="signup-link" onClick={handleSignUpModalCall}>{t('SignUpAuthModalLabel')}</div>
+                    </div>
                 </div>
             </div>
+            <button className="auth-modal-close-button" onClick={hideModal}>
+                <img src={closeIcon} alt='close' />
+            </button>  
+            
         </>    
     )
 }

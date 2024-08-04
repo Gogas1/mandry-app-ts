@@ -8,13 +8,13 @@ interface TextFieldProps {
     onBlur: () => void;
 }
 
-export default function TextField({ label, onFocus, onBlur }: TextFieldProps) {
-    const [value, setValue] = useState<string>('');
+export default function TextFieldMy({ label, text, onFocus, onBlur }: TextFieldProps) {
+    const [value, setValue] = useState<string>(text);
     const [focused, setFocused] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
-      };
+    };
     
       const handleFocus = () => {
         setFocused(true);
@@ -27,12 +27,12 @@ export default function TextField({ label, onFocus, onBlur }: TextFieldProps) {
       };
 
     return (
-        <div className={`textfield ${focused || value ? 'focused' : ''}`}>
+        <div className={`textfield ${focused || value || text ? 'focused' : ''}`}>
           <label className="textfield__label">{label}</label>
           <input
             className="textfield__input"
             type="text"
-            value={value}
+            defaultValue={text}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
