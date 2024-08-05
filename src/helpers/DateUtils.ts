@@ -41,10 +41,16 @@ export function GetMonthCode(month: number, getCodeForShort: boolean = false) : 
     }
 }
 
-export function IsDatesQqual(first: Date | undefined, second: Date | undefined) : boolean {
+export function IsDatesEqual(first: Date | undefined, second: Date | undefined) : boolean {
     if(!first || !second) return false;
 
     return first.getDate() === second.getDate() &&
         first.getMonth() === second.getMonth() &&
         first.getFullYear() === second.getFullYear();
+}
+
+export const addMonths = (date: Date, months: number): Date => {
+    const result = new Date(date);
+    result.setMonth(result.getMonth() + months);
+    return result;
 }

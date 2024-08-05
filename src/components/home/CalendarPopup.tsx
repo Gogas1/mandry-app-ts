@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { GetMonthCode, IsDatesQqual } from "../../helpers/DateUtils";
+import { addMonths, GetMonthCode, IsDatesEqual } from "../../helpers/DateUtils";
 import { useState } from "react";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
@@ -16,14 +16,9 @@ interface MonthYear {
     month: number;
 }
 
-const addMonths = (date: Date, months: number): Date => {
-    const result = new Date(date);
-    result.setMonth(result.getMonth() + months);
-    return result;
-}
+
 
 export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
-
     const currentDate = new Date();
     const nextDate = addMonths(currentDate, 1);
 
@@ -54,11 +49,11 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     const handleDateSelection = (date: Date) => {
-        if(IsDatesQqual(date, dateOne)) {
+        if(IsDatesEqual(date, dateOne)) {
             setDateOne(undefined);
             return;
         } 
-        if(IsDatesQqual(date, dateTwo)) {
+        if(IsDatesEqual(date, dateTwo)) {
             setDateTwo(undefined);
             return;  
         } 
@@ -179,8 +174,8 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
     const getSelectionClass = (date: Date): string => {
         if(selectionStartDate && selectionEndDate) {
             if(selectToStart || selectToEnd) {
-                if(IsDatesQqual(date, selectionEndDate)) return 'orange-end';
-                if(IsDatesQqual(date, selectionStartDate)) return 'orange-start';
+                if(IsDatesEqual(date, selectionEndDate)) return 'orange-end';
+                if(IsDatesEqual(date, selectionStartDate)) return 'orange-start';
                 if(date > selectionStartDate && date < selectionEndDate) return 'orange-middle'; 
                 return '';
             }
@@ -189,11 +184,11 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
         }
 
         if(!selectionStartDate || !selectionEndDate) {
-            if(IsDatesQqual(date, selectionStartDate) || IsDatesQqual(date, selectionEndDate)) return 'orange-single';
+            if(IsDatesEqual(date, selectionStartDate) || IsDatesEqual(date, selectionEndDate)) return 'orange-single';
         }
 
-        if(IsDatesQqual(date, selectionStartDate)) return 'orange-start';
-        if(IsDatesQqual(date, selectionEndDate)) return 'orange-end';
+        if(IsDatesEqual(date, selectionStartDate)) return 'orange-start';
+        if(IsDatesEqual(date, selectionEndDate)) return 'orange-end';
             
         return '';
     }
@@ -213,7 +208,7 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
                         <div 
                             key={j} 
                             onClick={() => onDateSelected(day.date)}
-                            className={`available ${getSelectionClass(day.date)} ${IsDatesQqual(new Date(), day.date) ? 'current' : ''}`}>
+                            className={`available ${getSelectionClass(day.date)} ${IsDatesEqual(new Date(), day.date) ? 'current' : ''}`}>
                             {day.date.getDate()}
                         </div>
                     );

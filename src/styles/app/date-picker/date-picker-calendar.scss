@@ -1,0 +1,179 @@
+@use '../../mixins/panel.scss' as *;
+@import url('../fonts.scss');
+
+.date-picker-calendar {
+    z-index: 1000;
+    position: absolute;
+
+    top: calc(100% + 6px);
+    left: calc(0% + 15px);
+
+    .calendar-border {
+        @include border();
+
+        -webkit-mask-image: 
+            radial-gradient(circle 22px at 0% 43px, transparent 100%, black 100%),
+            radial-gradient(circle 22px at calc(100%) 43px, transparent 100%, black 100%);
+        mask-image: 
+            radial-gradient(circle 22px at 0% 43px, transparent 100%, black 100%),
+            radial-gradient(circle 22px at calc(100%) 43px, transparent 100%, black 100%);
+
+        mask-composite: intersect;
+        -webkit-mask-composite: intersect;
+    }
+
+    .calendar-panel {
+        @include panel();
+
+        -webkit-mask-image: 
+            radial-gradient(circle 20.5px at calc(0% - 6px) 37px, transparent 95%, black 100%),
+            radial-gradient(circle 20.5px at calc(100% + 6px) 37px, transparent 95%, black 100%);
+        mask-image: 
+            radial-gradient(circle 20.5px at calc(0% - 6px) 37px, transparent 95%, black 100%),
+            radial-gradient(circle 20.5px at calc(100% + 6px) 37px, transparent 95%, black 100%);
+
+        mask-composite: intersect;
+        -webkit-mask-composite: intersect;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        button {
+            padding: 18.5px 60px;
+
+            color: #F6F6F6;
+            font-family: "Montserrat Alternates";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+
+            border-radius: 15px;
+            background: var(--grey-dark, #515151);
+            box-shadow: 0px 50px 7.7px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 14.2px 0px #08B1BD inset;
+            border: 0;
+
+            &:active {
+                border-radius: 15px;
+                background: linear-gradient(91deg, rgba(0, 0, 0, 0.00) 0%, rgba(8, 177, 189, 0.20) 98.22%), #515151;
+                box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;
+            }
+        }
+
+        .calendar-section {
+
+            margin-bottom: 20px;
+
+            .month-header {
+                color: #08B1BD;
+                font-family: "Montserrat Alternates";
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: center;
+                
+                margin-bottom: 20px;
+            }
+
+            .days-table {
+                display: flex;
+                flex-direction: column;
+
+                .days-header {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 6px;
+                    margin-bottom: 10px;
+
+                    div {
+                        width: 32px;
+                        height: 24px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        color: #FD941A;
+                        text-align: center;
+
+                        font-family: 'Comfortaa';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;                        
+                    }
+                }
+
+                .days-body {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+
+                    .days-row {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 6px;
+
+                        div {
+                            width: 32px;
+                            height: 24px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            color:  #F6F6F6;
+                            text-align: center;
+                            font-family: Comfortaa;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+
+                            &.selected {
+                                border-radius: 5px;
+                                border: 1px solid var(--blue, #08B1BD);
+                            }
+
+                            &.available {
+                                cursor: pointer;
+                            }
+
+                            &.blocked {
+                                border-radius: 5px;
+                                background: rgba(0, 0, 0, 0.20);
+
+                                text-decoration-line: line-through;
+                                color: var(--grey-light-300, #AAA);
+                            }
+
+                            &.current {
+                                color: #08B1BD;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .border-button {
+        @include border-button();
+
+        top: calc(0% + 28px);
+
+        &.button-back {
+            transform: rotate(-90deg);
+            left: calc(0% - 15px);
+        }
+
+        &.button-forward {
+            transform: rotate(90deg);
+            left: calc(100% - 15px);
+
+            &.blocked {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

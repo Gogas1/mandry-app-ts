@@ -2,13 +2,27 @@ import { useTranslation } from "react-i18next";
 
 import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
+import TextInputMaterial from "../app/TextInputMaterial";
+import { ChangeEvent, useState } from "react";
+import DatePicker from "../app/DatePicker/DatePicker";
+
+import crossIcon from "../../assets/icons/meta/close-cross.svg";
 
 interface SignupModalProps {
     hideModal: () => void;
 }
 
-export default function SignupModal({  }: SignupModalProps) {
+export default function SignupModal({ hideModal }: SignupModalProps) {
     const { t } = useTranslation();
+
+    const [name, setName] = useState('');
+    const [surnname, setSurname] = useState('');
+    const [birthdate, setBirthdate] = useState<Date>(new Date());
+    const [email, setEmail] = useState('');
+
+    const birthdateChangeHandle = (value: string) => {
+        
+    }
 
     return (
         <>
@@ -20,12 +34,19 @@ export default function SignupModal({  }: SignupModalProps) {
                     <div className="block names-block">
                         <div className="block-header">{t('SignUpNamesBlockHeader')}</div>
                         <div className="input-group name-input-group">
-                            <label>{t('SignUpNameInputLabel')}</label>
-                            <input className="input"/>
+                            {/* <label>{t('SignUpNameInputLabel')}</label>
+                            <input className="input"/> */}
+                            <TextInputMaterial
+                                label={t('SignUpNameInputLabel')}
+                                onChange={setName}
+                                />
                         </div>
                         <div className="input-group surname-input-group">
-                            <label>{t('SignUpSurnameInputLabel')}</label>
-                            <input className="input"/>
+                            {/* <label>{t('SignUpSurnameInputLabel')}</label>
+                            <input className="input"/> */}
+                            <TextInputMaterial 
+                                label={t('SignUpSurnameInputLabel')}
+                                onChange={setSurname}/>
                         </div>
                         <div className="block-text-end">
                             {t('SignUpNamesTextEnd')}
@@ -33,10 +54,14 @@ export default function SignupModal({  }: SignupModalProps) {
                     </div>
                     <div className="block birthdate-block">
                         <div className="block-header">{t('SignUpBirthdateBlockHeader')}</div>
-                        <div className="input-group birthdate-input-group">
+                        {/* <div className="input-group birthdate-input-group">
                             <label>{t('SignUpBirthDateInputLabel')}</label>
                             <input className="input"/>
-                        </div>
+                        </div> */}
+                        <DatePicker 
+                            label={t('SignUpBirthDateInputLabel')}
+                            onChange={birthdateChangeHandle}
+                            />
                         <div className="block-text-end">
                             {t('SignUpBirthDateTextEnd')}
                         </div>
@@ -44,8 +69,11 @@ export default function SignupModal({  }: SignupModalProps) {
                     <div className="block email-block">
                         <div className="block-header">{t('SignUpEmailBlockHeader')}</div>
                         <div className="input-group email-input-group">
-                            <label>{t('SignUpEmailInputLabel')}</label>
-                            <input className="input"/>
+                            {/* <label>{t('SignUpEmailInputLabel')}</label>
+                            <input className="input"/> */}
+                            <TextInputMaterial 
+                                label={t('SignUpEmailInputLabel')}
+                                onChange={setEmail}/>
                         </div>
                         <div className="block-text-end">
                             {t('SignUpEmailTextEnd')}
@@ -69,9 +97,9 @@ export default function SignupModal({  }: SignupModalProps) {
                 </div>
                 
             </div>
-            {/* <button className="signup-modal-close-button" onClick={hideModal}>
-                <img alt='close' />
-            </button>   */}
+            <button className="signup-modal-close-button" onClick={hideModal}>
+                <img src={crossIcon}  alt='close' />
+            </button>  
         </>  
     );
 }

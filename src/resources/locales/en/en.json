@@ -78,4 +78,6 @@
     "SignUpMarketingAgreement": "Mandry will send you member offers, ideas and inspiration, marketing emails, and push notifications. You can opt out of receiving these messages at any time in your account settings or directly in the marketing message.",
     "SignUpWaiverText": "I do not want to receive marketing messages from Mandry.",
     "SignUpAgreement": "By clicking Agree and Continue, I agree to the following Mandry policies: Terms of Service, Payment Terms, Non-Discrimination Policy and Privacy Policy."
+    ,
+    "DatePickerCalendarClearButton": "Clear"
 }
