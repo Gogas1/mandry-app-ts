@@ -10,6 +10,7 @@ import TextFieldMy from './home/TextFieldMy';
 import DestinationPopup from './home/DestinationPopup';
 import { useState } from 'react';
 import CalendarPopup from './home/CalendarPopup';
+import TravelersPopup from './home/TravelersPopup';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -45,6 +46,7 @@ export default function Home() {
 
     const onTravelersFieldFocus = () => {
         handleCloseAllPopups();
+        setOpenedPopup('travelersPopup');
     }
 
     const onTravelersFieldBlur = () => {
@@ -97,6 +99,10 @@ export default function Home() {
                                     closeAll={handleCloseAllPopups} />
                                 <CalendarPopup 
                                     isOpen={openedPopup === 'calendarPopup'}
+                                    closeAll={handleCloseAllPopups}
+                                    />
+                                <TravelersPopup
+                                    isOpen={openedPopup === 'travelersPopup'}
                                     closeAll={handleCloseAllPopups}
                                     />
                             </div>

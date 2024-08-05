@@ -1,0 +1,166 @@
+@import url("../../app/fonts.scss");
+
+.travelers-popup {
+    left: 35px;
+    top: 152px;
+
+    position: absolute;
+
+    transition: visibility 0.3s ease;
+
+    &.closed {
+        .location {
+            opacity: 0;
+        }
+
+        .list {
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .popup-panel {
+            max-width: 0;
+            padding: 30px 0px;
+        }
+
+        visibility: collapse;
+    }
+
+    &.opened {
+        .popup-panel {
+            width: 335px;
+            height: 329px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--Numbers-20, 20px);
+            align-items: flex-start;
+        }
+        .traveler {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .travelers-header {
+            height: 24px;
+            font-family: "Montserrat Alternates";
+            font-size: 16px;
+            font-style: normal;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            font-weight: 700;
+            line-height: normal;
+            color: var(--white, #FFF);
+        }
+        .travelers-number-selector {
+            width: 82px;
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+
+            color: var(--white, #FFF);
+            font-family: Comfortaa;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+        }
+        .age-notification {
+
+            font-family: "Comfortaa";
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: var(--white, #FFF);
+            max-width: 169px;
+            word-wrap: break-word;
+
+            margin-bottom: 10px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #08b1bd;
+            width: 100%;
+
+        }
+
+        visibility: visible;
+    }
+
+    .popup-border {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        border-radius: 15px;
+        border: 1px solid #fff;
+
+        -webkit-mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
+        mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
+    }
+
+    .popup-panel {
+        border-radius: 15px;
+        background-color: rgba(81, 81, 81, 0.80);
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+        margin: 6px;
+        padding: 30px;
+
+        transition: max-width 0.3s, padding 0.3s;
+
+        -webkit-mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
+
+        overflow: hidden;
+    }
+
+    .popup-hide {
+        cursor: pointer;
+
+        position: absolute;
+
+        top: 28.5px;
+        left: -20px;
+
+        transform: rotate(-90deg);
+
+        width: 34px;
+        height: 34px;
+        border-radius: 17.5px;
+        border: 1px solid var(--white, #F6F6F6);
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 45%;
+        }
+    }
+
+    .location {
+        cursor: pointer;
+
+        color: var(--white, #F6F6F6);
+        font-family: 'Comfortaa';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        padding: 6px 5px 8px 0;
+        margin-bottom: 20px;
+
+        border-bottom: 1px solid #08B1BD;
+
+        transition: opacity 0.2 ease;
+    }
+
+}
