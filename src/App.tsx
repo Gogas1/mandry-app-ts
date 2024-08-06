@@ -14,21 +14,20 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <ModalProvider>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/profile/:id' element={<Profile />} />
-              <Route path='/profile/my' element={<Profile />} />
-              <Route path='/signup' element={<SignUp />} />
-              <Route path='/signin' element={<SignIn />} />
-              <Route path='/features' element={<Features />} />
-            </Routes>
-            <Modal />
-          </Router>
-        </ModalProvider>
-        
+        <Router>
+          <ModalProvider>
+              <Navbar />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/profile/:id' element={<Profile />} />
+                <Route path='/profile/my' element={<Profile />} />
+                <Route path='/signup' element={<SignUp />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path='/features' element={<Features />} />
+              </Routes>
+              <Modal />
+          </ModalProvider>
+        </Router>
       </AuthProvider>
     </>
   )

@@ -17,10 +17,11 @@ interface PopupProps {
 export default function ProfilePopup({ isOpen, closeAll }: PopupProps) {
 
     const { t } = useTranslation();
-    const { showModal } = useModal();
+    const { showModal, openModal, closeModal } = useModal();
 
     const handleClick = () => {
-        showModal((hideModal) => <AuthModal hideModal={hideModal} />)
+        // showModal((hideModal) => <AuthModal hideModal={hideModal} />);
+        openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
     }
 
     return (

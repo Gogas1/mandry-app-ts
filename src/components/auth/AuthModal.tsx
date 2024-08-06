@@ -44,10 +44,11 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const { login } = authContext;
     const navigate = useNavigate();
 
-    const { showModal } = useModal();
+    const { showModal, openModal, closeModal } = useModal();
 
     const handleSignUpModalCall = () => {
-        showModal((hideModal) => <SignupModal hideModal={hideModal} />)
+        // showModal((hideModal) => <SignupModal hideModal={hideModal} />);
+        openModal('signup', <SignupModal hideModal={() => closeModal('signup')} />);
     }
 
     useEffect(() => {

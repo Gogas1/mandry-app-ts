@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
 import TextInputMaterial from "../app/TextInputMaterial";
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import crossIcon from "../../assets/icons/meta/close-cross.svg";
+import { useModal } from "../app/ModalContext";
+import AuthModal from "./AuthModal";
 
 interface SignupModalProps {
     hideModal: () => void;
@@ -15,6 +17,8 @@ interface SignupModalProps {
 export default function SignupModal({ hideModal }: SignupModalProps) {
     const { t } = useTranslation();
 
+    const { openModal, closeModal } = useModal();
+
     const [name, setName] = useState('');
     const [surnname, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState<Date>(new Date());
@@ -22,6 +26,13 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const birthdateChangeHandle = (value: string) => {
         
+    }
+
+    const closeHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation();
+
+        hideModal();
+        openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
     }
 
     return (
@@ -97,7 +108,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                 </div>
                 
             </div>
-            <button className="signup-modal-close-button" onClick={hideModal}>
+            <button className="signup-modal-close-button" onClick={closeHandle}>
                 <img src={crossIcon}  alt='close' />
             </button>  
         </>  
