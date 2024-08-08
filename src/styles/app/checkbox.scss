@@ -21,9 +21,9 @@
       
     }
   
-    &:hover input ~ .checkmark {
-      background-color: #ccc;
-    }
+    // &:hover input ~ .checkmark {
+    //   background-color: rgba($color: #dfa963, $alpha: 0.25) ;
+    // }
   
     input:checked ~ .checkmark {
         border-color: #FD941A;

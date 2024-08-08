@@ -8,6 +8,7 @@
     "searchDestinationLabel": "Destination",
     "searchDatesLabel": "Arrival/Departure",
     "searchPeopleSettingsLabel": "Travelers",
+
     "travelersAdults": "Adults",
     "travelersAdultAge": "(ages 13 or above)",
     "travelersChildren": "Children",
@@ -16,6 +17,7 @@
     "travelersInfantAge": "(under 2)",
     "travelersPats": "Pats",
     "travelersServicePats": "Bringing a service animal?",
+
     "languageSelectionLabel": "Language",
     "currencySelectionLabel": "Currency",
     "SignInAuthModalLabel": "Sign In",
@@ -87,5 +89,12 @@
     "SignUpWaiverText": "I do not want to receive marketing messages from Mandry.",
     "SignUpAgreement": "By clicking Agree and Continue, I agree to the following Mandry policies: Terms of Service, Payment Terms, Non-Discrimination Policy and Privacy Policy."
     ,
-    "DatePickerCalendarClearButton": "Clear"
+    "SignUpPasswordLabel": "Password",
+    "SignUpPhoneLabel": "Phone",
+    "SignUpPasswordReq": "Must contain at least 8 characters, including at least one special character or number.",
+    "SignUpPasswordConfirmationLabel": "Repeat password",
+
+    "DatePickerCalendarClearButton": "Clear",
+
+    "PasswordFieldDefaultLabel": "Password"
 }

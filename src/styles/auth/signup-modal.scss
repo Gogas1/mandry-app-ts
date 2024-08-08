@@ -7,8 +7,8 @@
     border: 1px solid #f6f6f6;
     border-radius: 15px;
 
-    // -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
-    // mask-image: radial-gradient(circle 32px at calc(100% - 57px) 2px, transparent 100%, black 100%);
+    -webkit-mask-image: radial-gradient(circle 22px at 0% calc(0% + 43px), transparent 100%, black 100%);
+    mask-image: radial-gradient(circle 22px at 0% calc(0% + 43px), transparent 100%, black 100%);
 }
 
 .signup-modal-panel {
@@ -23,8 +23,8 @@
 
     // background-image: radial-gradient(circle at calc(100% - 50.5px) -5px, rgba(255, 245, 245, 0.075) 30.5px, rgba(0, 0, 0, 0) 37px);
 
-    // -webkit-mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%);
-    // mask-image: radial-gradient(circle 32px at calc(100% - 50px) -5px, transparent 95%, black 100%); 
+    -webkit-mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%);
+    mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%); 
     
     .panel-header {
         color: var(--blue, #08B1BD);
@@ -104,6 +104,10 @@
                 margin-bottom: 30px;
             }
 
+            &.password-repeat {
+                margin-top: 30px;
+            }
+
             // &.surname-input-group {
 
             // }
@@ -120,8 +124,8 @@
         }                
     }
 
-    .birthdate-block, .email-block {
-        margin-top: 40px;
+    .birthdate-block, .email-block, .password-block, .phone-block {
+        margin-top: 30px;
     }
 
     .agreement-text {
@@ -196,11 +200,13 @@
     backdrop-filter: blur(24px);
     position: absolute;
 
-    top: calc(0% + 30px);
-    left: calc(0% - 26px);
+    top: calc(0% + 28px);
+    left: calc(0% - 15px);
 
-    width: 52px;
-    height: 52px;
+    transform: rotate(-90deg);
+
+    width: 30px;
+    height: 30px;
 
     display: flex;
     justify-content: center;
@@ -212,4 +218,5 @@
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
+
 }

@@ -89,6 +89,12 @@
     "SignUpWaiverText": "Я не хочу отримувати маркетингові повідомлення від Mandry.",
     "SignUpAgreement": "Натискаючи Погодитися і продовжити, я погоджуюся з такими правилами Mandry : Умови обслуговування, Умови здійснення платежів, Політика недискримінації та Політика конфіденційності."
     ,
+    "SignUpPasswordLabel": "Пароль",
+    "SignUpPhoneLabel": "Телефон",
+    "SignUpPasswordReq": "Має містити не менше 8 символів, серед яких має бути принаймні один спеціальний символ або цифра.",
+    "SignUpPasswordConfirmationLabel": "Повторно введіть пароль",
 
-    "DatePickerCalendarClearButton": "Очистити" 
+    "DatePickerCalendarClearButton": "Очистити",
+
+    "PasswordFieldDefaultLabel": "Пароль"
 }

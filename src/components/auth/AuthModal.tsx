@@ -20,6 +20,8 @@ import TextInputMaterial from "../app/TextInputMaterial";
 import { TextField } from "@mui/material";
 import DropdownAddition, { DropdownOption } from "../app/DropdownAddition";
 import DropdownField from "../app/DropdownField";
+import PasswordField from "../app/Fields/PasswordFileld";
+import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
 
 interface AuthModalProps {
     hideModal: () => void;
@@ -177,13 +179,9 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                                     onChange={onEmailChangeHandle} />       
                             </div>
                             <div className="input-group">
-                                <TextInputMaterial 
+                                <PasswordField 
                                     label={t('PasswordInputAuthModalPlaceholder')}
-                                    onChange={onPasswordChangeHandle}
-                                    hideText={!showPassword}
-                                    icon={!showPassword ? eyeOffIcon : eyeIcon}
-                                    iconCursorPointer={true}
-                                    onIconClick={() => setShowPassword(!showPassword)}
+                                    onValueChange={onPasswordChangeHandle}
                                 />
                             </div>
                             <button 
@@ -194,21 +192,24 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                         </div> : ''}
                         {activeTab === 1 ? 
                         <div className="tab-content">
-                            <div className="input-group phone-input-group">
+                            {/* <div className="input-group phone-input-group">
                                 <DropdownField
                                     label={t('CountryCodeFieldAuthModalTab')}
                                     onChange={handleCodeChoose} 
                                     options={phoneCodesOptions}
                                     />
                             </div>
-                            <div className="input-group">
-                                {/* <label className="label">{t('PhoneNumberFieldAuthModalTab')}</label> */}
+                            <div className="input-group">                                
                                 <TextInputMaterial 
                                     label={t('PhoneNumberFieldAuthModalTab')}
                                     onChange={setPhoneNumber}
                                     outerValue={phoneNumber}
                                 />
-                            </div>
+                            </div> */}
+
+                            <PhonePickerBlock 
+                                onPhoneChange={setPhoneNumber}
+                            />
                             <button 
                                 className="sign-in-btn"
                                 onClick={onPhoneSignInHandle}>

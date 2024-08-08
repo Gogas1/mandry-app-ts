@@ -2,13 +2,19 @@ import { useTranslation } from "react-i18next";
 
 import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
+
 import TextInputMaterial from "../app/TextInputMaterial";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import crossIcon from "../../assets/icons/meta/close-cross.svg";
+import arrowIcon from "../../assets/icons/meta/arrow.svg";
+
 import { useModal } from "../app/ModalContext";
 import AuthModal from "./AuthModal";
+
+import PasswordField from "../app/Fields/PasswordFileld";
+import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
 
 interface SignupModalProps {
     hideModal: () => void;
@@ -23,6 +29,11 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [surnname, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState<Date>(new Date());
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    
 
     const birthdateChangeHandle = (value: string) => {
         
@@ -65,10 +76,6 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     </div>
                     <div className="block birthdate-block">
                         <div className="block-header">{t('SignUpBirthdateBlockHeader')}</div>
-                        {/* <div className="input-group birthdate-input-group">
-                            <label>{t('SignUpBirthDateInputLabel')}</label>
-                            <input className="input"/>
-                        </div> */}
                         <DatePicker 
                             label={t('SignUpBirthDateInputLabel')}
                             onChange={birthdateChangeHandle}
@@ -80,15 +87,38 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="block email-block">
                         <div className="block-header">{t('SignUpEmailBlockHeader')}</div>
                         <div className="input-group email-input-group">
-                            {/* <label>{t('SignUpEmailInputLabel')}</label>
-                            <input className="input"/> */}
                             <TextInputMaterial 
                                 label={t('SignUpEmailInputLabel')}
                                 onChange={setEmail}/>
                         </div>
+                        {/* <div className="input-group phone-input-group">
+                            <TextInputMaterial 
+                                label={t('SignUpPhoneLabel')}
+                                onChange={setPhone}
+                            />
+                        </div> */}
                         <div className="block-text-end">
                             {t('SignUpEmailTextEnd')}
                         </div>
+                    </div>
+                    <div className="block password-block">
+                        <div className="input-group">
+                            <PasswordField 
+                                onValueChange={setPassword}
+                            />
+                            <label>{t('SignUpPasswordReq')}</label>
+                        </div>
+                        <div className="input-group password-repeat">
+                            <PasswordField 
+                                label=""
+                                onValueChange={setPasswordConfirmation}
+                            />
+                        </div>
+                    </div>
+                    <div className="block phone-block">
+                        <PhonePickerBlock 
+                            onPhoneChange={setPhone}
+                        />
                     </div>
                     <div className="agreement-text">
                         {t('SignUpAgreement')}
@@ -109,7 +139,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                 
             </div>
             <button className="signup-modal-close-button" onClick={closeHandle}>
-                <img src={crossIcon}  alt='close' />
+                <img src={arrowIcon}  alt='close' />
             </button>  
         </>  
     );
