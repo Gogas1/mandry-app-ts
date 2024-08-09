@@ -1,5 +1,6 @@
 import arrowRegularIcon from '../../../assets/icons/meta/arrow.svg';
 import arrowGreyIcon from '../../../assets/icons/meta/arrow-grey.svg';
+import arrowDropdownIcom from '../../../assets/icons/meta/arrow2.svg';
 
 import '../../../styles/app/date-picker/date-picker-calendar.scss'
 
@@ -58,8 +59,12 @@ export default function DatePickerCalendar({ onDateSelect }: DatePickerProps) {
         const newCalendarDate = { year: prevDate.getFullYear(), month: prevDate.getMonth() } as MonthYear;
         setCalendarDate(newCalendarDate);
         setIsNextMonthAvailable(evaluateNextMonthAvailibility(currentDate, newCalendarDate));
+    }
 
-        console.log({calendarDate, isNextMonthAvailable});
+    const handleGoToDate = (date: Date) => {
+        const newCalendarDate = { year: date.getFullYear(), month: date.getMonth() } as MonthYear;
+        setCalendarDate(newCalendarDate);
+        setIsNextMonthAvailable(evaluateNextMonthAvailibility(currentDate, newCalendarDate));
     }
 
     const handleClear = () => {
@@ -76,6 +81,7 @@ export default function DatePickerCalendar({ onDateSelect }: DatePickerProps) {
                         month={calendarDate.month}
                         onDateSelected={dateSelectionHandle}
                         selectedDate={selectedDate}
+                        goToDateHandler={handleGoToDate}
                         />                    
                 </div>    
                 <button onClick={handleClear}>{t('DatePickerCalendarClearButton')}</button> 
@@ -101,15 +107,17 @@ interface CalendarSectionProps {
     blockStartFrom?: Date;
 
     onDateSelected: (date: Date) => void;
+    goToDateHandler?: (date: Date) => void;
 }
 
-function CalendarSection({ year, month, selectedDate, blockStartFrom, onDateSelected }: CalendarSectionProps) {
+function CalendarSection({ year, month, selectedDate, onDateSelected, goToDateHandler }: CalendarSectionProps) {
     const { t } = useTranslation();
     const currentDate = new Date();
     const days = GetDaysInMonth(year, month);
     const daysInWeek = 7;
     const startIndex = GetDayOfWeek(new Date(days[0].date));
     const weeks = getWeeks(days, startIndex);
+    const years = Array.from({ length: currentDate.getFullYear() - 1900 + 1 }, (_, i) => currentDate.getFullYear() - i);
 
     const getDecorationClass = (date: Date): string => {
         if(date > currentDate) return 'blocked';
@@ -148,9 +156,38 @@ function CalendarSection({ year, month, selectedDate, blockStartFrom, onDateSele
         return rows;
     };
 
+    const handleYearChoose = (year: number) => {
+        const targetDate = new Date(year, 0, 1);
+
+        onDateSelected(targetDate);
+        if(goToDateHandler) {
+            goToDateHandler(targetDate);
+        }
+    }
+
     return (
         <>
-            <div className="month-header">{t(GetMonthCode(month))} {year}</div>
+            <div className="month-header">
+                <div className='month-label'>
+                    {t(GetMonthCode(month))}
+                </div>
+                <div className='year-label'>
+                    {year}
+                </div>
+                <div className='arrow-icon'>
+                    <img src={arrowDropdownIcom} />
+                    <div className='years-popup'>
+                        {years.map((year) => (
+                            <div 
+                                className='item' 
+                                key={year}
+                                onClick={() => handleYearChoose(year)}>
+                                    {year}</div>
+                        ))}
+                    </div>
+                </div>
+                
+            </div>
             <div className="days-table">
 				<div className="days-header">
 					<div>{t('MondayHeader')}</div>
