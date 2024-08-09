@@ -35,39 +35,43 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+
         if (token) {
-            fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/auth/verify-token`, {
-                method: "POST",
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'ngrok-skip-browser-warning': 'true'
-                }
-            })
-            .then((response) => {
-                if (response.status === 401) {
-                    setIsTokenValidated(false);
-                    return;
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data.verified) {
-                    const user = JSON.parse(localStorage.getItem('user') || 'null');
-                    setAuthState({
-                        isAuthenticated: true,
-                        user,
-                        token
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + '/auth/verify-token';
+        
+            const verifyToken = async () => {
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'ngrok-skip-browser-warning': 'true'
+                        }
                     });
-                    setIsTokenValidated(true);
-                } else {
-                    setIsTokenValidated(false);
+
+                    if(response.ok) {
+                        const data = await response.json();
+
+                        if (data.verified) {
+                            const user = JSON.parse(localStorage.getItem('user') || 'null');
+                            setAuthState({
+                                isAuthenticated: true,
+                                user,
+                                token
+                            });
+                            setIsTokenValidated(true);
+                        } else {
+                            setIsTokenValidated(false);
+                        }
+                    } else if(response.status === 401) {
+                        setIsTokenValidated(false);
+                    }
+                } catch (error) {
+                    console.log('AuthContext error', error);
                 }
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-                setIsTokenValidated(false);
-                isTokenValidated;
-            });
+            };
+
+            verifyToken();
         }
     }, []);
 

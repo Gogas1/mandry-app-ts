@@ -4,10 +4,9 @@ import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
 
 import TextInputMaterial from "../app/TextInputMaterial";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
-import crossIcon from "../../assets/icons/meta/close-cross.svg";
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
 
 import { useModal } from "../app/ModalContext";
@@ -15,13 +14,21 @@ import AuthModal from "./AuthModal";
 
 import PasswordField from "../app/Fields/PasswordFileld";
 import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
+import AuthContext from "./AuthenticationContext";
+import { useNavigate } from "react-router-dom";
 
 interface SignupModalProps {
     hideModal: () => void;
 }
 
 export default function SignupModal({ hideModal }: SignupModalProps) {
+    const authContext = useContext(AuthContext);
+    if(!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
     const { t } = useTranslation();
+    const { login } = authContext;
+    const navigate = useNavigate();
 
     const { openModal, closeModal } = useModal();
 
@@ -33,7 +40,14 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
+    const [signUpButtonActivation, setSignUpButtonActivation] = useState(false);
     
+    const validateCredentials = () => {
+
+
+        setSignUpButtonActivation(false);
+    }
 
     const birthdateChangeHandle = (value: string) => {
         
@@ -44,6 +58,49 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
         hideModal();
         openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
+    }
+
+    const handleSignUpRequest = async () => {
+        if(signUpButtonActivation) {
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/auth/signup";
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }, 
+                    body: JSON.stringify({
+                        name: name,
+                        surname: surnname,
+                        phone: phone,
+                        email: email,
+                        password: password,
+                        BirthDate: birthdate
+                    })
+                });
+    
+                if(response.ok) {
+                    const data = await response.json();
+                    login(data.token, data.userData);
+                    hideModal();
+                    navigate("/");
+                } else if (response.status === 400) {
+                    const errorData = await response.json();
+                    console.log(errorData.validationErrorsGrous);
+                } else if (response.status === 401) {
+                    const errorData = await response.json();
+                    console.log(errorData);
+                } else if(response.status === 409) {
+                    const errorData = await response.json();
+                    console.log(errorData);
+                }
+            }
+            catch (error) {
+                console.log('error', error);
+            }
+        }
     }
 
     return (
@@ -123,7 +180,9 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="agreement-text">
                         {t('SignUpAgreement')}
                     </div>
-                    <button className="continue-button">{t('SignUpContinueButtonLabel')}</button>
+                    <button 
+                        onClick={handleSignUpRequest}
+                        className="continue-button">{t('SignUpContinueButtonLabel')}</button>
                     <div className="marketing-agreement">
                         {t('SignUpMarketingAgreement')}
                     </div>

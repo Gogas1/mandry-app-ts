@@ -4,22 +4,15 @@ import { useNavigate } from "react-router-dom";
 import facebookIcon from "../../assets/icons/auth/facebook.svg";
 import googleIcon from "../../assets/icons/auth/google.svg";
 import appleIcon from "../../assets/icons/auth/apple.svg";
-import eyeIcon from '../../assets/icons/meta/eye.svg';
-import eyeOffIcon from '../../assets/icons/meta/eye-off.svg';
 import closeIcon from '../../assets/icons/meta/close-cross.svg';
 
 import "../../styles/auth/auth-modal.scss";
-import React, { useContext, useEffect, useState, FormEvent } from "react";
+import { useContext, useState, FormEvent } from "react";
 
-import phoneCodes from "../../helpers/phoneCodes";
-import InputDropdown from "../app/InputDropdown";
 import AuthContext from "./AuthenticationContext";
 import { useModal } from "../app/ModalContext";
 import SignupModal from "./SignupModal";
 import TextInputMaterial from "../app/TextInputMaterial";
-import { TextField } from "@mui/material";
-import DropdownAddition, { DropdownOption } from "../app/DropdownAddition";
-import DropdownField from "../app/DropdownField";
 import PasswordField from "../app/Fields/PasswordFileld";
 import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
 
@@ -36,8 +29,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const { t } = useTranslation();
 
     const [activeTab, setActiveTab] = useState(0);
-    const [showPassword, setShowPassword] = useState(false);
-    const [phoneCodesOptions, setPhoneCodeOptions] = useState<{ display: string; value: string }[]>([]);
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
@@ -46,20 +37,12 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const { login } = authContext;
     const navigate = useNavigate();
 
-    const { showModal, openModal, closeModal } = useModal();
+    const { openModal, closeModal } = useModal();
 
     const handleSignUpModalCall = () => {
         // showModal((hideModal) => <SignupModal hideModal={hideModal} />);
         openModal('signup', <SignupModal hideModal={() => closeModal('signup')} />);
     }
-
-    useEffect(() => {
-        const setupOptions = () => {
-            setPhoneCodeOptions(phoneCodes.map((ph) => ({ display: `${ph.name} (${ph.phone})`, value: ph.phone })));
-        };
-
-        setupOptions();
-    }, []);
 
     const onPhoneSignInHandle = async function PhoneSignIn(event: FormEvent<HTMLButtonElement>) {
         event.preventDefault();
@@ -130,10 +113,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
 
     const handleTabSwitch = (index: number) => {
         setActiveTab(index);
-    }
-
-    const handleCodeChoose = (value: string) => {
-        setPhoneNumber(value);
     }
 
     const onEmailChangeHandle = (value: string) => {
