@@ -119,6 +119,8 @@ function CalendarSection({ year, month, selectedDate, onDateSelected, goToDateHa
     const weeks = getWeeks(days, startIndex);
     const years = Array.from({ length: currentDate.getFullYear() - 1900 + 1 }, (_, i) => currentDate.getFullYear() - i);
 
+    const [yearsPickerOpened, setYearsPickerOpened] = useState(false);
+
     const getDecorationClass = (date: Date): string => {
         if(date > currentDate) return 'blocked';
         if(IsDatesEqual(date, selectedDate)) return 'selected';
@@ -174,9 +176,10 @@ function CalendarSection({ year, month, selectedDate, onDateSelected, goToDateHa
                 <div className='year-label'>
                     {year}
                 </div>
-                <div className='arrow-icon'>
+                <div className='arrow-icon' onClick={() => setYearsPickerOpened(!yearsPickerOpened)}>
                     <img src={arrowDropdownIcom} />
-                    <div className='years-popup'>
+                    {yearsPickerOpened ? 
+                    (<div className='years-popup'>
                         {years.map((year) => (
                             <div 
                                 className='item' 
@@ -184,7 +187,8 @@ function CalendarSection({ year, month, selectedDate, onDateSelected, goToDateHa
                                 onClick={() => handleYearChoose(year)}>
                                     {year}</div>
                         ))}
-                    </div>
+                    </div>) : ('')}
+                    
                 </div>
                 
             </div>

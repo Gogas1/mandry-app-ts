@@ -13,6 +13,7 @@ import ProfilePopup from "./ProfilePopup";
 import LanguagePopup from "./LanguagePopup";
 import FavouritesPopup from "./FavouritesPopup";
 import NavbarProfileItem from "./NavbarProfileItem";
+import ProfileLinksPopup from "./ProfileLinksPopup";
 
 export default function Navbar() {
     const { t } = useTranslation();
@@ -65,6 +66,7 @@ export default function Navbar() {
             <LanguagePopup isOpen={openedPopup === 'languagePopup'} closeAll={handleClosePopups} />
             <FavouritesPopup isOpen={openedPopup === 'favsPopup'} closeAll={handleClosePopups}/>
             <ProfilePopup isOpen={openedPopup === 'signInPopup'} closeAll={handleClosePopups} />
+            <ProfileLinksPopup isOpen={openedPopup === 'profilePopup'} closeAll={handleClosePopups} />
           </div> 
         </nav>
       </>  

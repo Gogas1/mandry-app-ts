@@ -96,5 +96,13 @@
 
     "DatePickerCalendarClearButton": "Clear",
 
-    "PasswordFieldDefaultLabel": "Password"
+    "PasswordFieldDefaultLabel": "Password",
+
+    "NavbarPopupProfileLinksNotificationsLink": "Notifications",
+    "NavbarPopupProfileLinksTravelsLink": "Travels",
+    "NavbarPopupProfileLinksFavouritesLink": "Favourites",
+    "NavbarPopupProfileLinksOfferHousingLink": "Offer housing",
+    "NavbarPopupProfileLinksAccountLink": "Account",
+    "NavbarPopupProfileLinksHelpLink": "Help",
+    "NavbarPopupProfileLinksLogOut": "Log Out"
 }

@@ -8,6 +8,10 @@
         border-radius: 12px;
         border: 2px solid #F6F6F6;
 
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
         color: var(--white, #F6F6F6);
         font-family: 'Comfortaa';
         font-size: 15px;

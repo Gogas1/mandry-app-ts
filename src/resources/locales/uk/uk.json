@@ -96,5 +96,13 @@
 
     "DatePickerCalendarClearButton": "Очистити",
 
-    "PasswordFieldDefaultLabel": "Пароль"
+    "PasswordFieldDefaultLabel": "Пароль",
+
+    "NavbarPopupProfileLinksNotificationsLink": "Повідомлення",
+    "NavbarPopupProfileLinksTravelsLink": "Подорожі",
+    "NavbarPopupProfileLinksFavouritesLink": "Обране",
+    "NavbarPopupProfileLinksOfferHousingLink": "Запропонувати помешкання",
+    "NavbarPopupProfileLinksAccountLink": "Акаунт",
+    "NavbarPopupProfileLinksHelpLink": "Довідковий центр",
+    "NavbarPopupProfileLinksLogOut": "Вийти"
 }

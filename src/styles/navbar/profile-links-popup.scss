@@ -1,0 +1,78 @@
+@use '../mixins/panel.scss' as *;
+
+@import url('../app/fonts.scss');
+
+.profile-links-popup-wrapper {
+    position: absolute;
+    top: 35px;
+    right: 104px;
+
+    &.closed {
+        .profile-links-popup-panel {
+            max-height: 0;
+            padding: 0 30px;
+        }
+        visibility: collapse;
+    }
+
+    &.opened {
+        .profile-links-popup-panel {
+            max-height: 400px;
+            
+        }
+        visibility: visible;
+    }
+
+    .profile-links-popup-border {
+        @include border();
+
+        -webkit-mask-image: radial-gradient(circle 22px at calc(100% - 43px) 0%, transparent 100%, black 100%);
+        mask-image: radial-gradient(circle 22px at calc(100% - 43px) 0%, transparent 100%, black 100%);
+    }
+
+    .profile-links-popup-panel {
+        @include panelInverse();
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        -webkit-mask-image: radial-gradient(circle 20px at calc(100% - 37px) calc(0% - 6px), transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 20px at calc(100% - 37px) calc(0% - 6px), transparent 95%, black 100%); 
+
+        .panel-item {
+
+            cursor: pointer;
+        
+            .panel-text {
+                color: var(--grey-light-100, #CCC);
+                font-family: 'Comfortaa';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%; /* 19.2px */
+
+                &.big {
+                    color: #F6F6F6;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #08b1bd;
+            flex-shrink: 0;
+        }
+    }
+
+    .profile-links-popup-hide {
+        @include border-button();
+
+        cursor: pointer;
+
+        left: calc(100% - 58px);
+        top: calc(0% - 15px);
+    }
+}

@@ -4,7 +4,7 @@ import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
 
 import TextInputMaterial from "../app/TextInputMaterial";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
@@ -44,13 +44,57 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [signUpButtonActivation, setSignUpButtonActivation] = useState(false);
     
     const validateCredentials = () => {
-
-
-        setSignUpButtonActivation(false);
+        if(name && surnname && birthdate && (phone || (email && validatePasswords()))) {
+            setSignUpButtonActivation(true);
+        } else {
+            setSignUpButtonActivation(false);
+        }
     }
 
-    const birthdateChangeHandle = (value: string) => {
-        
+    const validatePasswords = (): boolean => {
+        if(password && passwordConfirmation) {
+            if(password === passwordConfirmation) return true;
+        }
+
+        return false;
+    }
+
+    useEffect(() => {
+        validateCredentials();
+    });
+    
+    const nameChangeHandle = (value: string) => {
+        setName(value);
+        validateCredentials();
+    }
+
+    const surnameChangeHandle = (value: string) => {
+        setSurname(value);
+        validateCredentials();
+    }
+
+    const emailChangeHandle = (value: string) => {
+        setEmail(value);
+        validateCredentials();
+    }
+
+    const phoneChangeHandle = (value: string) => {
+        setPhone(value);
+        validateCredentials();
+    }
+
+    const passwordChangeHandle = (value: string) => {
+        setPassword(value);
+        validateCredentials();
+    }
+
+    const passwordConfirmationChangeHandle = (value: string) => {
+        setPasswordConfirmation(value);
+        validateCredentials();
+    }
+
+    const birthdateChangeHandle = (date: Date) => {
+        setBirthdate(date);
     }
 
     const closeHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -62,7 +106,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const handleSignUpRequest = async () => {
         if(signUpButtonActivation) {
-            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/auth/signup";
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
             try {
                 const response = await fetch(url, {
@@ -117,7 +161,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             <input className="input"/> */}
                             <TextInputMaterial
                                 label={t('SignUpNameInputLabel')}
-                                onChange={setName}
+                                onChange={nameChangeHandle}
                                 />
                         </div>
                         <div className="input-group surname-input-group">
@@ -125,7 +169,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             <input className="input"/> */}
                             <TextInputMaterial 
                                 label={t('SignUpSurnameInputLabel')}
-                                onChange={setSurname}/>
+                                onChange={surnameChangeHandle}/>
                         </div>
                         <div className="block-text-end">
                             {t('SignUpNamesTextEnd')}
@@ -146,7 +190,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                         <div className="input-group email-input-group">
                             <TextInputMaterial 
                                 label={t('SignUpEmailInputLabel')}
-                                onChange={setEmail}/>
+                                onChange={emailChangeHandle}/>
                         </div>
                         {/* <div className="input-group phone-input-group">
                             <TextInputMaterial 
@@ -161,20 +205,20 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="block password-block">
                         <div className="input-group">
                             <PasswordField 
-                                onValueChange={setPassword}
+                                onValueChange={passwordChangeHandle}
                             />
                             <label>{t('SignUpPasswordReq')}</label>
                         </div>
                         <div className="input-group password-repeat">
                             <PasswordField 
                                 label=""
-                                onValueChange={setPasswordConfirmation}
+                                onValueChange={passwordConfirmationChangeHandle}
                             />
                         </div>
                     </div>
                     <div className="block phone-block">
                         <PhonePickerBlock 
-                            onPhoneChange={setPhone}
+                            onPhoneChange={phoneChangeHandle}
                         />
                     </div>
                     <div className="agreement-text">
@@ -182,7 +226,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     </div>
                     <button 
                         onClick={handleSignUpRequest}
-                        className="continue-button">{t('SignUpContinueButtonLabel')}</button>
+                        className={`continue-button ${signUpButtonActivation ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button>
                     <div className="marketing-agreement">
                         {t('SignUpMarketingAgreement')}
                     </div>

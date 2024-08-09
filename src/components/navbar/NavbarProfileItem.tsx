@@ -2,7 +2,7 @@ import { useContext } from "react";
 import profileLinkIcon from "../../assets/icons/navbar/profile.svg";
 import AuthContext from "../auth/AuthenticationContext";
 
-
+import '../../styles/navbar/navbar-profile-item.scss';
 
 interface NavbarProfileItemProps {
     onClick: (popupName: string) => void;

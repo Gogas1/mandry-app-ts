@@ -5,7 +5,7 @@ import DatePickerCalendar from "./DatePickerCalendar";
 
 interface DatePickerProps {
     label: string;
-    onChange: (text: string) => void;
+    onChange: (date: Date) => void;
     onFocus?: () => void;
     className?: string;
     icon?: string;
@@ -32,9 +32,9 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       const text = e.target.value;
-      
+
       setValue(text);
-      onChange(text);
+      onChange(new Date(text));
     };
 
     const handleDateSelection = (date: Date | undefined) => {
@@ -46,6 +46,7 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
             const localDateString = `${year}-${month}-${day}`;
     
             setValue(localDateString);
+            onChange(date);
 
             return;
         }
