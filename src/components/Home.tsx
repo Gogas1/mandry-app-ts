@@ -65,9 +65,10 @@ export default function Home() {
                                         <img src={destinationIcon} alt='destination' className='inner-icon' />                                        
                                         <TextFieldMy 
                                             label={t('searchDestinationLabel')}
-                                            text={selectedDestination} 
+                                            text={selectedDestination}                                            
                                             onFocus={onDestinationFieldFocus}
-                                            onBlur={onDestinationFieldBlur}/>
+                                            onBlur={onDestinationFieldBlur}
+                                            onChange={setSelectedDestination}/>
                                     </div>
                                     <div className='divider'></div>
                                     <div className='search-input-group'>
@@ -76,7 +77,8 @@ export default function Home() {
                                             label={t('searchDatesLabel')}
                                             text=''
                                             onFocus={onDatesFieldFocus}
-                                            onBlur={onDatesFieldBlur} />
+                                            onBlur={onDatesFieldBlur} 
+                                            onChange={s => s}/>
                                     </div>
                                     <div className='divider'></div>
                                     <div className='search-input-group'>
@@ -85,7 +87,8 @@ export default function Home() {
                                             label={t('searchPeopleSettingsLabel')} 
                                             text=''
                                             onFocus={onTravelersFieldFocus}
-                                            onBlur={onTravelersFieldBlur}/>
+                                            onBlur={onTravelersFieldBlur}
+                                            onChange={s => s}/>
                                     </div>
                                     <button className='search-button'>
                                         <img src={searchIcon} alt='search' />
@@ -94,7 +97,8 @@ export default function Home() {
                             </div>
                             <div className='popup-wrapper'>
                                 <DestinationPopup 
-                                    isOpen={openedPopup === 'destinationPopup'} 
+                                    isOpen={openedPopup === 'destinationPopup'}
+                                    searchValue={selectedDestination} 
                                     assignValue={handleDestinationSelection} 
                                     closeAll={handleCloseAllPopups} />
                                 <CalendarPopup 

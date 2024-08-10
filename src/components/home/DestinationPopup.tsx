@@ -1,15 +1,31 @@
 import '../../styles/pages/home/destination-popup.scss';
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
+import { useEffect, useState } from 'react';
 
 interface PopupProps {
     isOpen: boolean;
+    searchValue?: string;
     closeAll: () => void;
     assignValue: (value: string) => void;
 }
 
-export default function DestinationPopup({ isOpen, closeAll, assignValue }: PopupProps) {
-    const locations = generateTouristLocations(8);
+function filterLocations(locations: string[], filter: string | undefined): string[] {
+    if(filter) {
+        return locations.filter(s => s.toLowerCase().includes(filter.toLowerCase()));
+    }
+    else {
+        return locations;
+    }
+}
+
+export default function DestinationPopup({ isOpen, searchValue, closeAll, assignValue }: PopupProps) {
+    const [locationsList] = useState(generateTouristLocations(8));
+    const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
+
+    useEffect(() => {
+        setFilteredLocations(filterLocations(locationsList, searchValue));
+    }, [searchValue]);
 
     const handleSelection = (value: string) => {
         assignValue(value);
@@ -22,7 +38,7 @@ export default function DestinationPopup({ isOpen, closeAll, assignValue }: Popu
                 <div className="popup-border"></div>
                 <div className="popup-panel">
                     <div className="list">
-                        {locations.map((loc, index) => (
+                        {filteredLocations.map((loc, index) => (
                             <div key={index} className="location" onClick={() => handleSelection(loc)}>
                                 {loc}
                             </div>

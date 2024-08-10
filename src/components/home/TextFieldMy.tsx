@@ -6,14 +6,16 @@ interface TextFieldProps {
     text: string;
     onFocus: () => void;
     onBlur: () => void;
+    onChange: (value: string) => void;
 }
 
-export default function TextFieldMy({ label, text, onFocus, onBlur }: TextFieldProps) {
+export default function TextFieldMy({ label, text, onFocus, onBlur, onChange }: TextFieldProps) {
     const [value, setValue] = useState<string>(text);
     const [focused, setFocused] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
+        onChange(e.target.value);
     };
     
       const handleFocus = () => {
