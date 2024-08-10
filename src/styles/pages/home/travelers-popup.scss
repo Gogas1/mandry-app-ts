@@ -6,7 +6,7 @@
 
     position: absolute;
 
-    transition: visibility 0.3s ease;
+    // transition: visibility 0.3s ease;
 
     &.closed {
         .location {
@@ -35,58 +35,7 @@
             gap: var(--Numbers-20, 20px);
             align-items: flex-start;
         }
-        .traveler {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .travelers-header {
-            height: 24px;
-            font-family: "Montserrat Alternates";
-            font-size: 16px;
-            font-style: normal;
-            justify-content: space-between;
-            display: flex;
-            flex-direction: row;
-            font-weight: 700;
-            line-height: normal;
-            color: var(--white, #FFF);
-        }
-        .travelers-number-selector {
-            width: 82px;
-            display: flex;
-            position: relative;
-            justify-content: space-between;
-            align-items: center;
-
-            color: var(--white, #FFF);
-            font-family: Comfortaa;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-
-        }
-        .age-notification {
-
-            font-family: "Comfortaa";
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: var(--white, #FFF);
-            max-width: 169px;
-            word-wrap: break-word;
-
-            margin-bottom: 10px;
-        }
-        .divider {
-            height: 1px;
-            background-color: #08b1bd;
-            width: 100%;
-
-        }
-
+        
         visibility: visible;
     }
 
@@ -110,12 +59,107 @@
         margin: 6px;
         padding: 30px;
 
-        transition: max-width 0.3s, padding 0.3s;
+        // transition: max-width 0.3s, padding 0.3s;
 
         -webkit-mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
         mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
 
         overflow: hidden;
+
+        .traveler {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .travelers-header {
+                height: 24px;
+                font-family: "Montserrat Alternates";
+                font-size: 16px;
+                font-style: normal;
+                justify-content: space-between;
+                display: flex;
+                flex-direction: row;
+                font-weight: 700;
+                line-height: normal;
+                color: var(--white, #FFF);
+
+                .travelers-number-selector {
+                    width: 82px;
+                    display: flex;
+                    position: relative;
+                    justify-content: space-between;
+                    align-items: center;
+        
+                    color: var(--white, #FFF);
+                    font-family: Comfortaa;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+
+                    .travelers-counter {
+                        -webkit-user-select: none;
+                        user-select: none;
+                    }
+
+                    .counter-control {
+                        width: 24px;
+                        height: 24px;
+
+                        border: 1px solid #F6F6F6;
+                        border-radius: 12px;
+                        background-color: #08B1BD;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        flex-shrink: 0;
+
+                        &:active {
+                            border-color: transparent;
+                        }
+
+                        &.travelers-decrease {
+                            .line {
+                                height: 1px;
+                                flex: 1;
+                                background-color: #F6F6F6;
+                            }
+                        }
+                        
+                        &.travelers-increase {
+                            color: #F6F6F6;
+                            font-size: 18px;
+                        }
+                    }
+
+                    
+        
+                }
+            }
+
+            .age-notification {
+
+                font-family: "Comfortaa";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                color: var(--white, #FFF);
+                max-width: 169px;
+                word-wrap: break-word;
+    
+                margin-bottom: 10px;
+            }
+
+            .divider {
+                height: 1px;
+                background-color: #08b1bd;
+                width: 100%;
+    
+            }
+        }
     }
 
     .popup-hide {
@@ -143,24 +187,6 @@
         img {
             width: 45%;
         }
-    }
-
-    .location {
-        cursor: pointer;
-
-        color: var(--white, #F6F6F6);
-        font-family: 'Comfortaa';
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-
-        padding: 6px 5px 8px 0;
-        margin-bottom: 20px;
-
-        border-bottom: 1px solid #08B1BD;
-
-        transition: opacity 0.2 ease;
     }
 
 }

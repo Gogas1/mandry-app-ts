@@ -1,9 +1,9 @@
 import '../styles/pages/home/home.scss'
 
 import searchIcon from '../assets/icons/home/search.svg';
-import destinationIcon from '../assets/icons/home/dest_icn.svg';
-import calendarIcon from '../assets/icons/home/calendar_icn.svg';
-import groupIcon from '../assets/icons/home/group_icn.svg';
+import destinationIcon from '../assets/icons/home/dest_icn1.svg';
+import calendarIcon from '../assets/icons/home/calendar_icn1.svg';
+import groupIcon from '../assets/icons/home/group_icn1.svg';
 
 import { useTranslation } from 'react-i18next';
 import TextFieldMy from './home/TextFieldMy';
