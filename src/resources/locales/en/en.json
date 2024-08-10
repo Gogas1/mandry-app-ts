@@ -104,5 +104,29 @@
     "NavbarPopupProfileLinksOfferHousingLink": "Offer housing",
     "NavbarPopupProfileLinksAccountLink": "Account",
     "NavbarPopupProfileLinksHelpLink": "Help",
-    "NavbarPopupProfileLinksLogOut": "Log Out"
+    "NavbarPopupProfileLinksLogOut": "Log Out",
+
+    "AccountPageHeader": "Account",
+    "AccountPageProfileLink": "Go to Profile",
+    "AccountPageCredentialsLinkHeaderLabel": "Personal Information",
+    "AccountPageCredentialsBodyText": "Provide personal details and contact information",
+    "AccountPageSecurityLinkHeaderLabel": "Login and Security",
+    "AccountPageSecurityBodyText": "Update your password and secure your account",
+    "AccountPagePaymentsLinkHeaderLabel": "Payments and Payouts",
+    "AccountPagePaymentsBodyText": "View payments, payouts, coupons, and gift cards",
+    "AccountPageSharingLinkHeaderLabel": "Privacy and Sharing",
+    "AccountPageSharingBodyText": "Manage your personal data, connected services, and sharing settings",
+    "AccountPageTaxesLinkHeaderLabel": "Taxes",
+    "AccountPageTaxesBodyText": "Manage taxpayer information and tax documents",
+    "AccountPageNotificationsLinkHeaderLabel": "Notifications",
+    "AccountPageNotificationsBodyText": "Choose notification options and how to contact you",
+    "AccountPageSettingsLinkHeaderLabel": "General Preferences",
+    "AccountPageSettingsBodyText": "Set default language, currency, and time zone",
+    "AccountPageDataLinkHeaderLabel": "Professional Tools for Hosts",
+    "AccountPageDataBodyText": "Use professional tools if you manage multiple properties on Mandry",
+    "AccountPageTravelLinkHeaderLabel": "Work Trip",
+    "AccountPageTravelBodyText": "Add your work email and take advantage of extra perks for business trips",
+    "AccountPageBonusesLinkHeaderLabel": "Referral Bonuses and Coupons",
+    "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more."
+
 }

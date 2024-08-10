@@ -22,6 +22,7 @@ export default function ProfilePopup({ isOpen, closeAll }: PopupProps) {
     const handleClick = () => {
         // showModal((hideModal) => <AuthModal hideModal={hideModal} />);
         openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
+        closeAll();
     }
 
     return (

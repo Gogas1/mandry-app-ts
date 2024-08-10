@@ -2,6 +2,9 @@ import { useTranslation } from "react-i18next";
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
 
 import '../../styles/navbar/profile-links-popup.scss';
+import { useContext } from "react";
+import AuthContext from "../auth/AuthenticationContext";
+import { useNavigate } from "react-router-dom";
 
 interface PopupProps {
     isOpen: boolean;
@@ -9,6 +12,16 @@ interface PopupProps {
 }
 
 export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
+    const authContext = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    if(!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
+
+    const { logout } = authContext;
+
     const { t } = useTranslation();
 
     const handleNotificationsTransition = () => {
@@ -28,7 +41,7 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     }
     
     const handleAccountTransition = () => {
-        
+        navigate('/account')
     }
 
     const handleHelpTransition = () => {
@@ -36,7 +49,8 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     const handleLogOut = () => {
-
+        logout();
+        closeAll();
     }
 
     return (

@@ -8,6 +8,8 @@ import SignIn from './components/SignIn';
 import Features from './components/Features';
 import { ModalProvider } from './components/app/ModalContext';
 import Modal from './components/app/Modal';
+import AccountPage from './components/account/AccountPage';
+import ProfilePage from './components/account/profile/ProfilePage';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='/signin' element={<SignIn />} />
                 <Route path='/features' element={<Features />} />
+                <Route path='/account' element={<AccountPage />} />
+                <Route path='/account/profile/my' element={<ProfilePage />} />
               </Routes>
               <Modal />
           </ModalProvider>
