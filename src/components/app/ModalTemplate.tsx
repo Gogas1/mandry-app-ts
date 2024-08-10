@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useModal } from './ModalContext';
 
 import "../../styles/app/modal.scss";
@@ -10,12 +10,12 @@ interface ModalTemplateProps {
 }
 
 export default function ModalTemplate({ children, isOpened, onClose }: ModalTemplateProps) {
-  const { modalContent, isModalVisible, hideModal } = useModal();
+  const { modalContent, isModalVisible } = useModal();
 
   // if (!isModalVisible || !modalContent) return null;
 
   return (
-    <div className={`modal-overlay ${!isOpened ? 'hidden' : ''}`} onClick={onClose}>
+    <div className={`modal-overlay ${!isOpened ? 'hidden' : ''}`}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         {isModalVisible && modalContent ? modalContent(onClose) : ''}
         {/* <div className='modal-border'></div>

@@ -1,4 +1,3 @@
-import { Modal } from '@mui/material';
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import ModalTemplate from './ModalTemplate';
 

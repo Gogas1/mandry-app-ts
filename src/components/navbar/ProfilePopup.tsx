@@ -17,7 +17,7 @@ interface PopupProps {
 export default function ProfilePopup({ isOpen, closeAll }: PopupProps) {
 
     const { t } = useTranslation();
-    const { showModal, openModal, closeModal } = useModal();
+    const { openModal, closeModal } = useModal();
 
     const handleClick = () => {
         // showModal((hideModal) => <AuthModal hideModal={hideModal} />);

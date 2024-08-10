@@ -10,7 +10,7 @@ import TextFieldMy from './home/TextFieldMy';
 import DestinationPopup from './home/DestinationPopup';
 import { useState } from 'react';
 import CalendarPopup from './home/CalendarPopup';
-import TravelersPopup from './home/TravelersPopup';
+import TravelersPopup, { TravelersPopupData } from './home/TravelersPopup';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -18,6 +18,33 @@ export default function Home() {
 
     const [openedPopup, setOpenedPopup] = useState('');
     const [selectedDestination, setSelectedDestination] = useState('');
+
+    const [travelersValue, setTravelersValue] = useState('');
+
+    const formatTravelers = ({
+        adults,
+        children,
+        toddlers,
+        pets,
+      }: {
+        adults: number;
+        children: number;
+        toddlers: number;
+        pets: number;
+      }) => {
+        if((adults + children + toddlers + pets) === 0) return '';
+
+        const adultsText = adults > 0 ? `${t('travelersAdults')}: ${adults}` : '';
+        const childrenText = children > 0 ? `${t('travelersChildren')}: ${children}` : '';
+        const toddlersText = toddlers > 0 ? `${t('travelersInfants')}: ${toddlers}` : '';
+        const petsText = pets > 0 ? `${t('travelersPats')}: ${pets}` : '';
+
+        return `${adultsText} ${childrenText} ${toddlersText} ${petsText}`;
+      };
+
+    const handleTravelersChange = (values: TravelersPopupData) => {
+        setTravelersValue(formatTravelers(values));
+    }
 
     const handleDestinationSelection = (value: string) => {
         setSelectedDestination(value);
@@ -85,7 +112,7 @@ export default function Home() {
                                         <img src={groupIcon} alt='destination' className='inner-icon'/>
                                         <TextFieldMy 
                                             label={t('searchPeopleSettingsLabel')} 
-                                            text=''
+                                            text={travelersValue}
                                             onFocus={onTravelersFieldFocus}
                                             onBlur={onTravelersFieldBlur}
                                             onChange={s => s}/>
@@ -108,6 +135,7 @@ export default function Home() {
                                 <TravelersPopup
                                     isOpen={openedPopup === 'travelersPopup'}
                                     closeAll={handleCloseAllPopups}
+                                    onChange={handleTravelersChange}
                                     />
                             </div>
                         </div>

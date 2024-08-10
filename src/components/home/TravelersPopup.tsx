@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
-import plusIcon from "../../assets/icons/meta/plus-circle.svg";
-import removeIcon from "../../assets/icons/meta/remove-circle.svg";
 
 import '../../styles/pages/home/travelers-popup.scss';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface TravelersPopupData {
     adults: number;
@@ -17,11 +15,12 @@ export interface TravelersPopupData {
 interface PopupProps {
     isOpen: boolean;
     closeAll: () => void;
+    onChange: (values: TravelersPopupData) => void;
     
     //assignValue: (value: string) => void;
 }
 
-export default function TravelersPopup({ isOpen, closeAll }: PopupProps) {
+export default function TravelersPopup({ isOpen, closeAll, onChange }: PopupProps) {
     const { t } = useTranslation();
 
     const [adultsCounter, setAdultsCounter] = useState(0);
@@ -29,8 +28,14 @@ export default function TravelersPopup({ isOpen, closeAll }: PopupProps) {
     const [toddlersCounter, setToddlersCounter] = useState(0);
     const [petsCounter, setPetsCounter] = useState(0);
 
+    useEffect(() => {
+        onChange({ adults: adultsCounter, children: childrenCounter, toddlers: toddlersCounter, pets: petsCounter } as TravelersPopupData);
+    }, [adultsCounter, childrenCounter, toddlersCounter, petsCounter]);
+
     const handleIncrease = (currentNumber: number, setter: (value: number) => void) => {
         setter(currentNumber + 1);
+
+        
     }
 
     const handleDecrease = (currentNumber: number, setter: (value: number) => void) => {

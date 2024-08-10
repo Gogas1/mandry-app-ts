@@ -7,7 +7,7 @@ import appleIcon from "../../assets/icons/auth/apple.svg";
 import closeIcon from '../../assets/icons/meta/close-cross.svg';
 
 import "../../styles/auth/auth-modal.scss";
-import { useContext, useState, FormEvent } from "react";
+import { useContext, useState, FormEvent, useEffect } from "react";
 
 import AuthContext from "./AuthenticationContext";
 import { useModal } from "../app/ModalContext";
@@ -33,18 +33,34 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [validationPassed, setValidationPassed] = useState(false);
     
     const { login } = authContext;
     const navigate = useNavigate();
 
     const { openModal, closeModal } = useModal();
 
+    useEffect(() => {
+        const validateButton = () => {
+            if((phoneNumber !== '' || (password !== '' && email !== '')) && !loading) {
+                setValidationPassed(true);
+            } else {
+                setValidationPassed(false);
+            }
+        }
+
+        validateButton();
+    }, [phoneNumber, password, email, loading])
+
+    
+
     const handleSignUpModalCall = () => {
-        // showModal((hideModal) => <SignupModal hideModal={hideModal} />);
         openModal('signup', <SignupModal hideModal={() => closeModal('signup')} />);
     }
 
     const onPhoneSignInHandle = async function PhoneSignIn(event: FormEvent<HTMLButtonElement>) {
+        setLoading(true);
         event.preventDefault();
       
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/auth/phone"
@@ -75,6 +91,8 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
         catch (error) {
             console.log('error', error);
         }
+
+        setLoading(false);
     }
 
     const onEmailSignInHandle = async function EmailSignIn(event: FormEvent<HTMLButtonElement>) {
@@ -123,6 +141,10 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
       setPassword(value);
     }
 
+    const onPhoneChangeHandle = (value: string) => {
+        setPhoneNumber(value);
+    }
+
     return (
         <>
             <div className='auth-modal-border'></div>
@@ -164,34 +186,19 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                                 />
                             </div>
                             <button 
-                                className="sign-in-btn"
-                                onClick={onEmailSignInHandle}>
+                                className={`sign-in-btn ${validationPassed ? '' : 'disabled'}`}
+                                onClick={validationPassed ? onEmailSignInHandle : undefined}>
                                 {t('EnterAuthModalBtn')}
                             </button>
                         </div> : ''}
                         {activeTab === 1 ? 
                         <div className="tab-content">
-                            {/* <div className="input-group phone-input-group">
-                                <DropdownField
-                                    label={t('CountryCodeFieldAuthModalTab')}
-                                    onChange={handleCodeChoose} 
-                                    options={phoneCodesOptions}
-                                    />
-                            </div>
-                            <div className="input-group">                                
-                                <TextInputMaterial 
-                                    label={t('PhoneNumberFieldAuthModalTab')}
-                                    onChange={setPhoneNumber}
-                                    outerValue={phoneNumber}
-                                />
-                            </div> */}
-
                             <PhonePickerBlock 
-                                onPhoneChange={setPhoneNumber}
+                                onPhoneChange={onPhoneChangeHandle}
                             />
                             <button 
-                                className="sign-in-btn"
-                                onClick={onPhoneSignInHandle}>
+                                className={`sign-in-btn ${validationPassed ? '' : 'disabled'}`}
+                                onClick={validationPassed ? onPhoneSignInHandle : undefined}>
                                 {t('EnterAuthModalBtn')}
                             </button>
                         </div> : ''}

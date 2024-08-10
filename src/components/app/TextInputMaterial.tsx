@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "../../styles/app/text-input-material.scss";
 
 interface TextInputProps {

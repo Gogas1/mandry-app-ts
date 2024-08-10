@@ -42,8 +42,11 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
     const [signUpButtonActivation, setSignUpButtonActivation] = useState(false);
+    const [loading, setLoading] = useState(false);
     
     const validateCredentials = () => {
+        if(loading) return false;
+
         if(name && surnname && birthdate && (phone || (email && validatePasswords()))) {
             setSignUpButtonActivation(true);
         } else {
@@ -105,6 +108,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     }
 
     const handleSignUpRequest = async () => {
+        setLoading(true);
         if(signUpButtonActivation) {
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
@@ -145,6 +149,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                 console.log('error', error);
             }
         }
+        setLoading(false);
     }
 
     return (

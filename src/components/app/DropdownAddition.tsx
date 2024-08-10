@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../../styles/app/dropdown-addition.scss';
  
 export interface DropdownOption {
@@ -13,10 +12,7 @@ interface DropdownProps {
     className?: string;
 }
 
-export default function DropdownAddition({ options, defaultValue, onChange, className }: DropdownProps) {
-    const [filteredOptions, setFilteredOptions] = useState<DropdownOption[]>([]);
-
-
+export default function DropdownAddition({ options, onChange, className }: DropdownProps) {
     return ( <div className={`dropdown-addition-panel ${className}`}>
         <div className='dropdown-addition-content'>
             {options.map((o, index) => (

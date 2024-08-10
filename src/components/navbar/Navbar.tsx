@@ -7,7 +7,6 @@ import "../../styles/navbar/navbar.scss";
 import appLogo from "../../assets/icons/navbar/Logo2.svg";
 import languageSelectorIcon from "../../assets/icons/navbar/languages.svg";
 import favouritesIcon from "../../assets/icons/navbar/favourites.svg";
-import profileLinkIcon from "../../assets/icons/navbar/profile.svg";
 
 import ProfilePopup from "./ProfilePopup";
 import LanguagePopup from "./LanguagePopup";

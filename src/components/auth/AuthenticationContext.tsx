@@ -31,7 +31,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         token: null
     });
 
-    const [isTokenValidated, setIsTokenValidated] = useState(false);
+    const [,setIsTokenValidated] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
