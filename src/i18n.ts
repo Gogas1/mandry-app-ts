@@ -5,6 +5,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import translationEN from './resources/locales/en/en.json';
 import translationUK from './resources/locales/uk/uk.json';
 
+import profileTranslationUK from './resources/locales/uk/profile.json';
+
 const resources = {
   en: {
     translation: translationEN

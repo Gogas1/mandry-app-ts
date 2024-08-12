@@ -127,6 +127,47 @@
     "AccountPageTravelLinkHeaderLabel": "Work Trip",
     "AccountPageTravelBodyText": "Add your work email and take advantage of extra perks for business trips",
     "AccountPageBonusesLinkHeaderLabel": "Referral Bonuses and Coupons",
-    "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more."
+    "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more.",
+
+    "Profile": {
+        "Status": "Guest",
+        "Verification": {
+            "ConfirmedInfoHeader": "Verified information about the user",
+            "Email": "Email address",
+            "PersonVerificationHeader": "Identity verification",
+            "VerificationRequirment": "Before booking or hosting on Mandry, you need to complete this step.",
+            "StartVerificationButtonLabel": "Start verification"
+        },
+        "CreatePanel": {
+            "Header": "Time to create your profile",
+            "Body": "Your profile on Mandry is an important part of every booking. Create a profile so that other hosts and guests can learn more about you.",
+            "Button": "Create profile"
+        }
+    },
+
+    "VerificationPage": {
+        "Privacy": {
+            "Header": "Your Privacy",
+            "Body": "We make every effort to ensure the confidentiality, security, and protection of the data you share during this process. For more details, read our Privacy Policy.",
+            "Explanation": "How identity verification works"
+        },
+        "Steps": {
+            "IDStep": {
+                "Header": "Add a government-issued ID",
+                "Description": "You will need to add a government-issued ID. This step helps ensure that it is really you.",
+                "ContinueLabel": "Continue",
+                "Ways": {
+                    "UploadPhoto": {
+                        "Header": "Upload an existing photo",
+                        "Undertext": "Recommended"
+                    },
+                    "TakePhoto": {
+                        "Header": "Take a photo using a webcam",
+                        "Undertext": ""
+                    }
+                }
+            }
+        }
+    }
 
 }
