@@ -169,6 +169,11 @@
                                     cursor: pointer;
                                 }
 
+                                &.available:hover {
+                                    border-radius: 5px;
+                                    border: 1px solid var(--orange, #FD941A);
+                                }
+                                
                                 &.current {
                                     color: #08B1BD;
                                 }
