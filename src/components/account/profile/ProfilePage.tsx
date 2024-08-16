@@ -21,9 +21,9 @@ export default function ProfilePage() {
                         <div className="panel-body">
                             {t('Profile.CreatePanel.Body')}
                         </div>
-                        <button className="panel-button">
+                        <Link to={"/account/information"} className="panel-button">
                             {t('Profile.CreatePanel.Button')}
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className="profile-things">

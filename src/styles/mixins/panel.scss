@@ -55,3 +55,23 @@
         cursor: pointer;
     }
 }
+
+
+@mixin border-button-white() {
+    border-radius: 15px;
+    border: 1px solid var(--grey-light-100, #E6E6E6);
+    background: var(--white, #F6F6F6);
+    box-shadow: -8px 5px 5px 0px rgba(89, 89, 89, 0.00), -5px 3px 4px 0px rgba(89, 89, 89, 0.01), -3px 2px 4px 0px rgba(89, 89, 89, 0.05), -1px 1px 3px 0px rgba(89, 89, 89, 0.09), 0px 0px 2px 0px rgba(89, 89, 89, 0.10);
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next"
 
 import '../../../styles/account/verification-page.scss';
+import Radio from "../../app/Radio";
 
 export default function VerificationPage() {
     const { t } = useTranslation();
@@ -24,7 +25,10 @@ export default function VerificationPage() {
                                             {t('VerificationPage.Steps.IDStep.Ways.UploadPhoto.Header')}
                                         </div>
                                         <div>
-
+                                            <Radio
+                                                name="idstep" 
+                                                value="upload-photo"
+                                                onCheck={value => value}/>
                                         </div>
                                     </div>
                                     <div className="undertext-part">
@@ -38,7 +42,10 @@ export default function VerificationPage() {
                                             {t('VerificationPage.Steps.IDStep.Ways.TakePhoto.Header')}
                                         </div>
                                         <div>
-
+                                            <Radio 
+                                                name="idstep"
+                                                value="take-photo"
+                                                onCheck={value => value}/>
                                         </div>
                                     </div>
                                     <div className="undertext-part">

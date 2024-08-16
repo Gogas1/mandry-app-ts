@@ -1,0 +1,115 @@
+@use '../../mixins/typography' as *;
+
+.profile-info-page {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 104px;
+    min-height: 100vh;
+
+    .profile-info-page-content {
+        border-radius: 15px 15px 0 0;
+        background: var(--white, #F6F6F6);
+
+        margin: 0px 100px;
+        padding: 100px 217px;
+
+        flex: 1;
+
+        display: flex;
+        flex-direction: row;
+
+        gap: 52px;
+
+        .profile-info {
+
+            .header {
+                @include blue-heading-font(22px);
+
+                margin-bottom: 20px;
+            }
+
+            .discl {
+                @include font-regular(16px);
+            }
+
+            .info {
+                display: flex;
+                flex-direction: row;
+
+                gap: 40px;
+
+                margin-top: 30px;
+                margin-bottom: 40px;
+
+                .column {
+                    flex: 0.5;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+
+            .additional-info {
+
+                .header {
+                    @include font-white-panels-headers(16px);
+                }
+
+                .textarea {
+                    @include font-regular(16px);
+
+                    border-radius: 15px;
+                    border: 1px solid var(--grey-light-100, #CCC);
+                    background: var(--grey-light-100, #E6E6E6);
+
+                    padding: 20px;
+                    width: 100%;
+                    height: 150px;
+                    
+                    resize: none;
+
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+            }
+
+            .hobbies {
+                margin-top: 30px;
+
+                .header {
+                    @include font-white-panels-headers(16px)
+                }
+
+                .description {
+                    @include font-regular(16px);
+                }
+
+                .link {
+                    @include font-links-black(16px);
+                }
+            }
+        }
+
+        .avatar-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: flex-start;
+
+            .avatar {
+                padding: 30px 31px;
+                border-radius: 15px;
+                border: 1px solid var(--grey-light-100, #E6E6E6);
+                box-shadow: -26px 39px 13px 0px rgba(0, 0, 0, 0.00), -17px 25px 12px 0px rgba(0, 0, 0, 0.01), -9px 14px 10px 0px rgba(0, 0, 0, 0.05), -4px 6px 7px 0px rgba(0, 0, 0, 0.09), -1px 2px 4px 0px rgba(0, 0, 0, 0.10);
+
+                img {
+                    width: 212px;
+                    height: 212px;
+                }
+            }
+        }
+    }
+}

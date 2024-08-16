@@ -168,6 +168,35 @@
                 }
             }
         }
+    },
+
+    "ProfileInfo": {
+        "Header": "Your Profile",
+        "Discl": "The information you provide will be used on Mandry so that other guests and hosts can get to know you. Learn more ",
+        "Info": {
+            "Education": "Educational Institution",
+            "ResidencePlace": "Place of Residence",
+            "Birthdate": "Decade I Was Born",
+            "MainHobby": "Main Hobby",
+            "Skills": "Most Useless Skills",
+            "SpendTimeThings": "Things I Spend a Lot of Time On",
+            "Profession": "My Profession",
+            "Languages": "Languages I Speak",
+            "Song": "Favorite Song in High School",
+            "Fact": "Interesting Fact About Me",
+            "Biography": "Desired Biography Title",
+            "Pets": "Pets"
+        },
+        "Additional": {
+            "Header": "Information About You",
+            "Placeholder": "Write something fun and unique."
+        },
+        "Hobbies": {
+            "Header": "What Do You Love the Most?",
+            "Description": "Connect with other guests and hosts over shared interests by listing your hobbies in your profile.",
+            "Link": "Add Interests"
+        }
     }
+
 
 }
