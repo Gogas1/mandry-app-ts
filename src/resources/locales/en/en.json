@@ -127,6 +127,91 @@
     "AccountPageTravelLinkHeaderLabel": "Work Trip",
     "AccountPageTravelBodyText": "Add your work email and take advantage of extra perks for business trips",
     "AccountPageBonusesLinkHeaderLabel": "Referral Bonuses and Coupons",
-    "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more."
+    "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more.",
 
+    "Profile": {
+        "Status": "Guest",
+        "Verification": {
+            "ConfirmedInfoHeader": "Verified information about the user",
+            "Email": "Email address",
+            "PersonVerificationHeader": "Identity verification",
+            "VerificationRequirment": "Before booking or hosting on Mandry, you need to complete this step.",
+            "StartVerificationButtonLabel": "Start verification"
+        },
+        "CreatePanel": {
+            "Header": "Time to create your profile",
+            "Body": "Your profile on Mandry is an important part of every booking. Create a profile so that other hosts and guests can learn more about you.",
+            "Button": "Create profile"
+        }
+    },
+
+    "VerificationPage": {
+        "Privacy": {
+            "Header": "Your Privacy",
+            "Body": "We make every effort to ensure the confidentiality, security, and protection of the data you share during this process. For more details, read our Privacy Policy.",
+            "Explanation": "How identity verification works"
+        },
+        "Steps": {
+            "IDStep": {
+                "Header": "Add a government-issued ID",
+                "Description": "You will need to add a government-issued ID. This step helps ensure that it is really you.",
+                "ContinueLabel": "Continue",
+                "Ways": {
+                    "UploadPhoto": {
+                        "Header": "Upload an existing photo",
+                        "Undertext": "Recommended"
+                    },
+                    "TakePhoto": {
+                        "Header": "Take a photo using a webcam",
+                        "Undertext": ""
+                    }
+                }
+            }
+        }
+    },
+
+    "ProfileInfo": {
+        "Header": "Your Profile",
+        "Discl": "The information you provide will be used on Mandry so that other guests and hosts can get to know you. Learn more ",
+        "Info": {
+            "Education": "Educational Institution",
+            "ResidencePlace": "Place of Residence",
+            "Birthdate": "Decade I Was Born",
+            "MainHobby": "Main Hobby",
+            "Skills": "Most Useless Skills",
+            "SpendTimeThings": "Things I Spend a Lot of Time On",
+            "Profession": "My Profession",
+            "Languages": "Languages I Speak",
+            "Song": "Favorite Song in High School",
+            "Fact": "Interesting Fact About Me",
+            "Biography": "Desired Biography Title",
+            "Pets": "Pets"
+        },
+        "Additional": {
+            "Header": "Information About You",
+            "Placeholder": "Write something fun and unique."
+        },
+        "Hobbies": {
+            "Header": "What Do You Love the Most?",
+            "Description": "Connect with other guests and hosts over shared interests by listing your hobbies in your profile.",
+            "Link": "Add Interests"
+        }
+    },
+
+    "Validation": {
+        "SignIn": {
+            "Messages": {
+                
+                "Email": {
+                    "Required": "Email address is required.",
+                    "Invalid": "Please enter a valid email address.",
+                    "FailedAttempt": "Invalid credentials. Please try again."
+                },
+                "Password": {
+                    "Required": "Password is required.",
+                    "FailedAttempt": "Could not send code to this phone number. Try using another number."
+                }
+            }
+        }
+    }
 }

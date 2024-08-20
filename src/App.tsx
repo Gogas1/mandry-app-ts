@@ -10,6 +10,8 @@ import { ModalProvider } from './components/app/ModalContext';
 import Modal from './components/app/Modal';
 import AccountPage from './components/account/AccountPage';
 import ProfilePage from './components/account/profile/ProfilePage';
+import VerificationPage from './components/account/profile/VerificationPage';
+import ProfileInfoPage from './components/account/ProfileInfoPage';
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
                 <Route path='/features' element={<Features />} />
                 <Route path='/account' element={<AccountPage />} />
                 <Route path='/account/profile/my' element={<ProfilePage />} />
+                <Route path='/account/verification' element={<VerificationPage />} />
+                <Route path='/account/information' element={<ProfileInfoPage />} />
               </Routes>
               <Modal />
           </ModalProvider>

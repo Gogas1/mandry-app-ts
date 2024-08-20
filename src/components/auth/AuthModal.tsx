@@ -7,14 +7,13 @@ import appleIcon from "../../assets/icons/auth/apple.svg";
 import closeIcon from '../../assets/icons/meta/close-cross.svg';
 
 import "../../styles/auth/auth-modal.scss";
-import { useContext, useState, FormEvent, useEffect } from "react";
+import { useContext, useState } from "react";
 
 import AuthContext from "./AuthenticationContext";
 import { useModal } from "../app/ModalContext";
 import SignupModal from "./SignupModal";
-import TextInputMaterial from "../app/TextInputMaterial";
-import PasswordField from "../app/Fields/PasswordFileld";
-import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
+import EmailWayPanel, { EmailWayCredentials } from "./SignIn/EmailWayPanel";
+import PhoneWayPanel, { PhoneWayCredentials } from "./SignIn/PhoneWayPanel";
 
 interface AuthModalProps {
     hideModal: () => void;
@@ -30,39 +29,23 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
 
     const [activeTab, setActiveTab] = useState(0);
 
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [validationPassed, setValidationPassed] = useState(false);
+
+    const [isEmailAttemptFailed, setIsEmailAttemptFailed] = useState(false);
+    const [isPhoneAttemptFailed, setIsPhoneAttemptFailed] = useState(false);
     
     const { login } = authContext;
     const navigate = useNavigate();
 
     const { openModal, closeModal } = useModal();
 
-    useEffect(() => {
-        const validateButton = () => {
-            if((phoneNumber !== '' || (password !== '' && email !== '')) && !loading) {
-                setValidationPassed(true);
-            } else {
-                setValidationPassed(false);
-            }
-        }
-
-        validateButton();
-    }, [phoneNumber, password, email, loading])
-
-    
-
     const handleSignUpModalCall = () => {
         openModal('signup', <SignupModal hideModal={() => closeModal('signup')} />);
     }
 
-    const onPhoneSignInHandle = async function PhoneSignIn(event: FormEvent<HTMLButtonElement>) {
+    const onPhoneSignInHandle = async function PhoneSignIn({ phone }: PhoneWayCredentials) {
         setLoading(true);
-        event.preventDefault();
-      
+        setIsPhoneAttemptFailed(false);
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/auth/phone"
 
         try {
@@ -72,7 +55,7 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    phoneNumber,
+                    phone,
                 }),
             });
             if (response.ok) {
@@ -81,11 +64,9 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                 hideModal();
                 navigate("/");
               } else if (response.status === 400) {
-                const errorData = await response.json();
-                console.log(errorData.validationErrorsGrous);
-              } else if (response.status === 401) {
-                const errorData = await response.json();
-                console.log(errorData);
+                setIsPhoneAttemptFailed(true);
+              } else if (response.status === 401) {;
+                setIsPhoneAttemptFailed(true);
               }
         } 
         catch (error) {
@@ -95,11 +76,9 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
         setLoading(false);
     }
 
-    const onEmailSignInHandle = async function EmailSignIn(event: FormEvent<HTMLButtonElement>) {
-        event.preventDefault();
-      
+    const onEmailSignInHandle = async function EmailSignIn({ email, password }: EmailWayCredentials) {      
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/auth/email"
-
+        setIsEmailAttemptFailed(false);
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -117,11 +96,9 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                 hideModal();
                 navigate("/");
               } else if (response.status === 400) {
-                const errorData = await response.json();
-                console.log(errorData.validationErrorsGrous);
+                setIsEmailAttemptFailed(true);
               } else if (response.status === 401) {
-                const errorData = await response.json();
-                console.log(errorData);
+                setIsEmailAttemptFailed(true);
               }
         } 
         catch (error) {
@@ -131,18 +108,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
 
     const handleTabSwitch = (index: number) => {
         setActiveTab(index);
-    }
-
-    const onEmailChangeHandle = (value: string) => {
-        setEmail(value);
-    }
-  
-    const onPasswordChangeHandle = (value: string) => {
-      setPassword(value);
-    }
-
-    const onPhoneChangeHandle = (value: string) => {
-        setPhoneNumber(value);
     }
 
     return (
@@ -173,35 +138,16 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                     </div>
                     <div className="tab-content-wrapper">
                         {activeTab === 0 ? 
-                        <div className="tab-content">
-                            <div className="input-group">
-                                <TextInputMaterial 
-                                    label={t('EmailInputAuthModalPlaceholder')}
-                                    onChange={onEmailChangeHandle} />       
-                            </div>
-                            <div className="input-group">
-                                <PasswordField 
-                                    label={t('PasswordInputAuthModalPlaceholder')}
-                                    onValueChange={onPasswordChangeHandle}
-                                />
-                            </div>
-                            <button 
-                                className={`sign-in-btn ${validationPassed ? '' : 'disabled'}`}
-                                onClick={validationPassed ? onEmailSignInHandle : undefined}>
-                                {t('EnterAuthModalBtn')}
-                            </button>
-                        </div> : ''}
+                        <EmailWayPanel
+                            emailAuthHandler={onEmailSignInHandle} 
+                            showAuthError={isEmailAttemptFailed} />
+                         : ''}
                         {activeTab === 1 ? 
-                        <div className="tab-content">
-                            <PhonePickerBlock 
-                                onPhoneChange={onPhoneChangeHandle}
-                            />
-                            <button 
-                                className={`sign-in-btn ${validationPassed ? '' : 'disabled'}`}
-                                onClick={validationPassed ? onPhoneSignInHandle : undefined}>
-                                {t('EnterAuthModalBtn')}
-                            </button>
-                        </div> : ''}
+                        <PhoneWayPanel 
+                            phoneAuthHandler={onPhoneSignInHandle}
+                            showAuthError={isPhoneAttemptFailed}
+                        />
+                         : ''}
                     </div>
                     <div className="oauth-group">
                         <div className="top-divider-group">

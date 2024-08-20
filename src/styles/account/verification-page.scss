@@ -1,0 +1,112 @@
+@use '../../styles/mixins/typography' as *;
+@use '../../styles/mixins/buttons' as *;
+
+.verification-page {
+    padding-top: 104px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .verification-page-content {
+        border-radius: 15px 15px 0 0;
+        background: var(--white, #F6F6F6);
+
+        margin: 0px 100px;
+        padding: 100px 217px;
+
+        flex: 1;
+
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .verification-steps {
+            width: 51%;
+
+            .verification-step {
+                .header {
+                    @include blue-heading-font(22px);
+    
+                    margin-bottom: 20px
+                }
+    
+                .description {
+                    @include font-regular(16px);
+    
+                    margin-bottom: 40px
+                }
+
+                .step-button {
+                    @include button-blue();
+                }
+    
+                .ways-list {
+    
+                    display: flex;
+                    flex-direction: column;
+                    flex-shrink: 0;
+
+                    margin-bottom: 30px;
+    
+                    .way-item {
+                        display: flex;
+                        flex-direction: column;
+    
+                        .head-part {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+    
+                            margin-bottom: 10px;
+    
+                            .label {
+                                @include font-white-panels-headers(16px);
+                            }
+                        }
+    
+                        .undertext-part {
+                            @include font-regular(12px);
+                        }
+                    }
+    
+                    .divider {
+                        height: 1px;
+                        width: 100%;
+                        background-color: #08B1BD;
+    
+                        margin: 20px 0;
+                    }
+                }
+            }
+            
+            
+        }
+
+        .privacy {
+            width: 31%;
+            height: auto;
+
+            border-radius: 15px;
+            border: 1px solid var(--grey-light-100, #CCC);
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+
+            .header {
+                @include font-white-panels-headers(16px);
+            }
+
+            .body {
+                @include font-regular(16px);
+            }
+
+            .link-explanation {
+                @include font-links-black(16px);
+            }
+        }
+    }
+}

@@ -10,7 +10,9 @@ interface TextInputProps {
     iconCursorPointer?: boolean;
     onIconClick?: () => void;
     onFocus?: () => void;
+    onBlur?: () => void;
     outerValue?: string;
+    validationError?: boolean;
 }
 
 export default function TextInputMaterial({ 
@@ -22,7 +24,9 @@ export default function TextInputMaterial({
   iconCursorPointer = false, 
   onIconClick,
   onFocus,
-  outerValue = undefined
+  onBlur,
+  outerValue = undefined,
+  validationError
   }: TextInputProps) {
     
     const [focused, setFocused] = useState(false);
@@ -37,6 +41,10 @@ export default function TextInputMaterial({
 
     const handleBlur = () => {
         setFocused(false);
+
+        if(onBlur) {
+          onBlur();
+        }
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +55,7 @@ export default function TextInputMaterial({
     };
 
     return (
-      <div className={`text-input-material ${className ? className : ''}  ${focused || value || outerValue ? 'focused' : ''}`}>
+      <div className={`text-input-material ${validationError ? 'error' : ''} ${className ? className : ''}  ${focused || value || outerValue ? 'focused' : ''}`}>
         <label className="label-material">{label}</label>
         <div className="input-container">
             <input 

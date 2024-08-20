@@ -3,11 +3,7 @@ import React, { useState } from 'react';
 import '../../styles/app/dropdown.scss';
 
 import arrowIcon from '../../assets/icons/meta/arrow2.svg';
-
-interface DropdownOption {
-  display: string;
-  value: any;
-}
+import DropdownAddition, { DropdownOption } from './DropdownAddition';
 
 interface DropdownProps {
   options: DropdownOption[];
@@ -44,17 +40,11 @@ const Dropdown: React.FC<DropdownProps> = ({
         <img src={arrowIcon} className={`arrow ${isOpen ? 'opened' : ''}`} />
       </div>
       {isOpen && (
-        <div className="dropdown-menu">
-          {options.map((option, index) => (
-            <div
-              key={index}
-              className="dropdown-item"
-              onClick={() => handleSelect(option)}
-            >
-              {option.display}
-            </div>
-          ))}
-        </div>
+        <DropdownAddition 
+          options={options}
+          onChange={handleSelect}
+          className='dropdown-menu'
+        />
       )}
     </div>
   );

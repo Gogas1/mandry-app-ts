@@ -1,0 +1,13 @@
+@use '../../mixins/typography' as *;
+
+.validation-error-label {
+    @include font-error(12px);
+
+    gap: 10px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    
+}

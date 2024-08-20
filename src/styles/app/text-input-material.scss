@@ -29,6 +29,20 @@
         }      
     }
 
+    &.error {
+        .input-container {
+            background: linear-gradient(0deg, rgba(255, 90, 96, 0.20) 0%, rgba(255, 90, 96, 0.20) 100%), rgba(0, 0, 0, 0.20);
+
+            .fieldset {
+                border-color: #FF5A60;
+            }
+        }
+
+        .label-material {
+            color: #FF5A60;
+        }
+    }
+
     .label-material {
         color: var(--grey-light-300, #AAA);
         font-family: Comfortaa;

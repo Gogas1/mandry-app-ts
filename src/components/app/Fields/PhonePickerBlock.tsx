@@ -6,21 +6,31 @@ import phoneCodes from "../../../helpers/phoneCodes";
 
 import '../../../styles/app/fields/phone-picker-block.scss';
 import { useEffect, useState } from "react";
+import ValidationError from "../Validation/ValidationError";
 
 interface PhonePickerBlockProps {
     onPhoneChange: (value: string) => void;
     onCodeChange?: (value: string) => void;
 
     className?: string;
+    validationMessage?: string;
 }
 
-export default function PhonePickerBlock({ onPhoneChange, className = '' }: PhonePickerBlockProps) {
+export default function PhonePickerBlock({ onPhoneChange, onCodeChange, className = '', validationMessage = '' }: PhonePickerBlockProps) {
     const { t } = useTranslation();
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneCodesOptions, setPhoneCodeOptions] = useState<{ display: string; value: string }[]>([]);
 
     const handleCodeChoose = (value: string) => {
+        setPhoneNumber(value);
+        if(onCodeChange) {
+            onCodeChange(value);
+        }
+        
+    }
+
+    const handleChangePhone = (value: string) => {
         setPhoneNumber(value);
         onPhoneChange(value);
     }
@@ -44,10 +54,18 @@ export default function PhonePickerBlock({ onPhoneChange, className = '' }: Phon
                 />
                 <TextInputMaterial 
                     label={t('PhoneNumberFieldAuthModalTab')}
-                    onChange={setPhoneNumber}
+                    onChange={handleChangePhone}
                     outerValue={phoneNumber}
                     className="phone-input"
+                    validationError={validationMessage ? true : false}
                 />
+
+                {validationMessage ? (
+                    <ValidationError 
+                        label={validationMessage}
+                        className="error-message"
+                    />
+                ) : ''}
             </div>     
         </>
     );

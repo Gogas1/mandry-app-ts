@@ -1,14 +1,16 @@
 .phone-picker {
     display: flex;
     flex-direction: column;
-
-    gap: 30px;
     
     .code-picker {
-
+        margin-bottom: 30px;
     }
 
     .phone-input {
+        
+    }
 
+    .error-message {
+        margin-top: 10px;
     }
 }

@@ -16,6 +16,8 @@ import PasswordField from "../app/Fields/PasswordFileld";
 import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
 import AuthContext from "./AuthenticationContext";
 import { useNavigate } from "react-router-dom";
+import ValidationError from "../app/Validation/ValidationError";
+import CredentialValidator, { BirthDateErrorCode, EmailValidationErrorCode, NameValidationErrorCode, PasswordValidationErrorCode, PhoneValidationErrorCode } from "../../helpers/validation/CredentialValidator";
 
 interface SignupModalProps {
     hideModal: () => void;
@@ -37,6 +39,12 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [birthdate, setBirthdate] = useState<Date>(new Date());
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+
+    const [nameValidation, setNameValidation] = useState<NameValidationErrorCode | undefined>(NameValidationErrorCode.NOT_VALIDATED);
+    const [birthdateValidation, setBirthdateValidation] = useState<BirthDateErrorCode | undefined>(BirthDateErrorCode.NOT_VALIDATED);
+    const [emailValidation, setEmailValidation] = useState<EmailValidationErrorCode | undefined>();
+    const [phoneValidation, setPhoneValidation] = useState<PhoneValidationErrorCode | undefined>(PhoneValidationErrorCode.NOT_VALIDATED);
+    const [passwordValidation, setPasswordValidation] = useState<PasswordValidationErrorCode | undefined>();
 
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -68,37 +76,45 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     
     const nameChangeHandle = (value: string) => {
         setName(value);
-        validateCredentials();
+
+        setNameValidation(CredentialValidator.ValidateName(value));
     }
 
     const surnameChangeHandle = (value: string) => {
-        setSurname(value);
-        validateCredentials();
+        setSurname(value);        
     }
 
     const emailChangeHandle = (value: string) => {
         setEmail(value);
-        validateCredentials();
+        
+        setEmailValidation(CredentialValidator.ValidateEmail(value));
     }
 
     const phoneChangeHandle = (value: string) => {
         setPhone(value);
-        validateCredentials();
+        
+        setPhoneValidation(CredentialValidator.ValidatePhone(value));
     }
 
     const passwordChangeHandle = (value: string) => {
         setPassword(value);
-        validateCredentials();
+        
+        setPasswordValidation(CredentialValidator.ValidatePassword(value, true, passwordConfirmation));
     }
 
     const passwordConfirmationChangeHandle = (value: string) => {
         setPasswordConfirmation(value);
-        validateCredentials();
+        
+        setPasswordValidation(CredentialValidator.ValidatePassword(value, true, password));
     }
 
     const birthdateChangeHandle = (date: Date) => {
         setBirthdate(date);
+
+        setBirthdateValidation(CredentialValidator.ValidateBirthDate(date));
     }
+
+    
 
     const closeHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation();
@@ -162,16 +178,16 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="block names-block">
                         <div className="block-header">{t('SignUpNamesBlockHeader')}</div>
                         <div className="input-group name-input-group">
-                            {/* <label>{t('SignUpNameInputLabel')}</label>
-                            <input className="input"/> */}
                             <TextInputMaterial
                                 label={t('SignUpNameInputLabel')}
                                 onChange={nameChangeHandle}
                                 />
+                            {nameValidation ? (
+                                <ValidationError label={t(GetNameValidationErrorKey(nameValidation))} />
+                            ): ''}
                         </div>
                         <div className="input-group surname-input-group">
-                            {/* <label>{t('SignUpSurnameInputLabel')}</label>
-                            <input className="input"/> */}
+
                             <TextInputMaterial 
                                 label={t('SignUpSurnameInputLabel')}
                                 onChange={surnameChangeHandle}/>
@@ -197,12 +213,6 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                                 label={t('SignUpEmailInputLabel')}
                                 onChange={emailChangeHandle}/>
                         </div>
-                        {/* <div className="input-group phone-input-group">
-                            <TextInputMaterial 
-                                label={t('SignUpPhoneLabel')}
-                                onChange={setPhone}
-                            />
-                        </div> */}
                         <div className="block-text-end">
                             {t('SignUpEmailTextEnd')}
                         </div>
@@ -251,4 +261,57 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
             </button>  
         </>  
     );
+}
+
+function GetNameValidationErrorKey(errorCode: NameValidationErrorCode) {
+    switch (errorCode){
+        case NameValidationErrorCode.REQUIRED:
+            return "Validation.SignUp.Name.Required";
+        default:
+            return "Validation.SignUp.Name.Required";
+    }
+}
+
+function GetBirthDateValidationErrorKey(errorCode: BirthDateErrorCode) {
+    switch (errorCode) {
+        case BirthDateErrorCode.REQUIRED:
+            return "Validation.SignUp.BirthDate.Required";
+        case BirthDateErrorCode.INVALID_DATE:
+            return "Validation.SignUp.BirthDate.Invalid";
+        default:
+            return "Validation.SignUp.BirthDate.Required";
+    }
+}
+
+function GetEmailValidationErrorKey(errorCode: EmailValidationErrorCode) {
+    switch (errorCode) {
+        case EmailValidationErrorCode.REQUIRED:
+            return "Validation.SignUp.Email.Required";
+        case EmailValidationErrorCode.INVALID_EMAIL:
+            return "Validation.SignUp.Email.Invalid";
+        default:
+            return "Valdiation.SingUp.Email.Required";
+    }
+}
+
+function GetPasswordValidationErrorKey(errorCode: PasswordValidationErrorCode) {
+    switch (errorCode) {
+        case PasswordValidationErrorCode.REQUIRED:
+            return "Validation.SignUp.Password.Required";
+        case PasswordValidationErrorCode.INVALID:
+            return "Validation.SignUp.Password.Invalid";
+        case PasswordValidationErrorCode.DIFF_PASSOWORDS:
+            return "Validation.SignUp.Password.NotEqual";
+        default:
+            return "Valdiation.SingUp.Password.Required";
+    }
+}
+
+function GetPhoneValidationErrorKey(errorCode: PhoneValidationErrorCode) {
+    switch (errorCode){
+        case PhoneValidationErrorCode.REQUIRED:
+            return "Validation.SignUp.Phone.Required";
+        default:
+            return "Validation.SignUp.Phone.Required";
+    }
 }

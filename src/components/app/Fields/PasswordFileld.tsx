@@ -8,9 +8,13 @@ import eyeOffIcon from '../../../assets/icons/meta/eye-off.svg';
 interface PasswordFieldProps {
     onValueChange: (value: string) => void;
     label?: string;
+    onFocus?: () => void;
+    onBlur?: () => void;
+
+    showValidationError?: boolean;
 }
 
-export default function PasswordField({onValueChange, label}: PasswordFieldProps) {
+export default function PasswordField({onValueChange, label, onFocus, onBlur, showValidationError = false}: PasswordFieldProps) {
     const { t } = useTranslation();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +30,9 @@ export default function PasswordField({onValueChange, label}: PasswordFieldProps
                 icon={!showPassword ? eyeOffIcon : eyeIcon}
                 iconCursorPointer={true}
                 onIconClick={() => setShowPassword(!showPassword)}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                validationError={showValidationError}
             />
         </>
     );
