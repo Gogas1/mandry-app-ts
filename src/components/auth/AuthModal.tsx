@@ -5,19 +5,13 @@ import facebookIcon from "../../assets/icons/auth/facebook.svg";
 import googleIcon from "../../assets/icons/auth/google.svg";
 import appleIcon from "../../assets/icons/auth/apple.svg";
 import closeIcon from '../../assets/icons/meta/close-cross.svg';
-import warningIcon from '../../assets/icons/meta/warning.svg';
 
 import "../../styles/auth/auth-modal.scss";
-import { useContext, useState, FormEvent, useEffect } from "react";
+import { useContext, useState } from "react";
 
 import AuthContext from "./AuthenticationContext";
 import { useModal } from "../app/ModalContext";
 import SignupModal from "./SignupModal";
-import TextInputMaterial from "../app/TextInputMaterial";
-import PasswordField from "../app/Fields/PasswordFileld";
-import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
-import SignInValidator, { EmailValidationErrorCode, PasswordValidationErrorCode } from "../../helpers/validation/SignInValidator";
-import ValidationError from "../app/Validation/ValidationError";
 import EmailWayPanel, { EmailWayCredentials } from "./SignIn/EmailWayPanel";
 import PhoneWayPanel, { PhoneWayCredentials } from "./SignIn/PhoneWayPanel";
 
@@ -36,7 +30,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const [activeTab, setActiveTab] = useState(0);
 
     const [loading, setLoading] = useState(false);
-    const [validationPassed, setValidationPassed] = useState(false);
 
     const [isEmailAttemptFailed, setIsEmailAttemptFailed] = useState(false);
     const [isPhoneAttemptFailed, setIsPhoneAttemptFailed] = useState(false);
@@ -71,10 +64,8 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                 hideModal();
                 navigate("/");
               } else if (response.status === 400) {
-                const errorData = await response.json();
                 setIsPhoneAttemptFailed(true);
-              } else if (response.status === 401) {
-                const errorData = await response.json();
+              } else if (response.status === 401) {;
                 setIsPhoneAttemptFailed(true);
               }
         } 

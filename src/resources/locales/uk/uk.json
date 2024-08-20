@@ -292,6 +292,27 @@
                     "FailedAttempt": "Не вдається надіслати код на цей номер телефону. Спробуйте скористатись іншим номером."
                 }
             }
+        },
+        "SignUp": {
+            "Name": {
+                "Required": ""
+            },
+            "BirthDate": {
+                "Required": "",
+                "Invalid": ""
+            },
+            "Email": {
+                "Required": "",
+                "Invalid": ""
+            },
+            "Password": {
+                "Required": "",
+                "Invalid": "",
+                "NotEqual": ""
+            },
+            "Phone": {
+                "Required": ""
+            }
         }
     }
 }

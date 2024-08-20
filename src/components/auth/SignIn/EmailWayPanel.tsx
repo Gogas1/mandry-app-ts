@@ -3,7 +3,7 @@ import TextInputMaterial from "../../app/TextInputMaterial";
 import ValidationError from "../../app/Validation/ValidationError";
 import PasswordField from "../../app/Fields/PasswordFileld";
 import { FormEvent, useEffect, useState } from "react";
-import SignInValidator, { EmailValidationErrorCode, PasswordValidationErrorCode } from "../../../helpers/validation/SignInValidator";
+import CredentialValidator, { EmailValidationErrorCode, PasswordValidationErrorCode } from "../../../helpers/validation/CredentialValidator";
 
 import warningIcon from '../../../assets/icons/meta/warning.svg';
 
@@ -43,24 +43,24 @@ export default function EmailWayPanel({ emailAuthHandler, showAuthError }: Email
     const onEmailChangeHandle = (value: string) => {
         setEmail(value); 
 
-        const result = SignInValidator.ValidateEmail(value);
+        const result = CredentialValidator.ValidateEmail(value);
         setEmailValidation(result);
     }
   
     const onPasswordChangeHandle = (value: string) => {
         setPassword(value);
 
-        const result = SignInValidator.ValidatePassowrd(value);
+        const result = CredentialValidator.ValidatePassword(value);
         setPasswordValidation(result);
     }
 
     const handleEmailBlur = () => {
-        const result = SignInValidator.ValidateEmail(email);
+        const result = CredentialValidator.ValidateEmail(email);
         setEmailValidation(result);
     }
 
     const handlePasswordBlur = () => {
-        const result = SignInValidator.ValidatePassowrd(password);
+        const result = CredentialValidator.ValidatePassword(password);
         setPasswordValidation(result);
     }
 

@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import PhonePickerBlock from "../../app/Fields/PhonePickerBlock";
 import { useTranslation } from "react-i18next";
-import SignInValidator, { PhoneValidationErrorCode } from "../../../helpers/validation/SignInValidator";
+import CredentialValidator, { PhoneValidationErrorCode } from "../../../helpers/validation/CredentialValidator";
 
 import warningIcon from '../../../assets/icons/meta/warning.svg';
 
@@ -37,7 +37,7 @@ export default function PhoneWayPanel({ phoneAuthHandler, showAuthError }: Phone
 
     const onPhoneChangeHandle = (value: string) => {
         setPhoneNumber(value);
-        setPhoneValidation(SignInValidator.ValidatePhone(value));
+        setPhoneValidation(CredentialValidator.ValidatePhone(value));
         console.log(value);
     }
 

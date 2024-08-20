@@ -31,13 +31,13 @@ export default function AccountPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    if(!authContext.authState.isAuthenticated) {
-        navigate('/');
-    }
-
     const [userData, setUserData] = useState<UserData>({ id: '', name: 'loading...', surname: 'loading...', email: 'loading...', phone: 'loading...' } as UserData);
 
     useEffect(() => {
+        if(!authContext.authState.isAuthenticated) {
+            navigate('/');
+        }
+
         const fetchData = async () => {
             const token = authContext.authState.token;
     
