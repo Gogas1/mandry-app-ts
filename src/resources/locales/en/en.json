@@ -196,7 +196,22 @@
             "Description": "Connect with other guests and hosts over shared interests by listing your hobbies in your profile.",
             "Link": "Add Interests"
         }
+    },
+
+    "Validation": {
+        "SignIn": {
+            "Messages": {
+                
+                "Email": {
+                    "Required": "Email address is required.",
+                    "Invalid": "Please enter a valid email address.",
+                    "FailedAttempt": "Invalid credentials. Please try again."
+                },
+                "Password": {
+                    "Required": "Password is required.",
+                    "FailedAttempt": "Could not send code to this phone number. Try using another number."
+                }
+            }
+        }
     }
-
-
 }

@@ -81,7 +81,7 @@ export default function AccountPage() {
                         {userData.name} {userData.surname}, {userData.email}
                     </div>
                     <div className='profile-link'>
-                        <Link to={`/account/profile/me`}>
+                        <Link to={`/account/profile/my`}>
                             {t('AccountPageProfileLink')}
                         </Link>
                     </div>

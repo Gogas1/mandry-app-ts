@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function ProfilePage() {
     const { t } = useTranslation();
 
-    const name = 'Ivanka';
+    const name = 'Nikita';
 
     return (
         <div className="profile-page">
