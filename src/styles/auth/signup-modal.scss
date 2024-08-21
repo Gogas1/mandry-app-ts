@@ -121,7 +121,11 @@
             font-style: normal;
             font-weight: 400;
             line-height: 120%; /* 14.4px */
-        }                
+        }
+        
+        .signup-validation-error {
+            margin-top: 10px;
+        }
     }
 
     .birthdate-block, .email-block, .password-block, .phone-block {

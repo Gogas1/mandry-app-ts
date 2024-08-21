@@ -273,6 +273,9 @@
     "Modals": {
         "TextPrompt": {
             "ContinueButtonLabel": "Продовжити"
+        },
+        "SignUp": {
+            "PasswordConfirmation": "Повторіть пароль"
         }
     },
     
@@ -295,23 +298,23 @@
         },
         "SignUp": {
             "Name": {
-                "Required": ""
+                "Required": "Потрібно вказати ім’я"
             },
             "BirthDate": {
-                "Required": "",
-                "Invalid": ""
+                "Required": "Потрібно вказати дату народження",
+                "Invalid": "Некоректна дата народження"
             },
             "Email": {
-                "Required": "",
-                "Invalid": ""
+                "Required": "Потрібно вказати електронну пошту",
+                "Invalid": "Вкажіть валідну адресу електронної пошти"
             },
             "Password": {
-                "Required": "",
-                "Invalid": "",
-                "NotEqual": ""
+                "Required": "Введіть пароль",
+                "Invalid": "Введіть пароль валідного формату",
+                "NotEqual": "Паролі не співпадають"
             },
             "Phone": {
-                "Required": ""
+                "Required": "Введіть номер телефону"
             }
         }
     }
