@@ -213,5 +213,13 @@
                 }
             }
         }
+    },
+    
+    "MainPage": {
+        "Sections": {
+            "Second" : {
+                "Caption": "Top destinations"
+            }
+        }
     }
 }

@@ -47,7 +47,7 @@
 @mixin font-white($size) {
     color: var(--white, #F6F6F6);
     font-family: 'Comfortaa';
-    font-size: 14px;
+    font-size: $size;
     font-style: normal;
     font-weight: 400;
 }

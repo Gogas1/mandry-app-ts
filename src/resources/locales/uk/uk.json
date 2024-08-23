@@ -317,5 +317,13 @@
                 "Required": "Введіть номер телефону"
             }
         }
+    },
+
+    "MainPage": {
+        "Sections": {
+            "Second" : {
+                "Caption": "<decoratedT>T</decoratedT>оп напря<decoratedM>M</decoratedM>ків"
+            }
+        }
     }
 }

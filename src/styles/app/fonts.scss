@@ -24,6 +24,22 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Macondo';
+    src: url('../../assets/fonts/Macondo/Macondo-Regular.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Macondo Swash Caps';
+    src: url('../../assets/fonts/MacondoSwashCaps/MacondoSwashCaps-Regular.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
 @mixin font-face($font-family, $file-path, $font-weight: normal, $font-style: normal) {
     @font-face {
       font-family: $font-family;
