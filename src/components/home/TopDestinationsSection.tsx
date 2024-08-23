@@ -83,7 +83,10 @@ export default function TopDestinationsSection() {
                     {carouselItems.map((item, index) => (
                          <div className={`card-wrapper ${getClassNameForTopDestination(index, carouselIndex, carouselItems.length)}`}>
                             <div className='card'>
-                                <img className='card__image' src={item.image} />
+                                <div className="card__image-wrapper">
+                                    <img className='card__image-wrapper__image' src={item.image} />
+                                </div>
+                                
                                 <h3 className='card__name'>{item.name}</h3>
                                 <div className='card__text'>
                                     {item.text}
