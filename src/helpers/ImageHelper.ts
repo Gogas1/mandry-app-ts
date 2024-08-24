@@ -23,6 +23,13 @@ import PetsImage from '../assets/images/accessbilities/pets.png';
 import TVImage from '../assets/images/accessbilities/tv.png';
 import WashingImage from '../assets/images/accessbilities/washing.png';
 
+import HFranceImage from '../assets/images/hotels/france.png';
+import HGreeceImage from '../assets/images/hotels/grecee.png';
+import HLondonImage from '../assets/images/hotels/london.png';
+import HMaldivesImage from '../assets/images/hotels/maldives.png';
+import HTokyoImage from '../assets/images/hotels/tokyo.png';
+import HVeniceImage from '../assets/images/hotels/venice.png';
+
 export default class TopDestinationsHelper {
     static BaliInfo = 
     { 
@@ -141,4 +148,43 @@ export class AccessbImageHelper {
         image: WashingImage,
         name: 'Пральна машина'
     };
+}
+
+export class TopHotelsHelper {
+    static VeniceInfo = 
+    { 
+        image: HVeniceImage, 
+        name: 'Венеція "Palazzo del Mare"',
+        text: 'Готель "Palazzo del Mare" розташований у самому серці Венеції, на березі одного з головних каналів, пропонуючи гостям автентичний венеційський досвід.'
+    };
+
+    static GreeceInfo = {
+        image: HGreeceImage,
+        name: 'Греція, Санторіні "Aegean Serenity" ',
+        text: 'Готель "Aegean Serenity" розташований на мальовничому узбережжі грецького острова Санторіні, з якого відкривається захоплюючий вид на Егейське море.'
+    }
+
+    static LondonInfo = {
+        image: HLondonImage,
+        name: 'Лондон, "The Regency House" ',
+        text: 'Готель "The Regency House" розташований у самому центрі Лондона, неподалік від відомої вулиці Оксфорд-стріт, пропонуючи ідеальне місце для дослідження міста. '
+    }
+
+    static MandivesInfo = {
+        image: HMaldivesImage,
+        name: 'Мальдіви, "Coral Resort" ',
+        text: 'Готель "Coral Resort" розташований на приватному острові Мальдів, оточеному бірюзовими водами Індійського океану. Цей ексклюзивний курорт пропонує розкішні вілли над водою'
+    }
+
+    static TokyoInfo = {
+        image: HTokyoImage,
+        name: 'Токіо, "Sakura Haven"',
+        text: 'Готель "Sakura Haven" розташований у центрі Токіо, неподалік від популярного району Гінза, де зосереджені найкращі магазини, ресторани та культурні пам\'ятки міста.'
+    }
+
+    static FranceInfo = {
+        image: HFranceImage,
+        name: 'Франції, "Château Lumière" ',
+        text: 'Готель "Château Lumière" розташований у самому серці мальовничої французької провінції, серед виноградників і затишних сіл.'
+    }
 }
