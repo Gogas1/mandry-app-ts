@@ -29,6 +29,10 @@
 
     .floor-container {
         display: flex;
+
+        &.fourth-container {
+            margin-top: 160px;
+        }
         
         &.first-container {
             // height: calc(100vh - 54px);

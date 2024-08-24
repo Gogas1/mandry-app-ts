@@ -12,6 +12,10 @@ import CastleImage from '../assets/images/housings/castle.png';
 import FlatImage from '../assets/images/housings/flat.png';
 import HouseImage from '../assets/images/housings/house.png';
 
+import HotelImage from '../assets/images/promotions/hotel.jpeg';
+import KarpatyImage from '../assets/images/promotions/karpaty.jpeg';
+import KlenImage from '../assets/images/promotions/klen.png';
+
 export default class TopDestinationsHelper {
     static BaliInfo = 
     { 
@@ -80,5 +84,22 @@ export class HousingsImageHelper {
     static CastleInfo = {
         image: CastleImage,
         name: 'Замок'
+    };
+}
+
+export class PromotionsImageHelper {
+    static KlenInfo = {
+        image: KlenImage,
+        name: 'Готель “Klen”'
+    };
+    
+    static HotelInfo = {
+        image: HotelImage,
+        name: 'Готель “ Carpathian Luxe Resort”'
+    };
+
+    static KarpatyInfo = {
+        image: KarpatyImage,
+        name: 'Готель “Карпати”'
     };
 }

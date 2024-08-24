@@ -326,7 +326,10 @@
             },
             "Third": {
                 "Caption": "<decoratedR>P</decoratedR>ізновид житл<decoratedA>a</decoratedA>"
-            }
+            },
+            "Fourth": {
+                "Caption": "Най<decoratedK>k</decoratedK>ращі <decoratedA>a</decoratedA>кційні п<decoratedP>p</decoratedP>опозиції сезону"
+            } 
         }
     }
 }
