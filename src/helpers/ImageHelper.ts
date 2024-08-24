@@ -1,9 +1,16 @@
-import BaliImage from '../assets/images/Bali.png';
-import BarcelonaImage from '../assets/images/Barcelona.png';
-import DubaiImage from '../assets/images/Dubai.png';
-import RomeImage from '../assets/images/Rome.png';
-import SidneyImage from '../assets/images/Sidney.png';
-import TokyoImage from '../assets/images/Tokyo.png';
+import BaliImage from '../assets/images/top-destinations/Bali.png';
+import BarcelonaImage from '../assets/images/top-destinations/Barcelona.png';
+import DubaiImage from '../assets/images/top-destinations/Dubai.png';
+import RomeImage from '../assets/images/top-destinations/Rome.png';
+import SidneyImage from '../assets/images/top-destinations/Sidney.png';
+import TokyoImage from '../assets/images/top-destinations/Tokyo.png';
+
+import FarmImage from '../assets/images/housings/farm.png';
+import BoatImage from '../assets/images/housings/boat.png';
+import CampImage from '../assets/images/housings/camp.png';
+import CastleImage from '../assets/images/housings/castle.png';
+import FlatImage from '../assets/images/housings/flat.png';
+import HouseImage from '../assets/images/housings/house.png';
 
 export default class TopDestinationsHelper {
     static BaliInfo = 
@@ -42,4 +49,36 @@ export default class TopDestinationsHelper {
         name: "Токіо, Японія",
         text: "Токіо – це столиця Японії, яка поєднує в собі стародавні традиції та ультрасучасні технології. Місто відоме своїми неоновими вивісками, високо..."
     }
+}
+
+export class HousingsImageHelper {
+    static BoatHInfo = {
+        image: BoatImage,
+        name: 'Будинок на воді'
+    };
+    
+    static CampingHInfo = {
+        image: CampImage,
+        name: 'Глемпінг'
+    };
+
+    static FarmHInfo = {
+        image: FarmImage,
+        name: 'Фермерський будинок'
+    };
+
+    static HouseHInfo = {
+        image: HouseImage,
+        name: 'Будинок'
+    };
+
+    static FlatHInfo = {
+        image: FlatImage,
+        name: 'Квартира'
+    };
+
+    static CastleInfo = {
+        image: CastleImage,
+        name: 'Замок'
+    };
 }

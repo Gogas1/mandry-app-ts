@@ -167,7 +167,7 @@
 
                         box-sizing: border-box;
 
-                        transition: all 0.75s ease-in-out;
+                        transition: all 0.5s;
 
                         .card {
                             height: 100%;
@@ -231,48 +231,53 @@
                                 // scale: 1.05;
                             }
                         }
-                        
-                        &.previous-1 {
-                            visibility: collapse;
-                            left: -600px;
+
+                        &.previous-ready {
+                            left: -800px;
+                            opacity: 0;
                         }
 
                         &.previous {
                             left: -350px;
+                            z-index: 1;
+
+                            transition: all 0.5s ease;
                         }
 
                         &.first {
                             left: 165px;
-                            z-index: 1;
 
                             margin-top: 70px;
                         }
 
                         &.second {
                             left: 675px;
-                            z-index: 1;
                         }
 
                         &.third {
                             left: 1190px;
-                            z-index: 1;
 
                             margin-top: 70px;
                         }
 
                         &.next {
                             left: 1700px;
+                            z-index: 1;
+
+                            transition: 0.5s ease;
                         }
 
-                        &.next-1 {
-                            visibility: collapse;
+                        &.next-ready {
                             left: 2250px;
+                            opacity: 0;
                         }
 
                         &.offscreen {
-                            visibility: collapse;
+                            opacity: 0;
 
                             left: 2250px;
+
+                            transition: left 0s ease 0.5s;
                         }
                     }
                 }    

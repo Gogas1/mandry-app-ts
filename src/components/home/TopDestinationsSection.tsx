@@ -4,12 +4,19 @@ import TopDestinationsHelper from "../../helpers/ImageHelper";
 import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 import { Trans, useTranslation } from "react-i18next";
 
+interface CarouselItem { 
+    image: string, 
+    text: string, 
+    name: string, 
+    link: string 
+}
+
 export default function TopDestinationsSection() {
     const { t } = useTranslation();
 
     const [carouselIndex, setCarouselIndex] = useState(0);
 
-    const carouselItems: { image: string, text: string, name: string, link: string }[] = [
+    const carouselItems: CarouselItem[] = [
         { 
             image: TopDestinationsHelper.BaliInfo.image, 
             text: TopDestinationsHelper.BaliInfo.text,
@@ -46,11 +53,13 @@ export default function TopDestinationsSection() {
             name: TopDestinationsHelper.TokyoInfo.name,
             link: ""
         }
-    ]
+    ];
+
+    const doubledArray = carouselItems.concat(carouselItems);
 
     const onCarouselBack = () => {
         if(carouselIndex === 0) {
-            setCarouselIndex(carouselItems.length - 1);
+            setCarouselIndex(doubledArray.length - 1);
             
         }
         else {
@@ -59,7 +68,7 @@ export default function TopDestinationsSection() {
     }
 
     const onCarouselForward = () => {
-        if(carouselIndex === carouselItems.length - 1) {
+        if(carouselIndex === doubledArray.length - 1) {
             setCarouselIndex(0);
         }
         else {
@@ -80,8 +89,10 @@ export default function TopDestinationsSection() {
             </div>
             <div className='cards-wheel'>
                 <div className='cards-wheel-track'>
-                    {carouselItems.map((item, index) => (
-                         <div className={`card-wrapper ${getClassNameForTopDestination(index, carouselIndex, carouselItems.length)}`}>
+                    {doubledArray.map((item, index) => (
+                         <div className={`card-wrapper ${getClassNameForTopDestination(index, carouselIndex, doubledArray.length)}`} key={index}
+                            data-index={index}
+                            data-focus={carouselIndex}>
                             <div className='card'>
                                 <div className="card__image-wrapper">
                                     <img className='card__image-wrapper__image' src={item.image} />
@@ -108,18 +119,72 @@ export default function TopDestinationsSection() {
 
 function getClassNameForTopDestination(index: number, focusIndex: number, arrayLength: number): string {
     const isFirst = (focusIndex === 0 && index === arrayLength - 1);
-    const isPrevious = (focusIndex === 0 && index === arrayLength - 2) || (focusIndex === 1 && index === arrayLength - 1);
+    const isPrevious = 
+        (focusIndex === 0 && index === arrayLength - 2) || 
+        (focusIndex === 1 && index === arrayLength - 1);
+    const isPrevious2 = 
+        (focusIndex === 0 && index === arrayLength - 3) ||
+        (focusIndex === 1 && index === arrayLength - 2) ||
+        (focusIndex === 2 && index === arrayLength - 1);
 
     if (index === focusIndex) return 'second';
     if (isFirst || index === focusIndex - 1) return 'first';
     if (isPrevious || index === focusIndex - 2) return 'previous';
+    if (isPrevious2 || index === focusIndex - 3) return 'previous-ready';
 
     // Handle end-of-list special cases
     const isEnd = focusIndex === arrayLength - 1;
-    const isSecondLast = focusIndex === arrayLength - 2;
+    const isSecondLast = 
+        (focusIndex === arrayLength - 2 && index === 0) ||
+        (focusIndex === arrayLength - 1 && index === 1);
+
+    const isNext2 = 
+        (focusIndex === arrayLength - 3 && index === 0) ||
+        (focusIndex === arrayLength - 2 && index === 1) ||
+        (focusIndex === arrayLength - 1 && index === 2);
 
     if ((isEnd && index === 0) || index === focusIndex + 1) return 'third';
-    if ((isEnd && index === 1) || (isSecondLast && (index === 0 || index === 2)) || index === focusIndex + 2) return 'next';
+    if (isSecondLast || index === focusIndex + 2) return 'next';
+    if (isNext2 || index === focusIndex + 3) return 'next-ready';
 
     return 'offscreen';
+}
+
+function getArrayAroundIndex(array: CarouselItem[], index: number): CarouselItem[] {
+    const targetIndexes: number[] = [];
+    if(array.length < 6) {
+        targetIndexes.push(0,1,2,3,4);
+        const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+        return targetArray;
+    }
+    else {
+        if(index === 0) {
+            targetIndexes.push(array.length - 2, array.length - 1, 0,1,2);
+            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+            return targetArray;
+        } else if(index === 1) {
+            targetIndexes.push(array.length - 1, 0, 1, 2, 3);
+            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+            return targetArray;
+        } else if(index === array.length - 2) {
+            targetIndexes.push(array.length - 2, array.length - 1, 0,1,2);
+            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+            return targetArray;
+        } else if(index === array.length - 1) {
+            targetIndexes.push(array.length - 1, 0, 1, 2, 3);
+            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+            return targetArray;
+        } else {
+            targetIndexes.push(
+                index - 2,
+                index - 1,
+                index,
+                index + 1,
+                index + 2
+            );
+            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
+
+            return targetArray;
+        }
+    }
 }

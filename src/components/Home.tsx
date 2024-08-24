@@ -14,6 +14,7 @@ import TravelersPopup, { TravelersPopupData } from './home/TravelersPopup';
 
 import background from '../assets/bg2.jpeg';
 import TopDestinationsSection from './home/TopDestinationsSection';
+import HousingsSection from './home/HousingsSection';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -222,6 +223,7 @@ export default function Home() {
                         </div>  */}
                     </div>
                     <TopDestinationsSection />
+                    <HousingsSection className='floor-container' />
                 </div>
             </div>            
         </>
