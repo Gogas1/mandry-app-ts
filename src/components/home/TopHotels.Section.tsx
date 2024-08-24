@@ -1,8 +1,8 @@
 import { useState } from "react";
-import TopDestinationsHelper, { HousingsImageHelper, TopHotelsHelper } from "../../helpers/ImageHelper";
+import { TopHotelsHelper } from "../../helpers/ImageHelper";
 
 import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
-import { Trans, useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 import '../../styles/pages/home/top-hotels-section.scss';
 
@@ -14,8 +14,6 @@ interface CarouselItem {
 }
 
 export default function TopHotelsSection() {
-    const { t } = useTranslation();
-
     const [carouselIndex, setCarouselIndex] = useState(0);
 
     const carouselItems: CarouselItem[] = [
@@ -87,7 +85,6 @@ export default function TopHotelsSection() {
                     { 
                         decoratedT: <span className="decorated-T" />, 
                         decoratedI: <span className="decorated-I" />}} />
-                {/* {t('MainPage.Sections.Second.Caption')} */}
             </div>
             <div className='cards-wheel'>
                 <div className='cards-wheel-track'>
@@ -150,43 +147,4 @@ function getClassNameForTopDestination(index: number, focusIndex: number, arrayL
     if (isNext2 || index === focusIndex + 3) return 'next-ready';
 
     return 'offscreen';
-}
-
-function getArrayAroundIndex(array: CarouselItem[], index: number): CarouselItem[] {
-    const targetIndexes: number[] = [];
-    if(array.length < 6) {
-        targetIndexes.push(0,1,2,3,4);
-        const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-        return targetArray;
-    }
-    else {
-        if(index === 0) {
-            targetIndexes.push(array.length - 2, array.length - 1, 0,1,2);
-            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-            return targetArray;
-        } else if(index === 1) {
-            targetIndexes.push(array.length - 1, 0, 1, 2, 3);
-            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-            return targetArray;
-        } else if(index === array.length - 2) {
-            targetIndexes.push(array.length - 2, array.length - 1, 0,1,2);
-            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-            return targetArray;
-        } else if(index === array.length - 1) {
-            targetIndexes.push(array.length - 1, 0, 1, 2, 3);
-            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-            return targetArray;
-        } else {
-            targetIndexes.push(
-                index - 2,
-                index - 1,
-                index,
-                index + 1,
-                index + 2
-            );
-            const targetArray = Array.from(targetIndexes.map((value) => array[value]));
-
-            return targetArray;
-        }
-    }
 }
