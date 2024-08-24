@@ -30,6 +30,10 @@
     .floor-container {
         display: flex;
 
+        &.fifth-container {
+            margin-top: 120px;
+        }
+
         &.fourth-container {
             margin-top: 160px;
         }

@@ -16,6 +16,13 @@ import HotelImage from '../assets/images/promotions/hotel.jpeg';
 import KarpatyImage from '../assets/images/promotions/karpaty.jpeg';
 import KlenImage from '../assets/images/promotions/klen.png';
 
+import PoolImage from '../assets/images/accessbilities/pool.png';
+import ACImage from '../assets/images/accessbilities/ac.png';
+import GarageImage from '../assets/images/accessbilities/garage.png';
+import PetsImage from '../assets/images/accessbilities/pets.png';
+import TVImage from '../assets/images/accessbilities/tv.png';
+import WashingImage from '../assets/images/accessbilities/washing.png';
+
 export default class TopDestinationsHelper {
     static BaliInfo = 
     { 
@@ -101,5 +108,37 @@ export class PromotionsImageHelper {
     static KarpatyInfo = {
         image: KarpatyImage,
         name: 'Готель “Карпати”'
+    };
+}
+
+export class AccessbImageHelper {
+    static ACInfo = {
+        image: ACImage,
+        name: 'Кондиціонер'
+    };
+    
+    static GarageInfo = {
+        image: GarageImage,
+        name: 'Гараж'
+    };
+
+    static PetsInfo = {
+        image: PetsImage,
+        name: 'Тварини'
+    };
+
+    static PoolInfo = {
+        image: PoolImage,
+        name: 'Басейн'
+    };
+
+    static TVInfo = {
+        image: TVImage,
+        name: 'ТВ'
+    };
+
+    static WashingInfo = {
+        image: WashingImage,
+        name: 'Пральна машина'
     };
 }
