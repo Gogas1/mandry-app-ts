@@ -1,8 +1,10 @@
 @use '../../mixins/buttons' as *;
 
+@import url('../../app/fonts.scss');
+
 .housing-section {
     height: 0;
-    padding-bottom: 64%;
+    padding-bottom: 100vh;
 
     .banner-container {
         position: absolute;
@@ -60,6 +62,44 @@
                     transition: 0.5s;
 
                     height: 100%;
+
+                    border-radius: 15px;
+
+                    &__text {
+                        height: 100%;
+                        position: relative;
+                        padding-top: 50px;
+                        padding-left: 90px;
+
+                        h3 {
+                            color: var(--white, #F6F6F6);
+                            font-family: "Montserrat Alternates";
+                            font-size: 60px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 60px;
+
+                            margin: 0;
+
+                            .decorated-A, .decorated-R {
+                                color: var(--white, #F6F6F6);
+                                font-family: 'Macondo';
+                                font-size: 70px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 60px; /* 85.714% */
+                            }
+                        }
+
+                        p {
+                            color: var(--white, #F6F6F6);
+                            font-family: "Montserrat Alternates";
+                            font-size: 32px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+                    }
                 }
 
                 &:nth-child(1), .slide:nth-child(2) {
@@ -85,8 +125,41 @@
                     left: calc(20% + 926px);
                 }
 
-                &:nth-child(n + 5) {
+                &:nth-child(5) {
                     left: calc(20% + 1389px);
+                }
+
+                &:nth-child(n + 6) {
+                    left: calc(20% + 1852px);
+                }
+
+                &:nth-child(n + 2) {
+                    .slide__content {
+                        &__text {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+
+                            padding: 20px;
+
+                            h3 {
+                                visibility: collapse;
+                            }
+
+                            p {
+                                margin: 0;
+                                padding: 0;
+
+                                color: var(--white, #F6F6F6);
+                                font-family: "Montserrat Alternates";
+                                font-size: 22px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
+                            }
+                        }
+                    }
+                    
                 }
             }
         }
