@@ -44,7 +44,12 @@ export default function PromotionsSection({ className = '' }: PromotionsSectionP
                             <div 
                                 className='slide__content' 
                                 style={{ backgroundImage: `url(${PromotionsImageHelper.HotelInfo.image})` } as CSSProperties}>
-
+                                <div className='slide__content__text'>
+                                    <p>
+                                        {PromotionsImageHelper.HotelInfo.name}
+                                    </p>
+                                    
+                                </div>
                             </div>
                         </div>
                         <div 
@@ -53,7 +58,11 @@ export default function PromotionsSection({ className = '' }: PromotionsSectionP
                             <div 
                                 className='slide__content' 
                                 style={{ backgroundImage: `url(${PromotionsImageHelper.KlenInfo.image})` } as CSSProperties}>
-
+                                <div className='slide__content__text'>
+                                    <p>
+                                        {PromotionsImageHelper.KlenInfo.name}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div 
@@ -61,6 +70,11 @@ export default function PromotionsSection({ className = '' }: PromotionsSectionP
                             <div 
                                 className='slide__content'
                                 style={{ backgroundImage: `url(${PromotionsImageHelper.KarpatyInfo.image})` } as CSSProperties}>
+                                    <div className='slide__content__text'>
+                                    <p>
+                                        {PromotionsImageHelper.KarpatyInfo.name}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
