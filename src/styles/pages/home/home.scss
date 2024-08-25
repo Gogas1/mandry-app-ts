@@ -30,6 +30,10 @@
     .floor-container {
         display: flex;
 
+        &.partners-block {
+            margin-bottom: 60px;
+        }
+
         &.fifth-container {
             margin-top: 120px;
         }

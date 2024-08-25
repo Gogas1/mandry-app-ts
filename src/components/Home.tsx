@@ -18,6 +18,7 @@ import HousingsSection from './home/HousingsSection';
 import PromotionsSection from './home/PromotionsSection';
 import AccessbilitiesSection from './home/AccessbilitiesSection';
 import TopHotelsSection from './home/TopHotels.Section';
+import PartnersSection from './home/PartnersSection';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -230,6 +231,7 @@ export default function Home() {
                     <PromotionsSection className='floor-container fourth-container' />
                     <AccessbilitiesSection className='floor-container fifth-container' />
                     <TopHotelsSection />
+                    <PartnersSection className='floor-container partners-block'/>
                 </div>
             </div>            
         </>
