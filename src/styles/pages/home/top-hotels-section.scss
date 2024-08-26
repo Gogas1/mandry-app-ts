@@ -83,7 +83,7 @@
                                     height: auto;
                                     border-radius: 15px;
 
-                                    transition: all 0.5s ease;                            
+                                    transition: all 0.15s ease-in;                            
     
                                     &:hover {
                                         scale: 1.1;
@@ -133,7 +133,7 @@
                             left: -350px;
                             z-index: 1;
 
-                            transition: all 0.5s ease;
+                            transition: all 0.15s ease-in;
                         }
 
                         &.first {
@@ -156,7 +156,7 @@
                             left: 1700px;
                             z-index: 1;
 
-                            transition: 0.5s ease;
+                            transition: 0.15s ease-in;
                         }
 
                         &.next-ready {
@@ -192,7 +192,11 @@
                     box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
                     backdrop-filter: blur(10px);
 
-                    z-index: 2;
+                    z-index: 3;
+
+                    &:hover {
+                        border: 0;
+                    }
 
                     cursor: pointer;
 
