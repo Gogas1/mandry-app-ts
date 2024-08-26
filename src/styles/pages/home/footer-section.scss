@@ -1,0 +1,85 @@
+@use '../../mixins/typography' as *;
+
+.footer {
+    background: var(--grey-80, rgba(81, 81, 81, 0.80));
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 38px 0px rgba(255, 255, 255, 0.05) inset;
+    backdrop-filter: blur(34px);
+
+    padding: 60px 100px;
+
+    .links-list {
+
+        margin: 0;
+        padding: 0;
+
+        &__link {
+            @include font-regular-var2(14px);
+
+            a {
+                @include font-regular-var2(14px);
+            }
+            
+            list-style: none;
+        }
+    }
+
+    .upper-section {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        margin-bottom: 60px;
+
+        .section {
+
+            &--mandry {
+    
+            }
+
+            h4 {
+                margin: 0;
+                margin-bottom: 30px;
+
+                @include font-white-montserrat(22px);
+            }
+
+            .links-list {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                
+                &__link {
+
+                }
+            }
+        }
+    }
+
+    hr {
+        background: #F6F6F6;
+        height: 1px;
+    }
+
+    .rights {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin-top: 16.5px;
+
+        .links-list {
+            display: flex;
+            flex-direction: row;
+
+            &--left {
+                gap: 40px;
+            }
+
+            &--media {
+                gap: 30px;
+            }
+        }
+    }
+    
+}

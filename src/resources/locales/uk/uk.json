@@ -338,6 +338,39 @@
             },
             "Partners": {
                 "Caption": "П<decoratedA>a</decoratedA>ртне<decoratedP>p</decoratedP>и"
+            },
+            "Footer": {
+                "Sections": {
+                    "About": {
+                        "Caption": "Mandry",
+                        "News": "Новини",
+                        "Work": "Вакансії",
+                        "Chat": "Чат спільноти",
+                        "Investments": "Інвесторам і партнерам",
+                        "Contact": "Адреса і контактна інформація"
+                    },
+                    "Help": {
+                        "Caption": "Підтримка",
+                        "MSafe": "MandrySafe ",
+                        "TempHousing": "Тимчасове житло на Mandry",
+                        "Complainment": "Написати запит або скаргу",
+                        "Disabled": "Підтримка людей з інвалідністю",
+                        "Revokation": "Варіанти скасування бронювання"
+                    },
+                    "Info": {
+                        "Caption": "Інформація",
+                        "HelpCenter": "Довідковий центр",
+                        "ForTravelers": "Для Мандрівників",
+                        "ForOwners": "Для Власників житла",
+                        "StartOwner": "Розпочніть свій бізнес з Мандри і заробляйте"
+                    },
+                    "Rights": {
+                        "Copy": "2024 mandry, inc. ",
+                        "Privacy": "Кондефіційність",
+                        "Terms": "Умови",
+                        "Map": "Мапа сайту"
+                    }
+                }
             }
         }
     }
