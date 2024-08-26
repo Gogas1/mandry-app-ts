@@ -4,7 +4,7 @@ import arrowIcon from "../../assets/icons/meta/arrow.svg";
 import '../../styles/navbar/profile-links-popup.scss';
 import { useContext } from "react";
 import AuthContext from "../auth/AuthenticationContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface PopupProps {
     isOpen: boolean;
@@ -65,9 +65,9 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
                     <div className="panel-text big">{t('NavbarPopupProfileLinksTravelsLink')}</div>
                 </div>
 
-                <div className="panel-item" onClick={handleFavsTransition}>
+                <Link to={'/account/favourites'} className="panel-item" onClick={handleFavsTransition}>
                     <div className="panel-text big">{t('NavbarPopupProfileLinksFavouritesLink')}</div>
-                </div>
+                </Link>
 
                 <div className="divider"></div>
 
@@ -75,9 +75,9 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
                     <div className="panel-text">{t('NavbarPopupProfileLinksOfferHousingLink')}</div>
                 </div>
 
-                <div className="panel-item" onClick={handleAccountTransition}>
+                <Link to={'/account'} className="panel-item">
                     <div className="panel-text">{t('NavbarPopupProfileLinksAccountLink')}</div>
-                </div>
+                </Link>
 
                 <div className="divider"></div>
 

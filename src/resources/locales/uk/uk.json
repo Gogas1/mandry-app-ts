@@ -340,5 +340,10 @@
                 "Caption": "П<decoratedA>a</decoratedA>ртне<decoratedP>p</decoratedP>и"
             }
         }
+    },
+
+    "FavsPage": {
+        "Caption": "Обране",
+        "Edit": "Редагувати"
     }
 }
