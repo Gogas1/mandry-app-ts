@@ -14,19 +14,21 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
 
     const fillSamples = (count: number) => {
         const newItems = Array.from({ length: count }, (_, index) => (
-        <div className="list-item">
-            <img src="https://via.placeholder.com/150" alt="Placeholder Image"/>
-            <div className="text">
-                <div className="label">Name</div>
-                <div className="count">({index + 1})</div>
-            </div>
-        </div>
+            <>
+                <img src="https://via.placeholder.com/150" alt="Placeholder Image"/>
+                <div className="text">
+                    <div className="label">Name</div>
+                    <div className="count">({index + 1})</div>
+                </div>
+            </>
         ));
 
         return (
             <>
-                {newItems.map((item) => (
-                    item
+                {newItems.map((item, index) => (
+                    <div className="list-item" key={index}>
+                        {item}
+                    </div>
                 ))}
             </>
         );

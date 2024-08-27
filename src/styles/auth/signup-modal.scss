@@ -1,3 +1,5 @@
+@use '../mixins/typography' as *;
+
 @import url('../app/fonts.scss');
 
 .signup-modal-border {
@@ -144,8 +146,24 @@
         line-height: 120%; /* 14.4px */
     }
 
+    .sign-up-error {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        @include font-white(14px);
+
+        margin-top: 30px;
+
+        gap: 10px;
+
+        &.phone-result {
+            max-width: 440px;
+        }
+    }
+
     .continue-button {
-        margin-top: 40px;
+        margin-top: 30px;
 
         display: flex;
         height: 56px;

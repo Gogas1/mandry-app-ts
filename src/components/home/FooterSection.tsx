@@ -132,17 +132,17 @@ export default function FooterSection() {
                 </ul>
                 <ul className="links-list links-list--left">
                     <li className="links-list__link">
-                        <Link to={''}>
+                        <Link to={''} target="_blank">
                             <img src={instaIcon} />
                         </Link>
                     </li>
                     <li className="links-list__link">
-                        <Link to={''}>
+                        <Link to={''} target="_blank">
                             <img src={ttIcon} />
                         </Link>
                     </li>
                     <li className="links-list__link">
-                        <Link to={''}>
+                        <Link to={''} target="_blank">
                             <img src={fbIcon} />
                         </Link>
                     </li>

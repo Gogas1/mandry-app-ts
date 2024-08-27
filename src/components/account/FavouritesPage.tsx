@@ -1,26 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import '../../styles/account/favourites-page.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import heartEmpty from "../../assets/icons/meta/heart-empty.svg";
 import heartFilled from "../../assets/icons/meta/heart-filled.svg";
-import { useContext, useEffect } from 'react';
-import AuthContext from '../auth/AuthenticationContext';
 
 export default function FavouritesPage() {
-    const authContext = useContext(AuthContext);
-    if(!authContext) {
-        throw new Error('AuthContext must be used within an AuthProvider');
-    }
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if(!authContext.authState.isAuthenticated) {
-            navigate('/');
-        }
-    });
-
     const { t } = useTranslation();
     
     return (

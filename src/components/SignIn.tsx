@@ -37,7 +37,7 @@ export default function SignIn() {
             if (response.ok) {
                 const data = await response.json();
                 login(data.token, data.userData);
-                navigate("/");
+                // navigate("/");
               } else if (response.status === 400) {
                 const errorData = await response.json();
                 console.log(errorData.validationErrorsGrous);
@@ -70,7 +70,7 @@ export default function SignIn() {
             if (response.ok) {
                 const data = await response.json();
                 login(data.token, data.userData);
-                navigate("/");
+                // navigate("/"); 
               } else if (response.status === 400) {
                 const errorData = await response.json();
                 console.log(errorData.validationErrorsGrous);

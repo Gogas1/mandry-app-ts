@@ -22,7 +22,6 @@ export default function NavbarProfileItem({ onClick }: NavbarProfileItemProps) {
         } else {
             onClick("profilePopup");
         }
-        
     }
 
     return (

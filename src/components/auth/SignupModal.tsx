@@ -8,6 +8,7 @@ import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
+import warningIcon from '../../assets/icons/meta/warning.svg';
 
 import { useModal } from "../app/ModalContext";
 import AuthModal from "./AuthModal";
@@ -23,6 +24,11 @@ interface SignupModalProps {
     hideModal: () => void;
 }
 
+enum SignUpError {
+    INVALID_DATA = "INVALID_DATA",
+    USER_EXIST = "USER_EXIST"
+}
+
 export default function SignupModal({ hideModal }: SignupModalProps) {
     const authContext = useContext(AuthContext);
     if(!authContext) {
@@ -35,7 +41,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const { openModal, closeModal } = useModal();
 
     const [name, setName] = useState('');
-    const [surnname, setSurname] = useState('');
+    const [surname, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState<Date>(new Date());
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -45,11 +51,30 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const [loading, setLoading] = useState(false);
 
+    const [signUpError, setSignUpError] = useState<SignUpError>();
+
     const nameValidation = CredentialValidator.ValidateName(name);
     const birthdateValidation = CredentialValidator.ValidateBirthDate(birthdate);
-    const emailValidation = CredentialValidator.ValidateEmail(email);
-    const phoneValidation = CredentialValidator.ValidatePhone(phone);
-    const passwordValidation = CredentialValidator.ValidatePassword(password, true, passwordConfirmation);
+
+    let emailValidation: EmailValidationErrorCode | undefined;
+    let phoneValidation: PhoneValidationErrorCode | undefined;
+    let passwordValidation: PasswordValidationErrorCode | undefined;
+
+    const validateEPP = () => {
+        let emailNotValidated = CredentialValidator.ValidateEmail(email);
+        let passwordNotValidated = CredentialValidator.ValidatePassword(password, true, passwordConfirmation);
+        let phoneNotValidated = CredentialValidator.ValidatePhone(phone);
+
+        if(((emailNotValidated || passwordNotValidated) && !phoneNotValidated) || (!emailNotValidated && !passwordNotValidated)) {
+            return;
+        }
+
+        emailValidation = emailNotValidated;
+        passwordValidation = passwordNotValidated;
+        phoneValidation = phoneNotValidated;
+    }
+
+    validateEPP();
     
     const validatePasswords = (): boolean => {
         if(password && passwordConfirmation) {
@@ -112,6 +137,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const handleSignUpRequest = async () => {
         setLoading(true);
+        setSignUpError(undefined);
         if(validationPassed) {
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
@@ -124,34 +150,29 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     }, 
                     body: JSON.stringify({
                         name: name,
-                        surname: surnname,
+                        surname: surname,
                         phone: phone,
                         email: email,
                         password: password,
                         BirthDate: birthdate
                     })
                 });
-    
-                if(response.ok) {
+            
+                if (response.ok) {
                     const data = await response.json();
                     login(data.token, data.userData);
                     hideModal();
                     navigate("/");
                 } else if (response.status === 400) {
-                    const errorData = await response.json();
-                    console.log(errorData.validationErrorsGrous);
-                } else if (response.status === 401) {
-                    const errorData = await response.json();
-                    console.log(errorData);
-                } else if(response.status === 409) {
-                    const errorData = await response.json();
-                    console.log(errorData);
+                    setSignUpError(SignUpError.INVALID_DATA);
+                } else if (response.status === 409) {
+                    setSignUpError(SignUpError.USER_EXIST);
                 }
-            }
-            catch (error) {
-                console.log('error', error);
+            } catch (error) {
+                console.error('Error:', error);
             }
         }
+
         setLoading(false);
     }
 
@@ -243,12 +264,20 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="block phone-block">
                         <PhonePickerBlock 
                             onPhoneChange={phoneChangeHandle}
-                            validationMessage={phoneValidation ? t('Validation.SignUp.Phone.Required') : ''} 
+                            validationMessage={phoneValidation ? t(GetPhoneValidationErrorKey(phoneValidation)) : ''} 
                         />
                     </div>
                     <div className="agreement-text">
                         {t('SignUpAgreement')}
                     </div>
+                    {signUpError ? 
+                    (<>
+                        <div className="sign-up-error">
+                            <img src={warningIcon} />
+                            {t(GetSignUpAttemptErrorKey(signUpError))}
+                        </div>
+                    </>) :
+                    ''}
                     <button 
                         onClick={handleSignUpRequest}
                         className={`continue-button ${validationPassed ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button>
@@ -271,6 +300,15 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
             </button>  
         </>  
     );
+}
+
+function GetSignUpAttemptErrorKey(errorCode: SignUpError) {
+    switch (errorCode) {
+        case SignUpError.INVALID_DATA:
+            return "Validation.SignUp.Attempt.Invalid";
+        case SignUpError.USER_EXIST:
+            return "Validation.SignUp.Attempt.Conflict";
+    }
 }
 
 function GetNameValidationErrorKey(errorCode: NameValidationErrorCode) {

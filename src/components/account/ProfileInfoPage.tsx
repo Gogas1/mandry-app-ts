@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import personIcon from '../../assets/icons/profile/user-circle-stroke-rounded 1.svg';
 
@@ -18,10 +18,9 @@ import pawIcon from '../../assets/icons/profile/info/paw.svg';
 import wandIcon from '../../assets/icons/profile/info/wand.svg';
 import TextInputBorderless from '../app/Fields/TextInputBorderless';
 import { useTranslation } from 'react-i18next';
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useModal } from '../app/ModalContext';
 import TextPromptModal from './modals/TextPromptModal';
-import AuthContext from '../auth/AuthenticationContext';
 
 interface ProfileInfo {
     education?: string;
@@ -39,19 +38,6 @@ interface ProfileInfo {
 }
 
 export default function ProfileInfoPage() {
-    const authContext = useContext(AuthContext);
-    if(!authContext) {
-        throw new Error('AuthContext must be used within an AuthProvider');
-    }
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if(!authContext.authState.isAuthenticated) {
-            navigate('/');
-        }
-    });
-
     const { t } = useTranslation();
 
     const [profileInfo, setProfileInfo] = useState<ProfileInfo>(
