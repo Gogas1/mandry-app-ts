@@ -217,7 +217,7 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
                 }
             }
 
-            rows.push(<div className="days-row">{cells}</div>);
+            rows.push(<div key={i} className="days-row">{cells}</div>);
         }
 
         return rows;

@@ -4,7 +4,7 @@ import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
 
 import TextInputMaterial from "../app/TextInputMaterial";
-import React, { useContext, useEffect, useState } from "react";
+import React, { CSSProperties, useContext, useEffect, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
@@ -19,14 +19,16 @@ import AuthContext from "./AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import ValidationError from "../app/Validation/ValidationError";
 import CredentialValidator, { BirthDateErrorCode, EmailValidationErrorCode, NameValidationErrorCode, PasswordValidationErrorCode, PhoneValidationErrorCode } from "../../helpers/validation/CredentialValidator";
+import AgreementModal from "./AgreementModal";
 
 interface SignupModalProps {
     hideModal: () => void;
 }
 
-enum SignUpError {
+export enum SignUpError {
     INVALID_DATA = "INVALID_DATA",
-    USER_EXIST = "USER_EXIST"
+    USER_EXIST = "USER_EXIST",
+    UNKNOWN = "UNKNOWN" 
 }
 
 export default function SignupModal({ hideModal }: SignupModalProps) {
@@ -135,10 +137,22 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
         openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
     }
 
-    const handleSignUpRequest = async () => {
-        setLoading(true);
-        setSignUpError(undefined);
+    const handleAgreementTrans = () => {
         if(validationPassed) {
+            openModal('agreement', 
+                <AgreementModal 
+                    hideModal={() => { closeModal('agreement'); }}
+                    data={{ name: name, surname: surname, birthdate: birthdate, email: email, phone: phone, password: password }}
+                    errorCodeHandler={setSignUpError}
+                     />, 
+                { minWidth: '32.5%', maxWidth: '32.5%' } as CSSProperties);
+        }
+    }
+
+    const handleSignUpRequest = async () => {
+        if(validationPassed) {
+            setLoading(true);
+            setSignUpError(undefined);
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
             try {
@@ -279,8 +293,11 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     </>) :
                     ''}
                     <button 
-                        onClick={handleSignUpRequest}
+                        onClick={handleAgreementTrans}
                         className={`continue-button ${validationPassed ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button>
+                    {/* <button 
+                        onClick={handleSignUpRequest}
+                        className={`continue-button ${validationPassed ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button> */}
                     <div className="marketing-agreement">
                         {t('SignUpMarketingAgreement')}
                     </div>
@@ -308,6 +325,10 @@ function GetSignUpAttemptErrorKey(errorCode: SignUpError) {
             return "Validation.SignUp.Attempt.Invalid";
         case SignUpError.USER_EXIST:
             return "Validation.SignUp.Attempt.Conflict";
+        case SignUpError.UNKNOWN:
+            return "Validation.SignUp.Attempt.Unknown";
+        default:
+            return "Validation.SignUp.Attempt.Invalid";
     }
 }
 

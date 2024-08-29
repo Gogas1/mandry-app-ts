@@ -9,7 +9,7 @@
         visibility: collapse;
 
         &.opened {
-            visibility: visible;
+            visibility: inherit;
         }
     }
 }

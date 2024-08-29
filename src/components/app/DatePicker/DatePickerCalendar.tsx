@@ -152,7 +152,7 @@ function CalendarSection({ year, month, selectedDate, onDateSelected, goToDateHa
                 }
             }
 
-            rows.push(<div className="days-row">{cells}</div>);
+            rows.push(<div key={i} className="days-row">{cells}</div>);
         }
 
         return rows;

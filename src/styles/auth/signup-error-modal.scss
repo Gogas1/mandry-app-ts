@@ -1,0 +1,55 @@
+@use '../mixins/panel.scss' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/buttons' as *;
+
+.signup-error-modal-border {
+    @include border();
+
+    -webkit-mask-image: radial-gradient(circle 22px at calc(0%) calc(0% + 43px), transparent 100%, black 100%);
+    mask-image: radial-gradient(circle 22px at calc(0%) calc(0% + 43px), transparent 100%, black 100%);
+}
+
+.signup-error-modal-panel {
+    @include panel();
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 1;
+
+    gap: 30px;
+
+    -webkit-mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%);
+    mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%);
+
+    .logo {
+        height: 58px;
+        width: 58px;
+    }
+
+    .caption {
+        @include font-orange-montserrat(22px);
+
+        margin: 0;
+    }
+
+    .error {
+        text-align: center;
+        @include font-white(16px);
+
+        margin: 0;
+
+        .sign-in-link {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+.signup-error-modal-button {
+    @include border-button-back();
+
+    cursor: pointer;
+    transform: rotate(-90deg);
+}

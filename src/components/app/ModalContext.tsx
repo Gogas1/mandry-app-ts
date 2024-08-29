@@ -7,16 +7,21 @@ interface ModalContextProps {
   modalContent: ((hideModal: () => void) => ReactNode) | null;
   isModalVisible: boolean;
 
-  openModal: (id: string, component: ReactNode) => void;
+  openModal: (id: string, component: ReactNode, styles?: React.CSSProperties) => void;
   closeModal: (id: string) => void;
   isOpen: (id: string) => boolean;
 }
 
 const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
+type ModalEntry = {
+  component: ReactNode;
+  styles?: React.CSSProperties;
+};
+
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [activeModal, setActiveModal] = useState('');
-  const [modals, setModals] = useState<Map<string, ReactNode>>(new Map());
+  const [modals, setModals] = useState<Map<string, ModalEntry>>(new Map());
   const [modalContent, setModalContent] = useState<((hideModal: () => void) => ReactNode) | null>(null);
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -30,9 +35,9 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setModalVisible(false);
   };
 
-  const openModal = (id: string, component: ReactNode) => {
+  const openModal = (id: string, component: ReactNode, styles?: React.CSSProperties) => {
     if(!modals.has(id)) {
-      setModals(prev => new Map(prev).set(id, component));
+      setModals(prev => new Map(prev).set(id, { component, styles }));
     }
     
     setActiveModal(id);
@@ -51,8 +56,8 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ModalContext.Provider value={{ showModal, hideModal, modalContent, openModal, closeModal, isOpen, isModalVisible }}>
       {children}
-      {Array.from(modals.entries()).map(([id, component]) => (
-        <ModalTemplate key={id} onClose={() => closeModal(id)} isOpened={isOpen(id)}>
+      {Array.from(modals.entries()).map(([id, { component, styles }]) => (
+        <ModalTemplate key={id} onClose={() => closeModal(id)} isOpened={isOpen(id)} styles={styles}>
           {component}
         </ModalTemplate>
       ))}

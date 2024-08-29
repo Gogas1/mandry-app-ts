@@ -33,6 +33,17 @@
     font-weight: 400;
     line-height: 120%;
     text-decoration-line: underline;
+    cursor: pointer;
+}
+
+@mixin font-links-white($size) {
+    color: var(--white, #F6F6F6);
+    font-family: 'Comfortaa';
+    font-size: $size;
+    font-style: normal;
+    font-weight: 700;
+    text-decoration-line: underline;
+    cursor: pointer;
 }
 
 @mixin font-error($size) {
@@ -74,4 +85,30 @@
     &:visited {
         color: #AAA;
     }
+}
+
+@mixin font-regular-grey($size) {
+    color: var(--Grey-light-200, var(--grey-light-100, #CCC));
+    font-family: 'Comfortaa';
+    font-size: $size;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin font-orange($size) {
+    color: #FD941A;
+    font-family: 'Comfortaa';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@mixin font-orange-montserrat($size) {
+    color: var(--orange, #FD941A);
+    text-align: center;
+    font-family: "Montserrat Alternates";
+    font-size: $size;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

@@ -55,6 +55,28 @@
     }
 }
 
+@mixin button-gray {
+    padding: 18.5px 60px;
+
+    color: #F6F6F6;
+    font-family: "Montserrat Alternates";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    border-radius: 15px;
+    background: var(--grey-dark, #515151);
+    box-shadow: 0px 50px 7.7px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 14.2px 0px #08B1BD inset;
+    border: 0;
+
+    &:active {
+        border-radius: 15px;
+        background: linear-gradient(91deg, rgba(0, 0, 0, 0.00) 0%, rgba(8, 177, 189, 0.20) 98.22%), #515151;
+        box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;
+    }
+}
+
 @mixin panel-button {
     user-select: none;
 
@@ -75,4 +97,8 @@
     z-index: 2;
 
     cursor: pointer;
+}
+
+@mixin panel-button-back() {
+    
 }
