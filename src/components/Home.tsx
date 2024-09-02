@@ -20,6 +20,7 @@ import AccessbilitiesSection from './home/AccessbilitiesSection';
 import TopHotelsSection from './home/TopHotels.Section';
 import PartnersSection from './home/PartnersSection';
 import FooterSection from './home/FooterSection';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const { t } = useTranslation();
@@ -29,8 +30,6 @@ export default function Home() {
     const [selectedDestination, setSelectedDestination] = useState('');
 
     const [travelersValue, setTravelersValue] = useState('');
-
-    
 
     const formatTravelers = ({
         adults,
@@ -134,9 +133,9 @@ export default function Home() {
                                                 onBlur={onTravelersFieldBlur}
                                                 onChange={s => s}/>
                                         </div>
-                                        <button className='search-button'>
+                                        <Link to={'/search'} className='search-button'>
                                             <img src={searchIcon} alt='search' />
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className='popup-wrapper'>

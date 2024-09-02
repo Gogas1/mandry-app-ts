@@ -49,6 +49,8 @@
     }
 }
 
+@include font-face('Inter', '../../assets/fonts/Inter/Inter-VariableFont_opsz,wght', normal, normal);
+
 @include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Bold', bold);
 @include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Light', 300);
 @include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Medium', 500);

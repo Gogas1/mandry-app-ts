@@ -448,5 +448,71 @@
     "FavsPage": {
         "Caption": "Обране",
         "Edit": "Редагувати"
+    },
+    
+    "SearchPage": {
+        "SearchPanel": {
+            "Filters": {
+                "Filter1": {
+                    "Destination": "Напрямок",
+                    "Period": "Прибуття / Виїзд",
+                    "Travelers": "Мандрівники"
+                },
+                "FilterType": {
+                    "Selector": {
+                        "Label": "Тип помешкання",
+                        "Options": {
+                            "House": "Будинок",
+                            "Flat": "Квартира",
+                            "GuestHouse": "Гостьовий дім",
+                            "Hotel": "Готель",
+                            "None": "Не обрано"
+                        }
+                    }
+                },
+                "FilterRooms": {
+                    "Selector": {
+                        "Label": "Кімнати та спальні місця",
+                        "Options": {
+                            "Beds": "Ліжка",
+                            "Bedrooms": "Спальні",
+                            "Bathrooms": "Ванні кімнати"
+                        }
+                    }
+                },
+                "FilterPrice": {
+                    "Label": "Ціна за ніч"
+                },
+                "FilterFeatures": {
+                    "Features": {
+                        "Wifi": "Wi-Fi",
+                        "AC": "Кондиціонер",
+                        "Parking": "Парковка",
+                        "TV": "Телевізор",
+                        "Kitchen": "Кухня",
+                        "Washing": "Пральна машина"
+                    }
+                },
+                "FilterFilters": {
+                    "Label": "Фільтри"
+                }
+            }
+        }
+    },
+
+    "Features": {
+        "Wifi": "Wi-Fi",
+        "AC": "Кондиціонер",
+        "Parking": "Парковка",
+        "TV": "Телевізор",
+        "Kitchen": "Кухня",
+        "Washing": "Пральна машина"
+    },
+
+    "Popups": {
+        "Destinations": {
+            "Empty": "Не знайдено",
+            "Loading": "Пошук..."
+        }
     }
 }

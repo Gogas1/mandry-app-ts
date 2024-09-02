@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 src/rememberme
 .env
+src/assets/samples/
