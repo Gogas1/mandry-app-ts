@@ -217,9 +217,105 @@
     
     "MainPage": {
         "Sections": {
-            "Second" : {
+            "Second": {
                 "Caption": "Top destinations"
+            },
+            "Third": {
+                "Caption": "Categories of housing"
+            },
+            "Fourth": {
+                "Caption": "Best seasonal offers"
+            },
+            "Fifth": {
+                "Caption": "Choose housing with all conveniences"
+            },
+            "Sixth": {
+                "Caption": "Top hotels"
+            },
+            "Partners": {
+                "Caption": "Partners"
+            },
+            "Footer": {
+                "Sections": {
+                    "About": {
+                        "Caption": "Mandry",
+                        "News": "News",
+                        "Work": "Careers",
+                        "Chat": "Community chat",
+                        "Investments": "For investors and partners",
+                        "Contact": "Address and contact information"
+                    },
+                    "Help": {
+                        "Caption": "Support",
+                        "MSafe": "MandrySafe",
+                        "TempHousing": "Temporary housing on Mandry",
+                        "Complainment": "Submit a request or complaint",
+                        "Disabled": "Support for people with disabilities",
+                        "Revokation": "Booking cancellation options"
+                    },
+                    "Info": {
+                        "Caption": "Information",
+                        "HelpCenter": "Help center",
+                        "ForTravelers": "For travelers",
+                        "ForOwners": "For property owners",
+                        "StartOwner": "Start your business with Mandry and earn"
+                    },
+                    "Rights": {
+                        "Copy": "2024 mandry, inc.",
+                        "Privacy": "Privacy",
+                        "Terms": "Terms",
+                        "Map": "Site map"
+                    }
+                }
             }
+        }
+    },
+
+    "FavsPage": {
+        "Caption": "Favourites",
+        "Edit": "Edit"
+    },
+
+    "SearchPage": {
+        "SearchPanel": {
+            "Filters": {
+                "Filter1": {
+                    "Destination": "Destination",
+                    "Period": "Check-in / Check-out",
+                    "Travelers": "Travelers"
+                },
+                "FilterType": {
+                    "Selector": {
+                        "Label": "Category of housing",
+                        "Options": {
+                            "None": "Not selected"
+                        }
+                    }
+                },
+                "FilterRooms": {
+                    "Selector": {
+                        "Label": "Rooms and sleeping spaces",
+                        "Options": {
+                            "Beds": "Beds",
+                            "Bedrooms": "Bedrooms",
+                            "Bathrooms": "Bathrooms"
+                        }
+                    }
+                },
+                "FilterPrice": {
+                    "Label": "Price per night"
+                },
+                "FilterFilters": {
+                    "Label": "Filters"
+                }
+            }
+        }
+    },
+
+    "Popups": {
+        "Destinations": {
+            "Empty": "Not found",
+            "Loading": "Searching..."
         }
     }
 }

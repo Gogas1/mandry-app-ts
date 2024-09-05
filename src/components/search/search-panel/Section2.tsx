@@ -1,9 +1,10 @@
 import { Slider } from '@mui/material';
 import arrowBlue from '../../../assets/icons/meta/arrow-blue.svg';
 
-import { Trans, useTranslation } from "react-i18next";
-import { useState } from 'react';
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from 'react';
 import DropdownAddition, { DropdownOption } from '../../app/DropdownAddition';
+import i18n from '../../../i18n';
 
 export enum SearchHousingType {
     HOUSE = "HOUSE",
@@ -19,11 +20,25 @@ export interface SearchHousingRooms {
     bathrooms: number
 }
 
+type Category = {
+    id: string,
+    nameKey: string,
+    isCategoryPropertyRequired: boolean,
+    categoryPropertyDescriptionKey: string,
+    categoryTranslations: Translation[]
+    categoryPropertyTranslations: Translation[]
+}
+
+type Translation = {
+    key: string;
+    languageCode: string;
+    text: string;
+}
+
 export default function Section2() {
     const { t } = useTranslation();
     
     const [priceRange, setPriceRange] = useState<number[]>([9, 360]);
-    const [housingType, setHousingType] = useState<SearchHousingType>(SearchHousingType.NONE);
     
     const [bedsCounter, setBedsCounter] = useState(0);
     const [bedroomsCounter, setBedroomsCounter] = useState(0);
@@ -32,14 +47,71 @@ export default function Section2() {
     const [housingTypeDropdownOpened, setHousingTypeDropdownOpened] = useState(false);
     const [housingRoomsPopupOpened, setHousingRoomsPopupOpened] = useState(false);
 
-    const dropdownOptions = Object.values(SearchHousingType).map((item) => ({ value: item, display: t(formatHousingType(item)) } as DropdownOption));
+    const [categoriesOptions, setCategoriesOptions] = useState<DropdownOption[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<Category>();
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/c/get";
+
+                const result = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+
+                if(result.ok) {
+                    const data = await result.json();
+                    const categories = data.categories as Category[];
+
+                    categories.forEach(category => {
+                        if(category.categoryTranslations) {
+                            processCategoryTranslations(category.categoryTranslations);
+                        }
+                        if(category.categoryPropertyTranslations) {
+                            processCategoryTranslations(category.categoryPropertyTranslations);
+                        }
+                    });
+
+                    setCategoriesOptions(categories.map(category => {
+                        return { display: t(category.nameKey), value: category } as DropdownOption;
+                    }))
+                }
+            }
+            catch (error) {
+
+            }            
+        };
+
+        fetchCategories();
+    }, [i18n.language]);
+
+    const processCategoryTranslations = (translations: Translation[]) => {
+        const translationsByLanguage: Record<string, Record<string, string>> = {};
+
+        translations.forEach(translation => {
+            const { languageCode, key, text } = translation;
+
+            if(!translationsByLanguage[languageCode]) {
+                translationsByLanguage[languageCode] = {};
+            }
+
+            translationsByLanguage[languageCode][key] = text;
+        });
+
+        Object.keys(translationsByLanguage).forEach(languageCode => {
+            i18n.addResources(languageCode, 'translation', translationsByLanguage[languageCode]);
+        });
+    };
 
     const handlePriceRangeChange = (event: Event, newValue: number | number[]) => {
         setPriceRange(newValue as number[]);
     };
     
     const handleTypeChange = (option: DropdownOption) => {
-        setHousingType(option.value);
+        setSelectedCategory(option.value);
     }
 
     const formatHousingRooms = function (rooms: SearchHousingRooms): string {
@@ -87,12 +159,16 @@ export default function Section2() {
                             </div>
                             
                             {housingTypeDropdownOpened ? (
-                                <DropdownAddition options={dropdownOptions} onChange={handleTypeChange} className='type-dropdown' />
+                                <DropdownAddition options={categoriesOptions} onChange={handleTypeChange} className='type-dropdown' />
                             ) : ''}
                             
                         </div>
                         <div className='selected-type'>
-                            {t(formatHousingType(housingType))}
+                            {selectedCategory ? (
+                                t(selectedCategory.nameKey)
+                            ): (
+                                t('SearchPage.SearchPanel.Filters.FilterType.Selector.Options.None')
+                            )}
                         </div>
                     </div>
                     <div className='housing-bedroom-filter'>
@@ -205,19 +281,4 @@ export default function Section2() {
             </div>
         </>
     );
-}
-
-function formatHousingType(type: SearchHousingType): string {
-    switch (type) {
-        case SearchHousingType.FLAT:
-            return 'SearchPage.SearchPanel.Filters.FilterType.Selector.Options.Flat';
-        case SearchHousingType.GUEST_HOUSE:
-            return 'SearchPage.SearchPanel.Filters.FilterType.Selector.Options.GuestHouse';
-        case SearchHousingType.HOTEL:
-            return 'SearchPage.SearchPanel.Filters.FilterType.Selector.Options.Hotel';
-        case SearchHousingType.HOUSE:
-            return 'SearchPage.SearchPanel.Filters.FilterType.Selector.Options.House';
-        case SearchHousingType.NONE:
-            return 'SearchPage.SearchPanel.Filters.FilterType.Selector.Options.None';
-    }
 }

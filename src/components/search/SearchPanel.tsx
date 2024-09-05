@@ -10,16 +10,26 @@ import filtersIcon from '../../assets/icons/meta/settings.svg';
 
 import TextFieldMy from '../home/TextFieldMy';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TravelersPopup, { TravelersPopupData } from '../home/TravelersPopup';
 import DestinationPopup from '../home/DestinationPopup';
 import CalendarPopup from '../home/CalendarPopup';
 import CheckboxRound from '../app/CheckboxRound';
-import FeatureService, { Feature } from '../../helpers/FeatureService';
+// import FeatureService, { Feature } from '../../helpers/FeatureService';
 import Section2 from './search-panel/Section2';
+import { processTranslations, Translation } from '../../helpers/TranslationService';
 
 interface SearchPanelProps {
     className?: string;
+}
+
+type Feature = {
+    id: string,
+    nameCode: string,
+    descriptionCode: string,
+    featureIcon: string,
+
+    translations: Translation[]
 }
 
 export default function SearchPanel({ className = '' }: SearchPanelProps) {
@@ -33,11 +43,41 @@ export default function SearchPanel({ className = '' }: SearchPanelProps) {
 
     const [travelersValue, setTravelersValue] = useState('');
 
-    const [selectedFeatures, setSelectedFeatures] = useState<{feature: Feature, isChecked: boolean}[]>(
-        FeatureService.getFeatures().map(f => ({
-            feature: f,
-            isChecked: false
-        })));
+    const [selectedFeatures, setSelectedFeatures] = useState<{feature: Feature, isChecked: boolean}[]>([]);
+
+    useEffect(() => {
+        const fetchFeatures = async () => {
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/f/all";
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                if(response.ok) {
+                    const data = await response.json();
+                    const features = data.features as Feature[];
+
+                    features.forEach(feature => {
+                        if(feature.translations) {
+                            processTranslations(feature.translations);
+                        }
+                    });
+
+                    setSelectedFeatures(features.map(feature => {
+                        return { feature: feature, isChecked: false }
+                    }));
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchFeatures();
+    }, []);
 
     const handleFeatureCheck = (feature: Feature) => {
         setSelectedFeatures(prevSelectedFeatures =>
@@ -181,12 +221,15 @@ export default function SearchPanel({ className = '' }: SearchPanelProps) {
                 <Section2 />
                 <div className="filter-section filter-section--3">
                     <div className='filter-panel feature-filter'>
-                        {selectedFeatures.map((feature, index) => (
+                        {selectedFeatures.slice(0, 6).map((feature, index) => (
                             <div className='feature' key={index}>
                                 <div className='feature-main'>
-                                    <img src={feature.feature.icon} className='feature-icon' />
+                                    {/* <img src={feature.feature.featureIcon} className='feature-icon' /> */}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 20" fill="none" className='feature-icon'>
+                                        <path d={feature.feature.featureIcon} stroke="#515151" stroke-linecap="round"/>
+                                    </svg>
                                     <div className='feature-name'>
-                                        {t(feature.feature.nameKey)}
+                                        {t(feature.feature.nameCode)}
                                     </div>
                                 </div>
                                 <CheckboxRound
