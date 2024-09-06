@@ -16,6 +16,7 @@ import FavouritesPage from './components/account/FavouritesPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { AuthorizationProvider } from './components/auth/AuthorizationContext';
 import SearchPage from './components/search/SearchPage';
+import HousingPage from './components/housing/HousingPage';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
                 <Route path='/signin' element={<SignIn />} />
                 <Route path='/features' element={<Features />} />
                 <Route path='/search' element={<SearchPage />} />
+                <Route path='/housing' element={<HousingPage />} />
 
                 <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
                 <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />

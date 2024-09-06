@@ -1,6 +1,7 @@
 import '../../styles/search/result-panel.scss';
 
 import starIcon from '../../assets/icons/meta/star.svg';
+import { Link } from 'react-router-dom';
 
 export interface HousingResultItem {
     image: string;
@@ -19,9 +20,9 @@ export default function ResultPanel() {
         <section className="result-section">
             <div className="search-item-wrapper">
                 <div className='search-item-content'>
-                    <div className='image-container'>
+                    <Link to={'/housing'} className='image-container'>
                         <img className='image' src='https://via.placeholder.com/150' />
-                    </div>
+                    </Link>
                     <div className='labels'>
                         <label className='labels__name'>Квартира</label>
                         <label className='labels__description'>Яскрава квартира</label>

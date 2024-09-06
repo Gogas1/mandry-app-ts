@@ -514,5 +514,59 @@
             "Empty": "Не знайдено",
             "Loading": "Пошук..."
         }
+    },
+
+    "HousingPage": {
+        "Sections": {
+            "Components": {
+                "Bedrooms_one": "спальня",
+                "Bedrooms_few": "спальні",
+                "Bedrooms_many": "спалень",
+
+                "BedroomsNumbered_one": "{{number}} спальня",
+                "BedroomsNumbered_few": "{{number}} спальні",
+                "BedroomsNumbered_many": "{{number}} спалень",
+
+                "Guests_one": "гість",
+                "Guests_few": "гості",
+                "Guests_many": "гостей",
+
+                "GuestsNumbered_one": "{{number}} гість",
+                "GuestsNumbered_few": "{{number}} гості",
+                "GuestsNumbered_many": "{{number}} гостей",
+
+                "Bathrooms_one": "ванна кімната",
+                "Bathrooms_few": "ванні кімнати",
+                "Bathrooms_many": "ванних кімнат",
+
+                "BathroomsNumbered_one": "{{number}} ванна кімната",
+                "BathroomsNumbered_few": "{{number}} ванні кімнати",
+                "BathroomsNumbered_many": "{{number}} ванних кімнат"
+            },
+
+            "Description": {
+                "MoreButton": "Більше",
+                "LessButton": "Згорнути"
+            },
+
+            "Bedrooms": {
+                "Header": "Місце для сну",
+                "BedroomTitle": "Спальня",
+                "BedSizeOne_one": "{{number}} односпальне ліжко",
+                "BedSizeOne_few": "{{number}} односпальні ліжка",
+                "BedSizeOne_many": "{{number}} односпальних ліжок",
+
+                "BedSizeTwo_one": "{{number}} двоспальне ліжко",
+                "BedSizeTwo_few": "{{number}} двоспальні ліжка",
+                "BedSizeTwo_many": "{{number}} двоспальних ліжок"
+            },
+
+            "Features": {
+                "Header": "Зручності",
+                "MoreBtn": "Показати всі ({{number}})",
+                "LessBtn": "Згорнути"
+            }
+        }
+        
     }
 }

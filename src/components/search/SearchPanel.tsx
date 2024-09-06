@@ -224,7 +224,6 @@ export default function SearchPanel({ className = '' }: SearchPanelProps) {
                         {selectedFeatures.slice(0, 6).map((feature, index) => (
                             <div className='feature' key={index}>
                                 <div className='feature-main'>
-                                    {/* <img src={feature.feature.featureIcon} className='feature-icon' /> */}
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 20" fill="none" className='feature-icon'>
                                         <path d={feature.feature.featureIcon} stroke="#515151" stroke-linecap="round"/>
                                     </svg>

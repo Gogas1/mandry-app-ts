@@ -7,6 +7,15 @@
     line-height: normal;
 }
 
+@mixin font-monts-blue($size, $weight) {
+    color: #08B1BD;
+    font-family: "Montserrat Alternates";
+    font-size: $size;
+    font-style: normal;
+    font-weight: $weight;
+    line-height: normal;
+}
+
 @mixin font-regular($size) {
     color: var(--grey-dark, #515151);
     font-family: Comfortaa;
@@ -70,6 +79,15 @@
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
+}
+
+@mixin font-montserrat-gray-dark($size, $weight) {
+    color: #515151;
+    font-family: "Montserrat Alternates";
+    font-size: $size;
+    font-style: normal;
+    font-weight: $weight;
+    line-height: normal;
 }
 
 @mixin font-regular-var2($size) {

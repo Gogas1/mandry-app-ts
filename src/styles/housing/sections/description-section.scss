@@ -1,0 +1,21 @@
+@use '../../mixins/typography' as *;
+
+.description-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+
+    .text {
+        @include font-regular(16px);
+    }
+
+    .more-button {
+        @include font-links-black(16px);
+
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+    }
+}
