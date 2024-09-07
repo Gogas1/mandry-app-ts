@@ -15,6 +15,10 @@ import ComponentsSection from './sections/ComponentsSection';
 import DescriptionSection from './sections/DescriptionSection';
 import BedroomsSection from './sections/BedroomsSection';
 import FeaturesSection from './sections/FeaturesSection';
+import HousingCalendarSection from './sections/HousingCalendarSection';
+import { useParams } from 'react-router-dom';
+import FeatureService from '../../helpers/FeatureService';
+import i18n from '../../i18n';
 
 type Category = {
     id: string,
@@ -30,11 +34,16 @@ type Bedroom = {
     beds: Bed[]
 }
 
+type Image = {
+    id: string,
+    src: string,
+}
+
 export type Feature = {
     nameCode: string,
     descriptionCode: string,
-    featureIcon: string,
     typeCode: string,
+    featureIcon: Image,
 
     translations: Translation[]
 }
@@ -47,38 +56,73 @@ export type Bed = {
 export interface Housing {
     id: string,
     name: string,
-    country: string,
-    place: string,
+    locationCountry: string,
+    locationPlace: string,
     category: Category,
     bathrooms: number,
     maxGuests: number,
     description: string;
     shortDescription: string,
-    
+    pricePerNight?: number,
+
     bedrooms: Bedroom[],
-    images: string[],
-    features: Feature[]
+    images: Image[],
+    features: Feature[],
+    availableDates: Date[]
 }
 
 export default function HousingPage() {
-    const { t } = useTranslation();
+    const { t, ready } = useTranslation();
+    const { id } = useParams();
 
-    const [housingData, setHousingData] = useState<Housing>(housingA);
+    const [housingData, setHousingData] = useState<Housing>();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        processTranslations(housingData.category.categoryTranslations);
-        housingData.features.forEach(feature => {
-            processTranslations(feature.translations);
-        });
-    }, [housingData]);
+        if (!ready) return; 
+
+        const searchHousing = async () => {
+            setLoading(true);            
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/get/${id}`;
+    
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    const hd = data as Housing;
+
+                    console.log(hd.category);
+
+                    processTranslations(hd.category.categoryTranslations);
+                    hd.features.forEach(feature => {
+                        processTranslations(feature.translations);
+                    });
+
+                    setHousingData(hd);
+                    setLoading(false);
+                }
+            }
+            catch (error) {
+                console.error(error);
+                setLoading(false);  // Stop loading on error
+            }
+        };
+
+        searchHousing();
+    }, [id, ready]);
 
     return (
         <>
             <div className="housing-page">
                 <div className='housing-page-content'>
                     <section className='header-section'>
-                        <h1 className='housing-name'>
-                            {housingData.name}
+                        <h1 className={`housing-name ${!housingData ? 'loading' : ''}`}>
+                            {housingData ? housingData.name : ''}
                         </h1>
                         <div className='housing-actions'>
                             <img src={shareIcon} />
@@ -86,31 +130,50 @@ export default function HousingPage() {
                         </div>
                     </section>
                     <section className='housing-images-section'>
-                        <div className='big-picture-container'>
-                            <div className='big-picture-wrapper'>
-                                <img src={housingData.images[0]} />
-                            </div>   
-                        </div>
-                        <div className='small-pictures-container'>
-                            {housingData.images.slice(1, housingData.images.length > 4 ? 5 : housingData.images.length - 1).map((image, index) => (    
-                                <div className='small-picture-wrapper' key={index}>
-                                    <img src={image} key={index} />
-                                </div>                            
-                                
-                            ))}
-                        </div>
+                        {housingData ? (
+                            <>
+                                <div className='big-picture-container'>
+                                    <div className='big-picture-wrapper'>
+                                        <img src={FeatureService.getFeatureIcon(housingData.images[0].src)} />
+                                    </div>   
+                                </div>
+                                <div className='small-pictures-container'>
+                                    {housingData.images.slice(1, housingData.images.length > 4 ? 5 : housingData.images.length - 1).map((image, index) => (    
+                                        <div className='small-picture-wrapper' key={index}>
+                                            <img src={FeatureService.getFeatureIcon(image.src)} key={index} />
+                                        </div>                            
+                                        
+                                    ))}
+                                </div>
+                            </>
+                        ) : (
+                            ''
+                        )}
+                        
                     </section>
                     <div className='main-section'>
                         <div className='data-section'>
-                            <section className='location-section'>
-                                {`${housingData.place}, ${housingData.country}: ${t(housingData.category.nameKey)}`}
+                            <section className={`location-section ${!housingData ? 'loading' : ''}`}>
+                                {housingData ? (
+                                    `${housingData.locationPlace}, ${housingData.locationCountry}: ${t(housingData.category.nameKey)}`
+                                ) : (
+                                    1
+                                )}                                
                             </section>
-                            <ComponentsSection housingData={housingData} />
-                            <DescriptionSection housingData={housingData} />
-                            <hr className='divider' />
-                            <BedroomsSection housingData={housingData} />
-                            <hr className='divider' />
-                            <FeaturesSection housingData={housingData} />
+                            {housingData && !loading && ready ? (
+                                <>
+                                    <ComponentsSection housingData={housingData} />
+                                    <DescriptionSection housingData={housingData} />
+                                    <hr className='divider' />
+                                    <BedroomsSection housingData={housingData} />
+                                    <hr className='divider' />
+                                    <FeaturesSection housingData={housingData} />
+                                    <hr className='divider' />
+                                    <HousingCalendarSection onChange={s => s} housingData={housingData} />
+                                    <hr className='divider' />
+                                </>
+                            ) : ''}
+                            
                         </div>
                         <div className='rent-section'>
 
@@ -122,196 +185,26 @@ export default function HousingPage() {
     );
 }
 
-const housingA: Housing = {
-    id: "1234",
-    name: "Haus Hepi B&B біля озера Hallstatt 2",
-    images: [
-        image1,
-        image2,
-        image3,
-        image4,
-        image5
-    ],
-    country: "Австрія",
-    place: "Obertraun",
-    category: {
-        id: "1234",
-        nameKey: "category.room",
-        categoryTranslations: [
-            {
-                key: "category.room",
-                languageCode: "uk",
-                text: "Кімната"
-            }
-        ]
-    },
-    bathrooms: 2,
-    bedrooms: [
-        {
-            beds: [
-                { 
-                    type: "queen-size",
-                    size: 2
-                },
-                { 
-                    type: "queen-size",
-                    size: 1
-                }
-            ]
-        },
-        {
-            beds: [
-                { 
-                    type: "queen-size",
-                    size: 1
-                }
-            ]
-        }
-    ],
-    maxGuests: 5,
-    description: "Наш сімейний пансіонат ідеально розташований в ідилічному сільському містечку Обертраун в районі озер і гір Австрії, лише в декількох хвилинах ходьби від берегів озера Гальштат.Ми маємо чотири двомісні номери з сучасними ванними кімнатами та сонячними балконами з видом на гори, озеро та село. Ми надаємо туалетні принадлежности, фен і сейф у вашій кімнаті, і, звичайно, вся білизна та рушники включені. Крім того, ми маємо одну меншу двомісну кімнату з ванною кімнатою, яку можна використовувати для одномісного або двомісного проживання.Кожна спальня була традиційно мебльована, щоб відобразити наше альпійське оточення, і кожна з них має сучасну ванну кімнату з душем та туалетом.Сніданок входить до вартості вашого номера, ми пропонуємо обширний сніданок, який включає в себе вибір свіжозапечених рулетів, місцевого м 'яса, сирів, паштету та масла, домашніх консервів, круп, свіжих фруктів, яєць вільного діапазону та вибір гарячих та холодних напоїв. Наш просторий, сонячний зал для сніданку з панорамним видом на навколишній ліс, луги та гори. Показана ціна за номер за ніч з включенням сніданку.", 
-    shortDescription: "Наш B&B розташований у спокійному місці, недалеко від лісу в Обертрауні, пропонує комфортний дім з домашньої атмосфери.  Зручно розташовані залізнична станція, берег озера та автобусна зупинка знаходяться всього в п 'яти хвилинах ходьби. Відкрийте для себе затишне село з багатьма пішохідними та велосипедними доріжками, що ведуть безпосередньо від дверей.  Порада: - Спитайте про вечерю!",
-
-    features: [
-        {
-            nameCode: "features.hairdryer",
-            descriptionCode: "",
-            featureIcon: "hair-dryer",
-            typeCode: "features.types.bathroom",
-            translations: [
-                {
-                    key: "features.hairdryer",
-                    languageCode: "uk",
-                    text: "Фен"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "uk",
-                    text: "Ванна кімната"
-                },
-                {
-                    key: "features.hairdryer",
-                    languageCode: "en",
-                    text: "Hair dryer"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "en",
-                    text: "Bathroom"
-                },
-            ]
-        },
-        {
-            nameCode: "features.shampoo",
-            descriptionCode: "",
-            featureIcon: "shampoo",
-            typeCode: "features.types.bathroom",
-            translations: [
-                {
-                    key: "features.shampoo",
-                    languageCode: "uk",
-                    text: "Шампунь"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "uk",
-                    text: "Ванна кімната"
-                },
-                {
-                    key: "features.shampoo",
-                    languageCode: "en",
-                    text: "Shampoo"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "en",
-                    text: "Bathroom"
-                },
-            ]
-        },
-        {
-            nameCode: "features.hotwater",
-            descriptionCode: "",
-            featureIcon: "hot-water",
-            typeCode: "features.types.bathroom",
-            translations: [
-                {
-                    key: "features.hotwater",
-                    languageCode: "uk",
-                    text: "Гаряча вода"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "uk",
-                    text: "Ванна кімната"
-                },
-                {
-                    key: "features.hotwater",
-                    languageCode: "en",
-                    text: "Hot water"
-                },
-                {
-                    key: "features.types.bathroom",
-                    languageCode: "en",
-                    text: "Bathroom"
-                },
-            ]
-        },
-        {
-            nameCode: "features.smokeDetector",
-            descriptionCode: "",
-            featureIcon: "smoke-detector",
-            typeCode: "features.types.safety",
-            translations: [
-                {
-                    key: "features.smokeDetector",
-                    languageCode: "uk",
-                    text: "Детектор диму"
-                },
-                {
-                    key: "features.types.safety",
-                    languageCode: "uk",
-                    text: "Безпека помешкання"
-                },
-                {
-                    key: "features.smokeDetector",
-                    languageCode: "en",
-                    text: "Smoke detector"
-                },
-                {
-                    key: "features.types.safety",
-                    languageCode: "en",
-                    text: "Housing safety"
-                },
-            ]
-        },
-        {
-            nameCode: "features.extinguisher",
-            descriptionCode: "",
-            featureIcon: "extinguisher",
-            typeCode: "features.types.safety",
-            translations: [
-                {
-                    key: "features.extinguisher",
-                    languageCode: "uk",
-                    text: "Вогнегасник"
-                },
-                {
-                    key: "features.types.safety",
-                    languageCode: "uk",
-                    text: "Безпека помешкання"
-                },
-                {
-                    key: "features.extinguisher",
-                    languageCode: "en",
-                    text: "Fire extinguisher"
-                },
-                {
-                    key: "features.types.safety",
-                    languageCode: "en",
-                    text: "Housing safety"
-                },
-            ]
-        }
-    ]
+function getRandomDateWithinYear(year: number): Date {
+    // Randomly select a month (1-12), and convert to 0-based for Date constructor
+    const month = Math.floor(Math.random() * 12);
+  
+    // Get the number of days in the randomly chosen month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+    // Randomly select a day within the chosen month
+    const day = Math.floor(Math.random() * daysInMonth) + 1;
+  
+    // Return the random date
+    return new Date(year, month, day);
+  }
+  
+function generateRandomDatesArrayForYear(year: number, count: number): Date[] {
+    const randomDates: Date[] = [];
+  
+    for (let i = 0; i < count; i++) {
+      randomDates.push(getRandomDateWithinYear(year));
+    }
+  
+    return randomDates;
 }

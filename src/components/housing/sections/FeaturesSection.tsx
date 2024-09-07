@@ -16,6 +16,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
 
     const groupedFeatures = groupByProperty(housingData.features, "typeCode");
     const [groupA1, groupA2] = splitGroupsEqually(groupedFeatures);
+    const [groupB1, groupB2] = splitGroupsWithLimit(groupedFeatures, 5);
 
     return (
         <>
@@ -25,7 +26,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                 </h2>
                 <div className="features-columns">
                     <div className="features-columns__col">
-                        {Object.entries(groupA1).map(([type, feature], index) => {
+                        {Object.entries(isExpanded ? groupA1 : groupB1).map(([type, feature], index) => {
                             return (
                                 <>
                                     <div className="features-block" key={index}>
@@ -37,7 +38,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                 <>
                                                     <div className="feature" key={index}>
                                                         <div className="feature__icon">
-                                                            <img src={FeatureService.getFeatureIcon(f.featureIcon)} />
+                                                            <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>
                                                         
                                                         <div className="feature__data">
@@ -57,7 +58,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                         })}
                     </div>
                     <div className="features-columns__col">
-                        {Object.entries(groupA2).map(([type, feature], index) => {
+                        {Object.entries(isExpanded ? groupA2 : groupB2).map(([type, feature], index) => {
                             return (
                                 <>
                                     <div className="features-block" key={index}>
@@ -69,7 +70,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                 <>
                                                     <div className="feature" key={index}>
                                                         <div className="feature__icon">
-                                                            <img src={FeatureService.getFeatureIcon(f.featureIcon)} />
+                                                            <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>
                                                         <div className="feature__data">
                                                             <div className="feature__name">{t(f.nameCode)}</div>

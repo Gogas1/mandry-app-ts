@@ -8,7 +8,6 @@ export type Translation = {
 
 export function processTranslations(translations: Translation[]) {
     const translationsByLanguage: Record<string, Record<string, string>> = {};
-
     translations.forEach(translation => {
         const { languageCode, key, text } = translation;
 

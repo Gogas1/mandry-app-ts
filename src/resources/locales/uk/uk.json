@@ -565,6 +565,14 @@
                 "Header": "Зручності",
                 "MoreBtn": "Показати всі ({{number}})",
                 "LessBtn": "Згорнути"
+            },
+
+            "Calendar": {
+                "ClearBtn": "Очистити",
+                "Header1_one": "{{location}}: {{duration}} ніч",
+                "Header1_few": "{{location}}: {{duration}} ночі",
+                "Header1_many": "{{location}}: {{duration}} ночей",
+                "Header2": "{{startDate}} р. - {{endDate}} р."
             }
         }
         

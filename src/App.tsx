@@ -35,7 +35,7 @@ function App() {
                 <Route path='/signin' element={<SignIn />} />
                 <Route path='/features' element={<Features />} />
                 <Route path='/search' element={<SearchPage />} />
-                <Route path='/housing' element={<HousingPage />} />
+                <Route path='/housing/:id' element={<HousingPage />} />
 
                 <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
                 <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />

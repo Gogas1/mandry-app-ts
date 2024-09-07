@@ -1,5 +1,6 @@
 export default class FeatureService {
     static getFeatureIcon(name: string): string {
-        return `../assets/icons/features/${name}.svg`;
+        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL
+        return `${url}/${name}`;
     }
 }

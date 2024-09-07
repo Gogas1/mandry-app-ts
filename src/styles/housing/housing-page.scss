@@ -24,6 +24,12 @@
                 font-style: normal;
                 font-weight: 700;
                 line-height: normal;
+
+                &.loading {
+                    color: transparent;
+                    background: #b3cbdb;
+                    border-radius: 15px;
+                }
             }
 
             .housing-actions {
@@ -108,6 +114,12 @@
                     flex-direction: row;
 
                     @include font-white-panels-headers(22px);
+
+                    &.loading {
+                        color: transparent;
+                        border-radius: 15px;
+                        background: #b3cbdb;
+                    }
                 }
 
                 .divider {

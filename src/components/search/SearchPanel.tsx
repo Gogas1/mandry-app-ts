@@ -18,21 +18,29 @@ import CheckboxRound from '../app/CheckboxRound';
 // import FeatureService, { Feature } from '../../helpers/FeatureService';
 import Section2 from './search-panel/Section2';
 import { processTranslations, Translation } from '../../helpers/TranslationService';
+import FeatureService from '../../helpers/FeatureService';
 
 interface SearchPanelProps {
     className?: string;
+    searchHandler: () => void;
 }
 
-type Feature = {
+type Image = {
+    id: string,
+    src: string,
+}
+
+export type Feature = {
     id: string,
     nameCode: string,
     descriptionCode: string,
-    featureIcon: string,
+    typeCode: string,
+    featureIcon: Image,
 
     translations: Translation[]
 }
 
-export default function SearchPanel({ className = '' }: SearchPanelProps) {
+export default function SearchPanel({ className = '', searchHandler }: SearchPanelProps) {
     const { t } = useTranslation();
 
     const [openedPopup, setOpenedPopup] = useState('');
@@ -195,7 +203,7 @@ export default function SearchPanel({ className = '' }: SearchPanelProps) {
                                     onBlur={onTravelersFieldBlur}
                                     onChange={s => s}/>
                             </div>
-                            <button className='search-button'>
+                            <button className='search-button' onClick={searchHandler}>
                                 <img src={searchIcon} alt='search' />
                             </button>
                         </div>
@@ -224,9 +232,7 @@ export default function SearchPanel({ className = '' }: SearchPanelProps) {
                         {selectedFeatures.slice(0, 6).map((feature, index) => (
                             <div className='feature' key={index}>
                                 <div className='feature-main'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 20" fill="none" className='feature-icon'>
-                                        <path d={feature.feature.featureIcon} stroke="#515151" stroke-linecap="round"/>
-                                    </svg>
+                                    <img src={FeatureService.getFeatureIcon(feature.feature.featureIcon.src)} className='feature-icon' />
                                     <div className='feature-name'>
                                         {t(feature.feature.nameCode)}
                                     </div>
