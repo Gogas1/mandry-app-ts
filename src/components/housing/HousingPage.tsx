@@ -39,13 +39,22 @@ type Image = {
     src: string,
 }
 
+export type Parameter = {
+    id: string,
+    nameKey: string,
+    parameterKey: string,
+    defaultValue: string,
+    value: string
+}
+
 export type Feature = {
     nameCode: string,
     descriptionCode: string,
     typeCode: string,
     featureIcon: Image,
 
-    translations: Translation[]
+    translations: Translation[],
+    parameters: Parameter[]
 }
 
 export type Bed = {
@@ -95,8 +104,6 @@ export default function HousingPage() {
                 if (response.ok) {
                     const data = await response.json();
                     const hd = data as Housing;
-
-                    console.log(hd.category);
 
                     processTranslations(hd.category.categoryTranslations);
                     hd.features.forEach(feature => {

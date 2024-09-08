@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Feature, Housing } from "../HousingPage";
+import { Feature, Housing, Parameter } from "../HousingPage";
 
 import '../../../styles/housing/sections/features-section.scss';
 import { useState } from "react";
@@ -17,6 +17,18 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
     const groupedFeatures = groupByProperty(housingData.features, "typeCode");
     const [groupA1, groupA2] = splitGroupsEqually(groupedFeatures);
     const [groupB1, groupB2] = splitGroupsWithLimit(groupedFeatures, 5);
+
+    const processParameters = (params: Parameter[]) => {
+        const processedParams = params.reduce((acc, { value, parameterKey }) => {
+            acc[parameterKey] = value;
+            return acc;
+        }, {} as { [key: string]: string })
+
+        console.log(params);
+        console.log(processedParams);
+
+        return processedParams;
+    }
 
     return (
         <>
@@ -42,7 +54,11 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                         </div>
                                                         
                                                         <div className="feature__data">
-                                                            <div className="feature__name">{t(f.nameCode)}</div>
+                                                            <div className="feature__name">
+                                                                {!f.parameters ? t(f.nameCode) : (
+                                                                    t(f.nameCode, processParameters(f.parameters))
+                                                                )}
+                                                            </div>
                                                             {f.descriptionCode ? (
                                                                 <div className="feature__description">{t(f.descriptionCode)}</div>
                                                             ) : ''}
@@ -73,7 +89,11 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                             <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>
                                                         <div className="feature__data">
-                                                            <div className="feature__name">{t(f.nameCode)}</div>
+                                                            <div className="feature__name">
+                                                                {!f.parameters ? t(f.nameCode) : (
+                                                                    t(f.nameCode, processParameters(f.parameters))
+                                                                )}
+                                                            </div>
                                                             {f.descriptionCode ? (
                                                                 <div className="feature__description">{t(f.descriptionCode)}</div>
                                                             ) : ''}
