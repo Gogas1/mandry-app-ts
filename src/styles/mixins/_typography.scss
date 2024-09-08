@@ -130,3 +130,12 @@
     font-weight: 700;
     line-height: normal;
 }
+
+@mixin font-comfortaa-blue($size, $weight, $line-h: 100%) {
+    color: var(--blue, #08B1BD);
+    font-family: 'Comfortaa';
+    font-size: $size;
+    font-style: normal;
+    font-weight: $weight;
+    line-height: $line-h;
+}

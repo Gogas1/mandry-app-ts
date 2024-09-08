@@ -19,6 +19,7 @@ import HousingCalendarSection from './sections/HousingCalendarSection';
 import { useParams } from 'react-router-dom';
 import FeatureService from '../../helpers/FeatureService';
 import i18n from '../../i18n';
+import ImportantInfoSection from './sections/ImportantInfoSection';
 
 type Category = {
     id: string,
@@ -52,6 +53,8 @@ export type Feature = {
     descriptionCode: string,
     typeCode: string,
     featureIcon: Image,
+    isHouseRule: boolean,
+    isSafetyFeature: boolean
 
     translations: Translation[],
     parameters: Parameter[]
@@ -177,6 +180,8 @@ export default function HousingPage() {
                                     <FeaturesSection housingData={housingData} />
                                     <hr className='divider' />
                                     <HousingCalendarSection onChange={s => s} housingData={housingData} />
+                                    <hr className='divider' />
+                                    <ImportantInfoSection housingData={housingData} />
                                     <hr className='divider' />
                                 </>
                             ) : ''}

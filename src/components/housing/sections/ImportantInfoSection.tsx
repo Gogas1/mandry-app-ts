@@ -1,32 +1,43 @@
-import { useTranslation } from "react-i18next";
-import { Feature, Housing, Parameter } from "../HousingPage";
-
-import '../../../styles/housing/sections/features-section.scss';
+import { Trans, useTranslation } from "react-i18next";
+import { Feature, Housing } from "../HousingPage";
 import { useState } from "react";
 import FeatureService from "../../../helpers/FeatureService";
 
-interface FeaturesSectionProps {
-    housingData: Housing;
-}
+import '../../../styles/housing/sections/important-info-section.scss';
+import { Link } from "react-router-dom";
 
-export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
+interface ImportantInfoSectionProps {
+    housingData: Housing
+} 
+
+export default function ImportantInfoSection({ housingData }: ImportantInfoSectionProps) {
     const { t } = useTranslation();
 
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [rulesSectionExpanded, setRulesSectionExpanded] = useState(true);
+    const [safetySectionExpanded, setSafetySectionExpanded] = useState(true);
+    const [refundSectionExpanded, setRefundSectionExpanded] = useState(true);
 
-    const groupedFeatures = groupByProperty(housingData.features.filter(f => !f.isHouseRule), "typeCode");
-    const [groupA1, groupA2] = splitGroupsEqually(groupedFeatures);
-    const [groupB1, groupB2] = splitGroupsWithLimit(groupedFeatures, 5);
+    const groupRulesA = groupByProperty(housingData.features.filter(f => f.isHouseRule), "typeCode", 1);
+    const groupRulesB = groupByProperty(housingData.features.filter(f => f.isHouseRule), "typeCode");
+
+    const groupRulesSafetyA = groupByProperty(housingData.features.filter(f => f.isSafetyFeature), "typeCode", 1);
+    const groupRulesSafetyB = groupByProperty(housingData.features.filter(f => f.isSafetyFeature), "typeCode");
 
     return (
         <>
-            <section className="features-section">
+            <section className="important-info-section">
                 <h2 className="header">
-                    {t('HousingPage.Sections.Features.Header')}
+                    {t('HousingPage.Sections.IInfo.Header')}
                 </h2>
-                <div className="features-columns">
-                    <div className="features-columns__col">
-                        {Object.entries(isExpanded ? groupA1 : groupB1).map(([type, feature], index) => {
+                <section className="info-section">
+                    <h3 className="info-section__header">
+                        {t('HousingPage.Sections.IInfo.HouseRules.Header')}
+                    </h3>
+                    <p className="into-section__description">
+                        {t('HousingPage.Sections.IInfo.HouseRules.Description')}
+                    </p>
+                    <div className="features-col">
+                        {Object.entries(rulesSectionExpanded ? groupRulesA : groupRulesB).map(([type, feature], index) => {
                             return (
                                 <>
                                     <div className="features-block" key={index}>
@@ -60,8 +71,20 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                             );
                         })}
                     </div>
-                    <div className="features-columns__col">
-                        {Object.entries(isExpanded ? groupA2 : groupB2).map(([type, feature], index) => {
+                    <button 
+                        className="show-more-btn" 
+                        onClick={() => setRulesSectionExpanded(!rulesSectionExpanded)}>{t('HousingPage.Sections.IInfo.More')}
+                    </button>
+                </section>
+                <section className="info-section">
+                    <h3 className="info-section__header">
+                        {t('HousingPage.Sections.IInfo.Safety.Header')}
+                    </h3>
+                    <p className="into-section__description">
+                        {t('HousingPage.Sections.IInfo.Safety.Description')}
+                    </p>
+                    <div className="features-col">
+                        {Object.entries(rulesSectionExpanded ? groupRulesSafetyA : groupRulesSafetyB).map(([type, feature], index) => {
                             return (
                                 <>
                                     <div className="features-block" key={index}>
@@ -75,6 +98,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                         <div className="feature__icon">
                                                             <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>
+                                                        
                                                         <div className="feature__data">
                                                             <div className="feature__name">
                                                                 {!f.parameters ? t(f.nameCode) : (
@@ -85,7 +109,6 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                                                 <div className="feature__description">{t(f.descriptionCode)}</div>
                                                             ) : ''}
                                                         </div>
-                                                        
                                                     </div>
                                                 </>
                                             );
@@ -95,10 +118,30 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                             );
                         })}
                     </div>
-                </div>
-                <button className="show-more-btn" onClick={() => setIsExpanded(!isExpanded)}>
-                    {t(!isExpanded ? 'HousingPage.Sections.Features.MoreBtn' : 'HousingPage.Sections.Features.LessBtn', { number: housingData.features.length })}
-                </button>
+                    <button 
+                        className="show-more-btn" 
+                        onClick={() => setSafetySectionExpanded(!safetySectionExpanded)}>{t('HousingPage.Sections.IInfo.More')}
+                    </button>
+                </section>
+                <section className="info-section">
+                    <h3 className="info-section__header">
+                        {t('HousingPage.Sections.IInfo.Refund.Header')}
+                    </h3>
+                    <p className="into-section__description">
+                        <Trans 
+                            i18nKey={'HousingPage.Sections.IInfo.Refund.Description'}
+                            components={{
+                                linkA: <Link to={'/'} className="link" />
+                            }} />
+                    </p>
+                    <div>
+
+                    </div>
+                    <button 
+                        className="show-more-btn" 
+                        onClick={() => setRefundSectionExpanded(!refundSectionExpanded)}>{t('HousingPage.Sections.IInfo.More')}
+                    </button>
+                </section>
             </section>
         </>
     );
@@ -106,54 +149,15 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
 
 type GroupedRecord = Record<string, Feature[]>;
 
-function groupByProperty(items: Feature[], key: keyof Feature): GroupedRecord {
-    return items.reduce((acc, item) => {
-      const groupKey = item[key] as string;
-      if (!acc[groupKey]) {
-        acc[groupKey] = [];
-      }
-      acc[groupKey].push(item);
-      return acc;
+function groupByProperty(items: Feature[], key: keyof Feature, limit?: number): GroupedRecord {
+    return items.reduce((acc, item, index) => {        
+        if(index && index == limit) return acc;
+
+        const groupKey = item[key] as string;
+        if (!acc[groupKey]) {
+            acc[groupKey] = [];
+        }
+        acc[groupKey].push(item);
+        return acc;
     }, {} as GroupedRecord);
 }
-
-function splitGroupsEqually(grouped: GroupedRecord): [GroupedRecord, GroupedRecord] {
-    const keys = Object.keys(grouped);
-    const halfLength = Math.ceil(keys.length / 2);
-  
-    const group1: GroupedRecord = {};
-    const group2: GroupedRecord = {};
-  
-    keys.forEach((key, index) => {
-      if (index < halfLength) {
-        group1[key] = grouped[key];
-      } else {
-        group2[key] = grouped[key];
-      }
-    });
-  
-    return [group1, group2];
-}
-
-function splitGroupsWithLimit(grouped: GroupedRecord, limit: number): [GroupedRecord, GroupedRecord] {
-    const keys = Object.keys(grouped);
-    const halfLength = Math.ceil(keys.length / 2);
-  
-    const group1: GroupedRecord = {};
-    const group2: GroupedRecord = {};
-
-    let group1Counter = 0;
-    let group2Counter = 0;
-  
-    keys.forEach((key, index) => {
-      if (index < halfLength && group1Counter < limit) {
-        group1[key] = grouped[key];
-        group1Counter += grouped[key].length
-      } else if(group2Counter < limit) {
-        group2[key] = grouped[key];
-        group2Counter += grouped[key].length
-      }
-    });
-  
-    return [group1, group2];
-  }

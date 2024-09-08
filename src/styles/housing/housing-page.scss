@@ -106,10 +106,14 @@
             position: relative;
 
             .data-section {
+                margin-top: 40px;
                 max-width: 70%;
+                max-height: 150vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-right: 30px;
 
                 .location-section {
-                    margin-top: 40px;
                     display: flex;
                     flex-direction: row;
 

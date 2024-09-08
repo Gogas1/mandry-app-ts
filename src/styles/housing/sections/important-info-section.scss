@@ -1,0 +1,91 @@
+@use '../../mixins/typography' as *;
+
+.important-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .header {
+        @include font-white-panels-headers(22px);
+        margin: 0
+    }
+
+    .info-section {
+
+        .info-section__header {
+            @include font-comfortaa-blue(17px, 700, 120%);
+            margin: 0;
+        }
+
+        .into-section__description {
+            @include font-regular(16px);
+
+            .link {
+                @include font-links-black(16px);
+            }
+        }
+
+        .features-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .features-block {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+    
+                .features-type {
+                    @include font-montserrat-gray-dark(16px, 700);
+                    margin: 0;
+                }
+    
+                .feature {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid #08B1BD;
+                    padding-bottom: 18px;
+                    gap: 10px;
+    
+                    &__icon {
+                        width: 24px;
+                        height: 24px;
+    
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        height: 100%;
+                    }
+    
+                    &__data {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+    
+                    &__name {
+                        @include font-regular(16px);
+                    }
+    
+                    &__description {
+                        color: #AAA;
+                        font-family: Comfortaa;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%; /* 14.4px */
+                    }
+                }
+            }
+        }
+        
+        .show-more-btn {
+            margin-top: 20px;
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+            @include font-links-black(16px);
+        }
+    }
+}
