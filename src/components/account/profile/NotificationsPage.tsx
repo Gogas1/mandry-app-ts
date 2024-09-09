@@ -12,6 +12,7 @@ export default function NotificationsPage() {
     const { t } = useTranslation();
     const authContext = useContext(AuthContext);
     const [openedDropdown, setOpenedDropdown] = useState('');
+    const [sortCategory, setSortCategory] = useState('');
 
     const toggleDropdown = () => {
         if (openedDropdown === '') {
@@ -21,6 +22,18 @@ export default function NotificationsPage() {
             setOpenedDropdown('');
         }
     };
+
+    const closeDopdown = () => {
+        setOpenedDropdown('');
+    };
+
+    const handleSortCategory = (value: string) => {
+        setSortCategory(value);
+    };
+
+    const clearSortCategory = () => {
+        setSortCategory('');
+    }
 
     if (!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
@@ -47,7 +60,8 @@ export default function NotificationsPage() {
                             <NotificationDropdown 
                                 isOpen={openedDropdown === 'notificationDropdown'}
                                 toggleDropdown={toggleDropdown}
-
+                                closeDropdown={closeDopdown}
+                                assignCategory={handleSortCategory}
                             />
                             <div className='settings-icon'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -64,6 +78,12 @@ export default function NotificationsPage() {
                             <div className='no-notifications-text'>{t('Notifications.NotificatiosList.NoNotification')}</div>
                             <div className='no-notifications-description'>{t('Notifications.NotificatiosList.NoNotificationDescription')}</div>
                         </div>
+                        {sortCategory && (
+                        <div className='clear-sort'>
+                            <button className='clear-sort-button'
+                            onClick={clearSortCategory}
+                            >{t('Notifications.NotificatiosList.ClearSort')}</button>    
+                        </div> )}
                     </div>
                 </div>
                 <div className='mid'>
