@@ -1,0 +1,75 @@
+@use '../mixins/panel.scss' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/buttons' as *;
+
+.create-profile-modal-border {
+    @include border();
+}
+
+.create-profile-modal-panel {
+    @include panel();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .caption {
+        @include blue-heading-font(22px);
+        margin: 0;
+    }
+
+    .divider {
+        margin: 20px 0 30px 0;
+        width: 100%;
+        background-color: #F6F6F6;
+        height: 1px;
+        flex-shrink: 0;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        gap: 30px;
+
+        .logo {
+            height: 58px;
+            width: 58px;
+        }
+
+        .greetings {
+            @include font-orange-montserrat(22px);
+            margin: 0;
+
+            .decoratedName {
+                color: var(--orange, #FD941A);
+                font-family: 'Macondo';
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;    
+            }
+        }
+
+        .text {
+            @include font-white(16px);
+        }
+
+        .continue-button {
+            @include button-blue();
+            width: 100%;
+        }
+    }
+}
+
+.create-profile-modal-button {
+    @include border-button-back();
+    cursor: pointer;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}

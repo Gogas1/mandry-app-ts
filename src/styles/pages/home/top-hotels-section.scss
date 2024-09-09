@@ -1,0 +1,213 @@
+@use '../../mixins/typography' as *;
+
+.top-hotels-section {
+    display: flex;
+            flex-direction: column;
+            
+            .top-caption {
+                margin-top: 160px;
+
+                color: var(--blue, #08B1BD);
+                font-family: "Montserrat Alternates";
+                font-size: 60px;
+                font-style: normal;
+                font-weight: 500;
+
+                padding: 0 90px;
+
+                margin-bottom: 70px;
+
+                .decorated-T {
+                    color: var(--blue, #08B1BD);
+                    font-family: "Macondo Swash Caps";
+                    font-size: 60px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+
+                .decorated-I {
+                    font-family: 'Macondo Swash Caps';
+                    font-weight: 400;
+                    font-size: 50px;
+                }
+            }
+
+            .cards-wheel {
+                height: 900px;
+                position: relative;
+
+                overflow-x: hidden;
+                overflow-y: visible;
+
+                .cards-wheel-track {
+                    display: flex;
+                    flex-direction: row;
+
+                    position: relative;
+
+                    .card-wrapper {
+                        position: absolute;
+                        width: 455px;
+                        height: 703px;
+
+                        border-radius: 15px;
+                        border: 1px solid var(--white, #F6F6F6);
+
+                        padding: 5px;
+
+                        margin: 0 20px;
+
+                        box-sizing: border-box;
+
+                        transition: all 0.5s;
+
+                        .card {
+                            height: 100%;
+                            border-radius: 15px;
+                        
+                            box-sizing: border-box;
+    
+                            background: rgba(81, 81, 81, 0.30);
+    
+                            box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05), 0px 0px 68px 0px rgba(255, 255, 255, 0.15);
+                            backdrop-filter: blur(34px);
+
+                            overflow: hidden;
+
+                            &__image-wrapper {
+                                overflow: hidden;
+                                border-radius: 15px;
+
+                                &__image {
+                                    width: 100%;
+                                    height: auto;
+                                    border-radius: 15px;
+
+                                    transition: all 0.15s ease-in;                            
+    
+                                    &:hover {
+                                        scale: 1.1;
+                                    }
+                                }
+                            }
+                            
+    
+                            &__name {
+                                color: #F6F6F6;
+
+                                font-family: "Montserrat Alternates";
+                                font-size: 22px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
+    
+                                margin: 0 30px;
+    
+                                margin-top: 30px
+                            }
+    
+                            &__text {
+                                @include font-white(16px);
+    
+                                margin: 0 30px;
+    
+                                margin-top: 20px;
+                            }
+
+                            &:hover {
+                                border-radius: 15px;
+                                background: rgba(81, 81, 81, 0.30);
+                                box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                                backdrop-filter: blur(34px);
+
+                                // scale: 1.05;
+                            }
+                        }
+
+                        &.previous-ready {
+                            left: -800px;
+                            opacity: 0;
+                        }
+
+                        &.previous {
+                            left: -350px;
+                            z-index: 1;
+
+                            transition: all 0.15s ease-in;
+                        }
+
+                        &.first {
+                            left: 165px;
+
+                            margin-top: 70px;
+                        }
+
+                        &.second {
+                            left: 675px;
+                        }
+
+                        &.third {
+                            left: 1190px;
+
+                            margin-top: 70px;
+                        }
+
+                        &.next {
+                            left: 1700px;
+                            z-index: 1;
+
+                            transition: 0.15s ease-in;
+                        }
+
+                        &.next-ready {
+                            left: 2250px;
+                            opacity: 0;
+                        }
+
+                        &.offscreen {
+                            opacity: 0;
+
+                            left: 2250px;
+
+                            transition: left 0s ease 0.5s;
+                        }
+                    }
+                }   
+
+                .wheel-control {
+                    user-select: none;
+
+                    position: absolute;                    
+                    top: 45%;
+                    width: 52px;
+                    height: 52px;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 48px;
+                    border: 1px solid var(--white, #F6F6F6);
+                    background: rgba(255, 255, 255, 0.03);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                    backdrop-filter: blur(10px);
+
+                    z-index: 3;
+
+                    &:hover {
+                        border: 0;
+                    }
+
+                    cursor: pointer;
+
+                    &--back {
+                        left: 100px;
+                    }
+
+                    &--forward {
+                        right: 100px;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }

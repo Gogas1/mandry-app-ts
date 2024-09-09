@@ -1,0 +1,87 @@
+@use '../../mixins/typography' as *;
+
+.features-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    
+    .header {
+        margin: 0;
+        padding: 0;
+
+        @include font-montserrat-gray-dark(20px, 600);
+    }
+
+    .features-columns {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        gap: 60px;
+
+        &__col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .features-block {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .features-type {
+                    @include font-montserrat-gray-dark(16px, 700);
+                    margin: 0;
+                }
+
+                .feature {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid #08B1BD;
+                    padding-bottom: 18px;
+                    gap: 10px;
+
+                    &__icon {
+                        width: 24px;
+                        height: 24px;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        height: 100%;
+                    }
+
+                    &__data {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+
+                    &__name {
+                        @include font-regular(16px);
+                    }
+
+                    &__description {
+                        color: #AAA;
+                        font-family: Comfortaa;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%; /* 14.4px */
+                    }
+                }
+            }
+        }
+    }
+
+    .show-more-btn {
+        @include font-links-black(16px);
+
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+    }
+}

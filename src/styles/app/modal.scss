@@ -13,17 +13,20 @@
   &.hidden {
     visibility: collapse;
 
+    // * {
+    //   visibility: collapse;
+    // }
+
     // .modal-content {
     //   scale: 0.1;
     // }    
   }
 
   .modal-content {
+    max-height:  85%;
     position: relative;
     scale: 1;
-
-    transition: scale 0.3s ease;
-    // min-width: 475px;
+    display: flex;
   }
 
   // .modal-border {

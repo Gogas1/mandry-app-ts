@@ -7,16 +7,17 @@ interface ModalTemplateProps {
     children: ReactNode;
     isOpened: boolean;
     onClose: () => void;
+    styles?: React.CSSProperties;
 }
 
-export default function ModalTemplate({ children, isOpened, onClose }: ModalTemplateProps) {
+export default function ModalTemplate({ children, isOpened, styles, onClose }: ModalTemplateProps) {
   const { modalContent, isModalVisible } = useModal();
 
   // if (!isModalVisible || !modalContent) return null;
 
   return (
     <div className={`modal-overlay ${!isOpened ? 'hidden' : ''}`}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={styles}>
         {isModalVisible && modalContent ? modalContent(onClose) : ''}
         {/* <div className='modal-border'></div>
         <div className='modal-panel'>

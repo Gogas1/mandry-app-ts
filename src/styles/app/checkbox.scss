@@ -9,8 +9,6 @@
     -ms-user-select: none;
     user-select: none;
 
-    
-  
     input {
       position: absolute;
       opacity: 0;
@@ -20,10 +18,6 @@
 
       
     }
-  
-    // &:hover input ~ .checkmark {
-    //   background-color: rgba($color: #dfa963, $alpha: 0.25) ;
-    // }
   
     input:checked ~ .checkmark {
         border-color: #FD941A;

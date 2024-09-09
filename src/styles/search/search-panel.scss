@@ -1,0 +1,332 @@
+@use '../mixins/typography' as *;
+@use '../mixins/buttons' as *;
+@use '../mixins/panel.scss' as *;
+
+.filters-section {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+
+    .filter-section {
+        display: flex;
+        .border {
+            border-radius: 20px;
+            border: 1px solid #AAA;
+            width: 100%;
+            padding: 5px;
+
+            .panel {
+                border-radius: 15px;
+                background:rgba(81, 81, 81, 0.80);
+                box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+                backdrop-filter: blur(34px);
+                padding: 30px;
+                height: 100%;
+
+                .input-group {
+                    display: flex;
+                    gap: 10px;
+                    align-items: end;
+
+                    @include font-white(16px);
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                .divider {
+                    height: 1px;
+                    width: 100%;
+                    flex-shrink: 0;
+                    background-color: #08B1BD;
+                    margin: 20px 0;
+                }
+
+                .search-button {                    
+                    @include button-blue();
+
+                    margin-top: 30px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .filter-panel {
+            border-radius: 15px;
+            border: 1px solid #AAA;
+            padding: 20px;
+        }
+
+        &--1 {
+            min-width: 310px;
+
+            .popup-wrapper {
+                position: relative;
+                
+                z-index: 4;
+            }
+        }
+
+        &--2 {
+            flex: 0.5;
+            display: flex;
+            flex-direction: column;
+
+            gap: 20px;
+
+            .housing-comp-filter {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                .selector {
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    label {
+                        @include font-white-panels-headers(16px);
+                    }
+
+                    .img-container {
+                        width: 24px;
+                        height: 24px;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        cursor: pointer;
+
+                        user-select: none;
+
+                        img {
+                            transition: transform 0.3s ease-in-out;
+    
+                            &.opened {
+                                transform: rotate(0deg);
+                            }
+    
+                            &.closed {
+                                transform: rotate(90deg);
+                            }
+                        }
+                    }
+
+                    .type-dropdown {
+                        position: absolute;
+
+                        top: calc(100% + 10px);
+                        left: calc(100% - 24px);                       
+                    }
+
+                    &--rooms {
+                        .rooms-popup {
+                            border-radius: 15px;
+                            background: var(--grey-80, rgba(81, 81, 81, 0.80));
+                            box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                            backdrop-filter: blur(24px);
+
+                            position: absolute;
+                            top: calc(100% + 10px);
+                            left: calc(100% - 24px);
+                            padding: 20px;
+
+                            z-index: 1;
+
+                            min-width: 275px;
+
+                            .room-item {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                word-break: break-all;
+
+                                @include font-white(16px);
+
+                                .controls-block {
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    width: 82px;
+
+                                    justify-content: space-between;
+
+                                    @include font-white(14px);
+
+                                    .counter-control {
+                                        width: 24px;
+                                        height: 24px;
+                
+                                        border: 1px solid #F6F6F6;
+                                        border-radius: 12px;
+                                        background-color: #08B1BD;
+                
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                    
+                                        flex-shrink: 0;
+                
+                                        &:active {
+                                            border-color: transparent;
+                                        }
+                
+                                        &.travelers-decrease {
+                                            .line {
+                                                height: 1px;
+                                                flex: 1;
+                                                background-color: #F6F6F6;
+                                            }
+                                        }
+                                        
+                                        &.travelers-increase {
+                                            color: #F6F6F6;
+                                            font-size: 18px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .divider {
+                                background-color: #08B1BD;
+                                height: 1px;
+                                width: 100%;
+
+                                margin: 10px 0 20px 0;
+                            }
+                        }
+                        
+                    }
+                }
+
+                .housing-type-filter {
+                    display: flex;
+                    flex-direction: column;
+
+                    gap: 15px;
+
+                    .selected-type {
+                        @include font-regular(14px);
+                    }
+                }
+
+                .housing-bedroom-filter {
+                    display: flex;
+                    flex-direction: column;
+
+                    gap: 15px;
+
+                    .selected-bedrooms {
+                        @include font-regular(14px);
+                    }
+                }
+            }
+
+            .price-filter {
+                display: flex;
+                flex-direction: column;
+                
+                .caption-block {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .caption {
+                        @include font-white-panels-headers(16px);
+                    }
+
+                    .currency-label {
+                        color: var(--blue, #08B1BD);
+                        font-family: Inter;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
+
+                .slider-block {
+
+                }
+
+                .minmax-block {
+                    color: #08B1BD;
+                    font-family: 'Inter';
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+        &--3 {
+            flex: 0.5;
+            display: flex;
+            flex-direction: column;
+
+            gap: 20px;
+
+            .feature-filter {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+
+                gap: 10px;
+
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                .feature {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: start;
+                    justify-content: space-between;
+
+                    height: 24px;
+
+                    .feature-main {
+                        display: flex;
+                        flex-direction: row;
+                        height: 100%;
+
+                        gap: 10px;
+
+                        .feature-icon {
+                            width: 24px;
+                            height: 24px;
+                        }
+
+                        .feature-name {
+                            display: flex;
+                            align-items: center;
+
+                            @include font-regular(16px);
+                        }
+                    }
+                }
+            }
+
+            .filters-filter {
+                @include font-white-panels-headers(16px);
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+    }
+}

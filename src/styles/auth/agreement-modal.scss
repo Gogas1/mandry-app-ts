@@ -1,0 +1,101 @@
+@use '../mixins/panel.scss' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/buttons' as *;
+
+.agreement-modal-border {
+    @include border();
+
+    -webkit-mask-image: radial-gradient(circle 22px at calc(0%) calc(0% + 43px), transparent 100%, black 100%);
+    mask-image: radial-gradient(circle 22px at calc(0%) calc(0% + 43px), transparent 100%, black 100%);
+}
+
+.agreement-modal-panel {
+    @include panelInverse();
+    
+    display: flex;
+    flex-direction: column;
+
+    -webkit-mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%);
+    mask-image: radial-gradient(circle 20px at calc(0% - 6px) calc(0% + 37px), transparent 95%, black 100%);
+
+    &__icon {
+        height: 38px;
+        width: 38px;
+
+        margin-bottom: 20px;
+    }
+
+    &__caption {
+        color: var(--orange, #FD941A);
+        
+        font-family: Comfortaa;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+
+        margin: 0;
+        margin-bottom: 24px;
+    }
+
+    &__definition {
+        @include blue-heading-font(20px);
+
+        .decorated-name {
+            font-family: 'Macondo';
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        margin: 0;
+        margin-bottom: 24px
+    }
+
+    &__proceed {
+        @include font-regular-grey(16px);
+
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &__agreement {
+        @include font-regular-grey(16px);
+
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    &__more {
+        @include font-links-white(17px);
+
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    &__continue-btn {
+        @include button-blue();
+
+        margin-bottom: 30px;
+
+        &:active:not(.disabled) {
+            background: linear-gradient(107deg, #08B1BD 31.42%, #FC712C 98.19%);
+            box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;  
+        }
+
+        &.disabled {
+            border-radius: 15px;
+            background: var(--grey-light-300, #AAA);
+        }
+    }
+
+    &__back-btn {
+        @include button-gray();
+    }
+}
+
+.agreement-modal-button {
+    @include border-button-back();
+    cursor: pointer;
+
+    transform: rotate(-90deg);
+}

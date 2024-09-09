@@ -3,12 +3,14 @@ import { addMonths, GetMonthCode, IsDatesEqual } from "../../helpers/DateUtils";
 import { useState } from "react";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
+import arrowGreyIcon from '../../assets/icons/meta/arrow-grey.svg';
 
 import "../../styles/pages/home/calendar-popup.scss";
 
 interface PopupProps {
     isOpen: boolean;
     closeAll: () => void;
+    onChange: (dateOne: Date | undefined, dateTwo: Date | undefined) => void;
 }
 
 interface MonthYear {
@@ -18,8 +20,9 @@ interface MonthYear {
 
 
 
-export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
+export default function CalendarPopup({ isOpen, closeAll, onChange }: PopupProps) {
     const currentDate = new Date();
+    currentDate.setHours(0,0,0,0);
     const nextDate = addMonths(currentDate, 1);
 
     const [firstMonth, setFirstMonth] = useState<MonthYear>({
@@ -34,12 +37,8 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
     const [dateOne, setDateOne] = useState<Date | undefined>();
     const [dateTwo, setDateTwo] = useState<Date | undefined>();
 
-    const handleSwitching = () => {
-        const newFirstMonth = addMonths(new Date(firstMonth.year, firstMonth.month, 1), 2);
-        const newSecondMonth = addMonths(new Date(secondMonth.year, secondMonth.month, 1), 2);
-
-        setFirstMonth({ year: newFirstMonth.getFullYear(), month: newFirstMonth.getMonth() });
-        setSecondMonth({ year: newSecondMonth.getFullYear(), month: newSecondMonth.getMonth() });
+    const getPrevMonthAvailability = (): boolean => {
+        return currentDate.getFullYear() < firstMonth.year || (currentDate.getFullYear() === firstMonth.year && currentDate.getMonth() < firstMonth.month);
     }
 
     const handleHiding = () => {
@@ -48,27 +47,55 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         closeAll();
     }
 
+    const handleSwitching = () => {
+        const newFirstMonth = addMonths(new Date(firstMonth.year, firstMonth.month, 1), 2);
+        const newSecondMonth = addMonths(new Date(secondMonth.year, secondMonth.month, 1), 2);
+
+        setFirstMonth({ year: newFirstMonth.getFullYear(), month: newFirstMonth.getMonth() });
+        setSecondMonth({ year: newSecondMonth.getFullYear(), month: newSecondMonth.getMonth() });
+    }
+
+    const handleSwitchingBack = () => {
+        if(getPrevMonthAvailability()) {
+            const newFirstMonth = addMonths(new Date(firstMonth.year, firstMonth.month, 1), -2);
+            const newSecondMonth = addMonths(new Date(secondMonth.year, secondMonth.month, 1), -2);
+    
+            setFirstMonth({ year: newFirstMonth.getFullYear(), month: newFirstMonth.getMonth() });
+            setSecondMonth({ year: newSecondMonth.getFullYear(), month: newSecondMonth.getMonth() });
+        }
+        else {
+            handleHiding();
+        }
+    }
+
+    
+
     const handleDateSelection = (date: Date) => {
         if(IsDatesEqual(date, dateOne)) {
             setDateOne(undefined);
+            onChange(undefined, dateTwo);
             return;
         } 
         if(IsDatesEqual(date, dateTwo)) {
             setDateTwo(undefined);
+            onChange(dateOne, undefined);
             return;  
         } 
 
         if(!dateOne && !dateTwo) {
             setDateOne(date);
+            onChange(date, undefined);
             return;
         }
 
         if(dateOne && !dateTwo) {
             if(date > dateOne) {
                 setDateTwo(date);
+                onChange(dateOne, date);
             } else if(date < dateOne) {
                 setDateTwo(dateOne);
                 setDateOne(date);
+                onChange(date, dateOne);
             }
             
             return;
@@ -77,9 +104,11 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         if(!dateOne && dateTwo) {
             if(date < dateTwo) {
                 setDateOne(date);
+                onChange(date, dateTwo);
             } else if(date > dateTwo) {
                 setDateOne(dateTwo);
                 setDateTwo(date);
+                onChange(dateTwo, date);
             }
             return;
         }
@@ -87,8 +116,10 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         if(dateOne && dateTwo) {
             if(date > dateOne) {
                 setDateTwo(date);
+                onChange(dateOne, date);
             } else {
                 setDateOne(date);
+                onChange(date, dateTwo);
             }
         }
     }
@@ -106,6 +137,8 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
         return false;
     }
 
+    
+
     return (
         <>
             <div className={`calendar-popup ${isOpen ? 'opened' : 'closed'}`}>
@@ -121,6 +154,7 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
                             selectToStart={getSelectToStartValue()}
                             selectToEnd={getSelectToStartValue()}
                             onDateSelected={handleDateSelection}
+                            minDate={currentDate}
                             />
                         </div>
                         <div className="divider"></div>
@@ -132,13 +166,15 @@ export default function CalendarPopup({ isOpen, closeAll }: PopupProps) {
                                 selectionEndDate={dateTwo}
                                 selectToStart={getSelectToStartValue()}
                                 selectToEnd={getSelectToStartValue()}
-                                onDateSelected={handleDateSelection} />
+                                onDateSelected={handleDateSelection}
+                                minDate={currentDate} />
                         </div>
                     </div>
-                    <div className="calendar-popup-close" onClick={handleHiding}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" viewBox="0 0 6 12" fill="none">
-                            <path d="M5.83607 0.665732C6.03477 0.866619 6.05284 1.18097 5.89026 1.40249L5.83607 1.46596C3.35121 3.97797 3.35121 8.02202 5.83607 10.534C6.03477 10.7349 6.05284 11.0493 5.89026 11.2708L5.83607 11.3343C5.63736 11.5352 5.32642 11.5534 5.1073 11.3891L5.04453 11.3343L0.163932 6.40011C-0.0347744 6.19922 -0.0528373 5.88487 0.109741 5.66335L0.163932 5.59989L5.04453 0.665732C5.26311 0.444756 5.61749 0.444756 5.83607 0.665732Z" fill="#AAAAAA"/>
-                        </svg>
+                    <div className={`calendar-popup-close ${getPrevMonthAvailability() ? 'available' : 'unavailable'}`} onClick={handleSwitchingBack}>
+                        {getPrevMonthAvailability() ? 
+                            (<img src={arrowIcon} alt="next" />) 
+                            : 
+                            (<img src={arrowGreyIcon} alt="next" />)}
                     </div>
                     <div className="calendar-popup-next" onClick={handleSwitching}>
                         <img src={arrowIcon} alt="next" />
@@ -161,10 +197,12 @@ interface CalendarSectionProps {
     selectToStart: boolean;
     selectToEnd: boolean;
 
+    minDate?: Date
+
     onDateSelected: (date: Date) => void;
 }
 
-function CalendarSection({ year, month, selectionStartDate, selectionEndDate, selectToStart, selectToEnd, onDateSelected }: CalendarSectionProps) {
+function CalendarSection({ year, month, selectionStartDate, selectionEndDate, selectToStart, selectToEnd, onDateSelected, minDate }: CalendarSectionProps) {
     const { t } = useTranslation();
     const days = GetDaysInMonth(year, month);
     const daysInWeek = 7;
@@ -183,6 +221,10 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
             if(date > selectionStartDate && date < selectionEndDate) return 'orange-middle'; 
         }
 
+        if(minDate) {
+            if(date < minDate) return 'disabled';
+        }
+
         if(!selectionStartDate || !selectionEndDate) {
             if(IsDatesEqual(date, selectionStartDate) || IsDatesEqual(date, selectionEndDate)) return 'orange-single';
         }
@@ -191,6 +233,17 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
         if(IsDatesEqual(date, selectionEndDate)) return 'orange-end';
             
         return '';
+    }
+
+    const handleDateSelection = (date: Date) => {
+        if(!minDate) {
+            onDateSelected(date);
+        }
+        else {
+            if(date >= minDate) {
+                onDateSelected(date);
+            }
+        }
     }
 
     const renderTableBody = () => {
@@ -207,7 +260,7 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
                     cells.push(
                         <div 
                             key={j} 
-                            onClick={() => onDateSelected(day.date)}
+                            onClick={() => handleDateSelection(day.date)}
                             className={`available ${getSelectionClass(day.date)} ${IsDatesEqual(new Date(), day.date) ? 'current' : ''}`}>
                             {day.date.getDate()}
                         </div>
@@ -217,7 +270,7 @@ function CalendarSection({ year, month, selectionStartDate, selectionEndDate, se
                 }
             }
 
-            rows.push(<div className="days-row">{cells}</div>);
+            rows.push(<div key={i} className="days-row">{cells}</div>);
         }
 
         return rows;

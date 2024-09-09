@@ -5,15 +5,19 @@ import DatePickerCalendar from "./DatePickerCalendar";
 
 interface DatePickerProps {
     label: string;
-    onChange: (date: Date) => void;
-    onFocus?: () => void;
+    
     className?: string;
     icon?: string;
     iconCursorPointer?: boolean;
+    showError?: boolean;
+
+    onChange: (date: Date) => void;
+
+    onFocus?: () => void;
     onIconClick?: () => void;
 }
 
-export default function DatePicker({ label, onChange, onFocus, onIconClick, className = '', icon, iconCursorPointer }: DatePickerProps) {
+export default function DatePicker({ label, onChange, onFocus, onIconClick, className = '', icon, iconCursorPointer, showError = false }: DatePickerProps) {
     const [focused, setFocused] = useState(false);
     const [value, setValue] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
@@ -55,8 +59,8 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
     }
 
     return (
-        <div className="date-input-container">
-            <div className={`date-input-material ${className ? className : ''}  ${focused || value ? 'focused' : ''}`}>
+        <div className={`date-input-container ${className ? className : ''}`}>
+            <div className={`date-input-material ${focused || value ? 'focused' : ''} ${showError ? 'error' : ''}`}>
                 <label className="label-material">{label}</label>
                 <div className="input-container">
                     <input 

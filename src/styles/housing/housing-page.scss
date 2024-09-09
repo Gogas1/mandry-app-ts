@@ -1,0 +1,145 @@
+@use '../../styles/mixins/typography' as *;
+
+.housing-page {
+    background-color: #CAD3D9;
+    min-height: 100vh;
+
+    .housing-page-content {
+        position: relative;
+        padding: 94px 100px 0px 100px;
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 40px;
+
+            .housing-name {
+                margin: 0;
+                padding: 0;
+
+                color: #515151;
+                font-family: "Montserrat Alternates";
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+
+                &.loading {
+                    color: transparent;
+                    background: #b3cbdb;
+                    border-radius: 15px;
+                }
+            }
+
+            .housing-actions {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+
+        .housing-images-section {
+            display: flex;
+            flex-direction: row;
+
+            margin-top: 30px;
+
+            gap: 20px;
+
+            .big-picture-container {
+                max-width: calc(50% - 10px);
+                display: flex;
+    
+                .big-picture-wrapper {
+                    padding: 5px;
+                    border-radius: 15px;
+                    border: 1px solid var(--white, #F6F6F6);
+                    display: flex;
+
+                    img {
+                        width: 100%;
+                        aspect-ratio: 16 / 9; /* Force 16:9 aspect ratio */
+                        object-fit: cover; /* Crop the image to fill the container */
+                        border-radius: 10px;
+                    }
+                }
+            }
+
+            .small-pictures-container {
+                max-width: calc(50% - 10px);
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: start;
+
+                gap: 20px;
+                
+
+                .small-picture-wrapper {
+                    padding: 5px;
+                    border-radius: 15px;
+                    border: 1px solid var(--white, #F6F6F6);
+
+                    max-width: calc(50% - 10px);
+                    display: flex;
+
+                    img {
+                        width: 100%;
+                        aspect-ratio: 16 / 9; /* Force 16:9 aspect ratio */
+                        object-fit: cover; /* Crop the image to fill the container */
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+
+        .main-section {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+
+            .data-section {
+                margin-top: 40px;
+                max-width: 70%;
+                max-height: 150vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-right: 30px;
+
+                .location-section {
+                    display: flex;
+                    flex-direction: row;
+
+                    @include font-white-panels-headers(22px);
+
+                    &.loading {
+                        color: transparent;
+                        border-radius: 15px;
+                        background: #b3cbdb;
+                    }
+                }
+
+                .divider {
+                    flex-shrink: 0;
+                    height: 1px;
+                    background-color: #E6E6E6;
+                    width: 100%;
+                    border: 0;
+
+                    margin: 30px 0;
+                }
+            }
+
+            .rent-section {
+                max-width: 30%;
+            }
+        }
+    }
+}

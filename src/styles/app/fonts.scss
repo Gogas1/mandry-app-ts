@@ -24,6 +24,22 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Macondo';
+    src: url('../../assets/fonts/Macondo/Macondo-Regular.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Macondo Swash Caps';
+    src: url('../../assets/fonts/MacondoSwashCaps/MacondoSwashCaps-Regular.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
 @mixin font-face($font-family, $file-path, $font-weight: normal, $font-style: normal) {
     @font-face {
       font-family: $font-family;
@@ -32,6 +48,8 @@
       font-style: $font-style;
     }
 }
+
+@include font-face('Inter', '../../assets/fonts/Inter/Inter-VariableFont_opsz,wght', normal, normal);
 
 @include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Bold', bold);
 @include font-face('Comfortaa', '../../assets/fonts/Comfortaa/static/Comfortaa-Light', 300);

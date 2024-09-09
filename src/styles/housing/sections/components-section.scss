@@ -1,0 +1,26 @@
+@use '../../mixins/typography' as *;
+
+.components-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    margin-top: 20px;
+
+    .component {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 10px;
+        
+
+        @include font-montserrat-gray-dark(14px, 500);
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

@@ -119,6 +119,14 @@
                                 font-weight: 400;
                                 line-height: normal;
 
+                                &.disabled {
+                                    border-radius: 5px;
+                                    background: rgba(0, 0, 0, 0.20);
+
+                                    text-decoration-line: line-through;
+                                    color: var(--grey-light-300, #AAA);
+                                }
+
                                 &.orange-start {
                                     position: relative;
                                     border-radius: 5px 0px 0px 5px;
@@ -167,11 +175,11 @@
 
                                 &.available {
                                     cursor: pointer;
-                                }
 
-                                &.available:hover {
-                                    border-radius: 5px;
-                                    border: 1px solid var(--orange, #FD941A);
+                                    &:hover:not(.orange-middle, .orange-end, .orange-single, .orange-start, .disabled) {
+                                        border-radius: 5px;
+                                        border: 1px solid var(--orange, #FD941A);
+                                    }
                                 }
                                 
                                 &.current {
@@ -211,9 +219,19 @@
             align-items: center;
             justify-content: center;
 
-            svg {
+            user-select: none;
+
+            img {
                 width: 45%;
                 height: 45%;
+            }
+
+            &.available {
+                transform: rotate(-90deg);
+            }
+
+            &.unavailable {
+                transform: rotate(180deg);
             }
         }
 
@@ -224,6 +242,8 @@
 
             top: calc(0% + 31px);
             left: calc(100% - 17px);
+
+            user-select: none;
 
             transform: rotate(90deg);
 

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import '../../styles/account/account-page.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import credentialIcon from '../../assets/icons/account/credentials.svg';
 import dataIcon from '../../assets/icons/account/data.svg';
@@ -29,15 +29,10 @@ export default function AccountPage() {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const [userData, setUserData] = useState<UserData>({ id: '', name: 'loading...', surname: 'loading...', email: 'loading...', phone: 'loading...' } as UserData);
 
     useEffect(() => {
-        if(!authContext.authState.isAuthenticated) {
-            navigate('/');
-        }
-
         const fetchData = async () => {
             const token = authContext.authState.token;
     

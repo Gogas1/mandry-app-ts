@@ -1,0 +1,144 @@
+@use '../mixins/typography' as *;
+
+.result-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    column-gap: 20px;
+    row-gap: 40px;
+
+    .search-item-wrapper {
+        display: flex;
+
+        border: 1px solid #AAA;
+        border-radius: 15px;
+
+        width: calc(33.33333% - 15px);
+        min-height: 266px;
+
+        .search-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+            margin: 5px;
+
+            .image-container {
+                flex: 1;
+                position: relative;
+                overflow: hidden;
+    
+                display: flex;
+    
+                border-radius: 15 15px 0 0;
+    
+                justify-content: center;
+                align-items: center;
+                
+                cursor: pointer;
+    
+                .image {
+                    border-radius: 15px 15px 0 0;   
+                    width: 100%;
+                }
+            }
+    
+            .labels {
+                display: flex;
+                flex-direction: column;
+    
+                margin: 15px 5px 5px 5px;
+
+                &__name {
+                    color: #515151;
+                    font-family: 'Comfortaa';
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 120%;
+                }
+
+                &__description {
+                    @include font-regular(12px);
+                }
+
+                &__beds {
+                    @include font-regular(12px);
+                }
+                
+                &__bottom {
+                    display: flex;
+                    flex-direction: row;
+
+                    justify-content: space-between;
+                }
+
+                &__pricing {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                &__price {
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                &__promo-price {
+                    color: var(--grey-light-300, var(--Color-3, #AAA));
+                    font-family: "Montserrat Alternates";
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    text-decoration: line-through;
+                }
+
+                &__actual-price {
+                    color: var(--blue, #08B1BD);
+                    font-family: "Montserrat Alternates";
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+
+                    margin-left: 6px;
+                }
+
+                &__calculated-price {
+                    @include font-white-panels-headers(14px);
+                }
+
+                &__rating-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    align-items: end;
+
+                    .rating {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        .star {
+                            width: 20px;
+                            height: 20px;
+    
+                            margin-right: 6px;
+                        }
+    
+                        .average-rating {
+                            @include font-regular(12px);
+                        }
+                    }
+
+                    
+                }
+            }
+        }
+
+        
+    }
+}

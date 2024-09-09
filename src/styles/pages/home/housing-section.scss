@@ -1,0 +1,232 @@
+@use '../../mixins/buttons' as *;
+
+@import url('../../app/fonts.scss');
+
+.housing-section {
+    height: 0;
+    padding-bottom: 100vh;
+
+    .banner-container {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // position: absolute;
+        // width: 100%;
+        // height: 0;
+        // padding-top: 56.25%;
+        // overflow: hidden;
+        // border-radius: 15px;
+
+        // margin: 0px 10px;
+
+        // margin-bottom: 10px;
+
+        // display: flex;
+        // align-items: end;
+
+        .slider {
+            position: absolute;
+            inset: 0 10px 10px 10px;
+
+            border-radius: 15px;
+
+            .slide {
+                position: absolute;
+                top: calc(100%);
+                left: calc(20%);
+                transform: translateY(calc(-100% - 35px));
+                width: 443px;
+                height: 211px;
+
+                border: 1px solid #F6F6F6;
+                
+                border-radius: 15px;
+
+                transition: 0.5s;
+
+                padding: 5px;
+
+                z-index: 1;
+
+                &__content {
+                    background-size: cover;
+                    background-position: center;
+
+                    border-radius: 15px;
+                    transition: 0.5s;
+
+                    height: 100%;
+
+                    border-radius: 15px;
+
+                    &__text {
+                        height: 100%;
+                        position: relative;
+                        padding-top: 50px;
+                        padding-left: 90px;
+
+                        h3 {
+                            color: var(--white, #F6F6F6);
+                            font-family: "Montserrat Alternates";
+                            font-size: 60px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 60px;
+
+                            margin: 0;
+
+                            .decorated-A, .decorated-R {
+                                color: var(--white, #F6F6F6);
+                                font-family: 'Macondo';
+                                font-size: 70px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 60px; /* 85.714% */
+                            }
+                        }
+
+                        p {
+                            color: var(--white, #F6F6F6);
+                            font-family: "Montserrat Alternates";
+                            font-size: 32px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+                    }
+                }
+
+                &:nth-child(1), .slide:nth-child(2) {
+                
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transform: translateY(0);
+    
+                    z-index: 0;
+    
+                    padding: 0;
+                    border: 0;
+                }
+
+                &:nth-child(3) {
+                    left: calc(20% + 463px);
+                }
+
+                &:nth-child(4) {
+                    left: calc(20% + 926px);
+                }
+
+                &:nth-child(5) {
+                    left: calc(20% + 1389px);
+                }
+
+                &:nth-child(n + 6) {
+                    left: calc(20% + 1852px);
+                }
+
+                &:nth-child(n + 2) {
+                    .slide__content {
+                        &__text {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+
+                            padding: 20px;
+
+                            h3 {
+                                visibility: collapse;
+                            }
+
+                            p {
+                                margin: 0;
+                                padding: 0;
+
+                                color: var(--white, #F6F6F6);
+                                font-family: "Montserrat Alternates";
+                                font-size: 22px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        img {
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: calc(100%);
+            height: auto;
+            transform: translate(-50%, -50%);
+        }
+
+        .controls {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+
+            bottom: calc(0% + 10px);
+
+            padding: 30px 90px;
+
+            width: calc(100% - 20px);
+
+            border-radius: var(--Numbers-0, 0px) var(--Numbers-0, 0px) 15px 15px;
+            background: var(--grey-80, rgba(81, 81, 81, 0.80));
+            box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+            backdrop-filter: blur(34px);
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+
+                gap: 30px;
+
+                .control {
+                    position: relative;
+                    user-select: none;
+    
+                    width: 52px;
+                    height: 52px;
+    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+    
+                    border-radius: 48px;
+                    border: 1px solid var(--white, #F6F6F6);
+                    background: rgba(255, 255, 255, 0.03);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                    backdrop-filter: blur(10px);
+    
+                    z-index: 2;
+    
+                    cursor: pointer;
+    
+                    img {
+                        height: 32px;
+                        width: 13px;
+                    }
+
+                    &--right {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}

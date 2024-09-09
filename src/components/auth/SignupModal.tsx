@@ -4,10 +4,11 @@ import "../../styles/auth/signup-modal.scss";
 import "../../styles/app/checkbox.scss";
 
 import TextInputMaterial from "../app/TextInputMaterial";
-import React, { useContext, useEffect, useState } from "react";
+import React, { CSSProperties, useContext, useEffect, useState } from "react";
 import DatePicker from "../app/DatePicker/DatePicker";
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
+import warningIcon from '../../assets/icons/meta/warning.svg';
 
 import { useModal } from "../app/ModalContext";
 import AuthModal from "./AuthModal";
@@ -18,9 +19,16 @@ import AuthContext from "./AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import ValidationError from "../app/Validation/ValidationError";
 import CredentialValidator, { BirthDateErrorCode, EmailValidationErrorCode, NameValidationErrorCode, PasswordValidationErrorCode, PhoneValidationErrorCode } from "../../helpers/validation/CredentialValidator";
+import AgreementModal from "./AgreementModal";
 
 interface SignupModalProps {
     hideModal: () => void;
+}
+
+export enum SignUpError {
+    INVALID_DATA = "INVALID_DATA",
+    USER_EXIST = "USER_EXIST",
+    UNKNOWN = "UNKNOWN" 
 }
 
 export default function SignupModal({ hideModal }: SignupModalProps) {
@@ -35,33 +43,41 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const { openModal, closeModal } = useModal();
 
     const [name, setName] = useState('');
-    const [surnname, setSurname] = useState('');
+    const [surname, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState<Date>(new Date());
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-    const [nameValidation, setNameValidation] = useState<NameValidationErrorCode | undefined>(NameValidationErrorCode.NOT_VALIDATED);
-    const [birthdateValidation, setBirthdateValidation] = useState<BirthDateErrorCode | undefined>(BirthDateErrorCode.NOT_VALIDATED);
-    const [emailValidation, setEmailValidation] = useState<EmailValidationErrorCode | undefined>();
-    const [phoneValidation, setPhoneValidation] = useState<PhoneValidationErrorCode | undefined>(PhoneValidationErrorCode.NOT_VALIDATED);
-    const [passwordValidation, setPasswordValidation] = useState<PasswordValidationErrorCode | undefined>();
-
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-    const [signUpButtonActivation, setSignUpButtonActivation] = useState(false);
     const [loading, setLoading] = useState(false);
-    
-    const validateCredentials = () => {
-        if(loading) return false;
 
-        if(name && surnname && birthdate && (phone || (email && validatePasswords()))) {
-            setSignUpButtonActivation(true);
-        } else {
-            setSignUpButtonActivation(false);
+    const [signUpError, setSignUpError] = useState<SignUpError>();
+
+    const nameValidation = CredentialValidator.ValidateName(name);
+    const birthdateValidation = CredentialValidator.ValidateBirthDate(birthdate);
+
+    let emailValidation: EmailValidationErrorCode | undefined;
+    let phoneValidation: PhoneValidationErrorCode | undefined;
+    let passwordValidation: PasswordValidationErrorCode | undefined;
+
+    const validateEPP = () => {
+        let emailNotValidated = CredentialValidator.ValidateEmail(email);
+        let passwordNotValidated = CredentialValidator.ValidatePassword(password, true, passwordConfirmation);
+        let phoneNotValidated = CredentialValidator.ValidatePhone(phone);
+
+        if(((emailNotValidated || passwordNotValidated) && !phoneNotValidated) || (!emailNotValidated && !passwordNotValidated)) {
+            return;
         }
+
+        emailValidation = emailNotValidated;
+        passwordValidation = passwordNotValidated;
+        phoneValidation = phoneNotValidated;
     }
 
+    validateEPP();
+    
     const validatePasswords = (): boolean => {
         if(password && passwordConfirmation) {
             if(password === passwordConfirmation) return true;
@@ -70,14 +86,24 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
         return false;
     }
 
+    const validateCredentials = () => {
+        if(loading) return false;
+
+        if(name && birthdate && (phone || (email && validatePasswords()))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const validationPassed = validateCredentials();
+
     useEffect(() => {
         validateCredentials();
     });
     
     const nameChangeHandle = (value: string) => {
         setName(value);
-
-        setNameValidation(CredentialValidator.ValidateName(value));
     }
 
     const surnameChangeHandle = (value: string) => {
@@ -86,35 +112,23 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const emailChangeHandle = (value: string) => {
         setEmail(value);
-        
-        setEmailValidation(CredentialValidator.ValidateEmail(value));
     }
 
     const phoneChangeHandle = (value: string) => {
         setPhone(value);
-        
-        setPhoneValidation(CredentialValidator.ValidatePhone(value));
     }
 
     const passwordChangeHandle = (value: string) => {
         setPassword(value);
-        
-        setPasswordValidation(CredentialValidator.ValidatePassword(value, true, passwordConfirmation));
     }
 
     const passwordConfirmationChangeHandle = (value: string) => {
         setPasswordConfirmation(value);
-        
-        setPasswordValidation(CredentialValidator.ValidatePassword(value, true, password));
     }
 
     const birthdateChangeHandle = (date: Date) => {
         setBirthdate(date);
-
-        setBirthdateValidation(CredentialValidator.ValidateBirthDate(date));
     }
-
-    
 
     const closeHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation();
@@ -123,9 +137,22 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
         openModal('signin', <AuthModal hideModal={() => closeModal('signin')} />);
     }
 
+    const handleAgreementTrans = () => {
+        if(validationPassed) {
+            openModal('agreement', 
+                <AgreementModal 
+                    hideModal={() => { closeModal('agreement'); }}
+                    data={{ name: name, surname: surname, birthdate: birthdate, email: email, phone: phone, password: password }}
+                    errorCodeHandler={setSignUpError}
+                     />, 
+                { minWidth: '32.5%', maxWidth: '32.5%' } as CSSProperties);
+        }
+    }
+
     const handleSignUpRequest = async () => {
-        setLoading(true);
-        if(signUpButtonActivation) {
+        if(validationPassed) {
+            setLoading(true);
+            setSignUpError(undefined);
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
             try {
@@ -137,34 +164,29 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     }, 
                     body: JSON.stringify({
                         name: name,
-                        surname: surnname,
+                        surname: surname,
                         phone: phone,
                         email: email,
                         password: password,
                         BirthDate: birthdate
                     })
                 });
-    
-                if(response.ok) {
+            
+                if (response.ok) {
                     const data = await response.json();
                     login(data.token, data.userData);
                     hideModal();
                     navigate("/");
                 } else if (response.status === 400) {
-                    const errorData = await response.json();
-                    console.log(errorData.validationErrorsGrous);
-                } else if (response.status === 401) {
-                    const errorData = await response.json();
-                    console.log(errorData);
-                } else if(response.status === 409) {
-                    const errorData = await response.json();
-                    console.log(errorData);
+                    setSignUpError(SignUpError.INVALID_DATA);
+                } else if (response.status === 409) {
+                    setSignUpError(SignUpError.USER_EXIST);
                 }
-            }
-            catch (error) {
-                console.log('error', error);
+            } catch (error) {
+                console.error('Error:', error);
             }
         }
+
         setLoading(false);
     }
 
@@ -181,10 +203,8 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             <TextInputMaterial
                                 label={t('SignUpNameInputLabel')}
                                 onChange={nameChangeHandle}
-                                />
-                            {nameValidation ? (
-                                <ValidationError label={t(GetNameValidationErrorKey(nameValidation))} />
-                            ): ''}
+                                validationError={nameValidation ? true : false}
+                            />
                         </div>
                         <div className="input-group surname-input-group">
 
@@ -192,6 +212,11 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                                 label={t('SignUpSurnameInputLabel')}
                                 onChange={surnameChangeHandle}/>
                         </div>
+                        {nameValidation ? (
+                            <ValidationError 
+                                label={t(GetNameValidationErrorKey(nameValidation))} 
+                                className="signup-validation-error"/>
+                        ): ''}
                         <div className="block-text-end">
                             {t('SignUpNamesTextEnd')}
                         </div>
@@ -201,7 +226,13 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                         <DatePicker 
                             label={t('SignUpBirthDateInputLabel')}
                             onChange={birthdateChangeHandle}
+                            showError={birthdateValidation ? true : false}
                             />
+                        {birthdateValidation ? (
+                            <ValidationError 
+                                label={t(GetBirthDateValidationErrorKey(birthdateValidation))} 
+                                className="signup-validation-error"/>
+                        ) : ''}
                         <div className="block-text-end">
                             {t('SignUpBirthDateTextEnd')}
                         </div>
@@ -211,8 +242,14 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                         <div className="input-group email-input-group">
                             <TextInputMaterial 
                                 label={t('SignUpEmailInputLabel')}
-                                onChange={emailChangeHandle}/>
+                                onChange={emailChangeHandle}
+                                validationError={emailValidation ? true : false}/>
                         </div>
+                        {emailValidation ? (
+                            <ValidationError 
+                                label={t(GetEmailValidationErrorKey(emailValidation))} 
+                                className="signup-validation-error"/>
+                        ) : ''}
                         <div className="block-text-end">
                             {t('SignUpEmailTextEnd')}
                         </div>
@@ -221,27 +258,46 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                         <div className="input-group">
                             <PasswordField 
                                 onValueChange={passwordChangeHandle}
+                                showValidationError={passwordValidation ? true : false}
                             />
                             <label>{t('SignUpPasswordReq')}</label>
                         </div>
                         <div className="input-group password-repeat">
                             <PasswordField 
-                                label=""
+                                label={t('Modals.SignUp.PasswordConfirmation')}
                                 onValueChange={passwordConfirmationChangeHandle}
+                                showValidationError={passwordValidation ? true : false}
                             />
                         </div>
+                        {passwordValidation ? (
+                            <ValidationError 
+                                label={t(GetPasswordValidationErrorKey(passwordValidation))} 
+                                className="signup-validation-error"/>
+                        ) : ''}
                     </div>
                     <div className="block phone-block">
                         <PhonePickerBlock 
                             onPhoneChange={phoneChangeHandle}
+                            validationMessage={phoneValidation ? t(GetPhoneValidationErrorKey(phoneValidation)) : ''} 
                         />
                     </div>
                     <div className="agreement-text">
                         {t('SignUpAgreement')}
                     </div>
+                    {signUpError ? 
+                    (<>
+                        <div className="sign-up-error">
+                            <img src={warningIcon} />
+                            {t(GetSignUpAttemptErrorKey(signUpError))}
+                        </div>
+                    </>) :
+                    ''}
                     <button 
+                        onClick={handleAgreementTrans}
+                        className={`continue-button ${validationPassed ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button>
+                    {/* <button 
                         onClick={handleSignUpRequest}
-                        className={`continue-button ${signUpButtonActivation ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button>
+                        className={`continue-button ${validationPassed ? '' : 'disabled'}`}>{t('SignUpContinueButtonLabel')}</button> */}
                     <div className="marketing-agreement">
                         {t('SignUpMarketingAgreement')}
                     </div>
@@ -261,6 +317,19 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
             </button>  
         </>  
     );
+}
+
+function GetSignUpAttemptErrorKey(errorCode: SignUpError) {
+    switch (errorCode) {
+        case SignUpError.INVALID_DATA:
+            return "Validation.SignUp.Attempt.Invalid";
+        case SignUpError.USER_EXIST:
+            return "Validation.SignUp.Attempt.Conflict";
+        case SignUpError.UNKNOWN:
+            return "Validation.SignUp.Attempt.Unknown";
+        default:
+            return "Validation.SignUp.Attempt.Invalid";
+    }
 }
 
 function GetNameValidationErrorKey(errorCode: NameValidationErrorCode) {

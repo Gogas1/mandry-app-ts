@@ -102,14 +102,12 @@ export default class CredentialValidator {
         
         const yearsDifference = currentDate.getFullYear() - date.getFullYear();
 
-        if (yearsDifference <= 18) {
+        if (yearsDifference < 18) {
+            return BirthDateErrorCode.INVALID_DATE;
         } 
         else if (yearsDifference === 18) {
             if (currentDate.getMonth() < date.getMonth()) return BirthDateErrorCode.INVALID_DATE;
             if (currentDate.getMonth() === date.getMonth() && currentDate.getDate() <= date.getDate()) return BirthDateErrorCode.INVALID_DATE;
-        }
-        else {
-            return BirthDateErrorCode.INVALID_DATE;
         }
 
         return undefined;

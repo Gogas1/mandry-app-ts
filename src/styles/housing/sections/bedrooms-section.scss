@@ -1,0 +1,58 @@
+@use '../../mixins/typography' as *;
+
+.bedrooms-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__header {
+        padding: 0;
+        margin: 0;
+
+        @include font-montserrat-gray-dark(20px, 600);
+    }
+
+    .bedrooms {
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        padding-bottom: 20px;
+
+        .bedroom {
+            border-radius: 15px;
+            border: 1px solid #CCC;
+            background: #E6E6E6;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            &__title {
+                @include font-monts-blue(20px, 600);
+                margin: 0;
+                padding: 0;
+            }
+
+            &__beds-icons {
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+            }
+
+            &__beds-labels {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .bed {
+                @include font-montserrat-gray-dark(12px, 600);
+            }
+        }
+    }
+}
