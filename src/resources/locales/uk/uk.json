@@ -675,5 +675,24 @@
             
         }
         
+    },
+
+    "Notifications": {
+        "NotificatiosList": {
+            "Header": "Усі повідомлення",
+            "SearchPlaceholder": "Пошук серед усіх повідомлень",
+            "NoNotification": "У вас немає повідомлень",
+            "NoNotificationDescription": "Коли ви отримаєте нове повідомлення, воно з’явиться тут.",
+            "ClearSort": "Очистити всі фільтри"
+        },
+        "NotificationsDropdown": {
+            "Unread": "Непрочитані",
+            "All": "Усі",
+            "Travels": "Подорожі",
+            "Support": "Підтримка"
+        },
+        "DetailsList": {
+            "Header": "Подробиці"
+        }
     }
 }
