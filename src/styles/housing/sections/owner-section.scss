@@ -1,0 +1,153 @@
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.owner-section {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    border-top: 1px solid #E6E6E6;
+
+    margin-top: 30px;
+    padding-top: 30px;
+
+    .profile-info {
+        flex: 0.35;
+
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+
+            padding: 30px;
+            align-items: center;
+            gap: 10px;
+
+            border-radius: 15px;
+            border: 1px solid var(--grey-light-100, #E6E6E6);
+            background: var(--white, #F6F6F6);
+            box-shadow: -26px 39px 13px 0px rgba(0, 0, 0, 0.00), -17px 25px 12px 0px rgba(0, 0, 0, 0.01), -9px 14px 10px 0px rgba(0, 0, 0, 0.05), -4px 6px 7px 0px rgba(0, 0, 0, 0.09), -1px 2px 4px 0px rgba(0, 0, 0, 0.10);
+
+            .profile-image {
+                width: 35%;
+                border-radius: 144px;
+            }
+
+            .profile-name {
+                @include blue-heading-font(36px);
+                margin: 0;
+                text-align: center;
+            }
+
+            .profile-status {
+                @include font-regular(16px);
+                margin: 0;
+            }
+        }
+
+        .profile-numbers {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            .numbers-item {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                padding: 10px;
+                gap: 10px;
+
+                border-radius: 15px;
+                border: 1px solid #CCC;
+                background: #E6E6E6;
+
+                p {
+                    text-align: center;
+                    margin: 0;
+                }
+
+                &__header {
+                    @include font-regular(14px);
+                }
+
+                &__value {
+                    @include font-montserrat-gray-dark(16px, 700)
+                }
+            }
+        }
+    }
+
+    .about-data {
+        flex: 0.65;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .upper-data {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            .data-1 {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .about {
+                    img {
+                        width: 24.5px;
+                        height: 24.5px;                        
+                    }
+
+                    &__label {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+
+                        @include font-regular(16px);
+                    }
+
+                    .about-divider {
+                        background-color: #08B1BD;
+                        border: 0;
+                        height: 1px;
+                    }
+                }
+
+                .about-response {
+                    @include font-regular(16px);
+
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+
+            .data-2 {
+                @include font-regular(16px);
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                a {
+                    @include font-links-black(16px);
+                }
+            }
+        }
+
+        .bottom-data {
+            display: flex;
+            justify-content: end;
+
+            a {
+                @include button-blue();
+            }
+        }
+    }
+}

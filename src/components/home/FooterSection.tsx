@@ -7,6 +7,10 @@ import ttIcon from '../../assets/icons/home/tt.svg';
 import fbIcon from '../../assets/icons/home/fb.svg';
 import { Link } from "react-router-dom";
 
+interface FooterSectionProps {
+    
+}
+
 export default function FooterSection() {
     const { t } = useTranslation();
 

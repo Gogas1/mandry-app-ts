@@ -134,14 +134,45 @@ export default function ImportantInfoSection({ housingData }: ImportantInfoSecti
                                 linkA: <Link to={'/'} className="link" />
                             }} />
                     </p>
-                    <div>
-
+                    <div className="refund-statements">
+                        <div className="refund-statement">
+                            <div className="time-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeBody')}</p>
+                            </div>
+                            <div className="description-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescBody')}</p>
+                            </div>
+                        </div>
+                        <div className="refund-statement">
+                            <div className="time-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.TimeHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.TimeBody')}</p>
+                            </div>
+                            <div className="description-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.DescHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.DescBody')}</p>
+                            </div>
+                        </div>
+                        <div className="refund-statement">
+                            <div className="time-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.TimeHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.TimeBody')}</p>
+                            </div>
+                            <div className="description-col">
+                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.DescHeader')}</p>
+                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.DescBody')}</p>
+                            </div>
+                        </div>
                     </div>
                     <button 
                         className="show-more-btn" 
                         onClick={() => setRefundSectionExpanded(!refundSectionExpanded)}>{t('HousingPage.Sections.IInfo.More')}
                     </button>
-                </section>
+                    <p className="cleaning-refund">{t('HousingPage.Sections.IInfo.Refund.RefundCleaning')}</p>
+                    <Link to={'/'} className="link">{t('HousingPage.Sections.IInfo.Refund.RefundMoreLink')}</Link>
+                </section>                
             </section>
         </>
     );

@@ -36,6 +36,7 @@ function App() {
                 <Route path='/features' element={<Features />} />
                 <Route path='/search' element={<SearchPage />} />
                 <Route path='/housing/:id' element={<HousingPage />} />
+                <Route path='/account/information/temp' element={<ProfileInfoPage />} />
 
                 <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
                 <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />

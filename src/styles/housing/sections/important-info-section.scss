@@ -19,6 +19,8 @@
 
         .into-section__description {
             @include font-regular(16px);
+            margin: 0;
+            margin-bottom: 30px;
 
             .link {
                 @include font-links-black(16px);
@@ -85,6 +87,48 @@
             padding: 0;
             background-color: transparent;
             border: 0;
+            @include font-links-black(16px);
+        }
+
+        .refund-statements {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            .refund-statement {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                padding-bottom: 20px;
+
+                border-bottom: 1px solid #08B1BD;
+
+                .refund-header {
+                    @include font-regular(17px, 700);
+                    margin: 0;
+                    margin-bottom: 10px;
+                }
+
+                .refund-body {
+                    @include font-regular(14px, 400);
+                    margin: 0;
+                }
+
+                .time-col {
+                    width: 25%;
+                }
+
+                
+            }
+        }
+
+        .cleaning-refund {
+            @include font-regular(16px);
+            margin: 30px 0;
+        }
+
+        .link {
             @include font-links-black(16px);
         }
     }

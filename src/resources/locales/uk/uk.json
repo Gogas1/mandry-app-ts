@@ -517,6 +517,8 @@
     },
 
     "HousingPage": {
+        "Copied": "Посилання скопійовано в буфер обміну",
+
         "Sections": {
             "Components": {
                 "Bedrooms_one": "спальня",
@@ -589,8 +591,88 @@
                 "Refund": {
                     "Header": "Правила скасування бронювання",
                     "Description": "Переконайтеся, що вас задовольняють правила цього господаря. У рідкісних випадках ви можете мати право на повернення коштів усупереч цим правилам відповідно до <linkA>Правил Airbnb щодо форс-мажорних обставин.</linkA>"
+                    ,"RefundCleaning": "Плата за прибирання повертається в разі скасування бронювання до прибуття.",
+                    "RefundMoreLink": "Докладніше про правила скасування бронювань",
+                    "Statements": {
+                        "FullRefund": {
+                            "TimeHeader": "Протягом",
+                            "TimeBody": "48 годин після бронювання",
+                            "DescHeader": "Повне повернення коштів",
+                            "DescBody": "Повне повернення коштів: ви отримаєте 100% сплаченої вами суми."
+                        },
+                        "HalfRefund": {
+                            "TimeHeader": "До",
+                            "TimeBody": "{{dateTime}}",
+                            "DescHeader": "Часткове повернення коштів",
+                            "DescBody": "Вам поаернуть 50% варточті кожної ночі. Сервісний збір не повертається"
+                        },
+                        "NoRefund": {
+                            "TimeHeader": "Після",
+                            "TimeBody": "{{dateTime}}",
+                            "DescHeader": "Без повернення коштів",
+                            "DescBody": "Кошти за це бронювання не повертаються."
+                        }
+                    }                    
                 }
+            },
+            
+            "OwnerInfo": {
+                "OwnerStatus" : "Господар",
+                "ReviewsLabel": "Відгуки",
+                "RatingLabel": "Рейтинг",
+                "OwnerFromLabel": "Років прийому",
+                "LanguagesNotSpecified": "Мови не вказані",
+                "ResidenceNotSpecified": "Місце проживання не вказано",
+                "AboutMeNotSpecified": "Господар ще нічого не написав про себе",
+                "ResponseSpeed": "Швидкість відповіді: {{time}}",
+                "ResponseTime": "Відповідає протягом кількох годин",
+                "More": "Більше",
+                "TextToOwner": "Написати господарю"
             }
+        },
+
+        "RentSections": {
+            "Price": {
+                "BasePrice": "<priceText>{{currency}} {{price}}</priceText> ніч",
+                
+                "PriceFromNights_one": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ніч</fontLink>",
+                "PriceFromNights_few": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ночі</fontLink>",
+                "PriceFromNights_many": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ночей</fontLink>",
+
+                "Discount": "<fontLink>Знижка на тривале бронювання</fontLink>",
+                "CleaningFee": "<fontLink>Плата за прибирання</fontLink>",
+                "Taxes": "<fontLink>Податки</fontLink>",
+
+                "TravelersLabel": "Мандрівники",
+                "FromLabel": "Прибуття",
+                "ToLabel": "Виїзд",
+
+                "PriceSummary": {
+                    "Header": "Структура базової ціни",
+                    "NoItems": "Дати не обрані",
+                    "NightPrice": "{{currency}} {{value}}",
+                    "TotalPriceLabel": "Загальна ціна",
+                    "TotalPriceValued": "{{currency}} {{value}}"
+                },
+
+                "PriceTotalLabel": "Усього",
+                "PriceTotalPrice": "{{currency}} {{value}}",
+
+                "DiscountPopup": {
+                    "Available": "Знижка доступна, оскільки ви бронюєте одразу на 14 днів.",
+                    "Unavailable": "Знижка недоступна для такого періоду бронювання"
+                },
+
+                "CleaningFeePopup": "Господар стягує одноразовий платіж для покриття вартості прибирання свого помешкання.",
+                "TaxesPopup": "Це допомагає розвивати нашу платформу та пропонувати різні послуги, наприклад підтримку 24/7 під час подорожі. Разом із ПДВ."
+            },
+
+            "Rating": {
+                "ReviewsCount_one": "{{number}} відгук",
+                "ReviewsCount_few": "{{number}} відгуки",
+                "ReviewsCount_many": "{{number}} відгуків"
+            }
+            
         }
         
     }
