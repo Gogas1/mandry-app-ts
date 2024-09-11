@@ -596,7 +596,7 @@
     },
 
     "Notifications": {
-        "NotificatiosList": {
+        "NotificationsList": {
             "Header": "Усі повідомлення",
             "SearchPlaceholder": "Пошук серед усіх повідомлень",
             "NoNotification": "У вас немає повідомлень",
@@ -608,6 +608,11 @@
             "All": "Усі",
             "Travels": "Подорожі",
             "Support": "Підтримка"
+        },
+        "NotificationsModal": {
+            "Header": "Налаштування повідомлень",
+            "Archive": "Архів",
+            "Feedback": "Залишити відгук"
         },
         "DetailsList": {
             "Header": "Подробиці"
