@@ -4,11 +4,6 @@ import '../../styles/housing/housing-page.scss';
 import heartIcon from '../../assets/icons/meta/heart-empty-grey.svg';
 import shareIcon from '../../assets/icons/meta/share.svg';
 
-import image1 from '../../assets/samples/housing/3.jpg';
-import image2 from '../../assets/samples/housing/4.jpg';
-import image3 from '../../assets/samples/housing/5.jpg';
-import image4 from '../../assets/samples/housing/6.jpg';
-import image5 from '../../assets/samples/housing/7.jpg';
 import { processTranslations, Translation } from '../../helpers/TranslationService';
 import { useTranslation } from 'react-i18next';
 import ComponentsSection from './sections/ComponentsSection';
@@ -18,8 +13,40 @@ import FeaturesSection from './sections/FeaturesSection';
 import HousingCalendarSection from './sections/HousingCalendarSection';
 import { useParams } from 'react-router-dom';
 import FeatureService from '../../helpers/FeatureService';
-import i18n from '../../i18n';
 import ImportantInfoSection from './sections/ImportantInfoSection';
+import FooterSection from '../home/FooterSection';
+import OwnerSection from './sections/OwnerSection';
+import PriceSection from './rent/PriceSection';
+import { RatingSection } from './rent/RatingSection';
+import ReviewSection from './rent/ReviewSection';
+import InlinePopup from '../app/InlinePopup';
+
+type ProfileInfo = {
+    education?: string;
+    residence?: string;
+    birthdate?: string;
+    mainHobby?: string;
+    skills?: string;
+    timeThings?: string;
+    profession?: string;
+    languages?: string;
+    song?: string;
+    fact?: string;
+    biography?: string;
+    pets?: string;
+    aboutMe?: string;
+}
+
+export type UserData = {
+    id: string,
+    name: string,
+    surname: string,
+    averageRating: number,
+    reviewsCount: number,
+    ownerFrom: string,
+    avatar: Image,
+    userAbout?: ProfileInfo
+}
 
 type Category = {
     id: string,
@@ -38,6 +65,13 @@ type Bedroom = {
 type Image = {
     id: string,
     src: string,
+}
+
+export type Review = {
+    creator: UserData,
+    rating: number,
+    text: string,
+    createdAt: string
 }
 
 export type Parameter = {
@@ -75,20 +109,26 @@ export interface Housing {
     maxGuests: number,
     description: string;
     shortDescription: string,
-    pricePerNight?: number,
+    pricePerNight: number,
+    averageRating: number,
+    reviewsCount: number,
+    cleaningFee: number,
 
     bedrooms: Bedroom[],
     images: Image[],
     features: Feature[],
-    availableDates: Date[]
+    availableDates: Date[],
+    reviews: Review[]
 }
 
 export default function HousingPage() {
     const { t, ready } = useTranslation();
     const { id } = useParams();
 
+    const [userData, setUserData] = useState<UserData>();
     const [housingData, setHousingData] = useState<Housing>();
     const [loading, setLoading] = useState(true);
+    const [dates, setDates] = useState<{dateOne: Date | undefined, dateTwo: Date | undefined}>();
 
     useEffect(() => {
         if (!ready) return; 
@@ -106,7 +146,8 @@ export default function HousingPage() {
                 });
                 if (response.ok) {
                     const data = await response.json();
-                    const hd = data as Housing;
+                    const hd = data.housing as Housing;
+                    setUserData(data.ownerData)
 
                     processTranslations(hd.category.categoryTranslations);
                     hd.features.forEach(feature => {
@@ -126,6 +167,21 @@ export default function HousingPage() {
         searchHousing();
     }, [id, ready]);
 
+    
+    const handleDateChoose = (dateOne: Date | undefined, dateTwo: Date | undefined) => {
+        setDates({dateOne, dateTwo});
+    }
+
+    const handleUrlCopy = async () => {
+        try {
+            const url = window.location.href;
+            await navigator.clipboard.writeText(url);
+        }
+        catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    }
+
     return (
         <>
             <div className="housing-page">
@@ -135,8 +191,10 @@ export default function HousingPage() {
                             {housingData ? housingData.name : ''}
                         </h1>
                         <div className='housing-actions'>
-                            <img src={shareIcon} />
-                            <img src={heartIcon} />
+                            <InlinePopup popupContent={t('HousingPage.Copied')}>
+                                <img className='action-icon' src={shareIcon} onClick={handleUrlCopy} />
+                            </InlinePopup>
+                            <img className='action-icon' src={heartIcon} />
                         </div>
                     </section>
                     <section className='housing-images-section'>
@@ -179,19 +237,34 @@ export default function HousingPage() {
                                     <hr className='divider' />
                                     <FeaturesSection housingData={housingData} />
                                     <hr className='divider' />
-                                    <HousingCalendarSection onChange={s => s} housingData={housingData} />
+                                    <HousingCalendarSection onChange={handleDateChoose} housingData={housingData} />
                                     <hr className='divider' />
                                     <ImportantInfoSection housingData={housingData} />
-                                    <hr className='divider' />
+                                                                       
                                 </>
                             ) : ''}
                             
                         </div>
                         <div className='rent-section'>
-
+                            {housingData ? (
+                                <>
+                                    <PriceSection 
+                                        selecetedDates={{dateOne: dates?.dateOne, dateTwo: dates?.dateTwo}}
+                                        price={housingData.pricePerNight}
+                                        housingData={housingData} />
+                                    <RatingSection housingData={housingData} />
+                                    <ReviewSection reviews={housingData.reviews} />
+                                </>
+                                
+                            ) : ''}
+                            
                         </div>
                     </div>
+                    {userData ? (
+                        <OwnerSection userData={userData} />
+                    ) : ''}                    
                 </div>
+                <FooterSection />
             </div>
         </>
     );

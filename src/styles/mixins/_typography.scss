@@ -16,12 +16,12 @@
     line-height: normal;
 }
 
-@mixin font-regular($size) {
-    color: var(--grey-dark, #515151);
+@mixin font-regular($size, $weight: 400) {
+    color: #515151;
     font-family: Comfortaa;
     font-size: $size;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $weight;
     line-height: 120%; /* 19.2px */
 }
 
@@ -41,6 +41,17 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+@mixin font-links-grey($size, $weight) {
+    color: var(--grey-dark, #515151);
+    font-family: 'Comfortaa';
+    font-size: $size;
+    font-style: normal;
+    font-weight: $weight;
+    line-height: 120%; 
     text-decoration-line: underline;
     cursor: pointer;
 }
@@ -90,12 +101,12 @@
     line-height: normal;
 }
 
-@mixin font-regular-var2($size) {
+@mixin font-regular-var2($size, $weight: 500) {
     color: #AAA;
     font-family: 'Comfortaa';
     font-size: $size;
     font-style: normal;
-    font-weight: 500;
+    font-weight: $weight;
     line-height: 100%;
 
     text-decoration: none;

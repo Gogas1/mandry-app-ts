@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 
 import '../../../styles/app/date-picker/date-picker.scss'
 import DatePickerCalendar from "./DatePickerCalendar";
+import { IsDatesEqual } from "../../../helpers/DateUtils";
 
 interface DatePickerProps {
     label: string;
@@ -11,13 +12,16 @@ interface DatePickerProps {
     iconCursorPointer?: boolean;
     showError?: boolean;
 
+    outerValue?: Date;
+    disable?: boolean;
+
     onChange: (date: Date) => void;
 
     onFocus?: () => void;
     onIconClick?: () => void;
 }
 
-export default function DatePicker({ label, onChange, onFocus, onIconClick, className = '', icon, iconCursorPointer, showError = false }: DatePickerProps) {
+export default function DatePicker({ label, onChange, onFocus, onIconClick, className = '', icon, iconCursorPointer, showError = false, outerValue, disable }: DatePickerProps) {
     const [focused, setFocused] = useState(false);
     const [value, setValue] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
@@ -29,6 +33,24 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
           onFocus();
         }
     }
+
+    const toDateString = (date: Date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+    
+        const localDateString = `${year}-${month}-${day}`;
+
+        return localDateString;
+    }
+
+    if(outerValue) {
+        if(value != toDateString(outerValue)) {
+            setValue(toDateString(outerValue));
+        }
+    }
+    
+        
 
     const handleBlur = () => {
         setFocused(false);
@@ -70,6 +92,7 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
                         onBlur={handleBlur}
                         onChange={handleChange}
                         value={value}
+                        disabled={disable}
                         />
                     {icon ? 
                     (<img 

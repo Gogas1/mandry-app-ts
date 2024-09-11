@@ -94,7 +94,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                 const data = await response.json();
                 login(data.token, data.userData);
                 hideModal();
-                navigate("/");
               } else if (response.status === 400) {
                 setIsEmailAttemptFailed(true);
               } else if (response.status === 401) {

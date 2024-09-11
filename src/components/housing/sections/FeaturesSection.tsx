@@ -16,7 +16,7 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
 
     const groupedFeatures = groupByProperty(housingData.features.filter(f => !f.isHouseRule), "typeCode");
     const [groupA1, groupA2] = splitGroupsEqually(groupedFeatures);
-    const [groupB1, groupB2] = splitGroupsWithLimit(groupedFeatures, 5);
+    const [groupB1, groupB2] = splitGroupsWithLimit(groupedFeatures, 4);
 
     return (
         <>
@@ -33,10 +33,10 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                         <h3 className="features-type">
                                             {t(type)}
                                         </h3>
-                                        {feature.map((f, index) => {
+                                        {feature.map((f, index1) => {
                                             return (
                                                 <>
-                                                    <div className="feature" key={index}>
+                                                    <div className="feature" key={index1}>
                                                         <div className="feature__icon">
                                                             <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>
@@ -68,10 +68,10 @@ export default function FeaturesSection({ housingData }: FeaturesSectionProps) {
                                         <h3 className="features-type">
                                             {t(type)}
                                         </h3>
-                                        {feature.map((f, index) => {
+                                        {feature.map((f, index1) => {
                                             return (
                                                 <>
-                                                    <div className="feature" key={index}>
+                                                    <div className="feature" key={index1}>
                                                         <div className="feature__icon">
                                                             <img src={FeatureService.getFeatureIcon(f.featureIcon.src)} />
                                                         </div>

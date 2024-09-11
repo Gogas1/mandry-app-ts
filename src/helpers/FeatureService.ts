@@ -12,9 +12,6 @@ export default class FeatureService {
             return acc;
         }, {} as { [key: string]: string })
 
-        console.log(params);
-        console.log(processedParams);
-
         return processedParams;
     }
 }

@@ -51,7 +51,7 @@ export default function BedroomsSection({ housingData, className }: BedroomsSect
                                 <div className="bedroom__beds-labels">
                                     {Object.entries(groupedBeds).map(([size, beds], index) => {
                                         return (
-                                            <div className="bed">
+                                            <div className="bed" key={index}>
                                                 {t(size === '1' ? 
                                                 "HousingPage.Sections.Bedrooms.BedSizeOne" :
                                                 "HousingPage.Sections.Bedrooms.BedSizeTwo", { count: beds.length, number: beds.length })}

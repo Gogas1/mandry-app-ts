@@ -1,0 +1,215 @@
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.price-section {
+    border-radius: 15px;
+    background: var(--white, #F6F6F6);
+    box-shadow: -25px 37px 12px 0px rgba(0, 0, 0, 0.00), -16px 24px 11px 0px rgba(0, 0, 0, 0.01), -9px 13px 10px 0px rgba(0, 0, 0, 0.05), -4px 6px 7px 0px rgba(0, 0, 0, 0.09), -1px 1px 4px 0px rgba(0, 0, 0, 0.10);
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .base-price {
+        @include font-regular(16px, 400);
+
+        &__price {
+            @include blue-heading-font(24px);
+        }
+    }
+
+    .period-fields {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .white-field {
+            flex: 1;
+
+            .date-input-material {
+
+                &.focused {
+                    .input-material {
+                        @include font-regular(16px, 400);
+                    }
+                }
+            }
+            
+            .label-material {
+                @include font-regular(16px, 400);
+            }
+
+            .input-container {
+                background: #E6E6E6;
+            }
+
+            .fieldset {
+                border-color: #CCC;
+                // background-color: #E6E6E6;
+            }
+        }
+    }
+
+    .travelers-field {
+        .white-field {
+            flex: 1;
+            
+            .label-material {
+                @include font-regular(16px, 400);
+            }
+
+            .input-container {
+                background: #E6E6E6;
+            }
+
+            .input-material {
+                @include font-regular(16px, 400);
+            }
+
+            .fieldset {
+                border-color: #CCC;
+                // background-color: #E6E6E6;
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+                margin: 0 20px;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        
+        gap: 10px;
+
+        button {
+            @include button-blue();
+        }
+
+        label {
+            text-align: center;
+            @include font-regular-var2(14px, 400);
+        }
+    }
+
+    .price-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .price-item {
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-between;
+
+            &__statement {
+                max-width: 70%;
+                text-wrap: wrap;
+
+                .font-link {
+                    @include font-links-grey(16px, 400);
+                }
+            }
+
+            &__price {
+                @include font-montserrat-gray-dark(20px, 500);
+
+                &.red {
+                    color: #FC712C;
+                }
+            }
+        }
+    }
+
+    .divider {
+        width: 100%;
+        flex-shrink: 0;
+        height: 1px;
+        border: 0;
+        outline: 0;
+        background-color: #08B1BD;
+    }
+
+    .total-price {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include font-montserrat-gray-dark(20px, 700);
+    }
+
+    .fee-popup {
+        min-width: 19rem;
+    }
+
+    .taxes-popup {
+        min-width: 19rem;
+    }
+
+    .price-summary {
+        display: flex;
+        flex-direction: column;
+        min-width: 20rem;
+        gap: 20px;
+
+        &__header {
+            text-align: center;
+            @include blue-heading-font(22px);
+            margin: 0;
+        }
+
+        &__divider {
+            width: 100%;
+            flex-shrink: 0;
+            height: 1px;
+            border: 0;
+            outline: 0;
+            background-color: #AAA;
+            margin: 0;
+        }
+
+        &__list {
+            .no-items {
+                text-align: center;
+                margin: 0;
+            }
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .item-date {
+
+            }
+
+            .item-price {
+
+            }
+        }
+
+        &__result {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            @include font-montserrat-gray-dark(16px, 700);
+
+            .result-label {
+
+            }
+
+            .result-price {
+
+            }
+        }
+    }
+}
