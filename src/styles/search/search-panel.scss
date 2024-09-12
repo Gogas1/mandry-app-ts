@@ -175,6 +175,8 @@
                                         align-items: center;
                     
                                         flex-shrink: 0;
+
+                                        user-select: none;
                 
                                         &:active {
                                             border-color: transparent;
@@ -320,6 +322,13 @@
 
             .filters-filter {
                 @include font-white-panels-headers(16px);
+
+                img {
+                    width: 23px;
+                    height: 23px;
+
+                    cursor: pointer;
+                }
 
                 display: flex;
                 flex-direction: row;

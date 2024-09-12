@@ -1,0 +1,29 @@
+@use '../../mixins/typography' as *;
+
+.category-filter {
+
+    &__header {
+        @include font-white-montserrat(16px, 700);
+    }
+
+    &__categories {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .category {
+            cursor: pointer;
+
+            border-radius: 15px;
+            border: 1px solid var(--blue, #08B1BD);
+            padding: 20px;
+
+            @include font-white(16px, 400);
+
+            &.selected {
+                background: rgba(0, 0, 0, 0.20);
+            }
+        }
+    }
+}

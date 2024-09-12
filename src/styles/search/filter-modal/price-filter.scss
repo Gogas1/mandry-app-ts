@@ -1,0 +1,31 @@
+@use '../../mixins/typography' as *;
+
+.price-filter {
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 70px;
+    }
+
+    &__header {
+        @include font-white-montserrat(16px, 700);
+        margin: 0;
+    }
+
+    &__label {
+        @include font-regular-var2(16px, 400);
+        margin: 0;
+    }
+
+    &__body {
+        .price-range {
+            margin: 10px 0 0 0;
+            @include font-comfortaa-blue(16px, 400, 120%);
+            .currencyDec {
+                @include font-comfortaa-blue(16px, 700, 120%);
+            }
+        }
+    }
+}

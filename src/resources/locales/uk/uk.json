@@ -342,6 +342,39 @@
             "Greet": "Вітаємо на <decoratedName>Mandry</decoratedName>",
             "Text": "Відкривайте для себе місця для розміщення й унікальні враження по всьому світу.",
             "ButtonLabel": "Продовжити"
+        },
+        "Filters": {
+            "Header": "Фільтри",
+            "Clear": "Очистити все",
+            "Search": "Пошук",
+            "Sections": {
+                "AppliedFilters": {
+                    "Header": "Обрані"
+                },
+                "Rooms": {
+                    "Header": "Кімнати та спальні місця"
+                },
+                "Price": {
+                    "Header": "Діапазон цін",
+                    "Label": "За ніч",
+                    "PriceRange": "<currencyDec>{{currency}}</currencyDec> {{valueFrom}} - <currencyDec>{{currency}}</currencyDec> {{valueTo}}+"
+                },
+                "Category": {
+                    "Header": "Тип помешкання"
+                },
+                "Features": {
+                    "Header": "Зручності"
+                },
+                "Reservations": {
+                    "Header": "Варіанти бронювання",
+                    "Instant": "Миттєве бронювання",
+                    "Self": "Самостійне прибуття",
+                    "Pets": "Перебування з тваринами"
+                },
+                "Languages": {
+                    "Header": "Мова господаря"
+                }
+            }
         }
     },
     
@@ -471,6 +504,7 @@
                     }
                 },
                 "FilterRooms": {
+                    "NotSelected": "Не обрано",
                     "Selector": {
                         "Label": "Кімнати та спальні місця",
                         "Options": {
@@ -497,6 +531,12 @@
                     "Label": "Фільтри"
                 }
             }
+        },
+
+        "SearchResult": {
+            "Bedrooms_one": "{{number}} спальня",
+            "Bedrooms_few": "{{number}} спальні",
+            "Bedrooms_many": "{{number}} спалень"
         }
     },
 

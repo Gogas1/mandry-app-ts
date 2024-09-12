@@ -1,0 +1,52 @@
+@use '../../mixins/typography' as *;
+
+.applied-filters {
+
+    &__header {
+        @include font-white-montserrat(16px, 700);
+        margin: 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        gap: 10px;
+
+        .list-item {
+            @include font-white(16px);
+
+            border-radius: 15px;
+            border: 1px solid var(--Color-3, #AAA);
+
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 10px;
+
+            .list-item-delete {
+                cursor: pointer;
+
+                border-radius: 15px;
+    
+                display: flex;
+                width: 30px;
+                height: 30px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+    
+                border: 1px solid #08B1BD;
+                padding: 0;
+                background-color: transparent;
+    
+                img {
+                    width: 50%;
+                }
+            }
+        }
+        
+    }
+}

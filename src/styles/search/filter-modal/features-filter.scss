@@ -1,0 +1,49 @@
+@use '../../mixins/typography' as *;
+
+.features-filter {
+
+    &__header {
+        @include font-white-montserrat(16px, 700);
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 40px;
+
+        .feature {
+            width: calc(50% - 20px);
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: space-between;
+
+            height: 24px;
+
+            .feature-main {
+                display: flex;
+                flex-direction: row;
+                height: 100%;
+                max-width: 75%;
+
+                gap: 10px;
+
+                .feature-icon {
+                    width: 24px;
+                    height: 24px;
+                    filter: invert(100%) brightness(135%) ;
+                }
+
+                .feature-name {
+                    display: flex;
+                    align-items: center;                
+
+                    @include font-white(16px);
+                }
+            }
+        }
+    }
+}

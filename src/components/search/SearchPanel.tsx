@@ -10,19 +10,26 @@ import filtersIcon from '../../assets/icons/meta/settings.svg';
 
 import TextFieldMy from '../home/TextFieldMy';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TravelersPopup, { TravelersPopupData } from '../home/TravelersPopup';
 import DestinationPopup from '../home/DestinationPopup';
 import CalendarPopup from '../home/CalendarPopup';
 import CheckboxRound from '../app/CheckboxRound';
 // import FeatureService, { Feature } from '../../helpers/FeatureService';
-import Section2 from './search-panel/Section2';
-import { processTranslations, Translation } from '../../helpers/TranslationService';
+import Section2, { Category } from './search-panel/Section2';
+import { Translation } from '../../helpers/TranslationService';
 import FeatureService from '../../helpers/FeatureService';
+import { FilterSetting } from './SearchPage';
+import { useModal } from '../app/ModalContext';
+import FiltersModal from './FiltersModal';
 
 interface SearchPanelProps {
     className?: string;
+    filters: FilterSetting;
+    categories: Category[];
+    features: Feature[];
     searchHandler: () => void;
+    filterChangeHandler: (filters: FilterSetting) => void;
 }
 
 type Image = {
@@ -36,73 +43,30 @@ export type Feature = {
     descriptionCode: string,
     typeCode: string,
     featureIcon: Image,
+    isHouseRule: boolean,
 
     translations: Translation[]
 }
 
-export default function SearchPanel({ className = '', searchHandler }: SearchPanelProps) {
+export default function SearchPanel({ filters, categories, features, className = '', searchHandler, filterChangeHandler }: SearchPanelProps) {
     const { t } = useTranslation();
 
+    const { openModal, closeModal } = useModal();
+
     const [openedPopup, setOpenedPopup] = useState('');
-    const [selectedDestination, setSelectedDestination] = useState('');
-    const [selectedDates, setSelectedDates] 
-        = useState<{firstDate: Date | undefined, secondDate: Date | undefined}>
-        ({firstDate: undefined, secondDate: undefined});
-
-    const [travelersValue, setTravelersValue] = useState('');
-
-    const [selectedFeatures, setSelectedFeatures] = useState<{feature: Feature, isChecked: boolean}[]>([]);
-
-    useEffect(() => {
-        const fetchFeatures = async () => {
-            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/f/all";
-
-            try {
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'ngrok-skip-browser-warning': 'true'
-                    }
-                });
-                if(response.ok) {
-                    const data = await response.json();
-                    const features = data.features as Feature[];
-
-                    features.forEach(feature => {
-                        if(feature.translations) {
-                            processTranslations(feature.translations);
-                        }
-                    });
-
-                    setSelectedFeatures(features.map(feature => {
-                        return { feature: feature, isChecked: false }
-                    }));
-                }
-            }
-            catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchFeatures();
-    }, []);
 
     const handleFeatureCheck = (feature: Feature) => {
-        setSelectedFeatures(prevSelectedFeatures =>
-            prevSelectedFeatures.map(item => item.feature.id === feature.id 
-                ? { ...item, isChecked: true }
-                : item
-            )
-        );
+        const updatedFilter = { ...filters };
+        updatedFilter.features = [...filters.features, feature]
+
+        filterChangeHandler(updatedFilter);
     };
 
     const handleFeatureUncheck = (feature: Feature) => {
-        setSelectedFeatures(prevSelectedFeatures =>
-            prevSelectedFeatures.map(item => item.feature.id === feature.id 
-                ? { ...item, isChecked: false }
-                : item
-            )
-        );
+        const updatedFilter = { ...filters };
+        updatedFilter.features = [...filters.features.filter((targetFeature) => targetFeature.id !== feature.id)]
+
+        filterChangeHandler(updatedFilter);
     };
 
     const formatTravelers = ({
@@ -127,11 +91,15 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
       };
 
     const handleTravelersChange = (values: TravelersPopupData) => {
-        setTravelersValue(formatTravelers(values));
+        
+        const updatedFilter = { ...filters };
+        updatedFilter.travelers = { adults: values.adults, children: values.children, toddlers: values.toddlers, pets: values.pets }
+        filterChangeHandler(updatedFilter);
     }
 
     const handleDestinationSelection = (value: string) => {
-        setSelectedDestination(value);
+        const updatedFilters = { ...filters, destionation: value };
+        filterChangeHandler(updatedFilters);
     }
 
     const handleCloseAllPopups = () => {
@@ -165,7 +133,28 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
     }
 
     const handleDatesChange = (firstDate: Date | undefined, secondDate: Date | undefined) => {
-        setSelectedDates({ firstDate: firstDate, secondDate: secondDate });
+        const updatedFilters = { ...filters };
+        if(firstDate && secondDate) {
+            updatedFilters.period = { startDate: firstDate, endDate: secondDate }
+        }
+        else {
+            updatedFilters.period = undefined;
+        }
+
+        filterChangeHandler(updatedFilters);
+    }
+
+    const handleFiltersModalCall = () => {
+        openModal(
+            "filtersModal", 
+            <FiltersModal 
+                hideModal={() => closeModal("filtersModal")}
+                filters={filters}
+                features={features}
+                categories={categories}
+                searchHandler={searchHandler}
+                filterChangeHandler={filterChangeHandler} />,
+            { minWidth: '35%', maxWidth: '35%' });
     }
 
     return (
@@ -178,17 +167,17 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
                                 <img src={destinationIcon} alt='destination' className='inner-icon' />
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Destination')}
-                                    text={selectedDestination}                                            
+                                    text={filters.destination}                                            
                                     onFocus={onDestinationFieldFocus}
                                     onBlur={onDestinationFieldBlur}
-                                    onChange={setSelectedDestination}/>
+                                    onChange={handleDestinationSelection}/>
                             </div>
                             <div className="divider"></div>
                             <div className="input-group">
                                 <img src={calendarIcon} alt='destination' className='inner-icon'/>
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Period')}
-                                    text={formatDates(selectedDates.firstDate, selectedDates.secondDate)}
+                                    text={formatDates(filters.period?.startDate, filters.period?.endDate)}
                                     onFocus={onDatesFieldFocus}
                                     onBlur={onDatesFieldBlur} 
                                     onChange={s => s}/>
@@ -198,7 +187,7 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
                                 <img src={groupIcon} alt='destination' className='inner-icon'/>
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Travelers')} 
-                                    text={travelersValue}
+                                    text={formatTravelers(filters.travelers)}
                                     onFocus={onTravelersFieldFocus}
                                     onBlur={onTravelersFieldBlur}
                                     onChange={s => s}/>
@@ -211,7 +200,7 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
                     <div className='popup-wrapper'>
                         <DestinationPopup 
                             isOpen={openedPopup === 'destinationPopup'}
-                            searchValue={selectedDestination} 
+                            searchValue={filters.destination} 
                             assignValue={handleDestinationSelection} 
                             closeAll={handleCloseAllPopups} />
                         <CalendarPopup
@@ -226,27 +215,30 @@ export default function SearchPanel({ className = '', searchHandler }: SearchPan
                         />
                     </div>
                 </div>
-                <Section2 />
+                <Section2 
+                    categories={categories}
+                    filterChangeHandler={filterChangeHandler} 
+                    filters={filters} />
                 <div className="filter-section filter-section--3">
                     <div className='filter-panel feature-filter'>
-                        {selectedFeatures.slice(0, 6).map((feature, index) => (
+                        {features.slice(0, 6).map((feature, index) => (
                             <div className='feature' key={index}>
                                 <div className='feature-main'>
-                                    <img src={FeatureService.getFeatureIcon(feature.feature.featureIcon.src)} className='feature-icon' />
+                                    <img src={FeatureService.getFeatureIcon(feature.featureIcon.src)} className='feature-icon' />
                                     <div className='feature-name'>
-                                        {t(feature.feature.nameCode)}
+                                        {t(feature.nameCode)}
                                     </div>
                                 </div>
                                 <CheckboxRound
-                                    onCheck={() => handleFeatureCheck(feature.feature)}
-                                    onUncheck={() => handleFeatureUncheck(feature.feature)}
-                                    isChecked={feature.isChecked} />
+                                    onCheck={() => handleFeatureCheck(feature)}
+                                    onUncheck={() => handleFeatureUncheck(feature)}
+                                    isChecked={filters.features.some(f => f.id === feature.id)} />
                             </div>
                         ))}
                     </div>
                     <div className='filter-panel filters-filter'>
                         {t('SearchPage.SearchPanel.Filters.FilterFilters.Label')}
-                        <img src={filtersIcon} />
+                        <img src={filtersIcon} onClick={handleFiltersModalCall} />
                     </div>
                 </div>
             </section>

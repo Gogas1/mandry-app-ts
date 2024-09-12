@@ -146,17 +146,17 @@
     }
 
     .fee-popup {
-        min-width: 19rem;
+        min-width: 25rem;
     }
 
     .taxes-popup {
-        min-width: 19rem;
+        min-width: 25rem;
     }
 
     .price-summary {
         display: flex;
         flex-direction: column;
-        min-width: 20rem;
+        min-width: 25rem;
         gap: 20px;
 
         &__header {

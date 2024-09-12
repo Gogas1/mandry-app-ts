@@ -2,9 +2,9 @@ import { Slider } from '@mui/material';
 import arrowBlue from '../../../assets/icons/meta/arrow-blue.svg';
 
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import DropdownAddition, { DropdownOption } from '../../app/DropdownAddition';
-import i18n from '../../../i18n';
+import { FilterSetting } from '../SearchPage';
 
 export enum SearchHousingType {
     HOUSE = "HOUSE",
@@ -20,7 +20,7 @@ export interface SearchHousingRooms {
     bathrooms: number
 }
 
-type Category = {
+export type Category = {
     id: string,
     nameKey: string,
     isCategoryPropertyRequired: boolean,
@@ -35,83 +35,34 @@ type Translation = {
     text: string;
 }
 
-export default function Section2() {
+interface Section2Props {
+    filters: FilterSetting;
+    categories: Category[];
+    filterChangeHandler: (filters: FilterSetting) => void;
+}
+
+export default function Section2({ filters, categories, filterChangeHandler }: Section2Props) {
     const { t } = useTranslation();
-    
-    const [priceRange, setPriceRange] = useState<number[]>([9, 360]);
-    
-    const [bedsCounter, setBedsCounter] = useState(0);
-    const [bedroomsCounter, setBedroomsCounter] = useState(0);
-    const [bathroomsCounter, setBathroomsCounter] = useState(0);
 
     const [housingTypeDropdownOpened, setHousingTypeDropdownOpened] = useState(false);
     const [housingRoomsPopupOpened, setHousingRoomsPopupOpened] = useState(false);
 
-    const [categoriesOptions, setCategoriesOptions] = useState<DropdownOption[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<Category>();
-
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/c/get";
-
-                const result = await fetch(url, {
-                    method: "GET",
-                    headers: {
-                        'ngrok-skip-browser-warning': 'true'
-                    }
-                });
-
-                if(result.ok) {
-                    const data = await result.json();
-                    const categories = data.categories as Category[];
-
-                    categories.forEach(category => {
-                        if(category.categoryTranslations) {
-                            processCategoryTranslations(category.categoryTranslations);
-                        }
-                        if(category.categoryPropertyTranslations) {
-                            processCategoryTranslations(category.categoryPropertyTranslations);
-                        }
-                    });
-
-                    setCategoriesOptions(categories.map(category => {
-                        return { display: t(category.nameKey), value: category } as DropdownOption;
-                    }))
-                }
-            }
-            catch (error) {
-
-            }            
-        };
-
-        fetchCategories();
-    }, [i18n.language]);
-
-    const processCategoryTranslations = (translations: Translation[]) => {
-        const translationsByLanguage: Record<string, Record<string, string>> = {};
-
-        translations.forEach(translation => {
-            const { languageCode, key, text } = translation;
-
-            if(!translationsByLanguage[languageCode]) {
-                translationsByLanguage[languageCode] = {};
-            }
-
-            translationsByLanguage[languageCode][key] = text;
-        });
-
-        Object.keys(translationsByLanguage).forEach(languageCode => {
-            i18n.addResources(languageCode, 'translation', translationsByLanguage[languageCode]);
-        });
-    };
+    const categoriesOptions = categories.map(category => {
+        return { display: t(category.nameKey), value: category } as DropdownOption;
+    });
 
     const handlePriceRangeChange = (event: Event, newValue: number | number[]) => {
-        setPriceRange(newValue as number[]);
+        console.log(event);
+        const updatedFilter = { ...filters }
+        updatedFilter.priceRange = newValue as number[];
+        filterChangeHandler(updatedFilter);
     };
     
     const handleTypeChange = (option: DropdownOption) => {
-        setSelectedCategory(option.value);
+        const updatedFilter = { ...filters }
+        updatedFilter.category = option.value;
+
+        filterChangeHandler(updatedFilter);        
     }
 
     const formatHousingRooms = function (rooms: SearchHousingRooms): string {
@@ -122,7 +73,9 @@ export default function Section2() {
         const bedroomsString = formatRoomString('SearchPage.SearchPanel.Filters.FilterRooms.Selector.Options.Bedrooms', rooms.bedrooms);
         const bathroomsString = formatRoomString('SearchPage.SearchPanel.Filters.FilterRooms.Selector.Options.Bathrooms', rooms.bathrooms);
     
-        return [bedsString, bedroomsString, bathroomsString].filter(Boolean).join(' ').trim();
+        const result = [bedsString, bedroomsString, bathroomsString].filter(Boolean).join(' ').trim()
+
+        return result ? result : t('SearchPage.SearchPanel.Filters.FilterRooms.NotSelected');
     }
 
     const handleTypeDropdownOpening = () => {
@@ -133,16 +86,31 @@ export default function Section2() {
         setHousingRoomsPopupOpened(!housingRoomsPopupOpened);
     }
 
-    const handleIncrease = (currentNumber: number, setter: (value: number) => void) => {
-        setter(currentNumber + 1);
+    const handleBedsChange = (value: number) => {
+        if(value > -1) {
+            const updatedFilter = { ...filters }
+            updatedFilter.beds = value;
+    
+            filterChangeHandler(updatedFilter);
+        }
     }
 
-    const handleDecrease = (currentNumber: number, setter: (value: number) => void) => {
-        if((currentNumber - 1) >= 0) {
-            setter(currentNumber - 1);
-        } else {
-            setter(0);
-        }  
+    const handleBedroomsChange = (value: number) => {
+        if(value > -1) {
+            const updatedFilter = { ...filters }
+            updatedFilter.bedrooms = value;
+    
+            filterChangeHandler(updatedFilter);
+        }
+    }
+
+    const handleBathroomsChange = (value: number) => {
+        if(value > -1) {
+            const updatedFilter = { ...filters }
+            updatedFilter.bathrooms = value;
+    
+            filterChangeHandler(updatedFilter);
+        }
     }
 
     return (
@@ -164,8 +132,8 @@ export default function Section2() {
                             
                         </div>
                         <div className='selected-type'>
-                            {selectedCategory ? (
-                                t(selectedCategory.nameKey)
+                            {filters.category ? (
+                                t(filters.category.nameKey)
                             ): (
                                 t('SearchPage.SearchPanel.Filters.FilterType.Selector.Options.None')
                             )}
@@ -184,11 +152,11 @@ export default function Section2() {
                                 <div className='room-item'>
                                     {t('SearchPage.SearchPanel.Filters.FilterRooms.Selector.Options.Beds')}
                                     <div className='controls-block'>
-                                        <button className="counter-control travelers-decrease" onClick={() => handleDecrease(bedsCounter, setBedsCounter)}>                                    
+                                        <button className="counter-control travelers-decrease" onClick={() => handleBedsChange(filters.beds - 1)}>                                    
                                             <div className="line"></div>
                                         </button>
-                                        {bedsCounter}
-                                        <button className="counter-control travelers-increase" onClick={() => handleIncrease(bedsCounter, setBedsCounter)}>
+                                        {filters.beds}
+                                        <button className="counter-control travelers-increase" onClick={() => handleBedsChange(filters.beds + 1)}>
                                             +
                                         </button>
                                     </div>
@@ -197,11 +165,11 @@ export default function Section2() {
                                 <div className='room-item'>
                                     {t('SearchPage.SearchPanel.Filters.FilterRooms.Selector.Options.Bedrooms')}
                                     <div className='controls-block'>
-                                        <button className="counter-control travelers-decrease" onClick={() => handleDecrease(bedroomsCounter, setBedroomsCounter)}>                                    
+                                        <button className="counter-control travelers-decrease" onClick={() => handleBedroomsChange(filters.bedrooms - 1)}>                                    
                                             <div className="line"></div>
                                         </button>
-                                        {bedroomsCounter}
-                                        <button className="counter-control travelers-increase" onClick={() => handleIncrease(bedroomsCounter, setBedroomsCounter)}>
+                                        {filters.bedrooms}
+                                        <button className="counter-control travelers-increase" onClick={() => handleBedroomsChange(filters.bedrooms + 1)}>
                                             +
                                         </button>
                                     </div>
@@ -210,11 +178,11 @@ export default function Section2() {
                                 <div className='room-item'>
                                     {t('SearchPage.SearchPanel.Filters.FilterRooms.Selector.Options.Bathrooms')}
                                     <div className='controls-block'>
-                                        <button className="counter-control travelers-decrease" onClick={() => handleDecrease(bathroomsCounter, setBathroomsCounter)}>                                    
+                                        <button className="counter-control travelers-decrease" onClick={() => handleBathroomsChange(filters.bathrooms - 1)}>                                    
                                             <div className="line"></div>
                                         </button>
-                                        {bathroomsCounter}
-                                        <button className="counter-control travelers-increase" onClick={() => handleIncrease(bathroomsCounter, setBathroomsCounter)}>
+                                        {filters.bathrooms}
+                                        <button className="counter-control travelers-increase" onClick={() => handleBathroomsChange(filters.bathrooms + 1)}>
                                             +
                                         </button>
                                     </div>
@@ -224,7 +192,7 @@ export default function Section2() {
                             
                         </div>
                         <div className='selected-bedrooms'>
-                            {formatHousingRooms({ beds: bedsCounter, bedrooms: bedroomsCounter, bathrooms: bathroomsCounter })}
+                            {formatHousingRooms({ beds: filters.beds, bedrooms: filters.bedrooms, bathrooms: filters.bathrooms })}
                         </div>
                     </div>
                 </div>
@@ -239,11 +207,11 @@ export default function Section2() {
                     </div>
                     <div className='slider-block'>
                         <Slider 
-                            value={priceRange}
+                            value={filters.priceRange}
                             onChange={handlePriceRangeChange}
                             valueLabelDisplay='auto'
-                            min={9}
-                            max={360}
+                            min={0}
+                            max={300}
                             sx={{
                                 '& .MuiSlider-rail': {
                                     backgroundColor: '#B7B7B7',
@@ -271,10 +239,10 @@ export default function Section2() {
                     </div>
                     <div className='minmax-block'>
                         <div className='min-label'>
-                            9
+                            0
                         </div>
                         <div className='max-label'>
-                            360+
+                            64+
                         </div>
                     </div>
                 </div>

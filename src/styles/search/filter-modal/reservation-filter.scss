@@ -1,0 +1,41 @@
+@use '../../mixins/typography' as *;
+
+.reservation-filter {
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        @include font-white-montserrat(16px, 700);
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &__reservations {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .reservation-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
+        cursor: pointer;
+
+        border-radius: 15px;
+        border: 1px solid var(--blue, #08B1BD);
+        padding: 20px;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        @include font-white(16px, 400);
+
+        &.selected {
+            background: rgba(0, 0, 0, 0.20);
+        }
+    }
+}

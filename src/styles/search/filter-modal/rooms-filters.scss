@@ -1,0 +1,72 @@
+@use '../../mixins/typography' as *;
+
+.rooms-filters {
+    &__header {
+        @include font-white-montserrat(16px, 700);
+        margin: 0 0 20px 0;
+    }
+
+    .room-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        word-break: break-all;
+
+        @include font-white(16px);
+
+        .controls-block {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 82px;
+
+            justify-content: space-between;
+
+            @include font-white(14px);
+
+            .counter-control {
+                width: 24px;
+                height: 24px;
+
+                border: 1px solid #F6F6F6;
+                border-radius: 12px;
+                background-color: #08B1BD;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                flex-shrink: 0;
+
+                user-select: none;
+
+                &:active {
+                    border-color: transparent;
+                }
+
+                &.travelers-decrease {
+                    .line {
+                        height: 1px;
+                        flex: 1;
+                        background-color: #F6F6F6;
+                    }
+                }
+                
+                &.travelers-increase {
+                    color: #F6F6F6;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    .divider {
+        background-color: #08B1BD;
+        height: 1px;
+        width: 100%;
+
+        margin: 10px 0 20px 0;
+    }
+}
