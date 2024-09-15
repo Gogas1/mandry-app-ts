@@ -18,6 +18,7 @@ import { AuthorizationProvider } from './components/auth/AuthorizationContext';
 import SearchPage from './components/search/SearchPage';
 import HousingPage from './components/housing/HousingPage';
 import NotificationsPage from './components/account/profile/NotificationsPage';
+import PaymentPage from './components/payment/PaymentPage';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
                 <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
                 <Route path='/account/notifications' element={<NotificationsPage />} />
+                <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
               </Routes>
               <Modal />
             </AuthorizationProvider>

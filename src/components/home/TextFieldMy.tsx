@@ -13,6 +13,8 @@ export default function TextFieldMy({ label, text, onFocus, onBlur, onChange }: 
     const [value, setValue] = useState<string>(text);
     const [focused, setFocused] = useState<boolean>(false);
 
+    
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
         onChange(e.target.value);
@@ -34,7 +36,8 @@ export default function TextFieldMy({ label, text, onFocus, onBlur, onChange }: 
           <input
             className="textfield__input"
             type="text"
-            defaultValue={text}
+            // defaultValue={text}
+            value={text ? text : value}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

@@ -614,7 +614,8 @@
                 "Header1_one": "{{location}}: {{duration}} ніч",
                 "Header1_few": "{{location}}: {{duration}} ночі",
                 "Header1_many": "{{location}}: {{duration}} ночей",
-                "Header2": "{{startDate}} р. - {{endDate}} р."
+                "Header2": "{{startDate}} р. - {{endDate}} р.",
+                "Header2Empty": "Період не обраний"
             },
 
             "IInfo": {
@@ -674,6 +675,11 @@
         "RentSections": {
             "Price": {
                 "BasePrice": "<priceText>{{currency}} {{price}}</priceText> ніч",
+
+                "Travelers_zero": "Кількість гостей не вказана",
+                "Travelers_one": "{{number}} гість",
+                "Travelers_few": "{{number}} гостя",
+                "Travelers_many": "{{number}} гостей",
                 
                 "PriceFromNights_one": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ніч</fontLink>",
                 "PriceFromNights_few": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ночі</fontLink>",
@@ -686,6 +692,10 @@
                 "TravelersLabel": "Мандрівники",
                 "FromLabel": "Прибуття",
                 "ToLabel": "Виїзд",
+
+                "ButtonSignin": "Вхід",
+                "ButtonReservation": "Бронювання",
+                "NoPaymentLabel": "Поки що ви нічого не платите",
 
                 "PriceSummary": {
                     "Header": "Структура базової ціни",
@@ -738,6 +748,140 @@
         },
         "DetailsList": {
             "Header": "Подробиці"
+        }
+    },
+
+    "PaymentPage": {
+        "Modal": {
+            "Awaiting": "Ми вже готуємо вашу подорож",
+            "Analysis": "Аналіз деталей платежу",
+            "ConfirmationHeader": "Підтвердіть вашу картку",
+            "ConfirmationText": "Вам треба підтвердити цю картку за допомогою вашого банку, перед тим як ми продовжимо процес оплати.",
+            "ConfirmationConnect": "З'єднатися з банком",
+            "Confirmation": "З'єднатися з банком"
+        },
+        "Sections": {
+            "Header": { 
+                "Header": "Підтвердження і оплата" 
+            },
+            "Data": {
+                "Header": "Ваша подорож",
+                "DatesHeader": "Дати",
+                "DatesValues": "{{dateOne}} - {{dateTwo}}",
+                "GuestsHeader": "Гості",
+                "GuestsCount_one": "{{number}} гість",
+                "GuestsCount_few": "{{number}} гостя",
+                "GuestsCount_many": "{{number}} гостей",
+                "Edit": "Редагувати"
+            },
+            "Payment": {
+                "Header": "Оплатити за допомогою",
+                "Card": "Кредитна або дебетова картка",
+                "PayPal": "PayPal",
+                "iDeal": "iDeal",
+                "Sofort": "Sofortüberweisung",
+                "GooglePay": "Google Pay",
+                "Amex": "Amex",
+
+                "Forms": {
+                    "Card": {
+                        "Number": "Номер картки",
+                        "Period": "Термін дії",
+                        "CVV": "CVV",
+                        "Index": "Індекс",
+                        "Location": "Країна / регіон",
+
+                        "Validation": {
+                            "Number": {
+                                "Required": "Введіть код картки",
+                                "Invalid": "Перевірте код картки"
+                            },
+                            "DateAndCCV": {
+                                "Required": "Введіть дату дії картки та CVV код",
+                                "Invalid": "Перевірте дату дії картки та CVV код"
+                            },
+                            "Index": {
+                                "Required": "Введіть індекс населеного пункту",
+                                "Invalid": "Перевірте індекс населеного пункту"
+                            }
+                        }
+                    }
+                }
+            },
+            "Phone": {
+                "Header": "Потрібно для подорожі",
+                "BodyHeader": "Номер телефону",
+                "BodyText": "Додайте й підтвердьте номер телефону, щоб отримувати новини про подорож.",
+                "ButtonText": "Додати"
+            },
+            "Refund": {
+                "Header": "Правила скасування бронювання",
+                "Description": "<desc1>Безкоштовне скасування бронювання протягом 48 годин.</desc1> <desc2>У разі скасування бронювання до 11 жовт. вам повернуть частину коштів.</desc2>",
+                "Expand": "Докладніше",
+                "Statements": {
+                    "FullRefund": {
+                        "TimeHeader": "Протягом",
+                        "TimeBody": "48 годин після бронювання",
+                        "DescHeader": "Повне повернення коштів",
+                        "DescBody": "Повне повернення коштів: ви отримаєте 100% сплаченої вами суми."
+                    },
+                    "HalfRefund": {
+                        "TimeHeader": "До",
+                        "TimeBody": "{{dateTime}}",
+                        "DescHeader": "Часткове повернення коштів",
+                        "DescBody": "Вам поаернуть 50% варточті кожної ночі. Сервісний збір не повертається"
+                    },
+                    "NoRefund": {
+                        "TimeHeader": "Після",
+                        "TimeBody": "{{dateTime}}",
+                        "DescHeader": "Без повернення коштів",
+                        "DescBody": "Кошти за це бронювання не повертаються."
+                    }
+                }
+            },
+            "PaymentWay": {
+                "Header": "Виберіть варіант оплати",
+                "FullWay": "Сплатіть {{currency}} {{value}} зараз",
+                "DividedWay": "Оплата двома частинами",
+                "DividedWayDescription": "{{currency}} {{firstValue}} потрібно оплатити сьогодні, {{currency}} {{secondValue}} - {{date}} Жодних додаткових зборів. Докладніше"
+            },
+            "Agreement": {
+                "Main": "Натискаючи кнопку нижче, я приймаю умови (<linkR1>Правила дому господаря</linkR1>, <linkR2>Основні правила для гостей</linkR2>, <linkR3>Правила повторного бронювання та повернення коштів Mandry</linkR3>), які Mandry може застосовувати в разі моєї відповідальності за нанесення збитків (<linkR4>стягнути кошти відповідно до мого способу оплати</linkR4>). Умови оплати між вами та компанією Mandry.",
+                "Secondary": "Я також приймаю оновлені <linkR1>Умови обслуговування</linkR1>, <linkR2>Умови здійснення платежів</linkR2> і визнаю <linkR3>Політику конфіденційності.</linkR3>",
+                "ConfirmLabel": "Підтвердити і оплатити"
+            },
+            "HousingData": {
+                "Rating_one": "{{average}} ~ {{reviews}} відгук",
+                "Rating_few": "{{average}} ~ {{reviews}} відгуки",
+                "Rating_many": "{{average}} ~ {{reviews}} відгуків",
+
+                "PriceFromNights_one": "{{currency}} {{price}} x {{nightsCount}} ніч",
+                "PriceFromNights_few": "{{currency}} {{price}} x {{nightsCount}} ночі",
+                "PriceFromNights_many": "{{currency}} {{price}} x {{nightsCount}} ночей",
+
+                "PriceHeader": "Детальніше про ціну",
+
+                "Price": "{{currency}} {{value}}",
+                "Discount": "Знижка",
+                "CleaningFee": "Плата за прибирання",
+                "Taxes": "Податки",
+                "Total": "Усього"
+            }
+        },
+        "Done": {
+            "Header": {
+                "Header": "Ваше бронювання підтвердженно",
+                "Subheader": "Ми відправили деталі вашій подорожі на {{email}}"
+            },
+            "WriteOwner": {
+                "Header": "Познайомтеся з господарем",
+                "Subheader": "{{name}} готов відповісти на всі ваші питання.",
+                "Write": "Написати",
+                "Placeholder": "Привіт, {{ownerName}}, я відвідаю {{locationName}}"
+            },
+            "Card": {
+                "Code": "Код бронювання"
+            }
         }
     }
 }

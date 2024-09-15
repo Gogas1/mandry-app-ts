@@ -45,8 +45,10 @@
         border-radius: 15px;
         border: 1px solid #fff;
 
-        -webkit-mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
-        mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
+        &.show-back-icon {
+            -webkit-mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
+            mask-image: radial-gradient(circle 23px at 2px calc(0% + 47px), transparent 100%, black 100%);
+        }
     }
 
     .popup-panel {
@@ -59,8 +61,12 @@
 
         // transition: max-width 0.3s, padding 0.3s;
 
-        -webkit-mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
-        mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
+        &.show-back-icon {
+            -webkit-mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
+            mask-image: radial-gradient(circle 24px at -8px calc(0% + 41px), transparent 95%, black 100%);
+        }
+
+        
 
         overflow: hidden;
 

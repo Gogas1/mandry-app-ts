@@ -26,6 +26,27 @@ export enum BirthDateErrorCode {
     NOT_VALIDATED = "NOT_VALIDATED"
 }
 
+export enum CardErrorCode {
+    REQUIRED = "REQUIRED",
+    INVALID_NUMBER = "INVALID_NUMBER",
+}
+
+export enum ExpirationDateErrorCode {
+    REQUIRED = "REQUIRED",
+    INVALID_DATE = "INVALID_DATE",
+    EXPIRED = "EXPIRED"
+}
+
+export enum CVVErrorCode {
+    REQUIRED = "REQUIRED",
+    INVALID_CVV = "INVALID_CVV"
+}
+
+export enum LocationIndexErrorCode {
+    REQUIRED = "REQUIRED",
+    INVALID_LOCATION_INDEX = "INVALID_LOCATION_INDEX"
+}
+
 export default class CredentialValidator {
 
     static ValidateEmail(email: string): EmailValidationErrorCode | undefined {
@@ -110,6 +131,60 @@ export default class CredentialValidator {
             if (currentDate.getMonth() === date.getMonth() && currentDate.getDate() <= date.getDate()) return BirthDateErrorCode.INVALID_DATE;
         }
 
+        return undefined;
+    }
+
+    static ValidateCardNumber(value: string): CardErrorCode | undefined {
+        if(value.length == 0) return CardErrorCode.REQUIRED;
+        const unWhiteSpacedValue = value.replace(' ', '');
+
+        const sanitizedCardNumber = unWhiteSpacedValue.replace(/\D/g, '');
+
+        if (sanitizedCardNumber.length !== 16) {
+            return CardErrorCode.INVALID_NUMBER;
+        }
+
+        if (/^(\d)\1{15}$/.test(sanitizedCardNumber)) {
+            return CardErrorCode.INVALID_NUMBER;
+        }
+
+        return undefined;
+    }
+
+    static ValidateExpirationDate(value: string): ExpirationDateErrorCode | undefined {
+        if (value.length === 0) return ExpirationDateErrorCode.REQUIRED;
+    
+        const [month, year] = value.split("/").map(Number);
+        if (isNaN(month) || isNaN(year) || month < 1 || month > 12 || year < 0) {
+            return ExpirationDateErrorCode.INVALID_DATE;
+        }
+    
+        const currentYear = new Date().getFullYear() % 100; 
+        const currentMonth = new Date().getMonth() + 1;
+    
+        if (year < currentYear || (year === currentYear && month < currentMonth)) {
+            return ExpirationDateErrorCode.EXPIRED;
+        }
+    
+        return undefined;
+    }
+    
+    static ValidateCVV(value: string): CVVErrorCode | undefined {
+        if (value.length === 0) return CVVErrorCode.REQUIRED;
+    
+        const sanitizedCVV = value.replace(/\D/g, '');
+        const isValidLength = sanitizedCVV.length === 3;
+    
+        if (!isValidLength) {
+            return CVVErrorCode.INVALID_CVV;
+        }
+    
+        return undefined;
+    }
+    
+    static ValidateLocationIndex(value: string): LocationIndexErrorCode | undefined {
+        if (value.length === 0) return LocationIndexErrorCode.REQUIRED;
+    
         return undefined;
     }
 

@@ -49,6 +49,11 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
             setValue(toDateString(outerValue));
         }
     }
+    else {
+        if(value) {
+            setValue('');
+        }
+    }
     
         
 

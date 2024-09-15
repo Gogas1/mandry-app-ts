@@ -20,9 +20,9 @@ interface MonthYear {
 
 export default function HousingCalendarSection({ onChange, housingData }: PopupProps) {
     const { t } = useTranslation();
- 
-    if(!housingData.availableDates) {
-        housingData.availableDates = [];
+
+    if(!housingData.availabilities) {
+        housingData.availabilities = [];
     }
     const currentDate = new Date();
     currentDate.setHours(0,0,0,0);
@@ -71,7 +71,7 @@ export default function HousingCalendarSection({ onChange, housingData }: PopupP
         let iteratorDate = new Date(firstDate);
   
         while (iteratorDate <= secondDate) {
-            if (!housingData.availableDates.find(d => IsDatesEqual(d, iteratorDate))) {
+            if (!housingData.availabilities.find(d => IsDatesEqual(d, iteratorDate))) {
             return false;
             }
 
@@ -82,6 +82,7 @@ export default function HousingCalendarSection({ onChange, housingData }: PopupP
     }
 
     const handleDateSelection = (date: Date) => {
+        if(IsDatesEqual(date, currentDate) || date < currentDate) return;
         if(IsDatesEqual(date, dateOne)) {
             setDateOne(undefined);
             onChange(undefined, dateTwo);
@@ -175,7 +176,7 @@ export default function HousingCalendarSection({ onChange, housingData }: PopupP
                                 startDate: formatDateCustom(dateOne),
                                 endDate: formatDateCustom(dateTwo)
                             })
-                        ) : ""}
+                        ) : t('HousingPage.Sections.Calendar.Header2Empty')}
                         
                     </div>
                 </div>
@@ -191,7 +192,7 @@ export default function HousingCalendarSection({ onChange, housingData }: PopupP
                                     selectToStart={getSelectToStartValue()}
                                     selectToEnd={getSelectToStartValue()}
                                     onDateSelected={handleDateSelection}
-                                    availableDates={housingData.availableDates.filter(date => {
+                                    availableDates={housingData.availabilities.filter(date => {
                                         const year = date.getFullYear();
                                         const month = date.getMonth();
                                         
@@ -210,7 +211,7 @@ export default function HousingCalendarSection({ onChange, housingData }: PopupP
                                     selectToStart={getSelectToStartValue()}
                                     selectToEnd={getSelectToStartValue()}
                                     onDateSelected={handleDateSelection}
-                                    availableDates={housingData.availableDates.filter(date => {
+                                    availableDates={housingData.availabilities.filter(date => {
                                         const year = date.getFullYear();
                                         const month = date.getMonth();
                                         return year === secondMonth.year && month === secondMonth.month;

@@ -1,0 +1,15 @@
+@use '../../mixins/typography' as *;
+
+.header-done-section {
+    
+    &__header {
+        margin: 0;
+        @include font-montserrat-gray-dark(32px, 700);
+    }
+
+    &__subheader {
+        @include font-regular(16px, 400);
+        margin: 0;
+        margin-top: 20px;
+    }
+}

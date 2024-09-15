@@ -54,6 +54,7 @@ export default function SearchPanel({ filters, categories, features, className =
     const { openModal, closeModal } = useModal();
 
     const [openedPopup, setOpenedPopup] = useState('');
+    const [destinationSearchValue, setDestinationSearchValue] = useState('');
 
     const handleFeatureCheck = (feature: Feature) => {
         const updatedFilter = { ...filters };
@@ -98,8 +99,10 @@ export default function SearchPanel({ filters, categories, features, className =
     }
 
     const handleDestinationSelection = (value: string) => {
-        const updatedFilters = { ...filters, destionation: value };
+        const updatedFilters = { ...filters };
+        updatedFilters.destination = value;
         filterChangeHandler(updatedFilters);
+        setDestinationSearchValue(value);
     }
 
     const handleCloseAllPopups = () => {
@@ -167,10 +170,10 @@ export default function SearchPanel({ filters, categories, features, className =
                                 <img src={destinationIcon} alt='destination' className='inner-icon' />
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Destination')}
-                                    text={filters.destination}                                            
+                                    text={destinationSearchValue}                                          
                                     onFocus={onDestinationFieldFocus}
                                     onBlur={onDestinationFieldBlur}
-                                    onChange={handleDestinationSelection}/>
+                                    onChange={setDestinationSearchValue}/>
                             </div>
                             <div className="divider"></div>
                             <div className="input-group">
@@ -200,7 +203,7 @@ export default function SearchPanel({ filters, categories, features, className =
                     <div className='popup-wrapper'>
                         <DestinationPopup 
                             isOpen={openedPopup === 'destinationPopup'}
-                            searchValue={filters.destination} 
+                            searchValue={destinationSearchValue} 
                             assignValue={handleDestinationSelection} 
                             closeAll={handleCloseAllPopups} />
                         <CalendarPopup
