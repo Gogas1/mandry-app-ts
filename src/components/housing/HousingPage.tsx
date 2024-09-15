@@ -113,6 +113,7 @@ export interface Housing {
     averageRating: number,
     reviewsCount: number,
     cleaningFee: number,
+    categoryProperty: string,
 
     bedrooms: Bedroom[],
     images: Image[],

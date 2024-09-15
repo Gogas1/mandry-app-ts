@@ -75,20 +75,20 @@
     
 }
 
-@mixin font-white($size) {
+@mixin font-white($size, $weight: 400) {
     color: var(--white, #F6F6F6);
     font-family: 'Comfortaa';
     font-size: $size;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $weight;
 }
 
-@mixin font-white-montserrat($size) {
+@mixin font-white-montserrat($size, $weight: 700) {
     color: #F6F6F6;
     font-family: "Montserrat Alternates";
     font-size: $size;
     font-style: normal;
-    font-weight: 700;
+    font-weight: $weight;
     line-height: 100%;
 }
 

@@ -1,0 +1,111 @@
+@use '../mixins/panel.scss' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/buttons' as *;
+
+.filters-modal-wrapper {
+    position: relative;
+    width: 100%;
+
+    .filter-modal-panel {
+        @include panelInverse;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+
+        max-height: 80vh;
+
+        -webkit-mask-image: radial-gradient(circle 20px at calc(100% - 48px) calc(0%), transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 20px at calc(100% - 48px) calc(0%), transparent 95%, black 100%);
+
+        &__header {
+            @include blue-heading-font(22px);
+            text-align: center;
+            margin: 0;
+        }
+
+        .divider-gray {
+            margin: 0;
+            border: 0;
+            height: 1px;
+            flex-shrink: 0;
+            width: 100%;
+            background-color: #aaa;
+        }
+
+        .header-section {
+            padding: 30px 30px 0px 30px;
+
+            .divider-gray {
+                margin: 20px 0;
+            }
+        }
+
+        .body-section {
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+            padding: 30px 20px 0px 30px;
+            margin-bottom: 30px;
+
+            gap: 30px;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .result-buttons {
+            padding: 0 30px 30px 30px;
+
+            display: flex;
+            flex-direction: column;
+
+            .divider-gray {
+                margin: 30px 0;
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .button-clear {
+                    @include button-blue-outlined();
+                    @include font-white-montserrat(16px, 700);
+                }
+
+                .button-search {
+                    @include button-gray();
+                }
+            }
+        }
+
+        
+    }
+
+    .filter-modal-close {
+        position: absolute;
+        cursor: pointer;
+
+        top: calc(0% - 15px);
+        left: calc(100% - 63px);
+
+        display: flex;
+        width: 30px;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+
+        border: 0;
+        border-radius: 15px;
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+
+        img {
+            width: 75%;
+        }
+    }
+}
