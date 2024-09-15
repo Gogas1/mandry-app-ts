@@ -19,6 +19,7 @@ import SearchPage from './components/search/SearchPage';
 import HousingPage from './components/housing/HousingPage';
 import NotificationsPage from './components/account/profile/NotificationsPage';
 import PaymentPage from './components/payment/PaymentPage';
+import TravelsPage from './components/account/profile/TravelsPage';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
                 <Route path='/account/notifications' element={<NotificationsPage />} />
                 <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
+                <Route path='/account/travels' element={<TravelsPage />} />
               </Routes>
               <Modal />
             </AuthorizationProvider>

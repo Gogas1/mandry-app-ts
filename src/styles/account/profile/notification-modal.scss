@@ -1,12 +1,91 @@
-.notification-modal-panel {
-    padding: 30px;
 
-    fill: var(--white, #F6F6F6);
-    stroke-width: 1px;
-    stroke: var(--grey-light-100, #E6E6E6);
-    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.09)) drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.05)) drop-shadow(0px 14px 5px rgba(0, 0, 0, 0.01)) drop-shadow(0px 21px 6px rgba(0, 0, 0, 0.00)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
+.notification-modal {
     display: flex;
-    flex-direction: column;
-    
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.09)) drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.05)) drop-shadow(0px 14px 5px rgba(0, 0, 0, 0.01)) drop-shadow(0px 21px 6px rgba(0, 0, 0, 0.00)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    //flex-direction: row;
+    position: relative;
+    z-index: 102;
+     
+    .notification-modal-panel {
+        padding: 30px;
+        border-radius: 15px;
+        width: 503px;
+
+        background-color: var(--white, #F6F6F6);
+        border: 1px solid var(--grey-light-100, #E6E6E6);
+       
+
+        -webkit-mask-image: radial-gradient(circle 22px at calc(100% - 40px), transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 22px at calc(100% - 45.5px) -2px, transparent 95%, black 100%);
+
+        .notification-modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .notification-modal-header {
+                color: var(--blue, #08B1BD);
+                text-align: center;
+
+                font-family: "Montserrat Alternates";
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+            .divider {
+                height: 1px;
+                background-color: var(--Color-3, #AAA);
+
+                left: 0;
+                right: 0;
+
+                margin-bottom: 10px;
+            }
+            .notification-modal-block {
+                cursor: pointer;
+
+                display: flex;
+                gap: 10px;
+
+                align-items: center;
+
+                color: var(--grey-dark, #515151);
+
+                font-family: Comfortaa;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+            }
+        }
+    }
+    .notification-modal-close-button
+    {
+        position: absolute;
+        cursor: pointer;
+
+        top: -16px;
+        right: 30.5px;
+
+        display: flex;
+        width: 30px;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        backdrop-filter: blur(24px);
+        
+        border-radius: 15px;
+        border: 1px solid var(--grey-light-100, #E6E6E6);
+        background: var(--white, #F6F6F6);
+        box-shadow: -8px 5px 5px 0px rgba(89, 89, 89, 0.00), -5px 3px 4px 0px rgba(89, 89, 89, 0.01), -3px 2px 4px 0px rgba(89, 89, 89, 0.05), -1px 1px 3px 0px rgba(89, 89, 89, 0.09), 0px 0px 2px 0px rgba(89, 89, 89, 0.10);
+
+        .close-icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
 }

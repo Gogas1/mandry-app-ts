@@ -25,7 +25,7 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     const { t } = useTranslation();
 
     const handleNotificationsTransition = () => {
-
+        navigate('/account/notifications')
     }
 
     const handleTravelsTransition = () => {
