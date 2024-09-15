@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 
 import '../../../../styles/account/profile/notifications-dropdown.scss';
 import messageIcon from '../../../../assets/icons/account/message.svg';
@@ -18,6 +19,7 @@ interface DropdownProps {
 
 export default function NotificationDropdown({ isOpen, toggleDropdown, closeDropdown, assignCategory }: DropdownProps)  {
     const { t } = useTranslation();
+    const navigate = useNavigate()
 
     const handleSelection = (value: string) => {
         assignCategory(value);
@@ -40,7 +42,7 @@ export default function NotificationDropdown({ isOpen, toggleDropdown, closeDrop
                     {t('Notifications.NotificationsDropdown.All')}        
                 </button>
                 <button className="element"
-                    onClick={() => handleSelection('travels')}
+                    onClick={() => navigate('../account/travels')}
                 >
                     <img src={suitcaseIcon} alt="suitcase" />
                     {t('Notifications.NotificationsDropdown.Travels')}

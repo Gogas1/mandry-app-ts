@@ -7,33 +7,50 @@ import { useEffect, useState } from "react";
 import '../../../../styles/account/profile/notification-modal.scss';
 
 import drawerIcon from '../../../../assets/icons/account/drawer.svg';
+import closeIcon from '../../../../assets/icons/meta/close-cross.svg';
 import paperPlaneIcon from '../../../../assets/icons/account/paper-airplane.svg';
 
 interface NotificationProps {
     hideModal: () => void;
+    closeOverlay: () => void;
+    handleArchive: (value: string) => void;
 }
 
-export default function NotificationModal({ hideModal }: NotificationProps) {
+export default function NotificationModal({ hideModal, closeOverlay, handleArchive }: NotificationProps) {
     const { t } = useTranslation();
 
+    const handeCloseModal = () => {
+        hideModal();
+        closeOverlay();
+    }
+
+    const handleArchiveClick = (value:string) => {
+        handleArchive(value);
+        hideModal();
+        closeOverlay();
+    }
+
     return (
-        <div className="border">
+        <div className="notification-modal">
             <div className="notification-modal-panel">
                 <div className="notification-modal-content">
-                    <p className="notification-model-header">{t('Notifications.NotificationsModal.Header')}</p>
+                    <div className="notification-modal-header">{t('Notifications.NotificationsModal.Header')}</div>
                     <div className="divider"></div>
-                    <div className="notification-model-archive">
-                        <img className="drawer-icon" src={drawerIcon} />
+                    <div className="notification-modal-block"
+                        onClick={() => handleArchiveClick('archive')}
+                    >
+                        <img className="drawer-icon" src={drawerIcon} 
+                        />
                         {t('Notifications.NotificationsModal.Archive')}
                     </div>
-                    <div className="feedback">
+                    <div className="notification-modal-block">
                         <img className="drawer-icon" src={paperPlaneIcon} />
                         {t('Notifications.NotificationsModal.Feedback')}
                     </div>
                 </div>
             </div>
-            <button className="notification-modal-close-button" onClick={hideModal}>
-            1
+            <button className="notification-modal-close-button" onClick={handeCloseModal}>
+                <img className="close-icon" src={closeIcon} />
             </button>
         </div>
     )
