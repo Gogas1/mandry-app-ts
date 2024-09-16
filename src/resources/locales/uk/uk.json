@@ -346,7 +346,7 @@
         "Filters": {
             "Header": "Фільтри",
             "Clear": "Очистити все",
-            "Search": "Пошук",
+            "Search": "Показати {{number}}+",
             "Sections": {
                 "AppliedFilters": {
                     "Header": "Обрані"

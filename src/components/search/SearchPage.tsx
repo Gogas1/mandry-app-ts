@@ -21,10 +21,17 @@ export interface FilterSetting {
     languages: string[];
 }
 
+export interface PricesRange {
+    minPrice: number, 
+    maxPrice: number
+}
+
 export default function SearchPage() {
     const [housings, setHousings] = useState<Housing[]>([]);
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [featuresList, setFeaturesList] = useState<Feature[]>([]);
+    const [prices, setPrices] = useState<PricesRange>({ minPrice: 0, maxPrice: 0 });
+    const [amountFound, setAmountFound] = useState(0);
     const [filterSettings, setFilterSettings] = useState<FilterSetting>({
         destination: "",
         period: undefined,
@@ -34,7 +41,7 @@ export default function SearchPage() {
         bedrooms: 0,
         bathrooms: 0,
         features: [],
-        priceRange: [64, 64],
+        priceRange: [0, 0],
         languages: []
     } as FilterSetting);
 
@@ -58,6 +65,21 @@ export default function SearchPage() {
         }
     }
 
+    const clearFilters = () => {
+        setFilterSettings({
+            destination: "",
+            period: undefined,
+            travelers: { adults: 0, children: 0, toddlers: 0, pets: 0 },
+            category: undefined,
+            beds: 0,
+            bedrooms: 0,
+            bathrooms: 0,
+            features: [],
+            priceRange: [0, 0],
+            languages: []
+        } as FilterSetting);
+    }
+
     const filterHousings = async () => {
         const queryString = toQueryString(convertToFilterSettings(filterSettings));
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
@@ -72,8 +94,30 @@ export default function SearchPage() {
             if(response.ok) {
                 console.log('ok');
 
-                // const data = await response.json();
-                // setHousings(data.housings as Housing[]);
+                const data = await response.json();
+                setHousings(data.housings as Housing[]);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    const filterHousingsCount = async (filters: FilterSetting) => {
+        const queryString = toQueryString(convertToFilterSettings(filters));
+        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+            if(response.ok) {
+
+                const data = await response.json();
+                setAmountFound(data.housings.length);
             }
         }
         catch (error) {
@@ -142,11 +186,40 @@ export default function SearchPage() {
             }
         };
 
+        const fetchPrices = async () => {
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/housing/prices";
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                if(response.ok) {
+                    const data = await response.json();
+                    const prices = data as PricesRange;
+
+                    setPrices({ minPrice: prices.minPrice, maxPrice: prices.maxPrice });
+
+                    const updatedFilterSettings = {...filterSettings}
+                    updatedFilterSettings.priceRange = [prices.minPrice, prices.maxPrice];
+                    setFilterSettings(updatedFilterSettings);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+
         fetchCategories();
         fetchFeatures();
+        fetchPrices();
+        filterHousingsCount(filterSettings);
     }, [i18n.language]);
 
     const handleFilterChange = (filters: FilterSetting) => {
+        filterHousingsCount(filters);
         setFilterSettings(filters);
     }
 
@@ -159,7 +232,10 @@ export default function SearchPage() {
                             filters={filterSettings}
                             features={featuresList}
                             categories={categoriesList}
-                            searchHandler={searchHousings}
+                            priceRange={prices}
+                            amountFound={amountFound}
+                            searchHandler={filterHousings}
+                            clearFilterHandler={clearFilters}
                             filterChangeHandler={handleFilterChange} />
                         <ResultPanel housings={housings} />
                     </div>
@@ -224,7 +300,7 @@ function toQueryString(params: FilterSettings): string {
     if (params.minBeds !== undefined) query.append('minBeds', params.minBeds.toString());
     if (params.minBedrooms !== undefined) query.append('minBedrooms', params.minBedrooms.toString());
     if (params.minBathrooms !== undefined) query.append('minBathrooms', params.minBathrooms.toString());
-    if (params.featureIds) query.append('featureIds', JSON.stringify(params.featureIds));
+    // if (params.featureIds) query.append('featureIds', JSON.stringify(params.featureIds));
     if (params.minPrice !== undefined) query.append('minPrice', params.minPrice.toString());
     if (params.maxPrice !== undefined) query.append('maxPrice', params.maxPrice.toString());
     if (params.languages) query.append('languages', JSON.stringify(params.languages));

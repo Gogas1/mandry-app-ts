@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import crossIcon from '../../assets/icons/meta/close-cross.svg';
 
 import '../../styles/search/filters-modal.scss';
-import { FilterSetting } from './SearchPage';
+import { FilterSetting, PricesRange } from './SearchPage';
 import AppliedFilters from './filter-modal/AppliedFilters';
 import RoomsFilters from './filter-modal/RoomsFilters';
 import { useState } from 'react';
@@ -18,14 +18,29 @@ interface FiltersModalProps {
     filters: FilterSetting;
     categories: Category[];
     features: Feature[];
+    priceRange: PricesRange;
+    amountFound: number;
     hideModal: () => void;
     searchHandler: () => void;
+    clearFilterHandler: () => void;
     filterChangeHandler: (filters: FilterSetting) => void;
 }
 
-export default function FiltersModal({ filters, categories, features, hideModal, searchHandler, filterChangeHandler }: FiltersModalProps) {
+export default function FiltersModal(
+    { 
+        filters, 
+        categories, 
+        features, 
+        priceRange, 
+        amountFound,
+        hideModal, 
+        searchHandler, 
+        filterChangeHandler, 
+        clearFilterHandler 
+    }: FiltersModalProps) {
     const { t } = useTranslation();
     const [filtersSettings, setFiltersSettings] = useState({ ...filters });
+    
     
     const handleFilterChange = (filters: FilterSetting) => {
         setFiltersSettings(filters);
@@ -47,7 +62,10 @@ export default function FiltersModal({ filters, categories, features, hideModal,
                         <hr className='divider-gray' />
                         <RoomsFilters filters={filtersSettings} filterChangeHandler={handleFilterChange} />
                         <hr className='divider-gray' />
-                        <PriceFilter filters={filtersSettings} filterChangeHandler={handleFilterChange}/>
+                        <PriceFilter 
+                            filters={filtersSettings} 
+                            priceRange={priceRange}
+                            filterChangeHandler={handleFilterChange}/>
                         <hr className='divider-gray' />
                         <CategoryFilter 
                             filters={filtersSettings} 
@@ -68,11 +86,11 @@ export default function FiltersModal({ filters, categories, features, hideModal,
                     <div className='result-buttons'>
                         <hr className='divider-gray' />
                         <div className='buttons'>
-                            <button className='button-clear'>
+                            <button className='button-clear' onClick={clearFilterHandler}>
                                 {t('Modals.Filters.Clear')}
                             </button>
                             <button className='button-search' onClick={searchHandler}>
-                                {t('Modals.Filters.Search')}
+                                {t('Modals.Filters.Search', {number: amountFound})}
                             </button>
                         </div>
                         

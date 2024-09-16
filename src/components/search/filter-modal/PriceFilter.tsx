@@ -1,4 +1,4 @@
-import { FilterSetting } from "../SearchPage";
+import { FilterSetting, PricesRange } from "../SearchPage";
 
 import '../../../styles/search/filter-modal/price-filter.scss';
 import { Trans, useTranslation } from "react-i18next";
@@ -6,14 +6,14 @@ import { Slider } from "@mui/material";
 
 interface PriceFilterProps {
     filters: FilterSetting;
+    priceRange: PricesRange
     filterChangeHandler: (filters: FilterSetting) => void;
 }
 
-export default function PriceFilter({ filters, filterChangeHandler }: PriceFilterProps) {
+export default function PriceFilter({ filters, priceRange, filterChangeHandler }: PriceFilterProps) {
     const { t } = useTranslation();
 
     const handlePriceRangeChange = (event: Event, newValue: number | number[]) => {
-        console.log(event);
         const updatedFilter = { ...filters }
         updatedFilter.priceRange = newValue as number[];
         filterChangeHandler(updatedFilter);
@@ -35,8 +35,8 @@ export default function PriceFilter({ filters, filterChangeHandler }: PriceFilte
                         value={filters.priceRange}
                         onChange={handlePriceRangeChange}
                         valueLabelDisplay='auto'
-                        min={64}
-                        max={64}
+                        min={priceRange.minPrice}
+                        max={priceRange.maxPrice}
                         sx={{
                             '& .MuiSlider-rail': {
                                 backgroundColor: '#B7B7B7',
@@ -67,8 +67,8 @@ export default function PriceFilter({ filters, filterChangeHandler }: PriceFilte
                             i18nKey={'Modals.Filters.Sections.Price.PriceRange'}
                             values={{
                                 currency: '$', 
-                                valueFrom: 64, 
-                                valueTo: 64
+                                valueFrom: priceRange.minPrice, 
+                                valueTo: priceRange.maxPrice
                             }}
 
                             components={{
