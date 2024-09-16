@@ -27,11 +27,11 @@ export default function CreateProfileModal({ hideModal }: CreateProfileModalProp
                             }}/>
                     </p>
                     <p className='text'>{t('Modals.CreateProfile.Text')}</p>
-                    <button className='continue-button'>{t('Modals.CreateProfile.ButtonLabel')}</button>
+                    <button className='continue-button' onClick={() => hideModal()}>{t('Modals.CreateProfile.ButtonLabel')}</button>
                 </div>
                 
             </div>
-            <button className="create-profile-modal-button" onClick={hideModal}>
+            <button className="create-profile-modal-button" onClick={() => hideModal()}>
                 <img src={crossIcon} />
             </button>
         </>

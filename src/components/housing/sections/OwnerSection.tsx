@@ -7,6 +7,7 @@ import languageIcon from '../../../assets/icons/profile/info/language.svg';
 import locationIcon from '../../../assets/icons/profile/info/location.svg';
 import { UserData } from "../HousingPage";
 import { useTranslation } from "react-i18next";
+import { ImageHelper } from "../../../helpers/ImageHelper";
 
 interface OwnerSectionProps {
     userData: UserData
@@ -19,7 +20,10 @@ export default function OwnerSection({ userData }: OwnerSectionProps) {
         <section className="owner-section">
             <div className="profile-info">
                 <div className="profile-card">
-                    <img className="profile-image" src={userData.avatar ? userData.avatar.src : avatarPlaceholder} />
+                    <div className="image-container">
+                        <img className="profile-image" src={userData.avatar ? ImageHelper.getAvatarImage(userData.avatar.src) : avatarPlaceholder} />
+                    </div>
+                    
                     <p className="profile-name">{`${userData.name} ${userData.surname}`}</p>
                     <p className="profile-status">{t('HousingPage.Sections.OwnerInfo.OwnerStatus')}</p>
                 </div>

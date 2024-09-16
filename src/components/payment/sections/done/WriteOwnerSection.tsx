@@ -4,6 +4,7 @@ import '../../../../styles/payment/done/write-owner-section.scss';
 import avatarPlaceholder from '../../../../assets/icons/profile/user-circle-stroke-rounded 1.svg';
 import { useTranslation } from "react-i18next";
 import { ChangeEvent, useState } from "react";
+import { ImageHelper } from "../../../../helpers/ImageHelper";
 
 interface WriteOwnerSectionProps {
     ownerData: UserData;
@@ -33,7 +34,10 @@ export default function WriteOwnerSection({ ownerData, housingData, onTextChange
                     {t('PaymentPage.Done.WriteOwner.Subheader', { name: `${ownerData.name} ${ownerData.surname}` })}
                 </p>
                 <div className="write-owner-section__textarea-container">
-                    <img src={ownerData.avatar ? ownerData.avatar.src : avatarPlaceholder} />
+                    <div className="image-container">
+                        <img src={ownerData.avatar ? ImageHelper.getAvatarImage(ownerData.avatar.src) : avatarPlaceholder} />
+                    </div>
+                    
                     <textarea 
                         className='textarea' 
                         placeholder={

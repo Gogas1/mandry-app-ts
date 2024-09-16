@@ -33,12 +33,23 @@
     &__textarea-container {
         position: relative;
 
-        img {
+        .image-container {
             position: absolute;
             border-radius: 50%;
             width: 102px;
+            height: 102px;
             top: -31px;
             right: 21px;
+            
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;   
+            }
         }
 
         .textarea {

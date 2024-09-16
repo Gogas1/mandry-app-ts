@@ -7,7 +7,7 @@ interface ModalContextProps {
   modalContent: ((hideModal: () => void) => ReactNode) | null;
   isModalVisible: boolean;
 
-  openModal: (id: string, component: ReactNode, styles?: React.CSSProperties) => void;
+  openModal: (id: string, component: ReactNode, styles?: React.CSSProperties, isDarkOverlay?: boolean) => void;
   closeModal: (id: string) => void;
   isOpen: (id: string) => boolean;
 }
@@ -17,6 +17,7 @@ const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 type ModalEntry = {
   component: ReactNode;
   styles?: React.CSSProperties;
+  isDarkOverlay?: boolean;
 };
 
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -35,9 +36,9 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setModalVisible(false);
   };
 
-  const openModal = (id: string, component: ReactNode, styles?: React.CSSProperties) => {
+  const openModal = (id: string, component: ReactNode, styles?: React.CSSProperties, isDarkOverlay?: boolean) => {
     if(!modals.has(id)) {
-      setModals(prev => new Map(prev).set(id, { component, styles }));
+      setModals(prev => new Map(prev).set(id, { component, styles, isDarkOverlay: isDarkOverlay }));
     }
     
     setActiveModal(id);
@@ -56,8 +57,8 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ModalContext.Provider value={{ showModal, hideModal, modalContent, openModal, closeModal, isOpen, isModalVisible }}>
       {children}
-      {Array.from(modals.entries()).map(([id, { component, styles }]) => (
-        <ModalTemplate key={id} onClose={() => closeModal(id)} isOpened={isOpen(id)} styles={styles}>
+      {Array.from(modals.entries()).map(([id, { component, styles, isDarkOverlay }]) => (
+        <ModalTemplate key={id} onClose={() => closeModal(id)} isOpened={isOpen(id)} styles={styles} darkOverlay={isDarkOverlay}>
           {component}
         </ModalTemplate>
       ))}

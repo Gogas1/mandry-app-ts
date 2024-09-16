@@ -31,6 +31,7 @@ import HTokyoImage from '../assets/images/hotels/tokyo.png';
 import HVeniceImage from '../assets/images/hotels/venice.png';
 
 export default class TopDestinationsHelper {
+    
     static BaliInfo = 
     { 
         image: BaliImage, 
@@ -186,5 +187,12 @@ export class TopHotelsHelper {
         image: HFranceImage,
         name: 'Франції, "Château Lumière" ',
         text: 'Готель "Château Lumière" розташований у самому серці мальовничої французької провінції, серед виноградників і затишних сіл.'
+    }
+}
+
+export class ImageHelper {
+    static getAvatarImage(name: string): string {
+        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL
+        return `${url}/${name}`;
     }
 }

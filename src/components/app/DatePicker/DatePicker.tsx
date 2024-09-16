@@ -13,6 +13,7 @@ interface DatePickerProps {
     showError?: boolean;
 
     outerValue?: Date;
+    outerValueOverride?: boolean;
     disable?: boolean;
 
     onChange: (date: Date) => void;
@@ -21,7 +22,20 @@ interface DatePickerProps {
     onIconClick?: () => void;
 }
 
-export default function DatePicker({ label, onChange, onFocus, onIconClick, className = '', icon, iconCursorPointer, showError = false, outerValue, disable }: DatePickerProps) {
+export default function DatePicker(
+    { 
+        label, 
+        onChange, 
+        onFocus, 
+        onIconClick, 
+        className = '', 
+        icon, 
+        iconCursorPointer, 
+        showError = false, 
+        outerValue, 
+        outerValueOverride = true, 
+        disable 
+    }: DatePickerProps) {
     const [focused, setFocused] = useState(false);
     const [value, setValue] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
@@ -44,16 +58,19 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
         return localDateString;
     }
 
-    if(outerValue) {
-        if(value != toDateString(outerValue)) {
-            setValue(toDateString(outerValue));
+    if(outerValueOverride) {
+        if(outerValue) {
+            if(value != toDateString(outerValue)) {
+                setValue(toDateString(outerValue));
+            }
+        }
+        else {
+            if(value) {
+                setValue('');
+            }
         }
     }
-    else {
-        if(value) {
-            setValue('');
-        }
-    }
+    
     
         
 
@@ -115,6 +132,7 @@ export default function DatePicker({ label, onChange, onFocus, onIconClick, clas
 
             {showCalendar ? (<DatePickerCalendar
                 onDateSelect={handleDateSelection}
+                className="dp-calendar"
                  />) : ''}
             
         </div>

@@ -1,9 +1,10 @@
 import { createContext, useState, useEffect, ReactNode, FC } from "react";
 
-interface User {
+export interface User {
     id: number;
     name: string;
     email: string;
+    avatar: string;
 }
 
 interface AuthState {
@@ -17,6 +18,7 @@ interface AuthContextType {
     isReady: boolean;
     login: (token: string, user: User) => void;
     logout: () => void;
+    updateAvatar: (avatar: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -97,8 +99,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setAuthState({ isAuthenticated: false, user: null, token: null });
     };
 
+    const updateAvatar = (avatar: string) => {
+        const updatedUser = { ...authState}
+        if(updatedUser.user) {
+            updatedUser.user.avatar = avatar;
+            localStorage.setItem('user', JSON.stringify(updatedUser.user));
+            setAuthState(updatedUser);
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ authState, isReady: isReady, login, logout }}>
+        <AuthContext.Provider value={{ authState, isReady: isReady, login, logout, updateAvatar: updateAvatar }}>
             {children}
         </AuthContext.Provider>
     );
