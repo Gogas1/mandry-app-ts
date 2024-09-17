@@ -1,0 +1,51 @@
+.news-page {
+    min-width: 100vh;
+    padding-top: 104px;
+    min-height: 100vh;
+
+    .content-container {
+        padding-left: 217px;
+        padding-right: 217px;
+        min-height: 100vh;
+
+        margin: 0px 100px;
+        margin-bottom: -15px;
+
+        border-radius: 15px;
+        background: var(--white, #F6F6F6);
+
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            height: 42px;
+            width: 100%;
+
+            color: var(--blue, #08B1BD);
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%; /* 22px */
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 20px;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--Color-3, #AAA);
+
+            margin-top: 20px;
+        }
+
+        .promotion-section {
+            margin-top: 80px;
+        }
+    }
+}

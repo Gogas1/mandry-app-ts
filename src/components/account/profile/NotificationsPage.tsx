@@ -5,12 +5,13 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
 import { useModal } from "../../app/ModalContext";
 
+import NotivicationSearch from './notifications/NotificationSearch';
 import NotificationDropdown from './notifications/NotificationDropdown';
 import NotificationModal from './notifications/NotificationModal';
 
 import arrowIcon from '../../../assets/icons/account/arrow-bottom.svg';
 import messageIcon from '../../../assets/icons/account/message.svg';
-import searchIcon from '../../../assets/icons/account/search.svg';
+
 
 export default function NotificationsPage() {
     const { t } = useTranslation();
@@ -56,11 +57,11 @@ export default function NotificationsPage() {
 
     const navigate = useNavigate()
 
-    /*useEffect(() => {
+    useEffect(() => {
         if(!authContext.authState.isAuthenticated) {
             navigate('/');
         }
-    }, []);*/
+    }, []);
 
     return (
         <>
@@ -88,10 +89,7 @@ export default function NotificationsPage() {
                                     </svg>
                                 </button>
                             </div>
-                            <div className='search-field'>
-                                <input type="text" placeholder={t('Notifications.NotificationsList.SearchPlaceholder')} className='input-field'/>
-                                <img src={searchIcon} className='search-icon'/>
-                            </div>
+                            <NotivicationSearch />
                             <div className='no-notifications'>
                                 <img src={messageIcon} className='message-icon' />
                                 <div className='no-notifications-text'>{t('Notifications.NotificationsList.NoNotification')}</div>
