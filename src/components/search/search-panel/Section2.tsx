@@ -240,10 +240,10 @@ export default function Section2({ filters, categories, priceRange, filterChange
                     </div>
                     <div className='minmax-block'>
                         <div className='min-label'>
-                            {priceRange.minPrice}
+                            {filters.priceRange[0]}
                         </div>
                         <div className='max-label'>
-                            {priceRange.maxPrice}+
+                            {filters.priceRange[1]}+
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Housing } from "../../../housing/HousingPage";
 
 import '../../../../styles/payment/done/housing-card-section.scss';
+import { useUserSettings } from "../../../app/UserSettingsContext";
 
 interface HousingCardSectionProps {
     reservationSettings: ReservationSettings;
@@ -15,6 +16,7 @@ interface HousingCardSectionProps {
 
 export default function HousingCardSection({ reservationSettings, paymentSettings }: HousingCardSectionProps) {
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
 
     const totalPrice = paymentSettings.paymentPrice;
 
@@ -53,7 +55,7 @@ export default function HousingCardSection({ reservationSettings, paymentSetting
                         <span className="payment-data__total__price">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: totalPrice,
                                 }
                             )}

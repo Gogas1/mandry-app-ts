@@ -6,6 +6,7 @@ import Radio from "../../app/Radio";
 import { ReservationSettings } from "../../housing/rent/PriceSection";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useUserSettings } from "../../app/UserSettingsContext";
 
 interface PriceWaySectionProps {
     reservationSettings: ReservationSettings;
@@ -21,6 +22,7 @@ export enum PaymentWay {
 
 export default function PriceWaySection({ reservationSettings, longTermBenefits, paymentSettings, onWayChange }: PriceWaySectionProps) {
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
 
     const [selectedWay, setSelectedWay] = useState<PaymentWay>(PaymentWay.FULL);
 
@@ -43,14 +45,14 @@ export default function PriceWaySection({ reservationSettings, longTermBenefits,
                 </h2>
                 <div className="price-way">
                     <div className="price-way__main">                        
-                        {t('PaymentPage.Sections.PaymentWay.FullWay', { value: reservationSettings.calculatedPrice, currency: '$' })}
+                        {t('PaymentPage.Sections.PaymentWay.FullWay', { value: reservationSettings.calculatedPrice, currency: currency })}
                         <Radio name="priceWay" value={PaymentWay.FULL} onCheck={handleChange}/>
                     </div>
                 </div>
                 {longTermBenefits.secondPaymentDate && (
                     <div className="price-way">
                         <div className="price-way__main">
-                            {t('PaymentPage.Sections.PaymentWay.DividedWay', { value: reservationSettings.calculatedPrice, currency: '$' })}
+                            {t('PaymentPage.Sections.PaymentWay.DividedWay', { value: reservationSettings.calculatedPrice, currency: currency })}
                             <Radio name="priceWay" value={PaymentWay.FULL} onCheck={handleChange}/>
                         </div>
                         <div className="price-way__description">
@@ -59,7 +61,7 @@ export default function PriceWaySection({ reservationSettings, longTermBenefits,
                                     firstValue: paymentSettings.paymentPrice, 
                                     secondValue: paymentSettings.secondPaymentPrice,
                                     date: longTermBenefits.secondPaymentDate,
-                                    currency: '$' })}
+                                    currency: currency })}
                             {/* € 280,00 потрібно оплатити сьогодні, € 140,00 – 3 жовт. 2024 p. Жодних додаткових зборів. <Link to={'/'} className="link">Докладніше</Link> */}
                         </div>
                     </div>

@@ -67,8 +67,8 @@ export default function PriceFilter({ filters, priceRange, filterChangeHandler }
                             i18nKey={'Modals.Filters.Sections.Price.PriceRange'}
                             values={{
                                 currency: '$', 
-                                valueFrom: priceRange.minPrice, 
-                                valueTo: priceRange.maxPrice
+                                valueFrom: filters.priceRange[0], 
+                                valueTo: filters.priceRange[1]
                             }}
 
                             components={{

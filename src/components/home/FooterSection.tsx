@@ -39,7 +39,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'/investments'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Investments')}
                             </Link>
                         </li>

@@ -14,6 +14,7 @@ import TextInputMaterial from "../../app/TextInputMaterial";
 import { Housing, UserData } from "../HousingPage";
 import { Link } from "react-router-dom";
 import TravelersPopup, { TravelersPopupData } from "../../home/TravelersPopup";
+import { useUserSettings } from "../../app/UserSettingsContext";
 
 export interface ReservationSettings {
     housingData: Housing,
@@ -43,6 +44,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
     const [travelersSettings, setTravelersSettings] = useState<TravelersPopupData>({ adults: 0, children: 0, toddlers: 0, pets: 0 });
 
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
 
     const { openModal, closeModal } = useModal();
     const { authState } = authContext;
@@ -116,7 +118,13 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                         {daysBetween.length > 0 ? daysBetween.map((date, index) => (
                             <div className="price-summary__item" key={index}>
                                 <div className="item-date">{formatDateToStandart(date)}</div>
-                                <div className="item-price">{t('HousingPage.RentSections.Price.PriceSummary.TotalPriceValued', { currency: "$", value: price })}</div>
+                                <div className="item-price">
+                                    {t('HousingPage.RentSections.Price.PriceSummary.TotalPriceValued',
+                                        {
+                                            currency: currency,
+                                            value: price
+                                        })}
+                                </div>
                             </div>
                         )) : <p className="no-items">{t('HousingPage.RentSections.Price.PriceSummary.NoItems')}</p>}
                         
@@ -127,7 +135,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                             {t('HousingPage.RentSections.Price.PriceSummary.TotalPriceLabel')}
                         </div>
                         <div className="result-price">
-                            {t('HousingPage.RentSections.Price.PriceSummary.TotalPriceValued', { currency: "$", value: nightsPrice })}
+                            {t('HousingPage.RentSections.Price.PriceSummary.TotalPriceValued', { currency: currency, value: nightsPrice })}
                         </div>
                     </div>
                 </div>
@@ -146,7 +154,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                     
                     values={{
                         price: price,
-                        currency: "$"
+                        currency: currency
                     }}/>
                 </div>
                 <div className="period-fields">
@@ -222,7 +230,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                                     i18nKey={'HousingPage.RentSections.Price.PriceFromNights'} 
                                     values={{
                                         price: 64,
-                                        currency: "$",
+                                        currency: currency,
                                         nightsCount: 
                                             selecetedDates.dateOne && 
                                             selecetedDates.dateTwo ? 
@@ -242,7 +250,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                             </InlinePopup>
                             
                         </div>
-                        <div className="price-item__price">$ {nightsPrice}</div>
+                        <div className="price-item__price">{currency} {nightsPrice}</div>
                     </div>
                     <div className="price-item">
                         <div className="price-item__statement">
@@ -258,7 +266,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                             
                         </div>
                         <div className={`price-item__price ${discount > 0 ? 'red' : ''}`}>
-                            $ {discount}
+                            {`${currency} ${discount}`}
                         </div>
                     </div>
                     <div className="price-item">
@@ -271,7 +279,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                             </InlinePopup>
                             
                         </div>
-                        <div className="price-item__price">$ {cleaningFee}</div>
+                        <div className="price-item__price">{currency} {cleaningFee}</div>
                     </div>
                     <div className="price-item">
                         <div className="price-item__statement">
@@ -282,7 +290,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                                         }}/>
                             </InlinePopup>
                         </div>
-                        <div className="price-item__price">$ {tax}</div>
+                        <div className="price-item__price">{currency} {tax}</div>
                     </div>
                     <hr className="divider" />
                     <div className="total-price">
@@ -290,7 +298,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                             {t('HousingPage.RentSections.Price.PriceTotalLabel')}
                         </div>
                         <div>
-                            {t('HousingPage.RentSections.Price.PriceTotalPrice', { currency: '$', value: totalPrice })}
+                            {t('HousingPage.RentSections.Price.PriceTotalPrice', { currency: currency, value: totalPrice })}
                         </div>
                     </div>
                 </div>

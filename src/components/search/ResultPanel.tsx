@@ -8,6 +8,7 @@ import { Housing } from '../housing/HousingPage';
 import FeatureService from '../../helpers/FeatureService';
 import { Category } from './search-panel/Section2';
 import { useTranslation } from 'react-i18next';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 export interface HousingResultItem {
     image: string;
@@ -28,6 +29,7 @@ interface ResultPanelProps {
 
 export default function ResultPanel({ housings }: ResultPanelProps) {
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
 
     return (
         <section className="result-section">
@@ -51,15 +53,12 @@ export default function ResultPanel({ housings }: ResultPanelProps) {
                             <div className='labels__bottom'>
                                 <div className='labels__pricing'>
                                     <div className='labels__price'>
-                                        {/* <div className='labels__promo-price'>
-                                            $ 68
-                                        </div> */}
                                         <div className='labels__actual-price'>
-                                            {`$ ${housing.pricePerNight} ніч`}
+                                            {`${currency} ${housing.pricePerNight} ніч`}
                                         </div>
                                     </div>
                                     <div className='labels__calculated-price'>
-                                        {`Усього: $ ${housing.pricePerNight}`}
+                                        {`Усього: ${currency} ${housing.pricePerNight}`}
                                     </div>
                                 </div>
                                 <div className='labels__rating-wrapper'>

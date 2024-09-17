@@ -8,6 +8,7 @@ import { daysBetweenDates } from "../../../helpers/DateUtils";
 import FeatureService from "../../../helpers/FeatureService";
 
 import '../../../styles/payment/sections/housing-data-section.scss';
+import { useUserSettings } from "../../app/UserSettingsContext";
 
 interface HousingDataSectionProps {
     reservationSettings: ReservationSettings;
@@ -16,6 +17,7 @@ interface HousingDataSectionProps {
 
 export default function HousingDataSection({ reservationSettings, paymentSettings }: HousingDataSectionProps) {
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
 
     const cleaningFee = reservationSettings.housingData.cleaningFee;
     const tax = reservationSettings.tax;
@@ -64,7 +66,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__price__amount">
                             {t('PaymentPage.Sections.HousingData.PriceFromNights',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     price: reservationSettings.housingData.pricePerNight,
                                     nightsCount: daysBetweenDates(reservationSettings.selecetedDates.dateOne, reservationSettings.selecetedDates.dateTwo),
                                     count: daysBetweenDates(reservationSettings.selecetedDates.dateOne, reservationSettings.selecetedDates.dateTwo)
@@ -74,7 +76,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__price__total">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: nightsPrice,
                                 }
                             )}
@@ -88,7 +90,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__price__total">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: discount,
                                 }
                             )}
@@ -102,7 +104,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__price__total">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: cleaningFee,
                                 }
                             )}
@@ -116,7 +118,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__price__total">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: tax,
                                 }
                             )}
@@ -130,7 +132,7 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
                         <span className="payment-data__total__price">
                             {t('PaymentPage.Sections.HousingData.Price',
                                 {
-                                    currency: '$',
+                                    currency: currency,
                                     value: totalPrice,
                                 }
                             )}
