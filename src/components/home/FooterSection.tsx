@@ -23,7 +23,7 @@ export default function FooterSection() {
                     </h4>
                     <ul className="links-list">
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'./news'}>
                                 {t('MainPage.Sections.Footer.Sections.About.News')}
                             </Link>
                             

@@ -19,6 +19,8 @@ import SearchPage from './components/search/SearchPage';
 import HousingPage from './components/housing/HousingPage';
 import NotificationsPage from './components/account/profile/NotificationsPage';
 import TravelsPage from './components/account/profile/TravelsPage';
+import NewsPage from './components/footer/FooterNews';
+import ContactsPage from './components/footer/ContactsPage';
 
 function App() {
 
@@ -45,8 +47,10 @@ function App() {
                 <Route path='/account/verification' element={<ProtectedRoute element={<VerificationPage />} /> } />
                 <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
                 <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
-                <Route path='/account/notifications' element={<NotificationsPage />} />
-                <Route path='/account/travels' element={<TravelsPage />} />
+                <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
+                <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
+                <Route path='/news' element={<NewsPage />} />
+                <Route path='/contact' element={<ContactsPage />} />
               </Routes>
               <Modal />
             </AuthorizationProvider>

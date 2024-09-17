@@ -7,12 +7,17 @@ import AuthContext from '../../auth/AuthenticationContext';
 export default function TravelsPage() {
     const { t } = useTranslation();
     const authContext = useContext(AuthContext);
+    const navigate = useNavigate()
 
-    /*useEffect(() => {
+    if (!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
+
+    useEffect(() => {
         if(!authContext.authState.isAuthenticated) {
             navigate('/');
         }
-    }, []);*/
+    }, []);
 
     return (
         <div className='travels-page'>
