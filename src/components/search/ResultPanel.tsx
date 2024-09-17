@@ -6,6 +6,9 @@ import shareIcon from '../../assets/icons/meta/share.svg';
 import { Link } from 'react-router-dom';
 import { Housing } from '../housing/HousingPage';
 import FeatureService from '../../helpers/FeatureService';
+import { Category } from './search-panel/Section2';
+import { useTranslation } from 'react-i18next';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 export interface HousingResultItem {
     image: string;
@@ -16,6 +19,7 @@ export interface HousingResultItem {
     discountPrice?: string;
     totalPrice: string;
     averageRating: string;
+    category: Category;
     reviews: number;
 }
 
@@ -24,6 +28,9 @@ interface ResultPanelProps {
 }
 
 export default function ResultPanel({ housings }: ResultPanelProps) {
+    const { t } = useTranslation();
+    const { currency } = useUserSettings();
+
     return (
         <section className="result-section">
             {housings.map((housing, index) => (
@@ -36,25 +43,28 @@ export default function ResultPanel({ housings }: ResultPanelProps) {
                         <div className='labels'>
                             <label className='labels__name'>{housing.name}</label>
                             <label className='labels__description'>{housing.categoryProperty}</label>
-                            <label className='labels__beds'>{`${housing.bedrooms.length} спалень`}</label>
+                            <label className='labels__beds'>
+                                {t('SearchPage.SearchResult.Bedrooms', 
+                                    { 
+                                        count: housing.bedrooms.length, 
+                                        number: housing.bedrooms.length 
+                                    })}
+                            </label>
                             <div className='labels__bottom'>
                                 <div className='labels__pricing'>
                                     <div className='labels__price'>
-                                        {/* <div className='labels__promo-price'>
-                                            $ 68
-                                        </div> */}
                                         <div className='labels__actual-price'>
-                                            {`$ ${housing.pricePerNight} ніч`}
+                                            {`${currency} ${housing.pricePerNight} ніч`}
                                         </div>
                                     </div>
                                     <div className='labels__calculated-price'>
-                                        {`Усього: $ ${housing.pricePerNight}`}
+                                        {`Усього: ${currency} ${housing.pricePerNight}`}
                                     </div>
                                 </div>
                                 <div className='labels__rating-wrapper'>
                                     <div className='rating'>
                                         <img src={starIcon} className='star'/>
-                                        <div className='average-rating'>0 (0)</div>
+                                        <div className='average-rating'>{housing.averageRating} ({housing.reviewsCount})</div>
                                     </div>
                                     
                                 </div>

@@ -14,9 +14,9 @@ export default function ProtectedRoute({ element, redirectPath = '/' }: Protecte
         throw new Error('ProtectedRoute must be used within an AuthProvider');
     }
 
-    const { authState } = authContext;
+    const { authState, isReady } = authContext;
 
-    if(!authState.isAuthenticated) {
+    if(!authState.isAuthenticated && isReady) {
         return <Navigate to={redirectPath} replace />
     }
 

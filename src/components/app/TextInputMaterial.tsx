@@ -13,6 +13,7 @@ interface TextInputProps {
     onBlur?: () => void;
     outerValue?: string;
     validationError?: boolean;
+    disabled?: boolean; 
 }
 
 export default function TextInputMaterial({ 
@@ -26,7 +27,8 @@ export default function TextInputMaterial({
   onFocus,
   onBlur,
   outerValue = undefined,
-  validationError
+  validationError,
+  disabled = false
   }: TextInputProps) {
     
     const [focused, setFocused] = useState(false);
@@ -65,6 +67,7 @@ export default function TextInputMaterial({
               onBlur={handleBlur}
               onChange={handleChange}
               value={outerValue ? outerValue : value}
+              disabled={disabled}
                />
             {icon ? 
             (<img 

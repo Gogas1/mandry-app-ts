@@ -3,6 +3,7 @@ import profileLinkIcon from "../../assets/icons/navbar/profile.svg";
 import AuthContext from "../auth/AuthenticationContext";
 
 import '../../styles/navbar/navbar-profile-item.scss';
+import { ImageHelper } from "../../helpers/ImageHelper";
 
 interface NavbarProfileItemProps {
     onClick: (popupName: string) => void;
@@ -33,9 +34,16 @@ export default function NavbarProfileItem({ onClick }: NavbarProfileItemProps) {
                 </div>) : 
             (
                 <div className="navbar-icon navbar-item profile-item" onClick={handlePopupOpen}>
-                    <div className="profile-icon">
-                        {authState.user?.name.charAt(0)}
-                    </div>
+                    {authState.user?.avatar ? (
+                        <div className="profile-image-container">
+                            <img src={authState.user.avatar && (ImageHelper.getAvatarImage(authState.user?.avatar))} />
+                        </div>
+                    ) : (
+                        <div className="profile-icon">
+                            {authState.user?.name.charAt(0)}
+                        </div>  
+                    )}
+                    
                 </div>
             ) }
             

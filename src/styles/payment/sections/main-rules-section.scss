@@ -1,0 +1,23 @@
+@use '../../mixins/typography' as *;
+
+.main-rules-section {
+    &__header {
+        margin: 0;
+        @include font-montserrat-gray-dark(22px, 700);
+    }
+
+    .list-header {
+        @include font-regular(16px, 400);
+    }
+
+    .main-rules-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 20px;
+
+        li {
+            @include font-regular(16px, 400);
+        }
+    }
+}

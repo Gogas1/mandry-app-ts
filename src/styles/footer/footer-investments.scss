@@ -1,0 +1,16 @@
+@use '../mixins/typography' as *;
+
+.footer-investments {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 104px;
+
+    .footer-investments-content {
+        border-radius: 15px 15px var(--Numbers-0, 0px) var(--Numbers-0, 0px);
+        background: var(--white, #F6F6F6);
+        min-height: 100vh;
+        margin: 0 100px;
+    }
+
+    
+}

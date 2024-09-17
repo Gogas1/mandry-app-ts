@@ -18,9 +18,13 @@ import { AuthorizationProvider } from './components/auth/AuthorizationContext';
 import SearchPage from './components/search/SearchPage';
 import HousingPage from './components/housing/HousingPage';
 import NotificationsPage from './components/account/profile/NotificationsPage';
+import PaymentPage from './components/payment/PaymentPage';
 import TravelsPage from './components/account/profile/TravelsPage';
 import NewsPage from './components/footer/FooterNews';
 import ContactsPage from './components/footer/ContactsPage';
+import { UserSettingsProvider } from './components/app/UserSettingsContext';
+import FooterInvestments from './components/footer/FooterInvestments';
+import ScrollToTop from './components/app/ScrollerToTop';
 
 function App() {
 
@@ -28,31 +32,37 @@ function App() {
     <>
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <ModalProvider>
             <AuthorizationProvider>
-              <Navbar />
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/profile/:id' element={<Profile />} />
-                <Route path='/profile/my' element={<Profile />} />
-                <Route path='/signup' element={<SignUp />} />
-                <Route path='/signin' element={<SignIn />} />
-                <Route path='/features' element={<Features />} />
-                <Route path='/search' element={<SearchPage />} />
-                <Route path='/housing/:id' element={<HousingPage />} />
-                <Route path='/account/information/temp' element={<ProfileInfoPage />} />
+              <UserSettingsProvider>
+                <Navbar />
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/profile/:id' element={<Profile />} />
+                  <Route path='/profile/my' element={<Profile />} />
+                  <Route path='/signup' element={<SignUp />} />
+                  <Route path='/signin' element={<SignIn />} />
+                  <Route path='/features' element={<Features />} />
+                  <Route path='/search' element={<SearchPage />} />
+                  <Route path='/housing/:id' element={<HousingPage />} />
+                  <Route path='/account/information/temp' element={<ProfileInfoPage />} />
 
-                <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
-                <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />
-                <Route path='/account/verification' element={<ProtectedRoute element={<VerificationPage />} /> } />
-                <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
-                <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
-                <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
-                <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
+                  <Route path='/investments' element={<FooterInvestments />} />
+
+                  <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
+                  <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />
+                  <Route path='/account/verification' element={<ProtectedRoute element={<VerificationPage />} /> } />
+                  <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
+                  <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
+                  <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
+                  <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
+                  <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
                 <Route path='/news' element={<NewsPage />} />
                 <Route path='/contact' element={<ContactsPage />} />
-              </Routes>
-              <Modal />
+                </Routes>
+                <Modal />
+              </UserSettingsProvider>
             </AuthorizationProvider>
           </ModalProvider>
         </Router>

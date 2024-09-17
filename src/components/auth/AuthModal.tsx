@@ -9,7 +9,7 @@ import closeIcon from '../../assets/icons/meta/close-cross.svg';
 import "../../styles/auth/auth-modal.scss";
 import { useContext, useState } from "react";
 
-import AuthContext from "./AuthenticationContext";
+import AuthContext, { User } from "./AuthenticationContext";
 import { useModal } from "../app/ModalContext";
 import SignupModal from "./SignupModal";
 import EmailWayPanel, { EmailWayCredentials } from "./SignIn/EmailWayPanel";
@@ -17,6 +17,13 @@ import PhoneWayPanel, { PhoneWayCredentials } from "./SignIn/PhoneWayPanel";
 
 interface AuthModalProps {
     hideModal: () => void;
+}
+
+interface AuthUserData {
+    id: number;
+    name: string;
+    email: string;
+    avatar: { id: string, src: string }
 }
 
 export default function AuthModal({ hideModal }: AuthModalProps) {
@@ -60,7 +67,15 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
             });
             if (response.ok) {
                 const data = await response.json();
-                login(data.token, data.userData);
+                const authUserData = data.userData as AuthUserData;
+                const userData = { 
+                    id: authUserData.id, 
+                    name: authUserData.name,
+                    email: authUserData.email,
+                    avatar: authUserData.avatar.src
+                } as User;
+
+                login(data.token, userData);
                 hideModal();
                 navigate("/");
               } else if (response.status === 400) {
@@ -92,7 +107,15 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
             });
             if (response.ok) {
                 const data = await response.json();
-                login(data.token, data.userData);
+                const authUserData = data.userData as AuthUserData;
+                const userData = { 
+                    id: authUserData.id, 
+                    name: authUserData.name,
+                    email: authUserData.email,
+                    avatar: authUserData.avatar.src
+                } as User;
+
+                login(data.token, userData);
                 hideModal();
               } else if (response.status === 400) {
                 setIsEmailAttemptFailed(true);

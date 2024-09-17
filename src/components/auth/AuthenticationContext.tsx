@@ -1,9 +1,10 @@
 import { createContext, useState, useEffect, ReactNode, FC } from "react";
 
-interface User {
+export interface User {
     id: number;
     name: string;
     email: string;
+    avatar: string;
 }
 
 interface AuthState {
@@ -14,8 +15,10 @@ interface AuthState {
 
 interface AuthContextType {
     authState: AuthState;
+    isReady: boolean;
     login: (token: string, user: User) => void;
     logout: () => void;
+    updateAvatar: (avatar: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -30,6 +33,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         user: null,
         token: null
     });
+
+    const [isReady, setIsReady] = useState(false); 
 
     const [,setIsTokenValidated] = useState(false);
 
@@ -63,8 +68,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                         } else {
                             setIsTokenValidated(false);
                         }
+
+                        setIsReady(true);
                     } else if(response.status === 401) {
                         setIsTokenValidated(false);
+                        setIsReady(true);
                     }
                 } catch (error) {
                     console.log('AuthContext error', error);
@@ -73,6 +81,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
             verifyToken();
         }
+        else {
+            setIsReady(true);
+        }
+
     }, []);
 
     const login = (token: string, user: User) => {
@@ -87,8 +99,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setAuthState({ isAuthenticated: false, user: null, token: null });
     };
 
+    const updateAvatar = (avatar: string) => {
+        const updatedUser = { ...authState}
+        if(updatedUser.user) {
+            updatedUser.user.avatar = avatar;
+            localStorage.setItem('user', JSON.stringify(updatedUser.user));
+            setAuthState(updatedUser);
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ authState, login, logout }}>
+        <AuthContext.Provider value={{ authState, isReady: isReady, login, logout, updateAvatar: updateAvatar }}>
             {children}
         </AuthContext.Provider>
     );

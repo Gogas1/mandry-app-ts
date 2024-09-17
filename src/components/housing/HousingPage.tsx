@@ -118,7 +118,7 @@ export interface Housing {
     bedrooms: Bedroom[],
     images: Image[],
     features: Feature[],
-    availableDates: Date[],
+    availabilities: Date[],
     reviews: Review[]
 }
 
@@ -154,6 +154,8 @@ export default function HousingPage() {
                     hd.features.forEach(feature => {
                         processTranslations(feature.translations);
                     });
+
+                    hd.availabilities = hd.availabilities.map(dateStr => new Date(dateStr));
 
                     setHousingData(hd);
                     setLoading(false);
@@ -247,12 +249,14 @@ export default function HousingPage() {
                             
                         </div>
                         <div className='rent-section'>
-                            {housingData ? (
+                            {housingData && id && userData ? (
                                 <>
                                     <PriceSection 
                                         selecetedDates={{dateOne: dates?.dateOne, dateTwo: dates?.dateTwo}}
                                         price={housingData.pricePerNight}
-                                        housingData={housingData} />
+                                        housingData={housingData} 
+                                        ownerData={userData}
+                                        id={id}/>
                                     <RatingSection housingData={housingData} />
                                     <ReviewSection reviews={housingData.reviews} />
                                 </>

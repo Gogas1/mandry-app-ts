@@ -1,0 +1,104 @@
+@use '../../mixins/typography' as *;
+
+.payment-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+
+    &__header {
+        @include font-montserrat-gray-dark(22px, 700);
+        margin: 0;
+    }
+
+    &__icons {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .form-payment {
+
+        .white-field {
+            flex: 1;
+            
+            .label-material {
+                @include font-regular-var2(16px, 400);
+            }
+
+            .input-container {
+                background: #E6E6E6;
+            }
+
+            .input-material {
+                @include font-regular(16px, 400);
+            }
+
+            .fieldset {
+                border-color: #CCC;
+                // background-color: #E6E6E6;
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+                margin: 0 20px;
+                transform: rotate(90deg);
+                transition: transform 0.1s ease-in-out;
+            }
+
+            &.popup-opened {
+                img {
+                    transform: rotate(0deg);
+                }
+            }
+
+            &.focused {
+                .label-material {
+                    @include font-regular-var2(12px, 400);
+                }
+            }
+
+            &.error {
+
+                .label-material {
+                    color: #FF5A60;
+                }
+
+                .fieldset {
+                    border: 1px solid var(--red, #FF5A60);
+                }
+
+                .input-container {
+                    background: linear-gradient(0deg, rgba(255, 90, 96, 0.20) 0%, rgba(255, 90, 96, 0.20) 100%), #E6E6E6;
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    margin: 0 20px;
+                    transform: rotate(90deg);
+                    transition: transform 0.1s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .card-form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        
+        &__row {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .input-block {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}

@@ -1,0 +1,119 @@
+@use '../../mixins/typography' as *;
+
+.housing-data-section {
+    padding: 30px;
+    border-radius: 15px;
+    background: var(--white, #F6F6F6);
+    box-shadow: -25px 37px 12px 0px rgba(0, 0, 0, 0.00), -16px 24px 11px 0px rgba(0, 0, 0, 0.01), -9px 13px 10px 0px rgba(0, 0, 0, 0.05), -4px 6px 7px 0px rgba(0, 0, 0, 0.09), -1px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__data {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        
+        .image {
+            display: flex;
+            position: relative;
+            width: 30%;
+
+            img {
+                width: 100%;
+                border-radius: 15px;
+                filter: brightness(90%) contrast(80%);  
+            }
+        }
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            p {
+                margin: 0;
+            }
+
+            &__name {
+                @include font-regular(17px, 700);
+            }
+
+            &__property {
+                @include font-regular(14px, 400);
+            }
+
+            &__rating {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                @include font-regular(16px, 400);
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+                
+            }
+        }
+    }
+
+    .divider {
+        height: 1px;
+        border: 0;
+        background-color: #08B1BD;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    &__payment-data {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        p {
+            margin: 0;
+        }
+
+        .payment-data {
+
+            &__header {
+                @include font-regular(17px, 700);
+            }
+
+            &__price {
+                &__amount {
+                    @include font-regular(16px, 400);
+                }
+
+                &__total {
+                    @include font-montserrat-gray-dark(20px, 500);
+                }
+            }
+
+            &__price-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            &__total {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                
+                &__label {
+                    @include font-montserrat-gray-dark(22px, 700);
+                }
+    
+                &__price {
+                    @include font-montserrat-gray-dark(22px, 700);
+                }
+            }
+        }
+
+        
+    }
+}

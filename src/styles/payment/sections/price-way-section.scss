@@ -1,0 +1,43 @@
+@use '../../mixins/typography' as *;
+
+.price-way-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__header {
+        @include font-montserrat-gray-dark(22px, 700);
+        margin: 0;
+    }
+
+    .price-way {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        border-radius: 15px;
+        border: 1px solid var(--Color-3, #AAA);
+
+        &__main {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            .radio {
+                width: 24px;
+                height: 24px;
+            }
+
+            @include font-regular(16px, 400);
+        }
+
+        &__description {
+            @include font-regular(16px, 400);
+
+            .link {
+                @include font-links-black(16px, 400);
+            }
+        }
+    }
+}

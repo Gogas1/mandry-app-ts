@@ -60,8 +60,6 @@ export default function TextInputBorderless(
         if (onChange) onChange(newValue);
     }
 
-    console.log(outerValue);
-
     return (
         <>
             <div className="text-input-borderless">
@@ -90,7 +88,8 @@ export default function TextInputBorderless(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             onClick={handleClick}                  
-                            disabled={disableManual}></textarea>
+                            disabled={disableManual}
+                            spellCheck={false}></textarea>
                     </div>
                 </div>
                 <div className="underline"></div>

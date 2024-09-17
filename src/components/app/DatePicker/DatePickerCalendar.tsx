@@ -9,6 +9,7 @@ import { addMonths, GetMonthCode, IsDatesEqual } from '../../../helpers/DateUtil
 import { useState } from 'react';
 
 interface DatePickerProps {
+    className?: string;
     onDateSelect: (date: Date | undefined) => void;
 }
 
@@ -17,7 +18,7 @@ interface MonthYear {
     month: number;
 }
 
-export default function DatePickerCalendar({ onDateSelect }: DatePickerProps) {
+export default function DatePickerCalendar({ className = '', onDateSelect }: DatePickerProps) {
     const evaluateNextMonthAvailibility = (date: Date, monthYear: MonthYear): boolean => {
         return date.getFullYear() > monthYear.year || (date.getFullYear() === monthYear.year && date.getMonth() > monthYear.month);
     }
@@ -72,7 +73,7 @@ export default function DatePickerCalendar({ onDateSelect }: DatePickerProps) {
     }
 
     return ( 
-        <div className="date-picker-calendar">
+        <div className={`date-picker-calendar ${className}`}>
             <div className="calendar-border"></div>
             <div className="calendar-panel">
                 <div className='calendar-section'>

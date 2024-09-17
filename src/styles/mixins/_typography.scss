@@ -34,15 +34,24 @@
     line-height: normal;
 }
 
-@mixin font-links-black($size) {
+@mixin font-links-black($size, $weight: 400) {
     color: #252525;
     font-family: 'Comfortaa';
     font-size: $size;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $weight;
     line-height: 120%;
     text-decoration-line: underline;
     cursor: pointer;
+}
+
+@mixin font-regular-black($size, $weight: 400) {
+    color: #252525;
+    font-family: 'Comfortaa';
+    font-size: $size;
+    font-style: normal;
+    font-weight: $weight;
+    line-height: 120%;
 }
 
 @mixin font-links-grey($size, $weight) {

@@ -1,0 +1,78 @@
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.write-owner-section {
+    margin-top: 60px;
+
+    &__header {
+        margin: 0;
+        @include font-montserrat-gray-dark(22px, 700);
+    }
+
+    &__subheader {
+        margin: 0;
+        @include font-regular(16px, 400);
+        margin-top: 20px;
+    }
+
+    &__button {
+        @include button-blue;
+
+        &:active:not(.disabled) {
+            background: linear-gradient(107deg, #08B1BD 31.42%, #FC712C 98.19%);
+            box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;  
+        }
+
+        &.disabled {
+            border-radius: 15px;
+            background: var(--grey-light-300, #AAA);
+            box-shadow: 0px 48px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+        }
+    }
+
+    &__textarea-container {
+        position: relative;
+
+        .image-container {
+            position: absolute;
+            border-radius: 50%;
+            width: 102px;
+            height: 102px;
+            top: -31px;
+            right: 21px;
+            
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;   
+            }
+        }
+
+        .textarea {
+            @include font-regular(16px);
+            margin: 20px 0;
+            border-radius: 15px;
+            border: 1px solid var(--grey-light-100, #CCC);
+            background: var(--grey-light-100, #E6E6E6);
+
+            padding: 20px 110px 20px 20px;
+            width: 100%;
+            height: 150px;
+            
+            resize: none;
+
+            &:focus {
+                outline: 0;
+            }
+
+            &::placeholder {
+                color: #AAA;
+                opacity: 1;
+            }
+        }
+    }
+}

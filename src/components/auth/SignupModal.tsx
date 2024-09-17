@@ -227,6 +227,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             label={t('SignUpBirthDateInputLabel')}
                             onChange={birthdateChangeHandle}
                             showError={birthdateValidation ? true : false}
+                            outerValueOverride={false}
                             />
                         {birthdateValidation ? (
                             <ValidationError 

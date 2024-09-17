@@ -1,0 +1,52 @@
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.phone-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__header {
+        margin: 0;
+        @include font-montserrat-gray-dark(22px, 700);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .body {
+
+            &__text {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                p {
+                    margin: 0
+                }
+            }
+
+            &__header {
+                @include font-regular(16px, 700);
+                margin-bottom: 10px;
+            }
+
+            &__info {
+                @include font-regular(14px, 400);
+            }
+
+            &__button {
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+
+                button {                    
+                    @include button-blue-outlined;
+                    padding: 20px 30px;
+                }
+            }
+        }
+    }
+}

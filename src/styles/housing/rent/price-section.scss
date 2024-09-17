@@ -53,6 +53,8 @@
     }
 
     .travelers-field {
+        position: relative;
+
         .white-field {
             flex: 1;
             
@@ -77,6 +79,25 @@
                 width: 24px;
                 height: 24px;
                 margin: 0 20px;
+                transform: rotate(90deg);
+                transition: transform 0.1s ease-in-out;
+            }
+
+            &.popup-opened {
+                img {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+
+        .price-section-tpopup {
+            top: calc(100% + 5px);
+            left: 0;
+
+            z-index: 1;
+
+            .popup-border {
+                border-color: #AAA;
             }
         }
     }
@@ -88,8 +109,21 @@
         
         gap: 10px;
 
-        button {
+        button, a {
             @include button-blue();
+        }
+
+        button {
+            &:active:not(.disabled) {
+                background: linear-gradient(107deg, #08B1BD 31.42%, #FC712C 98.19%);
+                box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.10) inset, 3px 4px 8.1px 0px rgba(0, 0, 0, 0.25) inset;  
+            }
+    
+            &.disabled {
+                border-radius: 15px;
+                background: var(--grey-light-300, #AAA);
+                box-shadow: 0px 48px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+            }
         }
 
         label {
@@ -156,7 +190,7 @@
     .price-summary {
         display: flex;
         flex-direction: column;
-        min-width: 25rem;
+        min-width: 320px;
         gap: 20px;
 
         &__header {
@@ -176,6 +210,9 @@
         }
 
         &__list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             .no-items {
                 text-align: center;
                 margin: 0;

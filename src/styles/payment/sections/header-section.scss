@@ -1,0 +1,33 @@
+@use '../../mixins/typography' as *;
+
+.header-section {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+
+    .back-link {
+        display: flex;
+        width: 52px;
+        height: 52px;
+        transform: rotate(-90deg);
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 48px;
+        border: 1px solid var(--white, #F6F6F6);
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(10px);
+
+        img {
+            width: 50%;
+        }
+    }
+
+    &__header {
+        margin: 0;
+        @include font-montserrat-gray-dark(32px, 700);
+    }
+}

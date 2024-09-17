@@ -19,7 +19,7 @@ import CheckboxRound from '../app/CheckboxRound';
 import Section2, { Category } from './search-panel/Section2';
 import { Translation } from '../../helpers/TranslationService';
 import FeatureService from '../../helpers/FeatureService';
-import { FilterSetting } from './SearchPage';
+import { FilterSetting, PricesRange } from './SearchPage';
 import { useModal } from '../app/ModalContext';
 import FiltersModal from './FiltersModal';
 
@@ -28,8 +28,11 @@ interface SearchPanelProps {
     filters: FilterSetting;
     categories: Category[];
     features: Feature[];
+    priceRange: PricesRange;
+    amountFound: number;
     searchHandler: () => void;
     filterChangeHandler: (filters: FilterSetting) => void;
+    clearFilterHandler: () => void;
 }
 
 type Image = {
@@ -48,12 +51,24 @@ export type Feature = {
     translations: Translation[]
 }
 
-export default function SearchPanel({ filters, categories, features, className = '', searchHandler, filterChangeHandler }: SearchPanelProps) {
+export default function SearchPanel(
+    { 
+        filters, 
+        categories, 
+        features, 
+        className = '', 
+        priceRange, 
+        amountFound,
+        searchHandler,
+        filterChangeHandler,
+        clearFilterHandler
+    }: SearchPanelProps) {
     const { t } = useTranslation();
 
     const { openModal, closeModal } = useModal();
 
     const [openedPopup, setOpenedPopup] = useState('');
+    const [destinationSearchValue, setDestinationSearchValue] = useState('');
 
     const handleFeatureCheck = (feature: Feature) => {
         const updatedFilter = { ...filters };
@@ -98,8 +113,10 @@ export default function SearchPanel({ filters, categories, features, className =
     }
 
     const handleDestinationSelection = (value: string) => {
-        const updatedFilters = { ...filters, destionation: value };
+        const updatedFilters = { ...filters };
+        updatedFilters.destination = value;
         filterChangeHandler(updatedFilters);
+        setDestinationSearchValue(value);
     }
 
     const handleCloseAllPopups = () => {
@@ -152,6 +169,9 @@ export default function SearchPanel({ filters, categories, features, className =
                 filters={filters}
                 features={features}
                 categories={categories}
+                priceRange={priceRange}
+                amountFound={amountFound}
+                clearFilterHandler={clearFilterHandler}
                 searchHandler={searchHandler}
                 filterChangeHandler={filterChangeHandler} />,
             { minWidth: '35%', maxWidth: '35%' });
@@ -167,10 +187,10 @@ export default function SearchPanel({ filters, categories, features, className =
                                 <img src={destinationIcon} alt='destination' className='inner-icon' />
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Destination')}
-                                    text={filters.destination}                                            
+                                    text={destinationSearchValue}                                          
                                     onFocus={onDestinationFieldFocus}
                                     onBlur={onDestinationFieldBlur}
-                                    onChange={handleDestinationSelection}/>
+                                    onChange={setDestinationSearchValue}/>
                             </div>
                             <div className="divider"></div>
                             <div className="input-group">
@@ -200,7 +220,7 @@ export default function SearchPanel({ filters, categories, features, className =
                     <div className='popup-wrapper'>
                         <DestinationPopup 
                             isOpen={openedPopup === 'destinationPopup'}
-                            searchValue={filters.destination} 
+                            searchValue={destinationSearchValue} 
                             assignValue={handleDestinationSelection} 
                             closeAll={handleCloseAllPopups} />
                         <CalendarPopup
@@ -218,10 +238,11 @@ export default function SearchPanel({ filters, categories, features, className =
                 <Section2 
                     categories={categories}
                     filterChangeHandler={filterChangeHandler} 
+                    priceRange={priceRange}
                     filters={filters} />
                 <div className="filter-section filter-section--3">
                     <div className='filter-panel feature-filter'>
-                        {features.slice(0, 6).map((feature, index) => (
+                        {features.filter(f => !f.isHouseRule).slice(0, 6).map((feature, index) => (
                             <div className='feature' key={index}>
                                 <div className='feature-main'>
                                     <img src={FeatureService.getFeatureIcon(feature.featureIcon.src)} className='feature-icon' />

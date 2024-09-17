@@ -4,7 +4,7 @@ import arrowBlue from '../../../assets/icons/meta/arrow-blue.svg';
 import { useTranslation } from "react-i18next";
 import { useState } from 'react';
 import DropdownAddition, { DropdownOption } from '../../app/DropdownAddition';
-import { FilterSetting } from '../SearchPage';
+import { FilterSetting, PricesRange } from '../SearchPage';
 
 export enum SearchHousingType {
     HOUSE = "HOUSE",
@@ -38,10 +38,11 @@ type Translation = {
 interface Section2Props {
     filters: FilterSetting;
     categories: Category[];
+    priceRange: PricesRange;
     filterChangeHandler: (filters: FilterSetting) => void;
 }
 
-export default function Section2({ filters, categories, filterChangeHandler }: Section2Props) {
+export default function Section2({ filters, categories, priceRange, filterChangeHandler }: Section2Props) {
     const { t } = useTranslation();
 
     const [housingTypeDropdownOpened, setHousingTypeDropdownOpened] = useState(false);
@@ -210,8 +211,8 @@ export default function Section2({ filters, categories, filterChangeHandler }: S
                             value={filters.priceRange}
                             onChange={handlePriceRangeChange}
                             valueLabelDisplay='auto'
-                            min={0}
-                            max={300}
+                            min={priceRange.minPrice}
+                            max={priceRange.maxPrice}
                             sx={{
                                 '& .MuiSlider-rail': {
                                     backgroundColor: '#B7B7B7',
@@ -239,10 +240,10 @@ export default function Section2({ filters, categories, filterChangeHandler }: S
                     </div>
                     <div className='minmax-block'>
                         <div className='min-label'>
-                            0
+                            {filters.priceRange[0]}
                         </div>
                         <div className='max-label'>
-                            64+
+                            {filters.priceRange[1]}+
                         </div>
                     </div>
                 </div>
