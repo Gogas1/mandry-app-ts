@@ -3,13 +3,19 @@ import { useState } from 'react';
 import NotificationSearch from '../account/profile/notifications/NotificationSearch';
 import '../../styles/pages/footer/footer-header.scss'
 
-export default function FooterHeader() {
+interface HeaderProps {
+    title: string;
+    className?: string;
+    breadcrumps?: string[];
+}
+
+export default function FooterHeader({title, className=''}: HeaderProps) {
     const { t } = useTranslation();
 
     return (
         <div className='footer-header'>
             <div className='header'>
-                {t('MainPage.Sections.Footer.Pages.News.Header')}
+                {t(title)}
                 <NotificationSearch />
             </div>
             <div className='divider' />
