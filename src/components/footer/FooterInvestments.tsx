@@ -131,21 +131,24 @@ export default function FooterInvestments() {
                             <NewsComponent 
                                 header={t('InvestmentsPage.News.Item1.Header')}
                                 text={t('InvestmentsPage.News.Item1.Text')}
-                                image={investmentNews1Image} />
+                                image={investmentNews1Image}
+                                className="news-item" />
                             <NewsComponent
                                 header={t('InvestmentsPage.News.Item2.Header')}
                                 text={t('InvestmentsPage.News.Item2.Text')}
-                                image={investmentNews2Image} />
+                                image={investmentNews2Image}
+                                className="news-item" />
                             <NewsComponent
                                 header={t('InvestmentsPage.News.Item3.Header')}
                                 text={t('InvestmentsPage.News.Item3.Text')}
-                                image={investmentNews3Image} />
+                                image={investmentNews3Image}
+                                className="news-item" />
                         </div>
                         <div className="button-row">
                             <button className="button-row__button button-row__button--back">
                                 <img src={arrowThin} />
                             </button>
-                            <button className="button-row__button button-row__button--back">
+                            <button className="button-row__button button-row__button--forward">
                                 <img src={arrowThin} />
                             </button>
                         </div>
