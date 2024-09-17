@@ -1,0 +1,32 @@
+.footer-header {
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        height: 42px;
+        width: 100%;
+
+        color: var(--blue, #08B1BD);
+        font-family: "Montserrat Alternates";
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 100%;
+        /* 22px */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-top: 20px;
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: var(--Color-3, #AAA);
+
+        margin-top: 20px;
+    }
+}
