@@ -25,6 +25,7 @@ import ContactsPage from './components/footer/ContactsPage';
 import { UserSettingsProvider } from './components/app/UserSettingsContext';
 import FooterInvestments from './components/footer/FooterInvestments';
 import ScrollToTop from './components/app/ScrollerToTop';
+import HelpCenter from './components/footer/HelpCenter';
 
 function App() {
 
@@ -58,8 +59,9 @@ function App() {
                   <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
                   <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
                   <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
-                <Route path='/news' element={<NewsPage />} />
-                <Route path='/contact' element={<ContactsPage />} />
+                  <Route path='/news' element={<NewsPage />} />
+                  <Route path='/contact' element={<ContactsPage />} />
+                  <Route path='/help' element={<HelpCenter />} />
                 </Routes>
                 <Modal />
               </UserSettingsProvider>
