@@ -9,6 +9,7 @@ import investmentMainImage from '../../assets/images/footer/investments/main.png
 import investmentNews1Image from '../../assets/images/footer/investments/news1.png';
 import investmentNews2Image from '../../assets/images/footer/investments/news2.png';
 import investmentNews3Image from '../../assets/images/footer/investments/news3.png';
+import FooterHeader from "./FooterHeader";
 
 export default function FooterInvestments() {
     const { t } = useTranslation();
@@ -17,6 +18,13 @@ export default function FooterInvestments() {
         <>
             <div className="footer-investments">
                 <div className="footer-investments-content">
+                    <FooterHeader 
+                        title={t('InvestmentsPage.HeaderPanel.Title')}
+                        breadcrumbs={[
+                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb1'),
+                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb2'),
+                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb3')
+                        ]} />
                     {/* <FooterHeader /> */}
                     <h1 className="footer-investments__header">
                         {t('InvestmentsPage.Header')}
@@ -37,7 +45,7 @@ export default function FooterInvestments() {
                             </p>
                         </div>
                     </section>
-                    <hr className="divider" />
+                    <hr className="footer-investments__divider" />
                     <section className="footer-investments__advantages">
                         <h2 className="header">
                             {t('InvestmentsPage.Advantages.Header')}
@@ -61,7 +69,7 @@ export default function FooterInvestments() {
                             {t('InvestmentsPage.Advantages.Text6')}
                         </p>
                     </section>
-                    <hr className="divider" />
+                    <hr className="footer-investments__divider" />
                     <section className="footer-investments__packages">
                         <h2 className="header">
                             {t('InvestmentsPage.Packages.Header')}
@@ -122,7 +130,7 @@ export default function FooterInvestments() {
                             <button>{t('InvestmentsPage.Packages.ButtonText')}</button>
                         </div>
                     </section>
-                    <hr className="divider" />
+                    <hr className="footer-investments__divider" />
                     <section className="footer-investments__news">
                         <h2 className="header">
                             {t('InvestmentsPage.News.Header')}
@@ -131,21 +139,24 @@ export default function FooterInvestments() {
                             <NewsComponent 
                                 header={t('InvestmentsPage.News.Item1.Header')}
                                 text={t('InvestmentsPage.News.Item1.Text')}
-                                image={investmentNews1Image} />
+                                image={investmentNews1Image}
+                                className="news-item" />
                             <NewsComponent
                                 header={t('InvestmentsPage.News.Item2.Header')}
                                 text={t('InvestmentsPage.News.Item2.Text')}
-                                image={investmentNews2Image} />
+                                image={investmentNews2Image}
+                                className="news-item" />
                             <NewsComponent
                                 header={t('InvestmentsPage.News.Item3.Header')}
                                 text={t('InvestmentsPage.News.Item3.Text')}
-                                image={investmentNews3Image} />
+                                image={investmentNews3Image}
+                                className="news-item" />
                         </div>
                         <div className="button-row">
                             <button className="button-row__button button-row__button--back">
                                 <img src={arrowThin} />
                             </button>
-                            <button className="button-row__button button-row__button--back">
+                            <button className="button-row__button button-row__button--forward">
                                 <img src={arrowThin} />
                             </button>
                         </div>

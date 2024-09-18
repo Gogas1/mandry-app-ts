@@ -6,10 +6,10 @@ import '../../styles/pages/footer/footer-header.scss'
 interface HeaderProps {
     title: string;
     className?: string;
-    breadcrumps?: string[];
+    breadcrumbs?: string[];
 }
 
-export default function FooterHeader({title, className=''}: HeaderProps) {
+export default function FooterHeader({ title, className = '', breadcrumbs = [] }: HeaderProps) {
     const { t } = useTranslation();
 
     return (
@@ -19,6 +19,16 @@ export default function FooterHeader({title, className=''}: HeaderProps) {
                 <NotificationSearch />
             </div>
             <div className='divider' />
+            <div className='breadcrumbs'>
+                {breadcrumbs.map((item, index) => (
+                    <>
+                        <span className='breadcrumb'>
+                            {item}
+                        </span>
+                        {index < breadcrumbs.length - 1 && `-`}
+                    </>
+                ))}
+            </div>
         </div>
     )
 }

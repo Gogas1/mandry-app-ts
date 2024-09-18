@@ -1,3 +1,52 @@
+@use '../../mixins/typography' as *;
+
 .news-component {
-    
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 15px;
+    border: 1px solid #515151;
+
+    &__image-wrapper {
+        display: flex;
+        position: relative;
+        margin: 5px 5px 0 5px;
+        
+        img {
+            width: 100%;
+        }
+
+        button {
+            cursor: pointer;
+            top: calc(100% - 107px);
+            left: calc(100% - 117px);
+
+            position: absolute;
+            display: flex;
+            width: 87px;
+            height: 87px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            border-radius: 86px;
+            border: var(--Numbers-0, 1px) solid #F6F6F6;
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+            backdrop-filter: blur(10px);
+
+            @include font-white-montserrat(14px, 700);
+        }
+    }
+
+    &__header {
+        margin: 0 10px;
+        margin-top: 20px;
+        @include font-regular(16px, 700);
+    }
+
+    &__body {
+        margin: 16px 10px 20px 10px;        
+        @include font-regular(14px, 400);
+    }
 }
