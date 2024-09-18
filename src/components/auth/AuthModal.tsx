@@ -72,8 +72,10 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                     id: authUserData.id, 
                     name: authUserData.name,
                     email: authUserData.email,
-                    avatar: authUserData.avatar.src
                 } as User;
+                if(authUserData.avatar) {
+                    userData.avatar = authUserData.avatar.src;
+                }
 
                 login(data.token, userData);
                 hideModal();
@@ -112,8 +114,10 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                     id: authUserData.id, 
                     name: authUserData.name,
                     email: authUserData.email,
-                    avatar: authUserData.avatar.src
                 } as User;
+                if(authUserData.avatar) {
+                    userData.avatar = authUserData.avatar.src;
+                }
 
                 login(data.token, userData);
                 hideModal();
