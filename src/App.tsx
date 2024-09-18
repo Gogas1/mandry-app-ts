@@ -26,6 +26,7 @@ import { UserSettingsProvider } from './components/app/UserSettingsContext';
 import FooterInvestments from './components/footer/FooterInvestments';
 import ScrollToTop from './components/app/ScrollerToTop';
 import FooterFeedback from './components/footer/FooterFeedback';
+import FooterCommunityChat from './components/footer/FooterCommunityChat';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
 
                   <Route path='/investments' element={<FooterInvestments />} />
                   <Route path='/feedback' element={<FooterFeedback />} />
+                  <Route path='/community-chat' element={<FooterCommunityChat />} />
 
                   <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
                   <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />

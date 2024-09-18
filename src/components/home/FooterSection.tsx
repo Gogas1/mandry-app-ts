@@ -34,7 +34,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'/community-chat'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Chat')}
                             </Link>
                         </li>
