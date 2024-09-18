@@ -25,6 +25,7 @@ import ContactsPage from './components/footer/ContactsPage';
 import { UserSettingsProvider } from './components/app/UserSettingsContext';
 import FooterInvestments from './components/footer/FooterInvestments';
 import ScrollToTop from './components/app/ScrollerToTop';
+import FooterFeedback from './components/footer/FooterFeedback';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
                   <Route path='/account/information/temp' element={<ProfileInfoPage />} />
 
                   <Route path='/investments' element={<FooterInvestments />} />
+                  <Route path='/feedback' element={<FooterFeedback />} />
 
                   <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
                   <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />
@@ -58,8 +60,9 @@ function App() {
                   <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
                   <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
                   <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
-                <Route path='/news' element={<NewsPage />} />
-                <Route path='/contact' element={<ContactsPage />} />
+
+                  <Route path='/news' element={<NewsPage />} />
+                  <Route path='/contact' element={<ContactsPage />} />
                 </Routes>
                 <Modal />
               </UserSettingsProvider>
