@@ -1178,6 +1178,7 @@
         "PromotionsSection": "Акційні пропозиції",
         "HelpCenter": "Центр підтримки",
         "HousingLoading": "Завантаження інформації про житло",
-        "PaymentPage": "Бронювання - {{name}}"
+        "PaymentPage": "Бронювання - {{name}}",
+        "SearchPage": "Пошук"
     }
 }

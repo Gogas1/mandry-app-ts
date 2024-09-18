@@ -28,52 +28,58 @@ import ScrollToTop from './components/app/ScrollerToTop';
 import FooterFeedback from './components/footer/FooterFeedback';
 import FooterCommunityChat from './components/footer/FooterCommunityChat';
 import HelpCenter from './components/footer/HelpCenter';
+import { APIProvider } from '@vis.gl/react-google-maps';
 
 function App() {
+  const GApiKey = import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY;
+  console.log(GApiKey);
 
   return (
     <>
-      <AuthProvider>
-        <Router>
-          <ScrollToTop />
-          <ModalProvider>
-            <AuthorizationProvider>
-              <UserSettingsProvider>
-                <Navbar />
-                <Routes>
-                  <Route path='/' element={<Home />} />
-                  <Route path='/profile/:id' element={<Profile />} />
-                  <Route path='/profile/my' element={<Profile />} />
-                  <Route path='/signup' element={<SignUp />} />
-                  <Route path='/signin' element={<SignIn />} />
-                  <Route path='/features' element={<Features />} />
-                  <Route path='/search' element={<SearchPage />} />
-                  <Route path='/housing/:id' element={<HousingPage />} />
-                  <Route path='/account/information/temp' element={<ProfileInfoPage />} />
+      <APIProvider apiKey={GApiKey}>
+        <AuthProvider>
+          <Router>
+            <ScrollToTop />
+            <ModalProvider>
+              <AuthorizationProvider>
+                <UserSettingsProvider>
+                  <Navbar />
+                  <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/profile/:id' element={<Profile />} />
+                    <Route path='/profile/my' element={<Profile />} />
+                    <Route path='/signup' element={<SignUp />} />
+                    <Route path='/signin' element={<SignIn />} />
+                    <Route path='/features' element={<Features />} />
+                    <Route path='/search' element={<SearchPage />} />
+                    <Route path='/housing/:id' element={<HousingPage />} />
+                    <Route path='/account/information/temp' element={<ProfileInfoPage />} />
 
-                  <Route path='/investments' element={<FooterInvestments />} />
-                  <Route path='/feedback' element={<FooterFeedback />} />
-                  <Route path='/community-chat' element={<FooterCommunityChat />} />
+                    <Route path='/investments' element={<FooterInvestments />} />
+                    <Route path='/feedback' element={<FooterFeedback />} />
+                    <Route path='/community-chat' element={<FooterCommunityChat />} />
 
-                  <Route path='/account' element={<ProtectedRoute element={<AccountPage />} /> } />
-                  <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} /> } />
-                  <Route path='/account/verification' element={<ProtectedRoute element={<VerificationPage />} /> } />
-                  <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
-                  <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
-                  <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
-                  <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} /> } />
-                  <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
+                    <Route path='/account' element={<ProtectedRoute element={<AccountPage />} />} />
+                    <Route path='/account/profile/my' element={<ProtectedRoute element={<ProfilePage />} />} />
+                    <Route path='/account/verification' element={<ProtectedRoute element={<VerificationPage />} />} />
+                    <Route path='/account/information' element={<ProtectedRoute element={<ProfileInfoPage />} />} />
+                    <Route path='/account/favourites' element={<ProtectedRoute element={<FavouritesPage />} />} />
+                    <Route path='/account/notifications' element={<ProtectedRoute element={<NotificationsPage />} />} />
+                    <Route path='/housing/payment/:id' element={<ProtectedRoute element={<PaymentPage />} />} />
+                    <Route path='/account/travels' element={<ProtectedRoute element={<TravelsPage />} />} />
 
                     <Route path='/news' element={<NewsPage />} />
                     <Route path='/contact' element={<ContactsPage />} />
-                  <Route path='/help' element={<HelpCenter />} />
-                </Routes>
-                <Modal />
-              </UserSettingsProvider>
-            </AuthorizationProvider>
-          </ModalProvider>
-        </Router>
-      </AuthProvider>
+                    <Route path='/help' element={<HelpCenter />} />
+                  </Routes>
+                  <Modal />
+                </UserSettingsProvider>
+              </AuthorizationProvider>
+            </ModalProvider>
+          </Router>
+        </AuthProvider>
+      </APIProvider>
+      
     </>
   )
 }

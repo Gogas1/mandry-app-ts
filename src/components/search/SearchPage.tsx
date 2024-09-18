@@ -7,6 +7,8 @@ import { Housing } from "../housing/HousingPage";
 import { Category } from "./search-panel/Section2";
 import { processTranslations } from "../../helpers/TranslationService";
 import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
+import { Map } from "@vis.gl/react-google-maps";
 
 export interface FilterSetting {
     destination: string;
@@ -27,6 +29,10 @@ export interface PricesRange {
 }
 
 export default function SearchPage() {
+    const { t } = useTranslation();
+
+    document.title = t("Titles.SearchPage");
+
     const [housings, setHousings] = useState<Housing[]>([]);
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [featuresList, setFeaturesList] = useState<Feature[]>([]);
@@ -240,7 +246,11 @@ export default function SearchPage() {
                         <ResultPanel housings={housings} />
                     </div>
                     <div className="map-section">
-
+                        <Map
+                        style={{borderRadius: '15px'}}
+                            defaultCenter={{lat: 50.45466, lng: 30.5238}}
+                            defaultZoom={5}
+                            disableDefaultUI={true} />
                     </div>
                 </div>      
             </div>
