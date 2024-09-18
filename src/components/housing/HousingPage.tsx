@@ -124,15 +124,18 @@ export interface Housing {
 
 export default function HousingPage() {
     const { t, ready } = useTranslation();
-    const { id } = useParams();
+    const { id } = useParams();    
 
     const [userData, setUserData] = useState<UserData>();
     const [housingData, setHousingData] = useState<Housing>();
     const [loading, setLoading] = useState(true);
     const [dates, setDates] = useState<{dateOne: Date | undefined, dateTwo: Date | undefined}>();
 
+    
+
     useEffect(() => {
         if (!ready) return; 
+        document.title = t("Titles.HousingLoading");
 
         const searchHousing = async () => {
             setLoading(true);            
@@ -159,6 +162,8 @@ export default function HousingPage() {
 
                     setHousingData(hd);
                     setLoading(false);
+
+                    document.title = hd.name;
                 }
             }
             catch (error) {
@@ -275,26 +280,26 @@ export default function HousingPage() {
     );
 }
 
-function getRandomDateWithinYear(year: number): Date {
-    // Randomly select a month (1-12), and convert to 0-based for Date constructor
-    const month = Math.floor(Math.random() * 12);
+// function getRandomDateWithinYear(year: number): Date {
+//     // Randomly select a month (1-12), and convert to 0-based for Date constructor
+//     const month = Math.floor(Math.random() * 12);
   
-    // Get the number of days in the randomly chosen month
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+//     // Get the number of days in the randomly chosen month
+//     const daysInMonth = new Date(year, month + 1, 0).getDate();
   
-    // Randomly select a day within the chosen month
-    const day = Math.floor(Math.random() * daysInMonth) + 1;
+//     // Randomly select a day within the chosen month
+//     const day = Math.floor(Math.random() * daysInMonth) + 1;
   
-    // Return the random date
-    return new Date(year, month, day);
-  }
+//     // Return the random date
+//     return new Date(year, month, day);
+//   }
   
-function generateRandomDatesArrayForYear(year: number, count: number): Date[] {
-    const randomDates: Date[] = [];
+// function generateRandomDatesArrayForYear(year: number, count: number): Date[] {
+//     const randomDates: Date[] = [];
   
-    for (let i = 0; i < count; i++) {
-      randomDates.push(getRandomDateWithinYear(year));
-    }
+//     for (let i = 0; i < count; i++) {
+//       randomDates.push(getRandomDateWithinYear(year));
+//     }
   
-    return randomDates;
-}
+//     return randomDates;
+// }

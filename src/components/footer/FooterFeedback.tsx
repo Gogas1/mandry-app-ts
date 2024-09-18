@@ -14,6 +14,8 @@ import NewsComponent from "./components/NewsComponent";
 export default function FooterFeedback() {
     const { t } = useTranslation();
 
+    document.title = t('Titles.FooterFeedback');
+
     return (
         <>
             <div className="footer-feedback">

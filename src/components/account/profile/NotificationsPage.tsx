@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import '../../../styles/account/profile/profile-notifications-page.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
 import { useModal } from "../../app/ModalContext";
@@ -20,6 +20,8 @@ export default function NotificationsPage() {
     const [sortCategory, setSortCategory] = useState('');
     const [overlay, showOverlay] = useState(false);
     const { openModal, closeModal } = useModal();
+
+    document.title = t('Titles.NotificationsPage');
 
     const toggleDropdown = () => {
         if (openedDropdown === '') {

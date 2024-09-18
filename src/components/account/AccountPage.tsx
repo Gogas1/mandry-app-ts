@@ -30,6 +30,8 @@ export default function AccountPage() {
     }
     const { t } = useTranslation();
 
+    document.title = t('Titles.AccountPage');
+
     const [userData, setUserData] = useState<UserData>({ id: '', name: 'loading...', surname: 'loading...', email: 'loading...', phone: 'loading...' } as UserData);
 
     useEffect(() => {

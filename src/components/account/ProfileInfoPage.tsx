@@ -36,6 +36,8 @@ export default function ProfileInfoPage() {
 
     const { t } = useTranslation();
 
+    document.title = t('Titles.ProfileInfoPage');
+
     const [profileInfo, setProfileInfo] = useState<ProfileInfo>(
         {
             education: '',
@@ -52,7 +54,7 @@ export default function ProfileInfoPage() {
             pets: ''
         } as ProfileInfo);
 
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [, setSelectedFile] = useState<File | null>(null);
 
     const sendNewAvatar = async (file: File) => {
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/avatar/my/change"

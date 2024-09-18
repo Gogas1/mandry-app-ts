@@ -4,7 +4,7 @@ import { CSSProperties, useRef } from 'react';
 import { PromotionsImageHelper } from '../../helpers/ImageHelper';
 
 import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface PromotionsSectionProps {
     className?: string;
@@ -15,6 +15,8 @@ export default function PromotionsSection({ className = '', handlePromotion }: P
     const { t } = useTranslation();
     const navigate = useNavigate();
     const sliderRef = useRef<HTMLDivElement>(null);
+
+    document.title = t('Titles.PromotionsSection');
 
     const handlePrev = () => {
         if(sliderRef.current) {

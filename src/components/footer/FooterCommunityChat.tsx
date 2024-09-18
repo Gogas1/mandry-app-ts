@@ -18,6 +18,8 @@ import NewsComponent from "./components/NewsComponent";
 export default function FooterCommunityChat() {
     const { t } = useTranslation();
 
+    document.title = t('Titles.FooterCommunityChat');
+
     return (
         <>
             <div className="footer-community-chat">

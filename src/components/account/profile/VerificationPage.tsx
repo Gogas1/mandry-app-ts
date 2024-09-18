@@ -6,6 +6,8 @@ import Radio from "../../app/Radio";
 export default function VerificationPage() {
     const { t } = useTranslation();
 
+    document.title = t('Titles.VerificationPage');
+
     return (
         <>
             <div className="verification-page">

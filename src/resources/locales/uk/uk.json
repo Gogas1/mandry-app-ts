@@ -1160,5 +1160,24 @@
                 }
             }
         }
+    },
+
+    "Titles": {
+        "AccountPage": "Профіль - навігація",
+        "FavouritesPage": "Профіль - обране",
+        "ProfileInfoPage": "Профіль - інформація",
+        "NotificationsPage": "Профіль - повідомлення",
+        "ProfilePage": "Профіль",
+        "VerificationPage": "Профіль - верифікація",
+        "TravelsPage": "Профіль - подорожі",
+        "ContactsPage": "Контакти",
+        "FooterCommunityChat": "Чат спільноти",
+        "FooterFeedback": "Запити і скарги",
+        "FooterInvestments": "Інвесторам",
+        "NewsPage": "Новини",
+        "PromotionsSection": "Акційні пропозиції",
+        "HelpCenter": "Центр підтримки",
+        "HousingLoading": "Завантаження інформації про житло",
+        "PaymentPage": "Бронювання - {{name}}"
     }
 }

@@ -20,6 +20,8 @@ export default function ProfilePage() {
     const { t } = useTranslation();
     const { openModal, closeModal } = useModal();
 
+    document.title = t("Titles.ProfilePage");
+
     const name = authState.user?.name;
 
 

@@ -13,6 +13,8 @@ export default function HelpCenter() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    document.title = t('Titles.HelpCenter');
+
     return (
         <div className='help-center-page'>
             <div className='content-container'>

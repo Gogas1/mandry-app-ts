@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import '../../../styles/account/profile/travels-page.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
 
 export default function TravelsPage() {
     const { t } = useTranslation();
     const authContext = useContext(AuthContext);
     const navigate = useNavigate()
+
+    document.title = t('Titles.TravelsPage');
 
     if (!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');

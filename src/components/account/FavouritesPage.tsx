@@ -6,6 +6,8 @@ import heartFilled from "../../assets/icons/meta/heart-filled.svg";
 
 export default function FavouritesPage() {
     const { t } = useTranslation();
+
+    document.title = t('Titles.FavouritesPage');
     
     return (
         <>

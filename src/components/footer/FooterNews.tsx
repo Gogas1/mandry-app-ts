@@ -13,6 +13,8 @@ export default function NewsPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    document.title = t('Titles.NewsPage');
+
     const [selectedPromHotel, setSelectedPromHotel] = useState<string>('base');
     
 

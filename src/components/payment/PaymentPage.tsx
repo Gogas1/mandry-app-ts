@@ -38,6 +38,8 @@ export default function PaymentPage() {
     const { t } = useTranslation();
     const { openModal, closeModal } = useModal();
 
+    document.title = t('Titles.PaymentPage', {name: data.housingData.name})
+
     const [done, setDone] = useState(false);
 
     const [overlayOpened, setOverlayOpened] = useState(false);

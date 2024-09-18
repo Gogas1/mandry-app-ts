@@ -7,6 +7,8 @@ import '../../styles/pages/footer/footer-contacts.scss'
 export default function ContactsPage() {
     const { t } = useTranslation();
 
+    document.title = t('Titles.ContactsPage');
+
     return (
         <div className='contact-page'>
             <div className='content-container'>
