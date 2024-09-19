@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import '../../styles/housing/housing-page.scss';
 
 import heartIcon from '../../assets/icons/meta/heart-empty-grey.svg';
+import heartFilledIcon from '../../assets/icons/meta/heart-filled.svg';
 import shareIcon from '../../assets/icons/meta/share.svg';
 
 import { processTranslations, Translation } from '../../helpers/TranslationService';
@@ -21,6 +22,8 @@ import { RatingSection } from './rent/RatingSection';
 import ReviewSection from './rent/ReviewSection';
 import InlinePopup from '../app/InlinePopup';
 import AuthContext from '../auth/AuthenticationContext';
+import { LongTermsBenefits } from '../payment/PaymentPage';
+import HeartIcon from '../search/HeartIcon';
 
 type ProfileInfo = {
     education?: string;
@@ -139,9 +142,9 @@ export default function HousingPage() {
     const [userData, setUserData] = useState<UserData>();
     const [housingData, setHousingData] = useState<Housing>();
     const [loading, setLoading] = useState(true);
-    const [dates, setDates] = useState<{dateOne: Date | undefined, dateTwo: Date | undefined}>();
+    const [dates, setDates] = useState<{dateOne: Date | undefined, dateTwo: Date | undefined}>({ dateOne: undefined, dateTwo: undefined });
 
-    
+    const [longTermsBenefits, setLongTermsBenefits] = useState(CalculateLongTermsBenefits(dates.dateOne ? dates.dateOne : new Date()));
 
     useEffect(() => {
         if (!ready) return; 
@@ -186,9 +189,28 @@ export default function HousingPage() {
         searchHousing();
     }, [id, ready]);
 
-    
+    const makeFavourite = async (id: string) => {
+        if(authState.isAuthenticated) {
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/favourites/make?housing=${id}`;
+
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true',
+                        'Authorization': `Bearer ${authState.token}`
+                    }
+                });
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
     const handleDateChoose = (dateOne: Date | undefined, dateTwo: Date | undefined) => {
         setDates({dateOne, dateTwo});
+        setLongTermsBenefits(CalculateLongTermsBenefits(dateOne ? dateOne : new Date()));
     }
 
     const handleUrlCopy = async () => {
@@ -213,7 +235,15 @@ export default function HousingPage() {
                             <InlinePopup popupContent={t('HousingPage.Copied')}>
                                 <img className='action-icon' src={shareIcon} onClick={handleUrlCopy} />
                             </InlinePopup>
-                            <img className='action-icon' src={heartIcon} />
+                            {authState.isAuthenticated && (
+                                <HeartIcon
+                                    filled={housingData ? housingData.isFavourite : false}
+                                    onClick={() => makeFavourite(id ? id : '')}
+                                    iconFalse={heartIcon}
+                                    iconTrue={heartFilledIcon}
+                                    className='action-icon' />
+                            )}
+                            
                         </div>
                     </section>
                     <section className='housing-images-section'>
@@ -258,7 +288,7 @@ export default function HousingPage() {
                                     <hr className='divider' />
                                     <HousingCalendarSection onChange={handleDateChoose} housingData={housingData} />
                                     <hr className='divider' />
-                                    <ImportantInfoSection housingData={housingData} />
+                                    <ImportantInfoSection housingData={housingData} longTermBenefits={longTermsBenefits} />
                                                                        
                                 </>
                             ) : ''}
@@ -314,3 +344,29 @@ export default function HousingPage() {
   
 //     return randomDates;
 // }
+
+function CalculateLongTermsBenefits(targetDate: Date): LongTermsBenefits {
+    const today = new Date();
+    const timeDifference = targetDate.getTime() - today.getTime();
+    const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (daysDifference > 31) {
+        return {
+            fullReturnAvailable: true,
+            halfReturnDate: new Date(targetDate.getTime() - 7 * 24 * 60 * 60 * 1000),
+            secondPaymentDate: new Date(targetDate.getTime() - 14 * 24 * 60 * 60 * 1000)
+        };
+    } else if (daysDifference > 7) {
+        return {
+            fullReturnAvailable: false,
+            halfReturnDate: new Date(targetDate.getTime() - 7 * 24 * 60 * 60 * 1000),
+            secondPaymentDate: null
+        };
+    } else {
+        return {
+            fullReturnAvailable: false,
+            halfReturnDate: targetDate,
+            secondPaymentDate: null
+        };
+    }
+}

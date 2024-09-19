@@ -6,9 +6,11 @@ interface HeartIconProps {
     filled: boolean;
     onClick: () => void;
     className?: string;
+    iconFalse?: string;
+    iconTrue?: string;
 }
 
-export default function HeartIcon({ filled, className = '', onClick }: HeartIconProps) {
+export default function HeartIcon({ filled, className = '', iconFalse = heartEmptyIcon, iconTrue = heartFilledIcon, onClick }: HeartIconProps) {
     const [state, setState] = useState(filled);
     
     const handleClick = () => {
@@ -18,9 +20,9 @@ export default function HeartIcon({ filled, className = '', onClick }: HeartIcon
 
     return (
         state ? (
-            <img src={heartFilledIcon} className={className} onClick={handleClick}/>
+            <img src={iconTrue} className={className} onClick={handleClick}/>
         ) : (
-            <img src={heartEmptyIcon} className={className} onClick={handleClick}/> 
+            <img src={iconFalse} className={className} onClick={handleClick}/> 
         )
     );
 }
