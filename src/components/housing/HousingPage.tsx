@@ -4,6 +4,7 @@ import '../../styles/housing/housing-page.scss';
 import heartIcon from '../../assets/icons/meta/heart-empty-grey.svg';
 import heartFilledIcon from '../../assets/icons/meta/heart-filled.svg';
 import shareIcon from '../../assets/icons/meta/share.svg';
+import loadingIcon from '../../assets/anim/loading2.gif';
 
 import { processTranslations, Translation } from '../../helpers/TranslationService';
 import { useTranslation } from 'react-i18next';
@@ -57,7 +58,7 @@ type Category = {
     nameKey: string,
     isCategoryPropertyRequired?: boolean,
     categoryPropertyDescriptionKey?: string,
-    
+
     categoryTranslations: Translation[]
     categoryPropertyTranslations?: Translation[]
 }
@@ -130,30 +131,30 @@ export interface Housing {
 
 export default function HousingPage() {
     const authContext = useContext(AuthContext);
-    if(!authContext) {
+    if (!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
 
     const { authState } = authContext;
 
     const { t, ready } = useTranslation();
-    const { id } = useParams();    
+    const { id } = useParams();
 
     const [userData, setUserData] = useState<UserData>();
     const [housingData, setHousingData] = useState<Housing>();
     const [loading, setLoading] = useState(true);
-    const [dates, setDates] = useState<{dateOne: Date | undefined, dateTwo: Date | undefined}>({ dateOne: undefined, dateTwo: undefined });
+    const [dates, setDates] = useState<{ dateOne: Date | undefined, dateTwo: Date | undefined }>({ dateOne: undefined, dateTwo: undefined });
 
     const [longTermsBenefits, setLongTermsBenefits] = useState(CalculateLongTermsBenefits(dates.dateOne ? dates.dateOne : new Date()));
 
     useEffect(() => {
-        if (!ready) return; 
+        if (!ready) return;
         document.title = t("Titles.HousingLoading");
 
         const searchHousing = async () => {
-            setLoading(true);            
+            setLoading(true);
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/get/${id}`;
-    
+
             try {
                 const response = await fetch(url, {
                     method: 'GET',
@@ -190,7 +191,7 @@ export default function HousingPage() {
     }, [id, ready]);
 
     const makeFavourite = async (id: string) => {
-        if(authState.isAuthenticated) {
+        if (authState.isAuthenticated) {
             const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/favourites/make?housing=${id}`;
 
             try {
@@ -209,7 +210,7 @@ export default function HousingPage() {
     }
 
     const handleDateChoose = (dateOne: Date | undefined, dateTwo: Date | undefined) => {
-        setDates({dateOne, dateTwo});
+        setDates({ dateOne, dateTwo });
         setLongTermsBenefits(CalculateLongTermsBenefits(dateOne ? dateOne : new Date()));
     }
 
@@ -227,93 +228,102 @@ export default function HousingPage() {
         <>
             <div className="housing-page">
                 <div className='housing-page-content'>
-                    <section className='header-section'>
-                        <h1 className={`housing-name ${!housingData ? 'loading' : ''}`}>
-                            {housingData ? housingData.name : ''}
-                        </h1>
-                        <div className='housing-actions'>
-                            <InlinePopup popupContent={t('HousingPage.Copied')}>
-                                <img className='action-icon' src={shareIcon} onClick={handleUrlCopy} />
-                            </InlinePopup>
-                            {authState.isAuthenticated && (
-                                <HeartIcon
-                                    filled={housingData ? housingData.isFavourite : false}
-                                    onClick={() => makeFavourite(id ? id : '')}
-                                    iconFalse={heartIcon}
-                                    iconTrue={heartFilledIcon}
-                                    className='action-icon' />
-                            )}
-                            
-                        </div>
-                    </section>
-                    <section className='housing-images-section'>
-                        {housingData ? (
-                            <>
-                                <div className='big-picture-container'>
-                                    <div className='big-picture-wrapper'>
-                                        <img src={FeatureService.getFeatureIcon(housingData.images[0].src)} />
-                                    </div>   
+                    {housingData ? (
+                        <>
+                            <section className='header-section'>
+                                <h1 className={`housing-name ${!housingData ? 'loading' : ''}`}>
+                                    {housingData ? housingData.name : ''}
+                                </h1>
+                                <div className='housing-actions'>
+                                    <InlinePopup popupContent={t('HousingPage.Copied')}>
+                                        <img className='action-icon' src={shareIcon} onClick={handleUrlCopy} />
+                                    </InlinePopup>
+                                    {authState.isAuthenticated && (
+                                        <HeartIcon
+                                            filled={housingData ? housingData.isFavourite : false}
+                                            onClick={() => makeFavourite(id ? id : '')}
+                                            iconFalse={heartIcon}
+                                            iconTrue={heartFilledIcon}
+                                            className='action-icon' />
+                                    )}
+
                                 </div>
-                                <div className='small-pictures-container'>
-                                    {housingData.images.slice(1, housingData.images.length > 4 ? 5 : housingData.images.length - 1).map((image, index) => (    
-                                        <div className='small-picture-wrapper' key={index}>
-                                            <img src={FeatureService.getFeatureIcon(image.src)} key={index} />
-                                        </div>                            
-                                        
-                                    ))}
-                                </div>
-                            </>
-                        ) : (
-                            ''
-                        )}
-                        
-                    </section>
-                    <div className='main-section'>
-                        <div className='data-section'>
-                            <section className={`location-section ${!housingData ? 'loading' : ''}`}>
-                                {housingData ? (
-                                    `${housingData.locationPlace}, ${housingData.locationCountry}: ${t(housingData.category.nameKey)}`
-                                ) : (
-                                    1
-                                )}                                
                             </section>
-                            {housingData && !loading && ready ? (
-                                <>
-                                    <ComponentsSection housingData={housingData} />
-                                    <DescriptionSection housingData={housingData} />
-                                    <hr className='divider' />
-                                    <BedroomsSection housingData={housingData} />
-                                    <hr className='divider' />
-                                    <FeaturesSection housingData={housingData} />
-                                    <hr className='divider' />
-                                    <HousingCalendarSection onChange={handleDateChoose} housingData={housingData} />
-                                    <hr className='divider' />
-                                    <ImportantInfoSection housingData={housingData} longTermBenefits={longTermsBenefits} />
-                                                                       
-                                </>
+                            <section className='housing-images-section'>
+                                {housingData ? (
+                                    <>
+                                        <div className='big-picture-container'>
+                                            <div className='big-picture-wrapper'>
+                                                <img src={FeatureService.getFeatureIcon(housingData.images[0].src)} />
+                                            </div>
+                                        </div>
+                                        <div className='small-pictures-container'>
+                                            {housingData.images.slice(1, housingData.images.length > 4 ? 5 : housingData.images.length - 1).map((image, index) => (
+                                                <div className='small-picture-wrapper' key={index}>
+                                                    <img src={FeatureService.getFeatureIcon(image.src)} key={index} />
+                                                </div>
+
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+
+                            </section>
+                            <div className='main-section'>
+                                <div className='data-section'>
+                                    <section className={`location-section ${!housingData ? 'loading' : ''}`}>
+                                        {housingData ? (
+                                            `${housingData.locationPlace}, ${housingData.locationCountry}: ${t(housingData.category.nameKey)}`
+                                        ) : (
+                                            1
+                                        )}
+                                    </section>
+                                    {housingData && !loading && ready ? (
+                                        <>
+                                            <ComponentsSection housingData={housingData} />
+                                            <DescriptionSection housingData={housingData} />
+                                            <hr className='divider' />
+                                            <BedroomsSection housingData={housingData} />
+                                            <hr className='divider' />
+                                            <FeaturesSection housingData={housingData} />
+                                            <hr className='divider' />
+                                            <HousingCalendarSection onChange={handleDateChoose} housingData={housingData} />
+                                            <hr className='divider' />
+                                            <ImportantInfoSection housingData={housingData} longTermBenefits={longTermsBenefits} />
+
+                                        </>
+                                    ) : ''}
+
+                                </div>
+                                <div className='rent-section'>
+                                    {housingData && id && userData ? (
+                                        <>
+                                            <PriceSection
+                                                selecetedDates={{ dateOne: dates?.dateOne, dateTwo: dates?.dateTwo }}
+                                                price={housingData.pricePerNight}
+                                                housingData={housingData}
+                                                ownerData={userData}
+                                                id={id} />
+                                            <RatingSection housingData={housingData} />
+                                            <ReviewSection reviews={housingData.reviews} />
+                                        </>
+
+                                    ) : ''}
+
+                                </div>
+                            </div>
+                            {userData ? (
+                                <OwnerSection userData={userData} />
                             ) : ''}
-                            
-                        </div>
-                        <div className='rent-section'>
-                            {housingData && id && userData ? (
-                                <>
-                                    <PriceSection 
-                                        selecetedDates={{dateOne: dates?.dateOne, dateTwo: dates?.dateTwo}}
-                                        price={housingData.pricePerNight}
-                                        housingData={housingData} 
-                                        ownerData={userData}
-                                        id={id}/>
-                                    <RatingSection housingData={housingData} />
-                                    <ReviewSection reviews={housingData.reviews} />
-                                </>
-                                
-                            ) : ''}
-                            
-                        </div>
-                    </div>
-                    {userData ? (
-                        <OwnerSection userData={userData} />
-                    ) : ''}                    
+                        </>
+                    ) : (
+                        <section className='loading-section'>
+                            <img src={loadingIcon} />
+                        </section>
+                    )}
+
                 </div>
                 <FooterSection />
             </div>
@@ -324,24 +334,24 @@ export default function HousingPage() {
 // function getRandomDateWithinYear(year: number): Date {
 //     // Randomly select a month (1-12), and convert to 0-based for Date constructor
 //     const month = Math.floor(Math.random() * 12);
-  
+
 //     // Get the number of days in the randomly chosen month
 //     const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
+
 //     // Randomly select a day within the chosen month
 //     const day = Math.floor(Math.random() * daysInMonth) + 1;
-  
+
 //     // Return the random date
 //     return new Date(year, month, day);
 //   }
-  
+
 // function generateRandomDatesArrayForYear(year: number, count: number): Date[] {
 //     const randomDates: Date[] = [];
-  
+
 //     for (let i = 0; i < count; i++) {
 //       randomDates.push(getRandomDateWithinYear(year));
 //     }
-  
+
 //     return randomDates;
 // }
 
