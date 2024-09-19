@@ -32,7 +32,6 @@ import { APIProvider } from '@vis.gl/react-google-maps';
 
 function App() {
   const GApiKey = import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY;
-  console.log(GApiKey);
 
   return (
     <>

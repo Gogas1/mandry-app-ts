@@ -1180,5 +1180,9 @@
         "HousingLoading": "Завантаження інформації про житло",
         "PaymentPage": "Бронювання - {{name}}",
         "SearchPage": "Пошук"
+    },
+    
+    "FavouritesPopup": {
+        "AuthPlease": "Увійдіть для роботи з обраним"
     }
 }

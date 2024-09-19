@@ -2,7 +2,7 @@ import { Slider } from '@mui/material';
 import arrowBlue from '../../../assets/icons/meta/arrow-blue.svg';
 
 import { useTranslation } from "react-i18next";
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import DropdownAddition, { DropdownOption } from '../../app/DropdownAddition';
 import { FilterSetting, PricesRange } from '../SearchPage';
 
@@ -47,13 +47,17 @@ export default function Section2({ filters, categories, priceRange, filterChange
 
     const [housingTypeDropdownOpened, setHousingTypeDropdownOpened] = useState(false);
     const [housingRoomsPopupOpened, setHousingRoomsPopupOpened] = useState(false);
+    const [sliderValue, setSliderValue] = useState<number | number[]>([filters.priceRange[0], filters.priceRange[1]]);
+
+    const handlePriceStateChange = (event: Event, newValue: number | number[]) => {
+        setSliderValue(newValue);
+    }
 
     const categoriesOptions = categories.map(category => {
         return { display: t(category.nameKey), value: category } as DropdownOption;
     });
 
-    const handlePriceRangeChange = (event: Event, newValue: number | number[]) => {
-        console.log(event);
+    const handlePriceRangeChange = (event: Event | SyntheticEvent, newValue: number | number[]) => {
         const updatedFilter = { ...filters }
         updatedFilter.priceRange = newValue as number[];
         filterChangeHandler(updatedFilter);
@@ -208,8 +212,9 @@ export default function Section2({ filters, categories, priceRange, filterChange
                     </div>
                     <div className='slider-block'>
                         <Slider 
-                            value={filters.priceRange}
-                            onChange={handlePriceRangeChange}
+                            value={sliderValue}
+                            onChange={handlePriceStateChange}
+                            onChangeCommitted={handlePriceRangeChange}
                             valueLabelDisplay='auto'
                             min={priceRange.minPrice}
                             max={priceRange.maxPrice}

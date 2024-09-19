@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../../styles/housing/housing-page.scss';
 
 import heartIcon from '../../assets/icons/meta/heart-empty-grey.svg';
@@ -20,6 +20,7 @@ import PriceSection from './rent/PriceSection';
 import { RatingSection } from './rent/RatingSection';
 import ReviewSection from './rent/ReviewSection';
 import InlinePopup from '../app/InlinePopup';
+import AuthContext from '../auth/AuthenticationContext';
 
 type ProfileInfo = {
     education?: string;
@@ -114,6 +115,8 @@ export interface Housing {
     reviewsCount: number,
     cleaningFee: number,
     categoryProperty: string,
+    isFavourite: boolean,
+    locationCoords: string,
 
     bedrooms: Bedroom[],
     images: Image[],
@@ -123,6 +126,13 @@ export interface Housing {
 }
 
 export default function HousingPage() {
+    const authContext = useContext(AuthContext);
+    if(!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
+
+    const { authState } = authContext;
+
     const { t, ready } = useTranslation();
     const { id } = useParams();    
 
@@ -145,7 +155,8 @@ export default function HousingPage() {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'ngrok-skip-browser-warning': 'true'
+                        'ngrok-skip-browser-warning': 'true',
+                        'Authorization': `Bearer ${authState.token}`
                     }
                 });
                 if (response.ok) {
