@@ -60,17 +60,23 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
                     <div className="favs-header">{t('FavouritesPopupHeader')}</div>
                     <div className="divider"></div>
                     {authState.isAuthenticated ? (
-                        <div className="favourites-list">
-                            {favourites.map((item, index) => (
-                                <Link to={`/housing/${item.id}`} className="list-item" key={index}>
-                                    <img src={FeatureService.getFeatureIcon(item.images[0].src)} alt="Placeholder Image" />
-                                    <div className="text">
-                                        <div className="label">{item.name}</div>
-                                        {/* <div className="count">({index + 1})</div> */}
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
+                        favourites.length === 0 ? (
+                            <div className="no-items">
+                                {t('FavouritesPopup.NoItems')}
+                            </div>
+                        ) : (
+                            <div className="favourites-list">
+                                {favourites.map((item, index) => (
+                                    <Link to={`/housing/${item.id}`} className="list-item" key={index}>
+                                        <img src={FeatureService.getFeatureIcon(item.images[0].src)} alt="Placeholder Image" />
+                                        <div className="text">
+                                            <div className="label">{item.name}</div>
+                                            {/* <div className="count">({index + 1})</div> */}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        )
                     ) : (
                         <div className="no-items">
                             {t('FavouritesPopup.AuthPlease')}
