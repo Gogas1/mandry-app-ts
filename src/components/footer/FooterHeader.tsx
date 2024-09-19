@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import NotificationSearch from '../account/profile/notifications/NotificationSearch';
 import '../../styles/pages/footer/footer-header.scss'
 
@@ -13,7 +12,7 @@ export default function FooterHeader({ title, className = '', breadcrumbs = [] }
     const { t } = useTranslation();
 
     return (
-        <div className='footer-header'>
+        <div className={`footer-header ${className}`}>
             <div className='header'>
                 {t(title)}
                 <NotificationSearch />

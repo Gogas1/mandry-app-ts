@@ -1,8 +1,8 @@
 import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 
 import '../../styles/pages/home/accessbilities-section.scss';
-import { AccessbImageHelper, HousingsImageHelper } from '../../helpers/ImageHelper';
-import { CSSProperties, useRef, useState } from 'react';
+import { AccessbImageHelper } from '../../helpers/ImageHelper';
+import { CSSProperties, useRef } from 'react';
 import { Trans } from 'react-i18next';
 
 interface HousingsSectionProps {
@@ -31,7 +31,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
             <div className='banner-container'>
                 <div className='slider' ref={sliderRef}>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.ACInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.ACInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 
@@ -46,7 +46,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.PetsInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.PetsInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 
@@ -61,7 +61,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.GarageInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.GarageInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 
@@ -76,7 +76,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.PoolInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.PoolInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 
@@ -91,7 +91,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.TVInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.TVInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 
@@ -106,7 +106,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${AccessbImageHelper.WashingInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${AccessbImageHelper.WashingInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Fifth.Caption"} 

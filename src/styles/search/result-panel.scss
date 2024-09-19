@@ -73,7 +73,17 @@
                 justify-content: center;
                 align-items: start;
                 
-                cursor: pointer;
+                // cursor: pointer;
+
+                .favourite-icon {
+                    position: absolute;
+                    left: 15px;
+                    top: 15px;
+
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                }
     
                 .image {
                     border-radius: 15px 15px 0 0;   
@@ -88,12 +98,13 @@
                 margin: 15px 5px 5px 5px;
 
                 &__name {
-                    color: #515151;
-                    font-family: 'Comfortaa';
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 120%;
+                    @include font-regular(14px, 700);
+
+                    text-decoration: none;
+
+                    &:visited {
+                        @include font-regular(14px, 700);
+                    }
                 }
 
                 &__description {

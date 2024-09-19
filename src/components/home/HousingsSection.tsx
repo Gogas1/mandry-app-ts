@@ -30,8 +30,8 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
         <div className={`housing-section ${className}`}>
             <div className='banner-container'>
                 <div className='slider' ref={sliderRef}>
-                    <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.BoatHInfo.image})` } as CSSProperties}>
+                    <div className='slide'>                        
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.BoatHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"} 
@@ -45,7 +45,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.CampingHInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.CampingHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"} 
@@ -59,7 +59,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.CastleInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.CastleInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Third.Caption"} 
@@ -73,7 +73,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.FarmHInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.FarmHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Third.Caption"} 
@@ -87,7 +87,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.FlatHInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.FlatHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Third.Caption"} 
@@ -101,7 +101,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                         </div>
                     </div>
                     <div className='slide'>
-                        <div className='slide__content' style={{ backgroundImage: `url(${HousingsImageHelper.HouseHInfo.image})` } as CSSProperties}>
+                        <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.HouseHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
                             <div className='slide__content__text'>
                                 <h3>
                                 <Trans i18nKey={"MainPage.Sections.Third.Caption"} 

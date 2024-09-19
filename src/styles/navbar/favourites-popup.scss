@@ -1,3 +1,5 @@
+@use '../mixins/typography' as *;
+
 @import url('../app/fonts.scss');
 
 .favourites-popup {
@@ -58,6 +60,11 @@
         -webkit-mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
         mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
 
+        .no-items {
+            text-align: center;
+            @include font-white-montserrat(17px, 700);
+        }
+
         .favs-header {
             text-align: center;
 
@@ -100,6 +107,11 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: normal;
+
+                text-decoration: none;
+                &:visited {
+                    color: var(--white, #F6F6F6);
+                }
 
                 img {
                     width: 178px;

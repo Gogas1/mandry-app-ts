@@ -3,6 +3,7 @@ import { FilterSetting, PricesRange } from "../SearchPage";
 import '../../../styles/search/filter-modal/price-filter.scss';
 import { Trans, useTranslation } from "react-i18next";
 import { Slider } from "@mui/material";
+import { SyntheticEvent, useState } from "react";
 
 interface PriceFilterProps {
     filters: FilterSetting;
@@ -13,7 +14,13 @@ interface PriceFilterProps {
 export default function PriceFilter({ filters, priceRange, filterChangeHandler }: PriceFilterProps) {
     const { t } = useTranslation();
 
-    const handlePriceRangeChange = (event: Event, newValue: number | number[]) => {
+    const [sliderValue, setSliderValue] = useState<number | number[]>([filters.priceRange[0], filters.priceRange[1]]);
+
+    const handlePriceStateChange = (event: Event, newValue: number | number[]) => {
+        setSliderValue(newValue);
+    }
+
+    const handlePriceRangeChange = (event: Event | SyntheticEvent, newValue: number | number[]) => {
         const updatedFilter = { ...filters }
         updatedFilter.priceRange = newValue as number[];
         filterChangeHandler(updatedFilter);
@@ -32,8 +39,9 @@ export default function PriceFilter({ filters, priceRange, filterChangeHandler }
                 </div>
                 <div className="price-filter__body">
                     <Slider
-                        value={filters.priceRange}
-                        onChange={handlePriceRangeChange}
+                        value={sliderValue}
+                        onChange={handlePriceStateChange}
+                        onChangeCommitted={handlePriceRangeChange}
                         valueLabelDisplay='auto'
                         min={priceRange.minPrice}
                         max={priceRange.maxPrice}

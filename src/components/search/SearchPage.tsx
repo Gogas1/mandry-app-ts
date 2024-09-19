@@ -2,11 +2,14 @@ import SearchPanel, { Feature } from "./SearchPanel";
 
 import '../../styles/search/search-page.scss';
 import ResultPanel from "./ResultPanel";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Housing } from "../housing/HousingPage";
 import { Category } from "./search-panel/Section2";
 import { processTranslations } from "../../helpers/TranslationService";
 import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
+import { Map, Marker } from "@vis.gl/react-google-maps";
+import AuthContext from "../auth/AuthenticationContext";
 
 export interface FilterSetting {
     destination: string;
@@ -27,6 +30,15 @@ export interface PricesRange {
 }
 
 export default function SearchPage() {
+    const authContext = useContext(AuthContext);
+    if(!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
+    const { t } = useTranslation();
+    const { authState } = authContext;
+
+    document.title = t("Titles.SearchPage");
+
     const [housings, setHousings] = useState<Housing[]>([]);
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [featuresList, setFeaturesList] = useState<Feature[]>([]);
@@ -88,7 +100,8 @@ export default function SearchPage() {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'ngrok-skip-browser-warning': 'true'
+                    'ngrok-skip-browser-warning': 'true',
+                    'Authorization': `Bearer ${authState.token}`
                 }
             });
             if(response.ok) {
@@ -240,13 +253,33 @@ export default function SearchPage() {
                         <ResultPanel housings={housings} />
                     </div>
                     <div className="map-section">
+                        <Map
+                            style={{borderRadius: '15px'}}
+                            defaultCenter={housings.length > 0 ? getDefaultCenter(housings[0].locationCoords) : getDefaultCenter('')}
+                            defaultZoom={5}
+                            disableDefaultUI={true}>
+                            {housings.map((item, index) => {
+                                const normalized = normalizeCoordinateString(item.locationCoords);
 
+                                if(normalized) {
+                                    return <Marker key={index} position={normalized} />
+                                } else {
+                                    return null;
+                                }
+                            })}
+
+                        </Map>
                     </div>
                 </div>      
             </div>
         </>
     );
 }
+
+type Coordinate = {
+    lat: number;
+    lng: number;
+  };
 
 interface FilterSettings {
     destination?: string;
@@ -264,6 +297,32 @@ interface FilterSettings {
     minPrice?: number;
     maxPrice?: number;
     languages?: string[];
+}
+
+const normalizeCoordinateString = (coordStr: string): Coordinate | null => {
+    // Trim whitespace and split the string
+    const [latStr, lngStr] = coordStr.split(',').map(part => part.trim());
+  
+    // Convert to numbers
+    const lat = parseFloat(latStr);
+    const lng = parseFloat(lngStr);
+  
+    // Check if both lat and lng are valid numbers
+    if (!isNaN(lat) && !isNaN(lng)) {
+      return { lat, lng };
+    } else {
+      console.warn(`Invalid coordinate string: "${coordStr}"`);
+      return null;
+    }
+  };
+
+const getDefaultCenter = (coordStr: string): Coordinate => {
+    const normalized = normalizeCoordinateString(coordStr);
+
+    if(!normalized) return {lat: 50.45466, lng: 30.5238};
+    else {
+        return normalized;
+    }
 }
 
 function convertToFilterSettings(original: FilterSetting): FilterSettings {

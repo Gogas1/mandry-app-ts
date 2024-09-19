@@ -10,6 +10,19 @@
         margin-bottom: 60px;
         min-height: 100vh;
 
+        .loading-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+
+            img {
+                width: 100px;
+                filter: brightness(80%);
+            }
+        }
+
         .header-section {
             display: flex;
             justify-content: space-between;
@@ -118,7 +131,13 @@
                 max-height: 100vh;
                 overflow-y: auto;
                 overflow-x: hidden;
-                padding-right: 20px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                // padding-right: 20px;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
 
                 .location-section {
                     display: flex;
@@ -150,7 +169,15 @@
                 max-height: 100vh;
                 overflow-y: auto;
                 overflow-x: hidden;
-                padding: 0 20px;
+                padding-left: 30px;
+
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                // padding-right: 20px;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
             }
         }
     }

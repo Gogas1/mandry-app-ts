@@ -147,6 +147,7 @@ export default function Home() {
                                     <CalendarPopup 
                                         isOpen={openedPopup === 'calendarPopup'}
                                         closeAll={handleCloseAllPopups}
+                                        onChange={s => s}
                                         />
                                     <TravelersPopup
                                         isOpen={openedPopup === 'travelersPopup'}

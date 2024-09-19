@@ -5,12 +5,14 @@ import FeatureService from "../../../helpers/FeatureService";
 
 import '../../../styles/housing/sections/important-info-section.scss';
 import { Link } from "react-router-dom";
+import { LongTermsBenefits } from "../../payment/PaymentPage";
 
 interface ImportantInfoSectionProps {
-    housingData: Housing
+    housingData: Housing;
+    longTermBenefits: LongTermsBenefits;
 } 
 
-export default function ImportantInfoSection({ housingData }: ImportantInfoSectionProps) {
+export default function ImportantInfoSection({ housingData, longTermBenefits }: ImportantInfoSectionProps) {
     const { t } = useTranslation();
 
     const [rulesSectionExpanded, setRulesSectionExpanded] = useState(true);
@@ -135,20 +137,28 @@ export default function ImportantInfoSection({ housingData }: ImportantInfoSecti
                             }} />
                     </p>
                     <div className="refund-statements">
-                        <div className="refund-statement">
-                            <div className="time-col">
-                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeHeader')}</p>
-                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeBody')}</p>
+                        {longTermBenefits.fullReturnAvailable && (
+                            <div className="refund-statement">
+                                <div className="time-col">
+                                    <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeHeader')}</p>
+                                    <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.TimeBody')}</p>
+                                </div>
+                                <div className="description-col">
+                                    <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescHeader')}</p>
+                                    <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescBody')}</p>
+                                </div>
                             </div>
-                            <div className="description-col">
-                                <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescHeader')}</p>
-                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.FullRefund.DescBody')}</p>
-                            </div>
-                        </div>
+                        )}
                         <div className="refund-statement">
                             <div className="time-col">
                                 <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.TimeHeader')}</p>
-                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.TimeBody')}</p>
+                                <p className="refund-body">
+                                    {t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.TimeBody',
+                                        { 
+                                            dateTime: FormatDateLongShort(longTermBenefits.halfReturnDate) 
+                                        }
+                                    )}
+                                </p>
                             </div>
                             <div className="description-col">
                                 <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.HalfRefund.DescHeader')}</p>
@@ -158,7 +168,13 @@ export default function ImportantInfoSection({ housingData }: ImportantInfoSecti
                         <div className="refund-statement">
                             <div className="time-col">
                                 <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.TimeHeader')}</p>
-                                <p className="refund-body">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.TimeBody')}</p>
+                                <p className="refund-body">
+                                    {t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.TimeBody',
+                                        { 
+                                            dateTime: FormatDateLongShort(longTermBenefits.halfReturnDate) 
+                                        }
+                                    )}
+                                </p>
                             </div>
                             <div className="description-col">
                                 <p className="refund-header">{t('HousingPage.Sections.IInfo.Refund.Statements.NoRefund.DescHeader')}</p>
@@ -192,3 +208,10 @@ function groupByProperty(items: Feature[], key: keyof Feature, limit?: number): 
         return acc;
     }, {} as GroupedRecord);
 }
+
+function FormatDateLongShort(date: Date): string {
+    return date.toLocaleDateString(undefined, {
+        day: '2-digit',
+        month: 'short'
+    });
+};

@@ -13,6 +13,8 @@ import FooterHeader from "./FooterHeader";
 
 export default function FooterInvestments() {
     const { t } = useTranslation();
+    
+    document.title = t('Titles.FooterInvestments');
 
     return (
         <>

@@ -256,8 +256,8 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                         <div className="price-item__statement">
                             <InlinePopup 
                                 popupContent={discount > 0 ? 
-                                t('HousingPage.RentSections.Price.DiscountPopup.Available') : 
-                                t('HousingPage.RentSections.Price.DiscountPopup.Unavailable')}>
+                                (<div className="discount-popup">{t('HousingPage.RentSections.Price.DiscountPopup.Available')}</div>) : 
+                                (<div className="discount-popup">{t('HousingPage.RentSections.Price.DiscountPopup.Unavailable')}</div>)}>
                                 <Trans i18nKey={'HousingPage.RentSections.Price.Discount'} 
                                         components={{
                                             fontLink: <span className="font-link" />
