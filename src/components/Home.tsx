@@ -5,7 +5,7 @@ import destinationIcon from '../assets/icons/home/dest_icn1.svg';
 import calendarIcon from '../assets/icons/home/calendar_icn1.svg';
 import groupIcon from '../assets/icons/home/group_icn1.svg';
 
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import TextFieldMy from './home/TextFieldMy';
 import DestinationPopup from './home/DestinationPopup';
 import { useState } from 'react';
@@ -157,75 +157,14 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className='main-caption'>
-                                {t('mainCaption')}
+                                <Trans 
+                                    i18nKey={'mainCaption'}
+                                    components={{
+                                        decoratedN: <span className='decorated-n' />,
+                                        decoratedM: <span className='decorated-m' />
+                                    }} />
                             </div>
                         </div>
-                        {/* <div className='banner-container'>
-                            <div className='banner'>
-                                <div className='main-caption'>
-                                    {t('mainCaption')}
-                                </div>
-                                <img src={background} />
-                            </div>
-                            
-                        </div>
-                        <div className='search-block'>
-                            <div className='search-panel-border'>
-                                <div className='search-panel'>
-                                    <div className='search-input-group'>
-                                        <img src={destinationIcon} alt='destination' className='inner-icon' />                                        
-                                        <TextFieldMy 
-                                            label={t('searchDestinationLabel')}
-                                            text={selectedDestination}                                            
-                                            onFocus={onDestinationFieldFocus}
-                                            onBlur={onDestinationFieldBlur}
-                                            onChange={setSelectedDestination}/>
-                                    </div>
-                                    <div className='divider'></div>
-                                    <div className='search-input-group'>
-                                        <img src={calendarIcon} alt='destination' className='inner-icon'/>
-                                        <TextFieldMy 
-                                            label={t('searchDatesLabel')}
-                                            text=''
-                                            onFocus={onDatesFieldFocus}
-                                            onBlur={onDatesFieldBlur} 
-                                            onChange={s => s}/>
-                                    </div>
-                                    <div className='divider'></div>
-                                    <div className='search-input-group'>
-                                        <img src={groupIcon} alt='destination' className='inner-icon'/>
-                                        <TextFieldMy 
-                                            label={t('searchPeopleSettingsLabel')} 
-                                            text={travelersValue}
-                                            onFocus={onTravelersFieldFocus}
-                                            onBlur={onTravelersFieldBlur}
-                                            onChange={s => s}/>
-                                    </div>
-                                    <button className='search-button'>
-                                        <img src={searchIcon} alt='search' />
-                                    </button>
-                                </div>
-                            </div>
-                            <div className='popup-wrapper'>
-                                <DestinationPopup 
-                                    isOpen={openedPopup === 'destinationPopup'}
-                                    searchValue={selectedDestination} 
-                                    assignValue={handleDestinationSelection} 
-                                    closeAll={handleCloseAllPopups} />
-                                <CalendarPopup 
-                                    isOpen={openedPopup === 'calendarPopup'}
-                                    closeAll={handleCloseAllPopups}
-                                    />
-                                <TravelersPopup
-                                    isOpen={openedPopup === 'travelersPopup'}
-                                    closeAll={handleCloseAllPopups}
-                                    onChange={handleTravelersChange}
-                                    />
-                            </div>
-                        </div> */}
-                        {/* <div className='main-caption'>
-                            {t('mainCaption')}
-                        </div>  */}
                     </div>
                     <TopDestinationsSection />
                     <HousingsSection className='floor-container' />

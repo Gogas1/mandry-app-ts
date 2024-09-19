@@ -66,10 +66,12 @@
                     border-radius: 15px;
 
                     &__text {
+                        display: block;
                         height: 100%;
                         position: relative;
                         padding-top: 50px;
                         padding-left: 90px;
+                        text-decoration: none;
 
                         h3 {
                             color: var(--white, #F6F6F6);

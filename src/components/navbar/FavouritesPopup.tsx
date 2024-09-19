@@ -46,10 +46,10 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
                 console.error(error);
             }
         }
-        if(isReady && authState.isAuthenticated) {
+        if(isReady && authState.isAuthenticated && isOpen) {
             fetchFavourites();
         }
-    }, [isReady, authState.token]);
+    }, [isReady, authState.token, isOpen]);
 
     return (
         <>

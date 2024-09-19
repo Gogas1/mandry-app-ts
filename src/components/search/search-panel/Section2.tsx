@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { SyntheticEvent, useState } from 'react';
 import DropdownAddition, { DropdownOption } from '../../app/DropdownAddition';
 import { FilterSetting, PricesRange } from '../SearchPage';
+import { useUserSettings } from '../../app/UserSettingsContext';
 
 export enum SearchHousingType {
     HOUSE = "HOUSE",
@@ -45,6 +46,8 @@ interface Section2Props {
 export default function Section2({ filters, categories, priceRange, filterChangeHandler }: Section2Props) {
     const { t } = useTranslation();
 
+    const { currency } = useUserSettings();
+
     const [housingTypeDropdownOpened, setHousingTypeDropdownOpened] = useState(false);
     const [housingRoomsPopupOpened, setHousingRoomsPopupOpened] = useState(false);
     const [sliderValue, setSliderValue] = useState<number | number[]>([filters.priceRange[0], filters.priceRange[1]]);
@@ -66,7 +69,6 @@ export default function Section2({ filters, categories, priceRange, filterChange
     const handleTypeChange = (option: DropdownOption) => {
         const updatedFilter = { ...filters }
         updatedFilter.category = option.value;
-
         filterChangeHandler(updatedFilter);        
     }
 
@@ -95,7 +97,6 @@ export default function Section2({ filters, categories, priceRange, filterChange
         if(value > -1) {
             const updatedFilter = { ...filters }
             updatedFilter.beds = value;
-    
             filterChangeHandler(updatedFilter);
         }
     }
@@ -104,7 +105,6 @@ export default function Section2({ filters, categories, priceRange, filterChange
         if(value > -1) {
             const updatedFilter = { ...filters }
             updatedFilter.bedrooms = value;
-    
             filterChangeHandler(updatedFilter);
         }
     }
@@ -113,7 +113,6 @@ export default function Section2({ filters, categories, priceRange, filterChange
         if(value > -1) {
             const updatedFilter = { ...filters }
             updatedFilter.bathrooms = value;
-    
             filterChangeHandler(updatedFilter);
         }
     }
@@ -207,7 +206,7 @@ export default function Section2({ filters, categories, priceRange, filterChange
                             {t('SearchPage.SearchPanel.Filters.FilterPrice.Label')}
                         </div>
                         <div className='currency-label'>
-                            EUR
+                            {currency}
                         </div>
                     </div>
                     <div className='slider-block'>

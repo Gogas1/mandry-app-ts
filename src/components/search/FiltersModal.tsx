@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import crossIcon from '../../assets/icons/meta/close-cross.svg';
 
 import '../../styles/search/filters-modal.scss';
-import { FilterSetting, PricesRange } from './SearchPage';
+import { convertToFilterSettings, FilterSetting, PricesRange, toQueryString } from './SearchPage';
 import AppliedFilters from './filter-modal/AppliedFilters';
 import RoomsFilters from './filter-modal/RoomsFilters';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PriceFilter from './filter-modal/PriceFilter';
 import CategoryFilter from './filter-modal/CategoryFilter';
 import { Category } from './search-panel/Section2';
@@ -19,10 +19,8 @@ interface FiltersModalProps {
     categories: Category[];
     features: Feature[];
     priceRange: PricesRange;
-    amountFound: number;
     hideModal: () => void;
-    searchHandler: () => void;
-    clearFilterHandler: () => void;
+    searchHandler: (settings: FilterSetting) => void;
     filterChangeHandler: (filters: FilterSetting) => void;
 }
 
@@ -31,16 +29,54 @@ export default function FiltersModal(
         filters, 
         categories, 
         features, 
-        priceRange, 
-        amountFound,
+        priceRange,
         hideModal, 
         searchHandler, 
         filterChangeHandler, 
-        clearFilterHandler 
     }: FiltersModalProps) {
     const { t } = useTranslation();
     const [filtersSettings, setFiltersSettings] = useState({ ...filters });
+    const [amountFound, setAmountFound] = useState(0);
     
+    useEffect(() => {
+        filterHousingsCount(filtersSettings);
+    }, [filtersSettings]);
+
+    const filterHousingsCount = async (filters: FilterSetting) => {
+        const queryString = toQueryString(convertToFilterSettings(filters));
+        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+            if(response.ok) {
+                const data = await response.json();
+                setAmountFound(data.housings.length);
+            }   
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    const clearFilters = () => {
+        handleFilterChange({
+            destination: "",
+            period: undefined,
+            travelers: { adults: 0, children: 0, toddlers: 0, pets: 0 },
+            category: undefined,
+            beds: 0,
+            bedrooms: 0,
+            bathrooms: 0,
+            features: [],
+            priceRange: [priceRange.minPrice, priceRange.maxPrice],
+            languages: []
+        } as FilterSetting);
+    }
     
     const handleFilterChange = (filters: FilterSetting) => {
         setFiltersSettings(filters);
@@ -73,9 +109,9 @@ export default function FiltersModal(
                             filterChangeHandler={handleFilterChange} />
                         <hr className='divider-gray' />
                         <FeaturesFilter
-                            filters={filters}
+                            filters={filtersSettings}
                             features={features}
-                            filterChangeHandler={filterChangeHandler}
+                            filterChangeHandler={handleFilterChange}
                          />
                         <hr className='divider-gray' />
                         <ReservationFilter />
@@ -86,10 +122,10 @@ export default function FiltersModal(
                     <div className='result-buttons'>
                         <hr className='divider-gray' />
                         <div className='buttons'>
-                            <button className='button-clear' onClick={clearFilterHandler}>
+                            <button className='button-clear' onClick={clearFilters}>
                                 {t('Modals.Filters.Clear')}
                             </button>
-                            <button className='button-search' onClick={searchHandler}>
+                            <button className='button-search' onClick={() => searchHandler(filtersSettings)}>
                                 {t('Modals.Filters.Search', {number: amountFound})}
                             </button>
                         </div>
