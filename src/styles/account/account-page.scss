@@ -18,6 +18,18 @@
 
         height: 100%;
 
+        .page-loading {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            img {
+                width: 100px;
+                filter: brightness(80%);
+            }
+        }
+
         .page-header {
             color: var(--blue, #08B1BD);
             font-family: "Montserrat Alternates";

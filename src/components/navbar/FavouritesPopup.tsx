@@ -39,7 +39,6 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
                 });
                 if(response.ok) {
                     const data = await response.json();
-                    console.log(data.housings as Housing[]);
                     setFavourites(data.housings as Housing[]);
                 }
             }
