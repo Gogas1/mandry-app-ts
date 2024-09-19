@@ -44,7 +44,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'/contact'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Contact')}
                             </Link>
                         </li>
@@ -88,7 +88,7 @@ export default function FooterSection() {
                     </h4>
                     <ul className="links-list">
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'/help'}>
                                 {t('MainPage.Sections.Footer.Sections.Info.HelpCenter')}
                             </Link>
                         </li>
@@ -103,7 +103,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'/business'}>
                                 {t('MainPage.Sections.Footer.Sections.Info.StartOwner')}
                             </Link>
                         </li>

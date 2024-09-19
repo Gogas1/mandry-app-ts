@@ -26,6 +26,7 @@ import { UserSettingsProvider } from './components/app/UserSettingsContext';
 import FooterInvestments from './components/footer/FooterInvestments';
 import ScrollToTop from './components/app/ScrollerToTop';
 import HelpCenter from './components/footer/HelpCenter';
+import StartBusiness from './components/footer/FooterStartBusiness';
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
                   <Route path='/news' element={<NewsPage />} />
                   <Route path='/contact' element={<ContactsPage />} />
                   <Route path='/help' element={<HelpCenter />} />
+                  <Route path='/business' element={<StartBusiness />} />
                 </Routes>
                 <Modal />
               </UserSettingsProvider>
