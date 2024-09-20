@@ -84,12 +84,12 @@ export default function ProfilePage() {
                                     </svg>
                                     {t('Profile.Verification.Email')}
                                 </div>
-                                <div className="verification-item">
+                                {/* <div className="verification-item">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13" fill="none">
                                         <path d="M17 1L6 12L1 7" stroke="#515151" strokeLinecap="round" strokeLinejoin="round"/>
                                     </svg>
                                     {t('Profile.Verification.Email')}
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="divider"></div>
