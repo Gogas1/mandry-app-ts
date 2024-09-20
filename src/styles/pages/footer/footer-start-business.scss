@@ -179,11 +179,15 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                
 
                 .map {
                     background-color: #d4d4d4;
                     width: 100%;
                     height: 100%;
+
+                    border-radius: 15px;
+                    overflow: hidden;
 
                     max-width: 473px;
                     max-height: 365px;
