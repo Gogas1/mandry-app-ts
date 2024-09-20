@@ -48,7 +48,7 @@ export default function NotificationDropdown({ isOpen, toggleDropdown, closeDrop
                     {t('Notifications.NotificationsDropdown.Travels')}
                 </button>
                 <button className="element"
-                    onClick={() => handleSelection('support')}
+                    onClick={() => navigate('../support')}
                 >
                     <img src={handshakeIcon} alt="handshake" />
                     {t('Notifications.NotificationsDropdown.Support')}

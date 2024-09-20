@@ -33,7 +33,9 @@ export default function TravelsPage() {
                 <div className='reservation-desc'>
                     {t('Travels.NoReserved')}
                 </div>
-                <button className='start-search-button'>
+                <button className='start-search-button'
+                onClick={() => navigate('../../search')}
+                >
                     {t('Travels.StartSearch')}
                 </button>
                 <div className='divider'/>
@@ -41,7 +43,9 @@ export default function TravelsPage() {
                     <div className='cf-header'>
                         {t('Travels.CantFindRes')}
                     </div>
-                    <div className='to-faq'>
+                    <div className='to-faq'
+                    onClick={() => navigate('../../help')}
+                    >
                         {t('Travels.ToFAQ')}
                     </div>
                 </div>
