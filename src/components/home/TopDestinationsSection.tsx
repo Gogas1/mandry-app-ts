@@ -3,6 +3,7 @@ import TopDestinationsHelper from "../../helpers/ImageHelper";
 
 import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 import { Trans } from "react-i18next";
+import { Link } from "react-router-dom";
 
 interface CarouselItem { 
     image: string, 
@@ -20,37 +21,37 @@ export default function TopDestinationsSection() {
             image: TopDestinationsHelper.BaliInfo.image, 
             text: TopDestinationsHelper.BaliInfo.text,
             name: TopDestinationsHelper.BaliInfo.name,
-            link: "" 
+            link: "/search?destination=Балі" 
         },
         {
             image: TopDestinationsHelper.BarcelonaInfo.image,
             text: TopDestinationsHelper.BarcelonaInfo.text,
             name: TopDestinationsHelper.BarcelonaInfo.name,
-            link: ""
+            link: "/search?destination=Барселона"
         },
         {
             image: TopDestinationsHelper.DubaiInfo.image,
             text: TopDestinationsHelper.DubaiInfo.text,
             name: TopDestinationsHelper.DubaiInfo.name,
-            link: ""
+            link: "/search?destination=Дубаї"
         },
         {
             image: TopDestinationsHelper.RomeInfo.image,
             text: TopDestinationsHelper.RomeInfo.text,
             name: TopDestinationsHelper.RomeInfo.name,
-            link: ""
+            link: "/search?destination=Рим"
         },
         {
             image: TopDestinationsHelper.SidneyInfo.image,
             text: TopDestinationsHelper.SidneyInfo.text,
             name: TopDestinationsHelper.SidneyInfo.name,
-            link: ""
+            link: "/search?destination=Сідней"
         },
         {
             image: TopDestinationsHelper.TokyoInfo.image,
             text: TopDestinationsHelper.TokyoInfo.text,
             name: TopDestinationsHelper.TokyoInfo.name,
-            link: ""
+            link: "/search?destination=Токіо"
         }
     ];
 
@@ -93,9 +94,9 @@ export default function TopDestinationsSection() {
                             data-index={index}
                             data-focus={carouselIndex}>
                             <div className='card'>
-                                <div className="card__image-wrapper">
+                                <Link to={item.link} className="card__image-wrapper">
                                     <img className='card__image-wrapper__image' src={item.image} />
-                                </div>
+                                </Link>
                                 
                                 <h3 className='card__name'>{item.name}</h3>
                                 <div className='card__text'>

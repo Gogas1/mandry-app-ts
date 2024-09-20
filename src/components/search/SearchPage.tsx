@@ -1,5 +1,7 @@
 import SearchPanel, { Feature } from "./SearchPanel";
 
+import loadingAnim from '../../assets/anim/loading2.gif';
+
 import '../../styles/search/search-page.scss';
 import ResultPanel from "./ResultPanel";
 import { useContext, useEffect, useState } from "react";
@@ -10,6 +12,7 @@ import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { Map, Marker } from "@vis.gl/react-google-maps";
 import AuthContext from "../auth/AuthenticationContext";
+import { useSearchParams } from "react-router-dom";
 
 export interface FilterSetting {
     destination: string;
@@ -25,13 +28,13 @@ export interface FilterSetting {
 }
 
 export interface PricesRange {
-    minPrice: number, 
+    minPrice: number,
     maxPrice: number
 }
 
 export default function SearchPage() {
     const authContext = useContext(AuthContext);
-    if(!authContext) {
+    if (!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
     const { t } = useTranslation();
@@ -39,11 +42,13 @@ export default function SearchPage() {
 
     document.title = t("Titles.SearchPage");
 
+    const [params, setParams] = useSearchParams();
+
+    const [loading, setLoading] = useState(true);
     const [housings, setHousings] = useState<Housing[]>([]);
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [featuresList, setFeaturesList] = useState<Feature[]>([]);
     const [prices, setPrices] = useState<PricesRange>({ minPrice: 0, maxPrice: 0 });
-    const [amountFound, setAmountFound] = useState(0);
     const [filterSettings, setFilterSettings] = useState<FilterSetting>({
         destination: "",
         period: undefined,
@@ -57,43 +62,8 @@ export default function SearchPage() {
         languages: []
     } as FilterSetting);
 
-    const searchHousings = async () => {
-        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/housing/all";
-
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'ngrok-skip-browser-warning': 'true'
-                }
-            });
-            if(response.ok) {
-                const data = await response.json();
-                setHousings(data.housings as Housing[]);
-            }
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
-
-    const clearFilters = () => {
-        setFilterSettings({
-            destination: "",
-            period: undefined,
-            travelers: { adults: 0, children: 0, toddlers: 0, pets: 0 },
-            category: undefined,
-            beds: 0,
-            bedrooms: 0,
-            bathrooms: 0,
-            features: [],
-            priceRange: [0, 0],
-            languages: []
-        } as FilterSetting);
-    }
-
-    const filterHousings = async () => {
-        const queryString = toQueryString(convertToFilterSettings(filterSettings));
+    const filterHousings = async (settings: FilterSetting) => {
+        const queryString = toQueryString(convertToFilterSettings(settings));
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
 
         try {
@@ -104,33 +74,9 @@ export default function SearchPage() {
                     'Authorization': `Bearer ${authState.token}`
                 }
             });
-            if(response.ok) {
-                console.log('ok');
-
+            if (response.ok) {
                 const data = await response.json();
                 setHousings(data.housings as Housing[]);
-            }
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
-
-    const filterHousingsCount = async (filters: FilterSetting) => {
-        const queryString = toQueryString(convertToFilterSettings(filters));
-        const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
-
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'ngrok-skip-browser-warning': 'true'
-                }
-            });
-            if(response.ok) {
-
-                const data = await response.json();
-                setAmountFound(data.housings.length);
             }
         }
         catch (error) {
@@ -150,15 +96,15 @@ export default function SearchPage() {
                     }
                 });
 
-                if(result.ok) {
+                if (result.ok) {
                     const data = await result.json();
                     const categories = data.categories as Category[];
 
                     categories.forEach(category => {
-                        if(category.categoryTranslations) {
+                        if (category.categoryTranslations) {
                             processTranslations(category.categoryTranslations);
                         }
-                        if(category.categoryPropertyTranslations) {
+                        if (category.categoryPropertyTranslations) {
                             processTranslations(category.categoryPropertyTranslations);
                         }
                     });
@@ -168,7 +114,7 @@ export default function SearchPage() {
             }
             catch (error) {
 
-            }            
+            }
         };
 
         const fetchFeatures = async () => {
@@ -181,12 +127,12 @@ export default function SearchPage() {
                         'ngrok-skip-browser-warning': 'true'
                     }
                 });
-                if(response.ok) {
+                if (response.ok) {
                     const data = await response.json();
                     const features = data.features as Feature[];
 
                     features.forEach(feature => {
-                        if(feature.translations) {
+                        if (feature.translations) {
                             processTranslations(feature.translations);
                         }
                     });
@@ -209,13 +155,13 @@ export default function SearchPage() {
                         'ngrok-skip-browser-warning': 'true'
                     }
                 });
-                if(response.ok) {
+                if (response.ok) {
                     const data = await response.json();
                     const prices = data as PricesRange;
 
                     setPrices({ minPrice: prices.minPrice, maxPrice: prices.maxPrice });
 
-                    const updatedFilterSettings = {...filterSettings}
+                    const updatedFilterSettings = { ...filterSettings }
                     updatedFilterSettings.priceRange = [prices.minPrice, prices.maxPrice];
                     setFilterSettings(updatedFilterSettings);
                 }
@@ -225,14 +171,35 @@ export default function SearchPage() {
             }
         }
 
-        fetchCategories();
-        fetchFeatures();
-        fetchPrices();
-        filterHousingsCount(filterSettings);
+        const runAll = async () => {
+            try {
+                await Promise.all([fetchCategories(), fetchFeatures(), fetchPrices()])
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        runAll();
     }, [i18n.language]);
 
+    useEffect(() => {
+        if(!loading) {
+            const updatedFitlerSettings = {...filterSettings};
+            updatedFitlerSettings.destination = params.get('destination') ?? '';
+
+            const queryCategory = params.get('category') ?? '';
+            const targetCategory = categoriesList.find(c => c.nameKey === queryCategory);
+            if(targetCategory) {
+                updatedFitlerSettings.category = targetCategory;
+            }
+
+            handleFilterChange(updatedFitlerSettings);
+            filterHousings(updatedFitlerSettings);
+        }
+    }, [loading]);
+
     const handleFilterChange = (filters: FilterSetting) => {
-        filterHousingsCount(filters);
         setFilterSettings(filters);
     }
 
@@ -240,37 +207,46 @@ export default function SearchPage() {
         <>
             <div className="search-page">
                 <div className="search-page-content">
-                    <div className="main-section">
-                        <SearchPanel 
-                            filters={filterSettings}
-                            features={featuresList}
-                            categories={categoriesList}
-                            priceRange={prices}
-                            amountFound={amountFound}
-                            searchHandler={filterHousings}
-                            clearFilterHandler={clearFilters}
-                            filterChangeHandler={handleFilterChange} />
-                        <ResultPanel housings={housings} />
-                    </div>
-                    <div className="map-section">
-                        <Map
-                            style={{borderRadius: '15px'}}
-                            defaultCenter={housings.length > 0 ? getDefaultCenter(housings[0].locationCoords) : getDefaultCenter('')}
-                            defaultZoom={5}
-                            disableDefaultUI={true}>
-                            {housings.map((item, index) => {
-                                const normalized = normalizeCoordinateString(item.locationCoords);
+                    {loading ? (
+                        <div className="loading-section">
+                            <div>
+                                <img src={loadingAnim} />
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="main-section">
+                                <SearchPanel
+                                    filters={filterSettings}
+                                    features={featuresList}
+                                    categories={categoriesList}
+                                    priceRange={prices}
+                                    searchHandler={filterHousings}
+                                    filterChangeHandler={handleFilterChange} />
+                                <ResultPanel housings={housings} />
+                            </div>
+                            <div className="map-section">
+                                <Map
+                                    style={{ borderRadius: '15px' }}
+                                    defaultCenter={housings.length > 0 ? getDefaultCenter(housings[0].locationCoords) : getDefaultCenter('')}
+                                    defaultZoom={5}
+                                    disableDefaultUI={true}>
+                                    {housings.map((item, index) => {
+                                        const normalized = normalizeCoordinateString(item.locationCoords);
 
-                                if(normalized) {
-                                    return <Marker key={index} position={normalized} />
-                                } else {
-                                    return null;
-                                }
-                            })}
+                                        if (normalized) {
+                                            return <Marker key={index} position={normalized} />
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
 
-                        </Map>
-                    </div>
-                </div>      
+                                </Map>
+                            </div>
+                        </>
+                    )}
+
+                </div>
             </div>
         </>
     );
@@ -279,7 +255,7 @@ export default function SearchPage() {
 type Coordinate = {
     lat: number;
     lng: number;
-  };
+};
 
 interface FilterSettings {
     destination?: string;
@@ -300,32 +276,28 @@ interface FilterSettings {
 }
 
 const normalizeCoordinateString = (coordStr: string): Coordinate | null => {
-    // Trim whitespace and split the string
     const [latStr, lngStr] = coordStr.split(',').map(part => part.trim());
-  
-    // Convert to numbers
+
     const lat = parseFloat(latStr);
     const lng = parseFloat(lngStr);
-  
-    // Check if both lat and lng are valid numbers
+
     if (!isNaN(lat) && !isNaN(lng)) {
-      return { lat, lng };
+        return { lat, lng };
     } else {
-      console.warn(`Invalid coordinate string: "${coordStr}"`);
-      return null;
+        return null;
     }
-  };
+};
 
 const getDefaultCenter = (coordStr: string): Coordinate => {
     const normalized = normalizeCoordinateString(coordStr);
 
-    if(!normalized) return {lat: 50.45466, lng: 30.5238};
+    if (!normalized) return { lat: 50.45466, lng: 30.5238 };
     else {
         return normalized;
     }
 }
 
-function convertToFilterSettings(original: FilterSetting): FilterSettings {
+export function convertToFilterSettings(original: FilterSetting): FilterSettings {
     return {
         destination: original.destination || undefined,
         startDate: original.period?.startDate,
@@ -345,7 +317,7 @@ function convertToFilterSettings(original: FilterSetting): FilterSettings {
     };
 }
 
-function toQueryString(params: FilterSettings): string {
+export function toQueryString(params: FilterSettings): string {
     const query = new URLSearchParams();
 
     if (params.destination) query.append('destination', params.destination);
@@ -359,7 +331,7 @@ function toQueryString(params: FilterSettings): string {
     if (params.minBeds !== undefined) query.append('minBeds', params.minBeds.toString());
     if (params.minBedrooms !== undefined) query.append('minBedrooms', params.minBedrooms.toString());
     if (params.minBathrooms !== undefined) query.append('minBathrooms', params.minBathrooms.toString());
-    // if (params.featureIds) query.append('featureIds', JSON.stringify(params.featureIds));
+    if (params.featureIds) query.append('featureIds', JSON.stringify(params.featureIds));
     if (params.minPrice !== undefined) query.append('minPrice', params.minPrice.toString());
     if (params.maxPrice !== undefined) query.append('maxPrice', params.maxPrice.toString());
     if (params.languages) query.append('languages', JSON.stringify(params.languages));

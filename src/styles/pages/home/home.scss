@@ -52,6 +52,7 @@
                 img {
                     width: 100%;
                     border-radius: 20px;
+                    filter: brightness(85%) contrast(85%);
                 }
             }
 
@@ -81,6 +82,24 @@
                     text-align: left;
 
                     margin-bottom: 120px;
+
+                    .decorated-n {
+                        color: var(--white, #F6F6F6);
+                        font-family: "Macondo Swash Caps";
+                        font-size: 200px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 110px; /* 55% */
+                    }
+
+                    .decorated-m {
+                        color: var(--white, #F6F6F6);
+                        font-family: "Macondo Swash Caps";
+                        font-size: 100px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 110px;
+                    }
                 }
             }
     

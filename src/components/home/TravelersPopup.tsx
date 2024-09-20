@@ -31,9 +31,9 @@ export default function TravelersPopup({ isOpen, showBackButton = true, classNam
     const [toddlersCounter, setToddlersCounter] = useState(0);
     const [petsCounter, setPetsCounter] = useState(0);
 
-    useEffect(() => {
-        onChange({ adults: adultsCounter, children: childrenCounter, toddlers: toddlersCounter, pets: petsCounter } as TravelersPopupData);
-    }, [adultsCounter, childrenCounter, toddlersCounter, petsCounter]);
+    // useEffect(() => {
+    //     onChange({ adults: adultsCounter, children: childrenCounter, toddlers: toddlersCounter, pets: petsCounter } as TravelersPopupData);
+    // }, [adultsCounter, childrenCounter, toddlersCounter, petsCounter]);
 
     const handleAdultsChange = (newValue: number) => {
         if(newValue < 0) return;
@@ -47,6 +47,7 @@ export default function TravelersPopup({ isOpen, showBackButton = true, classNam
                 }
         }
 
+        onChange({ adults: newValue, children: childrenCounter, toddlers: toddlersCounter, pets: petsCounter } as TravelersPopupData);
         setAdultsCounter(newValue);
     }
 
@@ -62,6 +63,7 @@ export default function TravelersPopup({ isOpen, showBackButton = true, classNam
                 }
         }
 
+        onChange({ adults: adultsCounter, children: newValue, toddlers: toddlersCounter, pets: petsCounter } as TravelersPopupData);
         setChildrenCounter(newValue);
     }
 
@@ -77,6 +79,7 @@ export default function TravelersPopup({ isOpen, showBackButton = true, classNam
                 }
         }
 
+        onChange({ adults: adultsCounter, children: childrenCounter, toddlers: newValue, pets: petsCounter } as TravelersPopupData);
         setToddlersCounter(newValue);
     }
 
@@ -92,6 +95,7 @@ export default function TravelersPopup({ isOpen, showBackButton = true, classNam
                 }
         }
 
+        onChange({ adults: adultsCounter, children: childrenCounter, toddlers: toddlersCounter, pets: newValue } as TravelersPopupData);
         setPetsCounter(newValue);
     }
 

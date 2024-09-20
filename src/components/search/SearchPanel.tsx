@@ -29,10 +29,8 @@ interface SearchPanelProps {
     categories: Category[];
     features: Feature[];
     priceRange: PricesRange;
-    amountFound: number;
-    searchHandler: () => void;
+    searchHandler: (settings: FilterSetting) => void;
     filterChangeHandler: (filters: FilterSetting) => void;
-    clearFilterHandler: () => void;
 }
 
 type Image = {
@@ -57,11 +55,9 @@ export default function SearchPanel(
         categories, 
         features, 
         className = '', 
-        priceRange, 
-        amountFound,
+        priceRange,
         searchHandler,
-        filterChangeHandler,
-        clearFilterHandler
+        filterChangeHandler
     }: SearchPanelProps) {
     const { t } = useTranslation();
 
@@ -73,14 +69,12 @@ export default function SearchPanel(
     const handleFeatureCheck = (feature: Feature) => {
         const updatedFilter = { ...filters };
         updatedFilter.features = [...filters.features, feature]
-
         filterChangeHandler(updatedFilter);
     };
 
     const handleFeatureUncheck = (feature: Feature) => {
         const updatedFilter = { ...filters };
         updatedFilter.features = [...filters.features.filter((targetFeature) => targetFeature.id !== feature.id)]
-
         filterChangeHandler(updatedFilter);
     };
 
@@ -106,7 +100,6 @@ export default function SearchPanel(
       };
 
     const handleTravelersChange = (values: TravelersPopupData) => {
-        
         const updatedFilter = { ...filters };
         updatedFilter.travelers = { adults: values.adults, children: values.children, toddlers: values.toddlers, pets: values.pets }
         filterChangeHandler(updatedFilter);
@@ -157,7 +150,6 @@ export default function SearchPanel(
         else {
             updatedFilters.period = undefined;
         }
-
         filterChangeHandler(updatedFilters);
     }
 
@@ -170,8 +162,6 @@ export default function SearchPanel(
                 features={features}
                 categories={categories}
                 priceRange={priceRange}
-                amountFound={amountFound}
-                clearFilterHandler={clearFilterHandler}
                 searchHandler={searchHandler}
                 filterChangeHandler={filterChangeHandler} />,
             { minWidth: '35%', maxWidth: '35%' });
@@ -187,10 +177,10 @@ export default function SearchPanel(
                                 <img src={destinationIcon} alt='destination' className='inner-icon' />
                                 <TextFieldMy 
                                     label={t('SearchPage.SearchPanel.Filters.Filter1.Destination')}
-                                    text={destinationSearchValue}                                          
+                                    text={filters.destination}                                          
                                     onFocus={onDestinationFieldFocus}
                                     onBlur={onDestinationFieldBlur}
-                                    onChange={setDestinationSearchValue}/>
+                                    onChange={handleDestinationSelection}/>
                             </div>
                             <div className="divider"></div>
                             <div className="input-group">
@@ -212,7 +202,7 @@ export default function SearchPanel(
                                     onBlur={onTravelersFieldBlur}
                                     onChange={s => s}/>
                             </div>
-                            <button className='search-button' onClick={searchHandler}>
+                            <button className='search-button' onClick={() => searchHandler(filters)}>
                                 <img src={searchIcon} alt='search' />
                             </button>
                         </div>

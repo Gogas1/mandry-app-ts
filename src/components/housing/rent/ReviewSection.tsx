@@ -4,6 +4,7 @@ import '../../../styles/housing/rent/review-section.scss';
 
 import starIcon from '../../../assets/icons/meta/star.svg';
 import avatarPlaceholder from '../../../assets/icons/profile/user-circle-stroke-rounded 1.svg';
+import { ImageHelper } from "../../../helpers/ImageHelper";
 
 interface ReviewSectionProps {
     reviews: Review[]
@@ -17,7 +18,7 @@ export default function ReviewSection({ reviews }: ReviewSectionProps) {
                     <div className="review">
                         <div className="meta-part">
                             <div className="avatar">
-                                <img src={review.creator.avatar ? review.creator.avatar.src : avatarPlaceholder} />
+                                <img src={review.creator.avatar ? ImageHelper.getAvatarImage(review.creator.avatar.src) : avatarPlaceholder} />
                             </div>
                             <div className="info">
                                 <div className="name">{`${review.creator.name} ${review.creator.surname}`}</div>                                
