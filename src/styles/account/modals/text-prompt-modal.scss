@@ -47,6 +47,10 @@
                 resize: none;
 
                 padding: 20px;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
 

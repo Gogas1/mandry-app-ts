@@ -249,7 +249,7 @@ export default function ProfileInfoSection({ profileInfo, handleProfileInfoChang
                     showLabelAlways={true}
                     disableManual={false}
                     onClick={handleMainhobbyModalOpening}
-                    outerValue={profileInfo.birthdate} />
+                    outerValue={profileInfo.mainHobby} />
                 <TextInputBorderless
                     label={t('ProfileInfo.Info.Skills.Label')}
                     icon={wandIcon}
