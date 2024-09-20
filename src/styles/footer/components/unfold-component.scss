@@ -1,0 +1,36 @@
+.unfold-component {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    overflow: hidden;
+
+    justify-content: space-between;
+
+    .component-content {
+        display: flex;
+        flex-direction: column;
+            
+        &__title {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__desc {
+            max-height: 0px;
+            overflow: hidden;
+        }
+
+        &.open .component-content__desc {
+            max-height: 500px;
+        }
+    }
+    .title-icon {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .icon-title.rotate {
+            transform: rotate(180deg);
+        }
+    }
+}

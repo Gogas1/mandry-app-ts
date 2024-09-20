@@ -23,7 +23,7 @@ export default function FooterSection() {
                     </h4>
                     <ul className="links-list">
                         <li className="links-list__link">
-                            <Link to={'./news'}>
+                            <Link to={'../news'}>
                                 {t('MainPage.Sections.Footer.Sections.About.News')}
                             </Link>
                             
@@ -34,17 +34,17 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={'/community-chat'}>
+                            <Link to={'../community-chat'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Chat')}
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={'/investments'}>
+                            <Link to={'../investments'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Investments')}
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={'/contact'}>
+                            <Link to={'../contact'}>
                                 {t('MainPage.Sections.Footer.Sections.About.Contact')}
                             </Link>
                         </li>
@@ -56,7 +56,7 @@ export default function FooterSection() {
                     </h4>
                     <ul className="links-list">
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'../mandrysafe'}>
                                 {t('MainPage.Sections.Footer.Sections.Help.MSafe')}
                             </Link>
                         </li>
@@ -66,7 +66,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={'/feedback'}>
+                            <Link to={'../feedback'}>
                                 {t('MainPage.Sections.Footer.Sections.Help.Complainment')}
                             </Link>
                         </li>
@@ -76,7 +76,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'../revocation'}>
                                 {t('MainPage.Sections.Footer.Sections.Help.Revokation')} 
                             </Link>
                         </li>
@@ -88,7 +88,7 @@ export default function FooterSection() {
                     </h4>
                     <ul className="links-list">
                         <li className="links-list__link">
-                            <Link to={'/help'}>
+                            <Link to={'../help'}>
                                 {t('MainPage.Sections.Footer.Sections.Info.HelpCenter')}
                             </Link>
                         </li>
@@ -103,7 +103,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={'/business'}>
+                            <Link to={'../business'}>
                                 {t('MainPage.Sections.Footer.Sections.Info.StartOwner')}
                             </Link>
                         </li>

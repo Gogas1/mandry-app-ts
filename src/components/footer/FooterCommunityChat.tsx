@@ -14,6 +14,7 @@ import listImage4 from '../../assets/images/footer/community-chat/list4.png';
 import listImage5 from '../../assets/images/footer/community-chat/list5.png';
 import listImage6 from '../../assets/images/footer/community-chat/list6.png';
 import NewsComponent from "./components/NewsComponent";
+import FooterSection from '../home/FooterSection';
 
 export default function FooterCommunityChat() {
     const { t } = useTranslation();
@@ -121,6 +122,7 @@ export default function FooterCommunityChat() {
                         </div>
                     </section>
                 </div>
+                <FooterSection />
             </div>
         </>
     );

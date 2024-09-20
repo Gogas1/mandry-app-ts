@@ -29,6 +29,8 @@ import FooterFeedback from './components/footer/FooterFeedback';
 import FooterCommunityChat from './components/footer/FooterCommunityChat';
 import HelpCenter from './components/footer/HelpCenter';
 import StartBusiness from './components/footer/FooterStartBusiness';
+import MandrySafe from './components/footer/FooterMandrySafe';
+import CancelReservation from './components/footer/FooterCancelReservation';
 import { APIProvider } from '@vis.gl/react-google-maps';
 
 function App() {
@@ -72,6 +74,8 @@ function App() {
                     <Route path='/contact' element={<ContactsPage />} />
                     <Route path='/help' element={<HelpCenter />} />
                     <Route path='/business' element={<StartBusiness />} />
+                    <Route path='/mandrysafe' element={<MandrySafe />} />
+                    <Route path='/revocation' element={<CancelReservation />} />
                 </Routes>
                   <Modal />
                 </UserSettingsProvider>

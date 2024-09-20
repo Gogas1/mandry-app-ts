@@ -1,0 +1,72 @@
+.mandy-safe-page {
+    min-width: 100vh;
+    padding-top: 104px;
+
+    .content-container {
+        padding-left: 217px;
+        padding-right: 217px;
+
+        margin: 0px 100px;
+        margin-bottom: -15px;
+
+        border-radius: 15px;
+        background: var(--white, #F6F6F6);
+
+        display: flex;
+        flex-direction: column;
+
+        .start-title {
+            margin-top: 80px;
+            margin-bottom: 30px;
+
+            color: #08B1BD;
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        
+
+        .title-bold {
+            color: #515151;
+            font-family: "Montserrat Alternates";
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .text-regular {
+            color: #515151;
+            font-family: Comfortaa;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .horizontal-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--Color-3, #AAA);
+        }
+
+        .text-panel {
+            display: flex;
+            flex-direction: column;
+
+            gap: 20px;
+
+            margin-bottom: 80px;
+        }
+        .text-panel-bottom {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+            margin-bottom: 80px;
+        }
+    }
+}

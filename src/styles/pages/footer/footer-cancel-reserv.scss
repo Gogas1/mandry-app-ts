@@ -1,0 +1,320 @@
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.cancel-reservation-page {
+    min-width: 100vh;
+    padding-top: 104px;
+
+    .content-container {
+        padding-left: 217px;
+        padding-right: 217px;
+
+        margin: 0px 100px;
+        margin-bottom: -15px;
+
+        border-radius: 15px;
+        background: var(--white, #F6F6F6);
+
+        display: flex;
+        flex-direction: column;
+
+        .start-title {
+            margin-top: 80px;
+            margin-bottom: 30px;
+
+            color: var(--blue, #08B1BD);
+            font-family: "Montserrat Alternates";
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 60px;
+            /* 100% */
+        }
+
+        .title-text {
+            color: #08B1BD;
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .title-bold {
+            color: #515151;
+
+            /* Montser.Alt. 22 */
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .text-regular {
+            color: #515151;
+            font-family: Comfortaa;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+        }
+
+        .text-regular-heavy-weight {
+            color: #515151;
+            text-align: justify;
+            font-family: Comfortaa;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .text-regular-heavy {
+            color: #515151;
+            font-family: "Montserrat Alternates";
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%;
+            /* 17px */
+        }
+
+        .text-list {
+            color: #515151;
+            font-family: Comfortaa;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .horizontal-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--Color-3, #AAA);
+        }
+
+        .horizontal-divider-80px {
+            width: 100%;
+            height: 1px;
+            background-color: var(--Color-3, #AAA);
+            margin: 80px 0px;
+        }
+
+        .text-image-block {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+
+            .image-block {
+                width: 50%;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .text-block {
+                display: flex;
+                flex-direction: column;
+
+                gap: 20px;
+
+                width: 50%;
+
+                .margin-10px {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .date-rules {
+            display: flex;
+            justify-content: flex-end;
+
+            color: var(--Color-3, #AAA);
+            font-family: Comfortaa;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin: 20px 0px;
+
+            &__text {
+                width: 173px;
+            }
+        }
+
+        .rules-info {
+            display: flex;
+            flex-direction: row;
+
+            gap: 20px;
+
+            margin-bottom: 160px;
+
+            .rule-info-desc {
+
+
+                width: 33%;
+
+            }
+
+            .general-info {
+                display: flex;
+                flex-direction: column;
+
+                width: 67%;
+                gap: 20px;
+
+                &__block {
+                    margin-bottom: 27px;
+                }
+            }
+
+            .block-rules {
+
+                .unfold-block-rules {
+                    gap: 20px;
+
+                    & .component-content__title {
+                        color: #515151;
+                        font-family: "Montserrat Alternates";
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 120%; /* 20.4px */
+                    }
+
+                    & .component-content__desc {
+                        color: #515151;
+                        font-family: Comfortaa;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%; /* 16.8px */
+
+                        margin-left: 82px;
+                    }
+
+                    & .component-content__link {
+                        color: var(--Black, #252525);
+
+                        font-family: Comfortaa;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%;
+                        /* 19.2px */
+                        text-decoration-line: underline;
+                    }
+
+                    & .icon-title {
+                        max-width: 24px;
+                        max-height: 24px;
+                    }
+                }
+            }
+        }
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 80px;
+            padding: 30px;
+
+            border-radius: 15px;
+            border: 1px solid var(--Color-3, #AAA);
+
+            .info-list {
+                display: flex;
+                flex-direction: column;
+                margin: 0px 0px;
+                padding-left: 20px;
+                gap: 20px;
+
+                
+            }
+
+            .info-list li::marker {
+                font-size: 10px;
+                color: #515151;
+            }
+        }
+
+        .mid-container {
+            background: var(--background, #CAD3D9);
+
+            margin: 0 -217px;
+
+            margin-top: 0px;
+            margin-bottom: 80px;
+
+            padding: 80px 217px;
+
+            align-items: center;
+
+            color: #515151;
+
+            font-family: "Montserrat Alternates";
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 120%; /* 26.4px */
+        }
+
+        .news-block {
+        
+            margin-bottom: 95px;
+
+            .text-title {
+                @include blue-heading-font(22px);
+                margin: 0;
+                margin-bottom: 30px;
+            }
+    
+            .news-row {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+    
+                .news-item {
+                    flex: 1;
+                }
+            }
+    
+            .button-row {            
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                gap: 30px;
+                margin-top: 30px;
+    
+                &__button {
+                    cursor: pointer;
+                    display: flex;
+                    width: 52px;
+                    height: 52px;
+                    justify-content: center;
+                    align-items: center;
+    
+                    border-radius: 48px;
+                    border: 1px solid var(--Color-3, #AAA);
+                    background: rgba(255, 255, 255, 0.03);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                    backdrop-filter: blur(10px);
+    
+                    &--forward {
+    
+                        img {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
