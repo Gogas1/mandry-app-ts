@@ -29,7 +29,7 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     const handleTravelsTransition = () => {
-
+        navigate('/account/travels')
     }
 
     const handleFavsTransition = () => {
@@ -45,7 +45,7 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     const handleHelpTransition = () => {
-        
+        navigate('/help')        
     }
 
     const handleLogOut = () => {

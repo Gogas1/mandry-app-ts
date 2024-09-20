@@ -40,6 +40,8 @@
 
             height: 100%;
 
+            flex: 1;
+
             .label-container {
                 position: absolute;
                 top: 0;
@@ -58,6 +60,7 @@
             }
 
             .input-borderless {
+
                 background: none;
                 border: 0;
 

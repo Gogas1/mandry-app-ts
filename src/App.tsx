@@ -31,6 +31,7 @@ import HelpCenter from './components/footer/HelpCenter';
 import StartBusiness from './components/footer/FooterStartBusiness';
 import MandrySafe from './components/footer/FooterMandrySafe';
 import CancelReservation from './components/footer/FooterCancelReservation';
+import Disabled from './components/footer/FooterDisabled';
 import { APIProvider } from '@vis.gl/react-google-maps';
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
                     <Route path='/business' element={<StartBusiness />} />
                     <Route path='/mandrysafe' element={<MandrySafe />} />
                     <Route path='/revocation' element={<CancelReservation />} />
+                    <Route path='/disabled' element={<Disabled />} />
                 </Routes>
                   <Modal />
                 </UserSettingsProvider>
