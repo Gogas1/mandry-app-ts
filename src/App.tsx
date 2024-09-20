@@ -44,7 +44,7 @@ function App() {
           <Router>
             <ScrollToTop />
             <ModalProvider>
-              <AuthorizationProvider>
+              {/* <AuthorizationProvider> */}
                 <UserSettingsProvider>
                   <Navbar />
                   <Routes>
@@ -81,7 +81,7 @@ function App() {
                 </Routes>
                   <Modal />
                 </UserSettingsProvider>
-              </AuthorizationProvider>
+              {/* </AuthorizationProvider> */}
             </ModalProvider>
           </Router>
         </AuthProvider>

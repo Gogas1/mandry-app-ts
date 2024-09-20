@@ -24,7 +24,6 @@ export default function ProfilePage() {
 
     const name = authState.user?.name;
 
-
     const handleOpenModal = () => {
         openModal('profileImage', 
         <ProfileImageModal hideModal={handleCloseModal} user={authState.user}/>,
