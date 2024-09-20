@@ -13,7 +13,7 @@ import directionImage from '../../assets/images/footer/help_center/direction.png
 import peopleImage from '../../assets/images/footer/help_center/4_people.png';
 import nurseImage from '../../assets/images/footer/help_center/nurse.png';
 import imacFImage from '../../assets/images/footer/help_center/imac_further.png';
-import phoneImage from '../../assets/images/footer/help_center/phone.jpg';
+import phoneImage from '../../assets/images/footer/help_center/phone.png';
 
 import arrowThin from '../../assets/icons/meta/arrow-thin.svg';
 import angryIcon from '../../assets/icons/footer/help-center/angry-smile.svg';

@@ -5,7 +5,7 @@
     flex-direction: column;
 
     border-radius: 15px;
-    border: 1px solid #515151;
+    border: 1px solid var(--Color-3, #AAA);
 
     &__image-wrapper {
         display: flex;
