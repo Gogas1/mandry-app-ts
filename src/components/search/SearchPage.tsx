@@ -85,6 +85,20 @@ export default function SearchPage() {
     }
 
     useEffect(() => {
+        const newFilterSettings = {
+            destination: "",
+            period: undefined,
+            travelers: { adults: 0, children: 0, toddlers: 0, pets: 0 },
+            category: undefined,
+            beds: 0,
+            bedrooms: 0,
+            bathrooms: 0,
+            features: [],
+            priceRange: [0, 0],
+            languages: []
+        } as FilterSetting;
+        let newCategories: Category[] = [];
+
         const fetchCategories = async () => {
             try {
                 const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/c/get";
@@ -109,7 +123,8 @@ export default function SearchPage() {
                         }
                     });
 
-                    setCategoriesList(categories);
+                    newCategories = categories;
+                    setCategoriesList(newCategories);
                 }
             }
             catch (error) {
@@ -161,9 +176,7 @@ export default function SearchPage() {
 
                     setPrices({ minPrice: prices.minPrice, maxPrice: prices.maxPrice });
 
-                    const updatedFilterSettings = { ...filterSettings }
-                    updatedFilterSettings.priceRange = [prices.minPrice, prices.maxPrice];
-                    setFilterSettings(updatedFilterSettings);
+                    newFilterSettings.priceRange = [prices.minPrice, prices.maxPrice];
                 }
             }
             catch (error) {
@@ -175,29 +188,23 @@ export default function SearchPage() {
             try {
                 await Promise.all([fetchCategories(), fetchFeatures(), fetchPrices()])
                 setLoading(false);
+                newFilterSettings.destination = params.get('destination') ?? '';
+
+                const queryCategory = params.get('category') ?? '';
+                const targetCategory = newCategories.find(c => c.nameKey === queryCategory);
+                if(targetCategory) {
+                    newFilterSettings.category = targetCategory;
+                }            
+
+                handleFilterChange(newFilterSettings);
+                filterHousings(newFilterSettings);
             } catch (error) {
                 console.error(error);
             }
         }
 
         runAll();
-    }, [i18n.language]);
-
-    useEffect(() => {
-        if(!loading) {
-            const updatedFitlerSettings = {...filterSettings};
-            updatedFitlerSettings.destination = params.get('destination') ?? '';
-
-            const queryCategory = params.get('category') ?? '';
-            const targetCategory = categoriesList.find(c => c.nameKey === queryCategory);
-            if(targetCategory) {
-                updatedFitlerSettings.category = targetCategory;
-            }
-
-            handleFilterChange(updatedFitlerSettings);
-            filterHousings(updatedFitlerSettings);
-        }
-    }, [loading]);
+    }, []);
 
     const handleFilterChange = (filters: FilterSetting) => {
         setFilterSettings(filters);
