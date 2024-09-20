@@ -71,7 +71,7 @@ export default function FooterSection() {
                             </Link>
                         </li>
                         <li className="links-list__link">
-                            <Link to={''}>
+                            <Link to={'../disabled'}>
                                 {t('MainPage.Sections.Footer.Sections.Help.Disabled')}
                             </Link>
                         </li>
