@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Feature, Housing, Parameter } from "../HousingPage";
+import { Feature, Housing } from "../HousingPage";
 
 import '../../../styles/housing/sections/features-section.scss';
 import { useState } from "react";

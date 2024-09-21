@@ -2,7 +2,7 @@ import FeatureService from "../../../../helpers/FeatureService";
 import { ReservationSettings, SummTravelers } from "../../../housing/rent/PriceSection";
 import { PaymentSettings } from "../../PaymentPage";
 
-import starIcon from '../../../../assets/icons/meta/star.svg';
+// import starIcon from '../../../../assets/icons/meta/star.svg';
 import { useTranslation } from "react-i18next";
 import { Housing } from "../../../housing/HousingPage";
 

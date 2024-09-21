@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useState } from "react";
 import AuthContext from "./auth/AuthenticationContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import "../styles/pages/signin/signin.scss"
 
@@ -17,7 +17,7 @@ export default function SignIn() {
     const [phone, setPhone] = useState(''); 
     const [password, setPassword] = useState('');
 
-    const navigate = useNavigate(); 
+    // const navigate = useNavigate(); 
 
     const onPhoneSignInHandle = async function PhoneSignIn(event: FormEvent<HTMLButtonElement>) {
         event.preventDefault();

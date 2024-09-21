@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import '../../styles/account/favourites-page.scss';
 import { Link } from 'react-router-dom';
 
-import heartFilled from "../../assets/icons/meta/heart-filled.svg";
+// import heartFilled from "../../assets/icons/meta/heart-filled.svg";
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../auth/AuthenticationContext';
 import { Housing } from '../housing/HousingPage';

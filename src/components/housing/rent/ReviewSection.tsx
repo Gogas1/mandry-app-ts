@@ -15,7 +15,7 @@ export default function ReviewSection({ reviews }: ReviewSectionProps) {
         <>        
             <section className="review-section">
                 {reviews.map((review, index) => (
-                    <div className="review">
+                    <div className="review" key={index}>
                         <div className="meta-part">
                             <div className="avatar">
                                 <img src={review.creator.avatar ? ImageHelper.getAvatarImage(review.creator.avatar.src) : avatarPlaceholder} />
@@ -26,7 +26,7 @@ export default function ReviewSection({ reviews }: ReviewSectionProps) {
                                 <div className="date">{formatDate(review.createdAt)}</div>
                                 <div className="stars">
                                     {Array.from({ length: Math.floor(review.rating < 1 ? 1 : review.rating) }, (_, index) => (
-                                        <img src={starIcon} />
+                                        <img src={starIcon} key={index} />
                                     ) )}
                                 </div>
                             </div>

@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { Housing } from "../housing/HousingPage";
 import { Category } from "./search-panel/Section2";
 import { processTranslations } from "../../helpers/TranslationService";
-import i18n from "../../i18n";
+// import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { Map, Marker } from "@vis.gl/react-google-maps";
 import AuthContext from "../auth/AuthenticationContext";
@@ -42,7 +42,7 @@ export default function SearchPage() {
 
     document.title = t("Titles.SearchPage");
 
-    const [params, setParams] = useSearchParams();
+    const [params, ] = useSearchParams();
 
     const [loading, setLoading] = useState(true);
     const [housings, setHousings] = useState<Housing[]>([]);

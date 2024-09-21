@@ -14,7 +14,7 @@ import VerificationPage from './components/account/profile/VerificationPage';
 import ProfileInfoPage from './components/account/ProfileInfoPage';
 import FavouritesPage from './components/account/FavouritesPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import { AuthorizationProvider } from './components/auth/AuthorizationContext';
+// import { AuthorizationProvider } from './components/auth/AuthorizationContext';
 import SearchPage from './components/search/SearchPage';
 import HousingPage from './components/housing/HousingPage';
 import NotificationsPage from './components/account/profile/NotificationsPage';

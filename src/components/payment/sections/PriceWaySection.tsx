@@ -4,8 +4,8 @@ import { LongTermsBenefits, PaymentSettings } from "../PaymentPage";
 import '../../../styles/payment/sections/price-way-section.scss';
 import Radio from "../../app/Radio";
 import { ReservationSettings } from "../../housing/rent/PriceSection";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { useState } from "react";
+// import { Link } from "react-router-dom";
 import { useUserSettings } from "../../app/UserSettingsContext";
 
 interface PriceWaySectionProps {
@@ -24,7 +24,7 @@ export default function PriceWaySection({ reservationSettings, longTermBenefits,
     const { t } = useTranslation();
     const { currency } = useUserSettings();
 
-    const [selectedWay, setSelectedWay] = useState<PaymentWay>(PaymentWay.FULL);
+    // const [selectedWay, setSelectedWay] = useState<PaymentWay>(PaymentWay.FULL);
 
     const handleChange = (value: string) => {
         if(value === PaymentWay.FULL) {

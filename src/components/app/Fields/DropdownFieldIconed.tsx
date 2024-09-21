@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import '../../../styles/app/dropdown-field-iconed.scss';
 
 import arrowDownIcon from '../../../assets/icons/meta/arrow-black.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface DropdownFieldIconedProps {
     label: string;

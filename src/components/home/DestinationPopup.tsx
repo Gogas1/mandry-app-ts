@@ -1,11 +1,11 @@
 import '../../styles/pages/home/destination-popup.scss';
 
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
-import loadingAnim from '../../assets/anim/loading.webm';
+// import loadingAnim from '../../assets/anim/loading.webm';
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import AuthContext from '../auth/AuthenticationContext';
+// import AuthContext from '../auth/AuthenticationContext';
 
 interface PopupProps {
     isOpen: boolean;

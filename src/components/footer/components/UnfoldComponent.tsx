@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import '../../../styles/footer/components/unfold-component.scss';
 
 interface UnfoldProps {
@@ -12,7 +12,7 @@ interface UnfoldProps {
 }
 
 export default function UnfoldComponent({ title, description, icon, link, className = '' }: UnfoldProps) {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     

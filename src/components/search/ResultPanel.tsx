@@ -2,8 +2,8 @@ import '../../styles/search/result-panel.scss';
 
 import starIcon from '../../assets/icons/meta/star.svg';
 import shareIcon from '../../assets/icons/meta/share.svg';
-import heartEmptyIcon from '../../assets/icons/meta/heart-icon-2.svg';
-import heartFilledIcon from '../../assets/icons/meta/heart-icon-filled-2.svg';
+// import heartEmptyIcon from '../../assets/icons/meta/heart-icon-2.svg';
+// import heartFilledIcon from '../../assets/icons/meta/heart-icon-filled-2.svg';
 
 import { Link } from 'react-router-dom';
 import { Housing } from '../housing/HousingPage';

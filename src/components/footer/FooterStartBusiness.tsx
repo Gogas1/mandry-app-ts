@@ -6,7 +6,7 @@ import FooterSection from '../home/FooterSection';
 import FooterHeader from './FooterHeader';
 import UnfoldComponent from './components/UnfoldComponent';
 import NewsComponent from './components/NewsComponent';
-import { Map, Marker } from '@vis.gl/react-google-maps';
+import { Map } from '@vis.gl/react-google-maps';
 
 import cityImage from '../../assets/images/footer/start_business/city.png';
 import signManImage from '../../assets/images/footer/start_business/sign_man.png';

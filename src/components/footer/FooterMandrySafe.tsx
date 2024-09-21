@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import '../../styles/pages/footer/footer-mandry-safe.scss';
 
 import FooterSection from '../home/FooterSection';

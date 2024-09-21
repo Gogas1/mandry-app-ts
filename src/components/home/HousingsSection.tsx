@@ -2,7 +2,7 @@ import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 
 import '../../styles/pages/home/housing-section.scss';
 import { HousingsImageHelper } from '../../helpers/ImageHelper';
-import { CSSProperties, useRef, useState } from 'react';
+import { CSSProperties, useRef } from 'react';
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 

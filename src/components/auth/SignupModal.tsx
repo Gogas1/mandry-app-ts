@@ -16,7 +16,7 @@ import AuthModal from "./AuthModal";
 import PasswordField from "../app/Fields/PasswordFileld";
 import PhonePickerBlock from "../app/Fields/PhonePickerBlock";
 import AuthContext from "./AuthenticationContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import ValidationError from "../app/Validation/ValidationError";
 import CredentialValidator, { BirthDateErrorCode, EmailValidationErrorCode, NameValidationErrorCode, PasswordValidationErrorCode, PhoneValidationErrorCode } from "../../helpers/validation/CredentialValidator";
 import AgreementModal from "./AgreementModal";
@@ -37,8 +37,8 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
     const { t } = useTranslation();
-    const { login } = authContext;
-    const navigate = useNavigate();
+    // const { login } = authContext;
+    // const navigate = useNavigate();
 
     const { openModal, closeModal } = useModal();
 
@@ -51,7 +51,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-    const [loading, setLoading] = useState(false);
+    const [loading, ] = useState(false);
 
     const [signUpError, setSignUpError] = useState<SignUpError>();
 
@@ -149,46 +149,46 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
         }
     }
 
-    const handleSignUpRequest = async () => {
-        if(validationPassed) {
-            setLoading(true);
-            setSignUpError(undefined);
-            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
+    // const handleSignUpRequest = async () => {
+    //     if(validationPassed) {
+    //         setLoading(true);
+    //         setSignUpError(undefined);
+    //         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
 
-            try {
-                const response = await fetch(url, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true'
-                    }, 
-                    body: JSON.stringify({
-                        name: name,
-                        surname: surname,
-                        phone: phone,
-                        email: email,
-                        password: password,
-                        BirthDate: birthdate
-                    })
-                });
+    //         try {
+    //             const response = await fetch(url, {
+    //                 method: "POST",
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'ngrok-skip-browser-warning': 'true'
+    //                 }, 
+    //                 body: JSON.stringify({
+    //                     name: name,
+    //                     surname: surname,
+    //                     phone: phone,
+    //                     email: email,
+    //                     password: password,
+    //                     BirthDate: birthdate
+    //                 })
+    //             });
             
-                if (response.ok) {
-                    const data = await response.json();
-                    login(data.token, data.userData);
-                    hideModal();
-                    navigate("/");
-                } else if (response.status === 400) {
-                    setSignUpError(SignUpError.INVALID_DATA);
-                } else if (response.status === 409) {
-                    setSignUpError(SignUpError.USER_EXIST);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+    //             if (response.ok) {
+    //                 const data = await response.json();
+    //                 login(data.token, data.userData);
+    //                 hideModal();
+    //                 navigate("/");
+    //             } else if (response.status === 400) {
+    //                 setSignUpError(SignUpError.INVALID_DATA);
+    //             } else if (response.status === 409) {
+    //                 setSignUpError(SignUpError.USER_EXIST);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error:', error);
+    //         }
+    //     }
 
-        setLoading(false);
-    }
+    //     setLoading(false);
+    // }
 
     return (
         <>

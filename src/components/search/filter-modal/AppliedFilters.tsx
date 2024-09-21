@@ -2,13 +2,13 @@ import { useTranslation } from 'react-i18next';
 import '../../../styles/search/filter-modal/applied-filters.scss';
 import { FilterSetting } from '../SearchPage';
 
-import crossIcon from '../../../assets/icons/meta/close-cross.svg';
+// import crossIcon from '../../../assets/icons/meta/close-cross.svg';
 
 interface AppliedFiltersProps {
     filters: FilterSetting;
 }
 
-export default function AppliedFilters({ filters }: AppliedFiltersProps) {
+export default function AppliedFilters({  }: AppliedFiltersProps) {
     const { t } = useTranslation();
 
     return (

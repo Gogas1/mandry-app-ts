@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import FooterSection from '../home/FooterSection';
-import NotificationSearch from '../account/profile/notifications/NotificationSearch';
+// import NotificationSearch from '../account/profile/notifications/NotificationSearch';
 import FooterPromotionsSection from '../footer/FooterPromotionSection';
 import FooterHeader from './FooterHeader';
 
@@ -11,7 +11,7 @@ import '../../styles/pages/footer/footer-news.scss'
 
 export default function NewsPage() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     document.title = t('Titles.NewsPage');
 

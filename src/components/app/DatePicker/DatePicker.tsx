@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 
 import '../../../styles/app/date-picker/date-picker.scss'
 import DatePickerCalendar from "./DatePickerCalendar";
-import { IsDatesEqual } from "../../../helpers/DateUtils";
+// import { IsDatesEqual } from "../../../helpers/DateUtils";
 
 interface DatePickerProps {
     label: string;

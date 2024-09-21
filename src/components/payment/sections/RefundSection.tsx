@@ -10,7 +10,7 @@ interface RefundSectionProps {
     paymentSettings: PaymentSettings;
 }
 
-export default function RefundSection({ longTermBenefits, paymentSettings }: RefundSectionProps) {
+export default function RefundSection({ longTermBenefits }: RefundSectionProps) {
     const { t } = useTranslation();
 
     const [refundSectionExpanded, setRefundSectionExpanded] = useState(false);

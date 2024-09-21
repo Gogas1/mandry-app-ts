@@ -62,7 +62,7 @@ export default function TextInputBorderless(
 
     return (
         <>
-            <div className="text-input-borderless">
+            <div className={`text-input-borderless ${className}`}>
                 <div
                     className='main-text-input-container'>
                     {icon ? 

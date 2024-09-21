@@ -13,7 +13,7 @@ interface HousingInfoSectionProps {
     paymentSettings: PaymentSettings;
 } 
 
-export default function HousingInfoSection({ housingData, longTermBenefits, paymentSettings }: HousingInfoSectionProps) {
+export default function HousingInfoSection({ housingData, longTermBenefits }: HousingInfoSectionProps) {
     const { t } = useTranslation();
 
     const [rulesSectionExpanded, setRulesSectionExpanded] = useState(false);

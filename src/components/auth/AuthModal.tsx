@@ -36,7 +36,7 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
 
     const [activeTab, setActiveTab] = useState(0);
 
-    const [loading, setLoading] = useState(false);
+    const [, setLoading] = useState(false);
 
     const [isEmailAttemptFailed, setIsEmailAttemptFailed] = useState(false);
     const [isPhoneAttemptFailed, setIsPhoneAttemptFailed] = useState(false);

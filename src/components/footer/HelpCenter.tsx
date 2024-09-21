@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState } from 'react';
 import '../../styles/pages/footer/footer-help-center.scss';
 
 import FooterSection from '../home/FooterSection';

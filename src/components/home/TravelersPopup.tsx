@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
 
 import '../../styles/pages/home/travelers-popup.scss';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export interface TravelersPopupData {
     adults: number;

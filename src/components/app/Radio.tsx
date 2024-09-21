@@ -1,4 +1,4 @@
-import { MouseEvent, useRef } from 'react';
+import { useRef } from 'react';
 import '../../styles/app/radio.scss';
 
 interface RadioProps {
@@ -10,19 +10,19 @@ interface RadioProps {
     allowUncheck?: boolean;
 }
 
-export default function Radio({ name, label = '', className = '', value, onCheck, allowUncheck = false }: RadioProps) {
+export default function Radio({ name, label = '', className = '', value, onCheck }: RadioProps) {
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleClick = (event: MouseEvent<HTMLInputElement>) => {
-        if(allowUncheck) {
-            if(inputRef.current) {
-                if(inputRef.current.checked) {
-                    inputRef.current.checked = false;
-                }
+    // const handleClick = (event: MouseEvent<HTMLInputElement>) => {
+    //     if(allowUncheck) {
+    //         if(inputRef.current) {
+    //             if(inputRef.current.checked) {
+    //                 inputRef.current.checked = false;
+    //             }
                 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 
     return (
         <label className={`radio ${className}`}>{label}

@@ -1,5 +1,5 @@
 import{ createContext, ReactNode, useContext, useEffect, useState } from "react";
-import AuthContext from "./AuthenticationContext";
+// import AuthContext from "./AuthenticationContext";
 
 
 interface AuthorizationContextProps {
@@ -17,11 +17,11 @@ interface AuthorizationProviderProps {
 }
 
 export function AuthorizationProvider({ children }: AuthorizationProviderProps) {
-    const [user, setUser] = useState<User>({
+    const [user, ] = useState<User>({
         isAgreementAccepted: false
     });
 
-    const authContext = useContext(AuthContext);
+    // const authContext = useContext(AuthContext);
 
     useEffect(() => {
         

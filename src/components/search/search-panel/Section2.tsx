@@ -53,6 +53,7 @@ export default function Section2({ filters, categories, priceRange, filterChange
     const [sliderValue, setSliderValue] = useState<number | number[]>([filters.priceRange[0], filters.priceRange[1]]);
 
     const handlePriceStateChange = (event: Event, newValue: number | number[]) => {
+        event;
         setSliderValue(newValue);
     }
 
@@ -61,6 +62,7 @@ export default function Section2({ filters, categories, priceRange, filterChange
     });
 
     const handlePriceRangeChange = (event: Event | SyntheticEvent, newValue: number | number[]) => {
+        event;
         const updatedFilter = { ...filters }
         updatedFilter.priceRange = newValue as number[];
         filterChangeHandler(updatedFilter);

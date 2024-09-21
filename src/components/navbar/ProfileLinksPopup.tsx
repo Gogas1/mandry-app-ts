@@ -40,9 +40,9 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
         
     }
     
-    const handleAccountTransition = () => {
-        navigate('/account')
-    }
+    // const handleAccountTransition = () => {
+    //     navigate('/account')
+    // }
 
     const handleHelpTransition = () => {
         navigate('/help')        

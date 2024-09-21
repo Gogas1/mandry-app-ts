@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import '../../styles/pages/footer/footer-disabled.scss';
 
 import FooterSection from '../home/FooterSection';
@@ -20,7 +20,7 @@ import phoneImage from '../../assets/images/footer/help_center/phone.png';
 
 export default function Disabled() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     document.title = t('MainPage.Sections.Footer.Pages.Disabled.PageTitle');
 
