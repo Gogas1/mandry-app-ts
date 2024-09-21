@@ -73,6 +73,7 @@ export default function NotificationsPage() {
                     <div className='notifications'>
                         <div className='notifications-content'>
                             <div className='notifications-header'>
+                                <div className='button-allnot'>
                                 {t('Notifications.NotificationsList.Header')}
                                 <button className='dropdown-button'
                                     onClick={toggleDropdown}
@@ -83,6 +84,7 @@ export default function NotificationsPage() {
                                     closeDropdown={closeDopdown}
                                     assignCategory={handleSortCategory}
                                 />
+                                </div>
                                 <button className='settings-button'
                                     onClick={handleNotificationModal}
                                 >

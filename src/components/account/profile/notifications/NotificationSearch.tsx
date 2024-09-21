@@ -10,6 +10,10 @@ export default function NotificationsSearch() {
 
     const navigate = useNavigate();
 
+    const handleSearch = () => {
+        
+    }
+
     return (
         <div className='search-field'>
             <input type="text" placeholder={t('Notifications.NotificationsList.SearchPlaceholder')} className='input-field'/>

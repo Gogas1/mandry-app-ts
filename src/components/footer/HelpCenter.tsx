@@ -200,18 +200,18 @@ export default function HelpCenter() {
                     <div className='text-title'>{t('MainPage.Sections.Footer.Pages.HelpCenter.ActualNews')}</div>
                     <div className="news-row">
                         <NewsComponent
-                            header={t('InvestmentsPage.News.Item1.Header')}
-                            text={t('InvestmentsPage.News.Item1.Text')}
+                            header={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsTitle_1')}
+                            text={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsDesc_1')}
                             image={imacFImage}
                             className="news-item" />
                         <NewsComponent
-                            header={t('InvestmentsPage.News.Item2.Header')}
-                            text={t('InvestmentsPage.News.Item2.Text')}
+                            header={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsTitle_2')}
+                            text={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsDesc_2')}
                             image={nurseImage}
                             className="news-item" />
                         <NewsComponent
-                            header={t('InvestmentsPage.News.Item3.Header')}
-                            text={t('InvestmentsPage.News.Item3.Text')}
+                            header={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsTitle_3')}
+                            text={t('MainPage.Sections.Footer.Pages.HelpCenter.NewsDesc_3')}
                             image={phoneImage}
                             className="news-item" />
                     </div>

@@ -1,8 +1,5 @@
 import { useTranslation } from "react-i18next";
-
-import { useModal } from "../../../app/ModalContext";
-
-import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import '../../../../styles/account/profile/notification-modal.scss';
 
@@ -18,6 +15,7 @@ interface NotificationProps {
 
 export default function NotificationModal({ hideModal, closeOverlay, handleArchive }: NotificationProps) {
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const handeCloseModal = () => {
         hideModal();
@@ -26,6 +24,12 @@ export default function NotificationModal({ hideModal, closeOverlay, handleArchi
 
     const handleArchiveClick = (value:string) => {
         handleArchive(value);
+        hideModal();
+        closeOverlay();
+    }
+
+    const handleFeedbackClick = () => {
+        navigate('../../feedback');
         hideModal();
         closeOverlay();
     }
@@ -43,7 +47,9 @@ export default function NotificationModal({ hideModal, closeOverlay, handleArchi
                         />
                         {t('Notifications.NotificationsModal.Archive')}
                     </div>
-                    <div className="notification-modal-block">
+                    <div className="notification-modal-block"
+                        onClick={() => handleFeedbackClick()}
+                    >
                         <img className="drawer-icon" src={paperPlaneIcon} />
                         {t('Notifications.NotificationsModal.Feedback')}
                     </div>

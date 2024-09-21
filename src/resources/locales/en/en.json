@@ -8,7 +8,6 @@
     "searchDestinationLabel": "Destination",
     "searchDatesLabel": "Arrival/Departure",
     "searchPeopleSettingsLabel": "Travelers",
-
     "travelersAdults": "Adults",
     "travelersAdultAge": "(ages 13 or above)",
     "travelersChildren": "Children",
@@ -17,7 +16,6 @@
     "travelersInfantAge": "(under 2)",
     "travelersPats": "Pats",
     "travelersServicePats": "Bringing a service animal?",
-
     "languageSelectionLabel": "Language",
     "currencySelectionLabel": "Currency",
     "SignInAuthModalLabel": "Sign In",
@@ -35,7 +33,6 @@
     "SignUpAuthModalLabel": "Sign Up",
     "EmailInputAuthModalPlaceholder": "Enter your EMail",
     "PasswordInputAuthModalPlaceholder": "Enter your password",
-
     "MondayHeader": "Mon",
     "TuesdayHeader": "Tue",
     "WednesdayHeader": "Wed",
@@ -43,7 +40,6 @@
     "FridayHeader": "Fri",
     "SaturdayHeader": "Say",
     "SundayHeader": "Sun",
-
     "JanuaryName": "January",
     "FebruaryName": "February",
     "MarchName": "March",
@@ -56,7 +52,6 @@
     "OctoberName": "October",
     "NovemberName": "November",
     "DecemberName:": "December",
-
     "JanuaryShort": "Jan.",
     "FebruaryShort": "Feb.",
     "MarchShort": "Mar.",
@@ -69,10 +64,8 @@
     "OctoberShort": "Oct.",
     "NovemberShort": "Nov.",
     "DecemberShort:": "Dec.",
-
     "FavouritesPopupHeader": "Add to favourites",
     "CreateFavsListBtnText": "Create new favourites list",
-
     "SignUpFinishHeader": "Complete Registration",
     "SignUpNamesBlockHeader": "Official Name",
     "SignUpNameInputLabel": "*Name on ID",
@@ -87,17 +80,13 @@
     "SignUpContinueButtonLabel": "Agree and Continue",
     "SignUpMarketingAgreement": "Mandry will send you member offers, ideas and inspiration, marketing emails, and push notifications. You can opt out of receiving these messages at any time in your account settings or directly in the marketing message.",
     "SignUpWaiverText": "I do not want to receive marketing messages from Mandry.",
-    "SignUpAgreement": "By clicking Agree and Continue, I agree to the following Mandry policies: Terms of Service, Payment Terms, Non-Discrimination Policy and Privacy Policy."
-    ,
+    "SignUpAgreement": "By clicking Agree and Continue, I agree to the following Mandry policies: Terms of Service, Payment Terms, Non-Discrimination Policy and Privacy Policy.",
     "SignUpPasswordLabel": "Password",
     "SignUpPhoneLabel": "Phone",
     "SignUpPasswordReq": "Must contain at least 8 characters, including at least one special character or number.",
     "SignUpPasswordConfirmationLabel": "Repeat password",
-
     "DatePickerCalendarClearButton": "Clear",
-
     "PasswordFieldDefaultLabel": "Password",
-
     "NavbarPopupProfileLinksNotificationsLink": "Notifications",
     "NavbarPopupProfileLinksTravelsLink": "Travels",
     "NavbarPopupProfileLinksFavouritesLink": "Favourites",
@@ -105,7 +94,6 @@
     "NavbarPopupProfileLinksAccountLink": "Account",
     "NavbarPopupProfileLinksHelpLink": "Help",
     "NavbarPopupProfileLinksLogOut": "Log Out",
-
     "AccountPageHeader": "Account",
     "AccountPageProfileLink": "Go to Profile",
     "AccountPageCredentialsLinkHeaderLabel": "Personal Information",
@@ -128,7 +116,6 @@
     "AccountPageTravelBodyText": "Add your work email and take advantage of extra perks for business trips",
     "AccountPageBonusesLinkHeaderLabel": "Referral Bonuses and Coupons",
     "AccountPageBonusesBodyText": "You have bonuses and coupons worth 0 for referred members. Learn more.",
-
     "Profile": {
         "Status": "Guest",
         "Verification": {
@@ -144,7 +131,6 @@
             "Button": "Create profile"
         }
     },
-
     "VerificationPage": {
         "Privacy": {
             "Header": "Your Privacy",
@@ -169,7 +155,6 @@
             }
         }
     },
-
     "ProfileInfo": {
         "Header": "Your Profile",
         "Discl": "The information you provide will be used on Mandry so that other guests and hosts can get to know you. Learn more ",
@@ -197,11 +182,9 @@
             "Link": "Add Interests"
         }
     },
-
     "Validation": {
         "SignIn": {
             "Messages": {
-                
                 "Email": {
                     "Required": "Email address is required.",
                     "Invalid": "Please enter a valid email address.",
@@ -214,7 +197,6 @@
             }
         }
     },
-    
     "MainPage": {
         "Sections": {
             "Second": {
@@ -275,151 +257,307 @@
                         }
                     },
                     "Contacts": {
-                        "Header": "Контактна інформація",
-                        "Title": "Контакти",
+                        "Header": "Contact Information",
+                        "Title": "Contacts",
                         "Blocks": {
-                            "InfoCenter": "Центр інформації",
-                            "SalesDept": "Відділ продажів",
-                            "HrDept": "Відділ HR",
-                            "Feedback": "Ваші пропозиції та зауваження",
-                            "Address": "05005, Україна, м.Херсонпроспект Незалежності, 1/1 Mandry"
+                            "InfoCenter": "Information Center",
+                            "SalesDept": "Sales Department",
+                            "HrDept": "HR Department",
+                            "Feedback": "Your suggestions and feedback",
+                            "Address": "05005, Ukraine, Kherson, ave.Nezalezhnosti, 1/1 Mandry"
                         },
-                        "NoBreaks": "Без перерви і вихідних",
-                        "CallInfo": "Всі дзвінки з стаціонарних телефонів безкоштовні, з мобільних телефонів - згідно тарифного плану вашого оператора"
+                        "NoBreaks": "No breaks or days off",
+                        "CallInfo": "All calls from landlines are free, from mobile phones – according to your operator's tariff plan"
                     },
                     "HelpCenter": {
-                        "Header": "Довідковий центр",
-                        "Title": "Довідковий центр Mandry: все, що потрібно знати",
-                        "TitleThemes": "Усі теми Довідкового центру",
-                        "Desc_1": "Mandry — це не просто платформа для бронювання житла по всьому світу, це справжня екосистема з безліччю інструментів і ресурсів для користувачів. Одним з найважливіших елементів цієї екосистеми є Довідковий центр Mandry — спеціальний розділ платформи, призначений для допомоги користувачам у вирішенні питань, що можуть виникнути під час використання сервісу.",
-                        "Desc_2": "Довідковий центр Mandry — спеціальний розділ платформи, призначений для допомоги користувачам у вирішенні питань, що можуть виникнути під час використання сервісу. Незалежно від того, чи ви новачок на Mandry, чи досвідчений хост, цей розділ допоможе вам ефективно використовувати всі можливості сервісу та з легкістю вирішувати будь-які питання. Це важливий інструмент, який допомагає користувачам почуватися впевнено, знаючи, що у випадку виникнення проблеми або питання вони завжди можуть звернутися до достовірного джерела інформації.",
-                        "DescTitle_1": "Що таке довідковий центр Mandry?",
-                        "Desc_3": "Довідковий центр — це онлайн-база знань, яка містить відповіді на всі популярні запитання, інструкції та поради щодо користування сервісом. Це місце, де можна знайти інформацію як для гостей, так і для хостів. Мета цього розділу — зробити досвід користувача максимально зручним і зрозумілим. Це важливий інструмент, який допомагає користувачам почуватися впевнено, знаючи, що у випадку виникнення проблеми або питання вони завжди можуть звернутися до достовірного джерела інформації. Розділ також містить поради щодо безпеки та інші цікаві основи.",
-                        "DescTitle_2": "Як користуватися довідковим центром?",
-                        "Desc_4": "Довідковий центр має простий та інтуїтивно зрозумілий інтерфейс. Користувачі можуть скористатися пошуковим рядком для швидкого знаходження потрібної інформації або обирати розділи, що відповідають їхнім потребам. Крім того, більшість статей мають гіперпосилання на інші ресурси, що дозволяє детально розібратися в певних питаннях. Тут можна знайти все, що потрібно знати хосту та господару. Він пропонує окремі ресурси для тих, хто здає житло в оренду.",
-                        "DescTitle_3": "Чому Це Важливо?",
-                        "Desc_5": "Довідковий центр Mandry значно полегшує процес використання платформи, роблячи його зрозумілим і безпечним для всіх. Це важливий інструмент, який допомагає користувачам почуватися впевнено, знаючи, що у випадку виникнення проблеми або питання вони завжди можуть звернутися до достовірного джерела інформації. має простий та інтуїтивно зрозумілий інтерфейс. Користувачі можуть скористатися пошуковим рядком для швидкого знаходження потрібної інформації або обирати розділи, що відповідають їхнім потребам.",
-                        "Desc_6": "Довідковий центр Mandry — це незамінний ресурс, який варто знати кожному користувачу платформи. Незалежно від того, чи ви новачок на Mandry, чи досвідчений хост, цей розділ допоможе вам ефективно використовувати всі можливості сервісу та з легкістю вирішувати будь-які питання.",
+                        "Header": "Help Center",
+                        "Title": "Mandry Help Center: Everything You Need to Know",
+                        "TitleThemes": "All Topics of the Help Center",
+                        "Desc_1": "Mandry is not just a platform for booking accommodations around the world, it is a true ecosystem with numerous tools and resources for users. One of the most important elements of this ecosystem is the Mandry Help Center – a dedicated section of the platform designed to assist users in resolving any issues that may arise while using the service.",
+                        "Desc_2": "The Mandry Help Center is a dedicated section of the platform designed to assist users in resolving any issues that may arise while using the service. Whether you are new to Mandry or an experienced host, this section will help you make the most of the service's features and easily resolve any questions. It is an important tool that helps users feel confident, knowing that in case of any problems or questions, they can always turn to a reliable source of information.",
+                        "DescTitle_1": "What is the Mandry Help Center?",
+                        "Desc_3": "The Help Center is an online knowledge base that contains answers to all popular questions, instructions, and tips on using the service. It is a place where both guests and hosts can find information. The goal of this section is to make the user experience as convenient and clear as possible. It is an important tool that helps users feel confident, knowing that in case of any problems or questions, they can always turn to a reliable source of information. The section also contains safety tips and other key resources.",
+                        "DescTitle_2": "How to Use the Help Center?",
+                        "Desc_4": "The Help Center has a simple and intuitive interface. Users can use the search bar to quickly find the necessary information or select sections that meet their needs. Additionally, most articles contain hyperlinks to other resources, allowing for a detailed exploration of specific topics. Here, both hosts and guests can find everything they need to know. It offers separate resources for those who rent out accommodations.",
+                        "DescTitle_3": "Why Is This Important?",
+                        "Desc_5": "The Mandry Help Center greatly simplifies the process of using the platform, making it clear and safe for everyone. It is an important tool that helps users feel confident, knowing that in case of any problems or questions, they can always turn to a reliable source of information. It has a simple and intuitive interface. Users can use the search bar to quickly find the necessary information or select sections that meet their needs.",
+                        "Desc_6": "The Mandry Help Center is an indispensable resource that every platform user should be familiar with. Whether you are new to Mandry or an experienced host, this section will help you effectively use all the platform's features and easily resolve any issues.",
                         "Panels": {
-                            "Start": "Із чого почати",
-                            "Chat": "Чат Спільноти",
-                            "Accessibility": "Підтримка людей з особливими потребами",
-                            "Rules": "Правила спільноти",
-                            "ForInvestors": "Інвесторам",
-                            "Temporary": "Тимчасове житло на Mandry",
-                            "ForTravelers": "Для Мандрівників",
-                            "QoC": "Як написати запит або скаргу",
-                            "Mandry": "Як працює Mandry",
-                            "ForOwners": "Для Господарів",
-                            "Emergency": "Форс-Мажор",
-                            "Partnership": "Партнерство",
-                            "Safety": "ManrySafe",
-                            "Reservation": "Бронювання"
+                            "Start": "Getting Started",
+                            "Chat": "Community Chat",
+                            "Accessibility": "Support for People with Special Needs",
+                            "Rules": "Community Rules",
+                            "ForInvestors": "For Investors",
+                            "Temporary": "Temporary Housing on Mandry",
+                            "ForTravelers": "For Travelers",
+                            "QoC": "How to File a Request or Complaint",
+                            "Mandry": "How Mandry Works",
+                            "ForOwners": "For Hosts",
+                            "Emergency": "Force Majeure",
+                            "Partnership": "Partnership",
+                            "Safety": "MandrySafe",
+                            "Reservation": "Booking"
                         },
-                        "ActualNews": "Актуальні новини з турботою на Mandry"
+                        "ActualNews": "Latest News with Care on Mandry",
+                        "NewsTitle_1": "Updated Guest Acceptance Policies for Guests with Disabilities",
+                        "NewsDesc_1": "The Mandry portal implements updated standards for accommodating guests with disabilities, ensuring comfort and safety. Mandry announces...",
+                        "NewsTitle_2": "New Services on Mandry: Caregiver.",
+                        "NewsDesc_2": "Mandry launches medical escort and caregiver services for travelers with special needs. The Mandry portal...",
+                        "NewsTitle_3": "New Search: Filters for Accessible Housing",
+                        "NewsDesc_3": "Mandry introduces an improved search filter for people with disabilities. A new search filter has been added on the Mandry platform that..."
                     },
                     "StartBusiness": {
-                        "PageTitle": "Бізнес",
-                        "Header": "Варіанти скасування бронювання",
-                        "Title": "Розпочніть свій бізнес з Мандри і заробляйте",
-                        "ButtonStart": "Mandry Cтарт",
+                        "PageTitle": "Business",
+                        "Header": "Cancellation Options",
+                        "Title": "Start Your Business with Mandry and Earn",
+                        "ButtonStart": "Mandry Start",
                         "BlockStart": {
-                            "Title": "Відкрийте нові можливості для заробітку разом з Mandry",
-                            "Desc_1": "Почніть заробляти, використовуючи свій житловий простір, і приєднуйтеся до глобальної спільноти господарів на Mandry. ",
-                            "Desc_2": "Наша платформа надає вам усі необхідні інструменти для керування бронюваннями, зручного спілкування з гостями та швидкого налаштування умов оренди. Вона допомагає автоматизувати багато рутинних завдань. Ви можете налаштувати автоматичні повідомлення для гостей, наприклад, підтвердження бронювання, інструкції щодо заселення та виписки.",
-                            "SearchPlaceholder": "Мельбурн, апартаменти 2 спальні"
+                            "Title": "Unlock New Earning Opportunities with Mandry",
+                            "Desc_1": "Start earning by using your living space and join a global community of hosts on Mandry.",
+                            "Desc_2": "Our platform provides you with all the necessary tools to manage bookings, communicate easily with guests, and quickly set up rental terms. It helps automate many routine tasks. You can set up automatic messages for guests, such as booking confirmations, check-in instructions, and check-out details.",
+                            "SearchPlaceholder": "Melbourne, 2-bedroom apartments"
                         },
-                        "Desc_1": "Mandry пропонує унікальну можливість перетворити ваше житло в джерело постійного доходу. Незалежно від того, чи володієте ви квартирою в місті, будиночком біля моря або затишною дачею — на нашій платформі ви легко знайдете гостей, які шукають саме ваш варіант. Заробляйте з комфортом, керуючи власним бізнесом на Mandry.",
-                        "ToChat": "Приєднуйтеся до нашої спільноти господарів, де ви отримаєте доступ до простих інструментів управління бронюваннями, підтримки 24/7 і корисних порад щодо підвищення привабливості вашого житла. ",
-                        "ToChatButton": "Перейти до Чату спільноти",
-                        "ToOwnersPage": "З Mandry ви зможете з легкістю почати свій бізнес, налаштувати умови оренди та контролювати всі процеси через зручний інтерфейс. Не пропустіть свій шанс заробляти, приймаючи гостей з усього світу!",
-                        "ToOwnersButton": "Перейти на сторінку господарів",
+                        "Desc_1": "Mandry offers a unique opportunity to turn your property into a source of regular income. Whether you own an apartment in the city, a beach house, or a cozy cottage, you can easily find guests looking for your option on our platform. Earn comfortably by managing your own business on Mandry.",
+                        "ToChat": "Join our community of hosts, where you'll have access to easy booking management tools, 24/7 support, and helpful tips to enhance your property's appeal.",
+                        "ToChatButton": "Go to Community Chat",
+                        "ToOwnersPage": "With Mandry, you can easily start your business, set rental conditions, and control all processes through a user-friendly interface. Don't miss your chance to earn by welcoming guests from around the world!",
+                        "ToOwnersButton": "Go to Hosts Page",
                         "EasyStart": {
-                            "Header": "Легко розпочніть свій бізнес з Mandry Старт",
-                            "Title_1": "Індивідуальні поради від супергосподаря",
-                            "Desc_1": "Ми підберемо для вас досвідченого супергосподаря у вашій місцевості, який буде супроводжувати вас на кожному етапі. Від відповіді на ваше перше запитання до моменту прийому першого гостя — ви зможете отримувати допомогу по телефону, через відеодзвінок або в чаті, зручно для вас.",
-                            "Title_2": "Приймайте досвідченого гостя для першого бронювання",
-                            "Desc_2": "На ваше перше бронювання ви можете запросити досвідченого мандрівника, який вже має щонайменше три завершені перебування і високий рейтинг на платформі. Це забезпечить вам додаткову впевненість та спокій під час прийому першого гостя.",
-                            "Title_3": "Спеціалізована підтримка від Mandry",
-                            "Desc_3": "Нові господарі на Mandry мають можливість одним дотиком до екрана зв’язатися з фахівцями нашої Команди підтримки. Ми готові допомогти з будь-якими питаннями — від налаштувань акаунта до вирішення питань щодо виплат, забезпечуючи швидку і надійну підтримку на кожному кроці вашого шляху як господаря."
+                            "Header": "Easily Start Your Business with Mandry Start",
+                            "Title_1": "Personalized Tips from a Superhost",
+                            "Desc_1": "We will match you with an experienced superhost in your area who will support you at every stage. From answering your first question to the moment you welcome your first guest—you will receive assistance by phone, video call, or chat, whichever is convenient for you.",
+                            "Title_2": "Host an Experienced Guest for Your First Booking",
+                            "Desc_2": "For your first booking, you can invite an experienced traveler who has at least three completed stays and a high rating on the platform. This will provide you with extra confidence and peace of mind during your first guest's stay.",
+                            "Title_3": "Specialized Support from Mandry",
+                            "Desc_3": "New hosts on Mandry can connect with our Support Team specialists with a single touch on the screen. We are ready to assist with any issues—from account settings to payment questions, providing quick and reliable support at every step of your journey as a host."
                         },
                         "MandrySafe": {
                             "Header_1": "MandrySafe",
-                            "Title_1": "Що таке MandrySafe?",
-                            "Desc_1": "MandrySafe - це комплексна програма захисту, розроблена для власників нерухомості на платформі Mandry. Вона забезпечує комплексне покриття, включаючи перевірку особи гостя, перевірку бронювання, захист від пошкодження майна, страхування відповідальності та цілодобову підтримку безпеки, гарантуючи господарям спокій під час здачі в оренду своєї нерухомості.",
-                            "Header_2": "Отримайте комплексний захист",
-                            "Title_2": "Підтвердження особи гостя",
-                            "Desc_2": "Наша комплексна система верифікації перевіряє такі дані, як ім’я, адреса, посвідчення особи державного зразка тощо, щоб підтвердити особу гостей, які роблять бронювання на Mandry.",
-                            "Title_3": "Перевірка бронювання",
-                            "Desc_3": "Наша власна технологія аналізує сотні факторів щодо кожного бронювання і блокує ті, які становлять потенційний ризик щодо проведення вечірок та пошкодження майна.",
-                            "Title_4": "Захист від пошкодження майна на суму до 3 млн дол. США",
-                            "Desc_4": "Mandry компенсує шкоду, завдану гостями вашому помешканню та майну, пропонуючи наведені нижче програми страхування.",
-                            "Title_5": "Витвори мистецтва та інші цінності",
-                            "Title_6": "Транспортні засоби і човни",
-                            "Title_7": "Шкода, заподіяна домашніми тваринами",
-                            "Title_8": "Втрата доходу",
-                            "Title_9": "Ретельне прибирання",
-                            "Title_10": "Cтрахування відповідальності",
-                            "Desc_5": "Ви захищені на випадок травмування гостя або пошкодження чи викрадення його майна.",
-                            "Title_11": "Цілодобова гаряча лінія з питань безпеки",
-                            "Desc_6": "Якщо ви почуватиметеся в небезпеці, то можете звернутися до кваліфікованих консультантів безпосередньо через застосунок – як удень, так і вночі.",
-                            "Desc_7": "Порівняння базується на публічній інформації та безкоштовних пропозиціях конкурентів станом на жовтень 2022 року. Докладні відомості можна переглянути тут.",
+                            "Title_1": "What is MandrySafe?",
+                            "Desc_1": "MandrySafe is a comprehensive protection program designed for property owners on the Mandry platform. It offers complete coverage, including guest identity verification, booking verification, property damage protection, liability insurance, and 24/7 security support, ensuring hosts peace of mind when renting out their properties.",
+                            "Header_2": "Get Comprehensive Protection",
+                            "Title_2": "Guest Identity Verification",
+                            "Desc_2": "Our comprehensive verification system checks data such as name, address, government-issued ID, etc., to confirm the identity of guests making bookings on Mandry.",
+                            "Title_3": "Booking Verification",
+                            "Desc_3": "Our proprietary technology analyzes hundreds of factors regarding each booking and blocks those that pose a potential risk for parties and property damage.",
+                            "Title_4": "Property Damage Protection up to $3 Million",
+                            "Desc_4": "Mandry compensates for damage caused by guests to your property and belongings, offering the following insurance programs.",
+                            "Title_5": "Artwork and Other Valuables",
+                            "Title_6": "Vehicles and Boats",
+                            "Title_7": "Damage Caused by Pets",
+                            "Title_8": "Loss of Income",
+                            "Title_9": "Thorough Cleaning",
+                            "Title_10": "Liability Insurance",
+                            "Desc_5": "You are protected in case of injury to a guest or damage to or theft of their property.",
+                            "Title_11": "24/7 Security Hotline",
+                            "Desc_6": "If you feel unsafe, you can contact qualified advisors directly through the app—both day and night.",
+                            "Desc_7": "The comparison is based on public information and free offers from competitors as of October 2022. Detailed information can be found here.",
                             "Header_3": "Mandry",
-                            "Header_4": "Конкуренти",
-                            "DetailsButton": "Детальніше",
-                            "Title_12": "Ми в Mandry розуміємо, що хостинг іноді може бути пов'язаний з несподіваними проблемами. Саме тому ми розробили MandrySafe, нашу універсальну програму захисту, яка дарує вам повний спокій щоразу, коли ви приймаєте гостей у своєму домі.",
-                            "Desc_8": "Ми розуміємо, наскільки важливими є спокій та впевненість у будь-якій подорожі, тому створили MandrySafe — систему, що забезпечує турботу про кожного нашого користувача.",
-                            "Desc_9": "Комплексне покриття MandrySafe забезпечує широке покриття, від перевірки особи гостя до комплексного захисту від пошкодження майна. З покриттям до 3 мільйонів доларів США за пошкодження майна та 1 мільйона доларів США за страхування відповідальності, ви можете приймати гостей з упевненістю, знаючи, що ми вас захистимо.",
-                            "Desc_10": "Швидке та просте відшкодування у разі виникнення будь-яких проблем наш спрощений процес відшкодування гарантує, що ви отримаєте компенсацію швидко, мінімізуючи будь-які перебої в роботі хостингу.",
-                            "Desc_11": "Цілодобова підтримка Почувайтеся в безпеці в будь-який час завдяки нашій цілодобовій лінії безпеки, яка забезпечує негайний доступ до спеціально навчених агентів безпеки, готових допомогти вам у будь-який час.",
-                            "Desc_12": "MandrySafe автоматично включається в кожне бронювання, надаючи вам неперевершений захист без додаткових витрат. Незалежно від того, чи це невелика пляма, чи великий інцидент, MandrySafe гарантує, що ви та ваше майно завжди під захистом.",
-                            "MoreButton": "Дізнатись більше",
-                            "Desc_13": "Mandry дбає про кожного користувача: чому MandrySafe так важливий. На платформі Mandry ми ставимо безпеку та комфорт наших користувачів на перше місце. Кожна мандрівка — це унікальний досвід, і ми прагнемо зробити його максимально приємним і безпечним для кожного. ",
-                            "Desc_14": "MandrySafe забезпечує захист не лише для мандрівників, але й для господарів. Для мандрівників це означає впевненість у тому, що їхнє бронювання безпечне, житло відповідає опису, а в разі непередбачених ситуацій вони завжди можуть розраховувати на підтримку. Для господарів MandrySafe пропонує комплексний захист від збитків, страхування відповідальності та компенсацію втрат доходу.",
-                            "Header_5": "MandrySafe для Господарів",
-                            "Desc_15": "MandrySafe — це надійний захист для кожного господаря на платформі Mandry. Ми забезпечуємо вам безпеку, комфорт та спокій під час прийому гостей. MandrySafe робить прийом гостей надійним і безпечним, забезпечуючи вам захист на кожному кроці. Довіртеся нам і приймайте гостей без зайвих турбот! MandrySafe пропонує:",
-                            "TitleUnf_1": "Захист від збитків",
-                            "DescUnf_1": "Mandry надає господарям покриття збитків до $3 мільйонів, включаючи покриття витрат на ремонт та заміну пошкодженого майна, а також додаткові витрати на прибирання у разі незвичайних ситуацій​",
-                            "TitleUnf_2": "Страхування відповідальності",
-                            "DescUnf_2": "Автоматичне страхування відповідальності до $1 мільйона захищає господарів від позовів у разі травмування гостя або пошкодження його майна під час перебування в орендованому житлі​",
-                            "TitleUnf_3": "Система верифікації гостей",
-                            "DescUnf_3": "Mandry використовує розширену систему перевірки особи гостей, включаючи перевірку документів та аналіз попередніх відгуків, щоб зменшити ризик пошкодження майна та інших інцидентів​",
-                            "TitleUnf_4": "Захист від втрати доходу",
-                            "DescUnf_4": "Якщо через пошкодження, завдані гостем, господар не може прийняти наступних гостей, Mandry компенсує втрату доходу від скасованих бронювань",
-                            "TitleUnf_5": "Підтримка локального господаря",
-                            "DescUnf_5": "Якщо через пошкодження, завдані гостем, господар не може прийняти наступних гостей, Mandry компенсує втрату доходу від скасованих бронювань",
-                            "TitleUnf_6": "Система швидких виплат",
-                            "DescUnf_6": "Платформа забезпечує швидкий процес виплат компенсацій за збитки або втрачені доходи, щоб мінімізувати вплив на бізнес господарів​",
-                            "TitleUnf_7": "Рейтингова система для господарі",
-                            "DescUnf_7": "Mandry впроваджує систему рейтингів та відгуків для господарів, що дозволяє будувати довіру та підвищувати привабливість об'єктів нерухомості для потенційних гостей​"
+                            "Header_4": "Competitors",
+                            "DetailsButton": "Learn More",
+                            "Title_12": "At Mandry, we understand that hosting can sometimes be associated with unexpected challenges. That’s why we created MandrySafe, our universal protection program that gives you peace of mind every time you host guests in your home.",
+                            "Desc_8": "We understand how important peace and confidence are in any journey, which is why we created MandrySafe—a system that cares for each of our users.",
+                            "Desc_9": "MandrySafe provides comprehensive coverage, from guest identity verification to complete property damage protection. With coverage up to $3 million for property damage and $1 million for liability insurance, you can host guests with confidence, knowing we have your back.",
+                            "Desc_10": "Quick and Simple Compensation in Case of Issues—our streamlined reimbursement process ensures you get compensated quickly, minimizing any disruptions to your hosting.",
+                            "Desc_11": "24/7 Support—Feel safe anytime with our security hotline that provides immediate access to specially trained security agents ready to assist you at any time.",
+                            "Desc_12": "MandrySafe automatically applies to every booking, providing you with unparalleled protection at no additional cost. Whether it’s a small stain or a major incident, MandrySafe ensures that you and your property are always protected.",
+                            "MoreButton": "Learn More",
+                            "Desc_13": "Mandry cares for every user: why MandrySafe is so important. At Mandry, we prioritize the safety and comfort of our users. Every trip is a unique experience, and we strive to make it as pleasant and safe as possible for everyone.",
+                            "Desc_14": "MandrySafe provides protection not only for travelers but also for hosts. For travelers, it means confidence that their booking is safe, the property matches the description, and they can always rely on support in unforeseen situations. For hosts, MandrySafe offers comprehensive protection against damages, liability insurance, and compensation for lost income.",
+                            "Header_5": "MandrySafe for Hosts",
+                            "Desc_15": "MandrySafe is reliable protection for every host on the Mandry platform. We provide you with safety, comfort, and peace of mind while hosting guests. MandrySafe makes hosting reliable and safe, ensuring you are protected every step of the way. Trust us and host guests without unnecessary worries! MandrySafe offers:",
+                            "TitleUnf_1": "Damage Protection",
+                            "DescUnf_1": "Mandry provides hosts with damage coverage up to $3 million, including coverage for repair and replacement of damaged property, as well as additional cleaning costs in unusual situations.",
+                            "TitleUnf_2": "Liability Insurance",
+                            "DescUnf_2": "Automatic liability insurance up to $1 million protects hosts from claims in case of injury to a guest or damage to their property during their stay in the rental.",
+                            "TitleUnf_3": "Guest Verification System",
+                            "DescUnf_3": "Mandry uses an advanced guest identity verification system, including document checks and analysis of previous reviews, to reduce the risk of property damage and other incidents.",
+                            "TitleUnf_4": "Loss of Income Protection",
+                            "DescUnf_4": "If a host cannot accommodate subsequent guests due to damage caused by a guest, Mandry compensates for the loss of income from canceled bookings.",
+                            "TitleUnf_5": "Local Host Support",
+                            "DescUnf_5": "If a host cannot accommodate subsequent guests due to damage caused by a guest, Mandry compensates for the loss of income from canceled bookings.",
+                            "TitleUnf_6": "Fast Payment System",
+                            "DescUnf_6": "The platform provides a quick reimbursement process for damages or lost income to minimize the impact on hosts’ businesses.",
+                            "TitleUnf_7": "Rating System for Hosts",
+                            "DescUnf_7": "Mandry implements a rating and review system for hosts, allowing them to build trust and increase the attractiveness of their properties for potential guests."
                         },
                         "Answers": {
-                            "Header": "Відповіді на запитання",
-                            "Title_1": "Чи підходить моє житло для Mandry?",
-                            "Desc_1": "Гостей Mandry цікавить різне житло. У нас є мікробудинки, будиночки, будинки на дереві та багато іншого. Відмінним варіантом може бути вільна кімната.",
-                            "Title_2": "Чи обов'язково приймати гостей постійно?",
-                            "Desc_2": "Зовсім ні: які дати зробити доступними в календарі вирішуєте тільки ви. Здавати житло можна і щорічно, і кілька разів на місяць, і набагато частіше.",
-                            "Title_3": "Як часто потрібно контактувати із гостями?",
-                            "Desc_3": "Це вирішуєте ви. Деякі господарі обмежуються спілкуванням на важливих етапах бронювання (наприклад після прибуття), інші із задоволенням зустрічають гостей самі. Поступово ви дізнаєтесь, що підходить саме вам.",
-                            "Title_4": "Що б ви мені порадили, аби досягти успіху?",
-                            "Desc_4": "Важливо засвоїти базові правила. Підтримуйте чистоту та оперативно відповідайте гостям. Подбайте про необхідні зручності, наприклад свіжі рушники. Деякі господарі практикують індивідуальніший підхід: ставлять свіжі квіти або радять, які пам'ятки варто відвідати. Проте це необов'язко.",
-                            "Link_1": "Докладніше про прийом гостей",
-                            "Title_5": "Які збори стягує Mandry?",
-                            "Desc_5": "Сервісний збір Airbnb, як правило, фіксований і становить 3% від підсумування бронювання. Він стягується під час отримання виплати. Гості під час оформлення бронювання також сплачують збір. У багатьох регіонах компанія Mandry автоматично збирає та перераховує податок з продажу та туристичні податки від імені господарів.",
-                            "Link_2": "Детальніше"
+                            "Header": "Frequently Asked Questions",
+                            "Title_1": "Is my property suitable for Mandry?",
+                            "Desc_1": "Mandry guests are interested in various types of accommodation. We have tiny houses, cabins, treehouses, and much more. A spare room could be a great option.",
+                            "Title_2": "Do I have to host guests all the time?",
+                            "Desc_2": "Not at all: you decide which dates to make available on the calendar. You can rent your property annually, a few times a month, or much more frequently.",
+                            "Title_3": "How often do I need to contact guests?",
+                            "Desc_3": "That’s up to you. Some hosts only communicate at key stages of the booking (e.g., after arrival), while others enjoy greeting guests themselves. Gradually, you will learn what suits you best.",
+                            "Title_4": "What would you recommend for success?",
+                            "Desc_4": "It's important to master the basics. Keep things clean and respond promptly to guests. Ensure necessary amenities, like fresh towels. Some hosts take a more personalized approach: placing fresh flowers or suggesting local attractions. However, this is not required.",
+                            "Link_1": "Learn more about hosting",
+                            "Title_5": "What fees does Mandry charge?",
+                            "Desc_5": "The service fee on Airbnb is typically fixed at 3% of the booking total. It is deducted at the time of payment. Guests also pay a fee when making a booking. In many regions, Mandry automatically collects and remits sales tax and lodging taxes on behalf of hosts.",
+                            "Link_2": "Learn more"
+                        },
+                        "News": "Latest Community News",
+                        "NewsTitle_1": "MandrySafe: A New Level of Safety for Travelers",
+                        "NewsDesc_1": "Mandry introduces the new MandrySafe protection system, which ensures safety and comfort for travelers. Thanks to booking protection...",
+                        "NewsTitle_2": "MandrySafe for Hosts: Protecting Your Business",
+                        "NewsDesc_2": "Mandry launches MandrySafe for hosts, offering comprehensive protection during guest stays. Hosts receive coverage for damages...",
+                        "NewsTitle_3": "Start Your Business with Mandry: New Opportunities.",
+                        "NewsDesc_3": "Mandry launches the 'Mandry Start' program, which helps new hosts easily start a rental business. You gain access..."
+                    },
+                    "MandrySafe": {
+                        "PageTitle": "MandrySafe",
+                        "Header": "MandrySafe",
+                        "Title": "Frequently Asked Questions about MandrySafe",
+                        "Title_1": "MandrySafe Protection. What Does MandrySafe Cover?",
+                        "Desc_1": "Property Damage: Up to $3 million for repairs, replacements, and cleaning due to damage caused by guests.\nLiability Insurance: Up to $1 million for injuries or damages that occur during a guest's stay.\nLoss of Income: Compensation for lost income if a booking is canceled due to guest damage.\nGuest Verification: Thorough checks to prevent fraudulent or risky bookings.\n24/7 Security Support: Immediate access to security agents in case of emergencies.",
+                        "Title_2": "How to File a Claim under the MandrySafe Program?",
+                        "Desc_2": "To file a claim, simply visit the support section of the Mandry platform, go to the MandrySafe page, and submit your request. The process is streamlined for quick reimbursement, and most claims are resolved within a few days.",
+                        "Title_3": "Is There an Additional Fee for MandrySafe?",
+                        "Desc_3": "No, MandrySafe is automatically included in every booking on the Mandry platform at no extra cost to hosts. This ensures all hosts are protected without needing to select a separate insurance plan.",
+                        "Title_4": "What Types of Property Damage Are Covered?",
+                        "Desc_4": "MandrySafe covers a wide range of property damages, including:\nStructural damage\nBroken or damaged furniture and appliances\nStains and odors requiring professional cleaning\nDamage caused by unauthorized guests or pets. Certain exceptions may apply, so hosts should review the detailed terms available on the Mandry platform.",
+                        "Title_5": "Does MandrySafe Protect Against Guest Cancellations?",
+                        "Desc_5": "Yes, MandrySafe includes loss of income protection that compensates owners if a booking is canceled due to damage caused by a guest, rendering the property uninhabitable. This ensures owners do not suffer financial losses from cancellations beyond their control.",
+                        "Title_6": "How Does MandrySafe Verify Guests?",
+                        "Desc_6": "MandrySafe employs advanced identity verification and booking checks to ensure that only reliable guests are approved. This includes verifying personal information, background checks, and monitoring suspicious booking patterns.",
+                        "Title_7": "What Should I Do If I Feel Unsafe During a Guest's Stay?",
+                        "Desc_7": "If you ever feel unsafe, MandrySafe provides a 24/7 security hotline that connects you with qualified security agents. They are ready to assist you in any emergency or security issue, ensuring you always have support.\nThese FAQs provide a comprehensive understanding of MandrySafe and its benefits, helping hosts feel secure and supported on the Mandry platform.",
+                        "Title_1.2": "Key Features of MandrySafe:",
+                        "Title_8": "Guest Identity Verification:",
+                        "Desc_8": "Ensure that every guest undergoes thorough identity verification through document checks and personal information. This reduces the risk of fraud and provides hosts with peace of mind.",
+                        "Title_9": "Booking Verification:",
+                        "Desc_9": "MandrySafe includes a reliable booking verification process that flags any suspicious or risky bookings, ensuring that only trustworthy guests are approved.",
+                        "Title_10": "Property Damage Protection:",
+                        "Desc_10": "Coverage up to $3 million for any damage caused by guests during their stay. This includes repairs, replacements, and additional cleaning costs, such as stains, unpleasant odors, or unauthorized guests.",
+                        "Title_11": "Liability Insurance:",
+                        "Desc_11": "Hosts automatically receive liability insurance up to $1 million for injuries or damages that occur during a guest's stay. This also extends to incidents in common areas, such as building lobbies or shared spaces.",
+                        "Title_12": "Loss of Income Protection:",
+                        "Desc_12": "If a booking is canceled due to guest damage, owners receive compensation for lost income. This ensures that owners do not suffer financial losses from cancellations beyond their control.",
+                        "Title_13": "24/7 Security Support:",
+                        "Desc_13": "Access to a 24/7 security hotline that provides immediate assistance from qualified security agents when a host feels unsafe or faces an emergency.",
+                        "Title_14": "Flexible Reimbursement Process:",
+                        "Desc_14": "A streamlined and quick reimbursement process through the Mandry platform, ensuring prompt compensation for hosts in case of any damages or incidents."
+                    },
+                    "CancelReservation": {
+                        "PageTitle": "Cancellation of Reservation",
+                        "Header": "Cancellation Options and Force Majeure Conditions",
+                        "CancelationTitle": "Reservation Cancellation Options",
+                        "CancelationDesc_1": "Cancellation and refund for reservations on Mandry are governed by the cancellation policy specified in the listing.",
+                        "CancelationDesc_2": "However, in exceptional cases where large-scale events prevent the completion of a reservation or legally prohibit it, Force Majeure Rules may apply. In such cases, guests have the option to cancel their reservations and receive a refund, travel credit, or other compensation, regardless of the cancellation conditions defined in the listing. Hosts may also cancel reservations without penalties or other negative consequences, except for blocking dates in the calendar for the canceled reservation.",
+                        "Title_1": "Force Majeure Rules. What events do these rules cover?",
+                        "RuleInfo": "These rules apply to reservations for accommodations and experiences and are applicable to current bookings and those where the arrival date does not precede the effective date of the rules, unless Mandry informs users otherwise. The Force Majeure Rules are not an insurance policy.",
+                        "Title_2": "General Information",
+                        "Desc_1": "Generally, cancellations and refunds for reservations on Mandry are governed by the cancellation rules set out in the listing. In rare cases where large-scale events prevent the completion of a reservation or legally prohibit it, Force Majeure Rules (hereinafter referred to as 'rules') may apply. When these rules are applied, guests can cancel their reservations and receive a refund, travel credit, and/or other compensation regardless of the cancellation rules specified in the listing, while hosts can cancel reservations without fees or other negative consequences (except for blocking dates of the canceled reservation in the listing calendar).",
+                        "Title_3": "What events do the rules cover?",
+                        "Unfold_1": {
+                            "UnfTitle_1": "Declared health emergencies and epidemics.",
+                            "UnfDesc_1": "This includes epidemics, pandemics, and health emergencies declared by authorities. Endemic diseases (e.g., influenza) or those usually associated with a particular region (e.g., malaria in Thailand) are not included. The Force Majeure Rules do not cover COVID-19.",
+                            "UnfTitle_2": "Military operations and other hostilities.",
+                            "UnfDesc_2": "Military actions, hostilities, invasions, civil wars, terrorist acts, explosions, bombings, coups, riots, and uprisings.",
+                            "UnfTitle_3": "Travel restrictions imposed by authorities.",
+                            "UnfDesc_3": "Restrictions on travel imposed by government authorities that are mandatory (e.g., evacuation orders). This does not include travel advisories that are not mandatory and other recommendations from authorities.",
+                            "UnfTitle_4": "Natural disasters.",
+                            "UnfDesc_4": "Natural disasters and other severe weather conditions. Weather or natural conditions that are common enough to be considered predictable in a particular region (e.g., hurricanes occurring during hurricane season in Florida) are covered only if they lead to another event that falls under these rules and prevents the completion of the reservation (e.g., issuance of a mandatory evacuation order or major utility disruptions).",
+                            "UnfTitle_5": "Major disruptions in essential utilities",
+                            "UnfDesc_5": "Prolonged disruptions in essential utilities such as heating, water, and electricity supply in the majority of homes in a particular location."
+                        },
+                        "Title_4": "What happens if an event covered by the rules occurs?",
+                        "Desc_2": "When a specific large-scale event occurs, we assess the situation to determine if it falls under the Force Majeure Rules. If so, we activate the rules for the region where we believe such an event will hinder compliance with bookings or legally prohibit them (for the relevant period). Reservations outside the defined region and time period may not meet the criteria; however, hosts still have the right to cancel reservations without negative consequences if they cannot accommodate guests. We continuously monitor these situations and adjust coverage as conditions change. If you believe these rules apply to your reservation, contact us to check eligibility.",
+                        "Title_5": "What cases are not covered by the Rules?",
+                        "Desc_3": {
+                            "Desc_1": "We understand that certain circumstances beyond your control may disrupt your plans. In any situations not mentioned above, your reservation will continue to be subject to the cancellation rules set by the host for the listing.",
+                            "Desc_2": "Below are examples of common events not covered by these rules:",
+                            "Desc_3": "Events preventing a guest's arrival that do not relate to the region of the booked accommodation or experience.",
+                            "Desc_4": "Unexpected injury or illness.",
+                            "Desc_5": "Obligations imposed by authorities (e.g., duty to participate in jury duty or summons to court).",
+                            "Desc_6": "Non-mandatory travel recommendations or other government directives that do not constitute an official travel ban.",
+                            "Desc_7": "Cancellation or rescheduling of the event for which the reservation was made.",
+                            "Desc_8": "Transportation disruptions not related to an event covered by the rules (e.g., airline bankruptcies, carrier strikes, and road closures for maintenance).",
+                            "Desc_9": "For reservations not covered by these rules, we advise guests and hosts to reach a mutually acceptable agreement regarding full or partial refunds or changes to reservation dates. Note: Any refunds on terms not specified by the cancellation rules are at the discretion of the host. Mandry does not participate in such refunds and does not guarantee them."
+                        },
+                        "Title_6": "How do these rules affect hosts?",
+                        "Desc_4": "If a reservation falls under the Force Majeure Rules, hosts may cancel the reservation without penalties and other negative consequences. If a host cancels a reservation according to these rules, the dates of the canceled reservation will be blocked in the listing calendar. If a reservation is canceled under these rules, the host will not receive payment for the canceled reservation dates, or if payment has already been made, the amount of the refund will be deducted from the host's next payment(s).",
+                        "Desc_5": "Regardless of whether these rules apply to a specific reservation, hosts may cancel it for valid reasons (e.g., serious damage to the accommodation) without penalties or other negative consequences. Hosts are required to cancel reservations if their accommodation is uninhabitable or does not meet the conditions stated in the guest's booking; failure to do so may result in the removal of the accommodation from the platform, cancellation of existing reservations, and refunds to guests until the accommodation becomes habitable again and meets the listing description. Failure to comply with this obligation is also considered a violation of our core rules for hosts and may result in account removal.",
+                        "Info_1": "Note! These rules do not limit your rights under local regulations, and any decisions made by Mandry under these rules do not affect your legal rights.",
+                        "Title_7": "Cancellation Provision for Valid Reasons",
+                        "Desc_6": "If this provision allows for cancellation of a reservation, it takes precedence over the cancellation rules set by the host. Guests facing an event covered by this provision may cancel their reservation and receive, depending on the circumstances, a cash refund, travel credit, and/or other compensation. Hosts or organizers facing an event covered by this provision may cancel a reservation without negative consequences, but depending on the circumstances, the dates of the canceled reservation in their calendars may be blocked.",
+                        "RulesDateStart": "Effective Date: June 6, 2024.",
+                        "Title_8": "General Information",
+                        "Desc_7": "This provision for cancellation for valid reasons explains how cancellations are handled if unforeseen events arise after booking that are outside your control and make the completion of the reservation impossible or illegal. This provision applies to reservations for accommodations and experiences.",
+                        "Title_9": "What events do the rules cover?",
+                        "Unfold_2": {
+                            "UnfTitle_1": "Declared emergencies and epidemics.",
+                            "UnfDesc_1": "Unexpected changes in visa or passport requirements imposed by authorities that hinder arrival at the destination. This does not include loss or expiration of travel documents or other personal circumstances affecting the guest's right to travel.",
+                            "UnfTitle_2": "Travel restrictions imposed by authorities.",
+                            "UnfDesc_2": "Declared local or national emergencies, epidemics, pandemics, and health emergencies announced by authorities. This does not include diseases that are endemic or usually associated with a particular region (e.g., malaria in Thailand or dengue fever in Hawaii).",
+                            "UnfTitle_3": "Natural disasters.",
+                            "UnfDesc_3": "Natural disasters, large-scale outages of essential utilities, volcanic eruptions, tsunamis, and other severe and abnormal weather phenomena. This does not include weather or natural conditions that are common enough to be predictable in the region (e.g., hurricanes occurring during hurricane season in Florida).",
+                            "UnfTitle_4": "Military operations and other hostilities.",
+                            "UnfDesc_4": "Travel restrictions imposed by governmental authorities that hinder arrival at, stay in, or return from the accommodation or prohibit such actions. This does not include non-mandatory travel advisories and other recommendations from authorities."
+                        },
+                        "Title_10": "What cases are not covered by the Provision?",
+                        "Desc_8": "This provision allows for the cancellation of reservations only in the case of the events described above. In any other circumstances, the provision does not apply. Examples of situations where this provision does not allow for reservation cancellation include:",
+                        "Title_11": "What's next?",
+                        "Desc_9": "If we send you a notification or publish information confirming that this provision applies to your booking, please follow the instructions we provide for canceling your booking. When we notify you or publish information about the application of this provision, you will have the opportunity to cancel your booking in accordance with this provision. To do this, you need to go to the 'travel' page and cancel the relevant booking. If you believe this provision applies to your booking but we have not notified you or published information about the event, please contact us to cancel your booking. In any case, you should be prepared to provide documentation that proves how the event relates to you or your booking.",
+                        "Info_2": "Please note! This provision applies to all bookings where the arrival date does not precede the date of the provision's entry into force.",
+                        "News": {
+                            "Header": "Community News",
+                            "Title_1": "How is the forum useful? Get professional answers to your questions.",
+                            "Desc_1": "For property owners: The forum helps you understand how to better present your property, what services to add to attract...",
+                            "Title_2": "Rules for using the chat for property owners on 'Mandry'.",
+                            "Desc_2": "Respectful communication: Please adhere to the culture of communication, respect the opinions and rights of other users...",
+                            "Title_3": "The 'Mandry' forum — your space for communication, experience, and interaction.",
+                            "Desc_3": "In a world where online platforms are becoming an integral part of our daily lives, 'Mandry' offers something bi..."
                         }
-
+                    },
+                    "Disabled": {
+                        "PageTitle": "Accessibility and Support",
+                        "Title": "Support for People with Disabilities",
+                        "Header": "Accessibility and Care for People with Special Needs",
+                        "Info_1": "Everyone should be able to travel — without restrictions and compromises. At Mandry, we strive to create a world where comfort and accessibility become not just an option but a standard for every traveler, regardless of their physical abilities. We believe that everyone has the right to unforgettable journeys, and we do everything possible to ensure you can enjoy the freedom to move and discover new horizons without obstacles.",
+                        "Title_1": "Mandry Cares About Comfort and Convenience",
+                        "Desc_1": "Mandry has created comfortable conditions for travelers with special needs. Our goal is to make your travels safe and comfortable. Here’s how we ensure accessibility for every user:",
+                        "Desc_2": "Adapted Living Spaces: Our website features specially adapted homes and apartments that fully meet the needs of people with limited physical abilities. All properties are verified for compliance with accessibility criteria, including the presence of ramps, wide doors, and more.",
+                        "Desc_3": "Enhanced Search Filter: We have developed an improved filter that allows you to quickly find accommodations that meet your needs. You can filter options by accessibility level, including the availability of elevators, handrails, specialized furniture, and other important amenities.",
+                        "Desc_4": "Additionally, the filter allows you to select by type of accommodation, number of rooms, location, and price range. This significantly simplifies the search and makes it more efficient for every traveler. Our updates are aimed at making your experience on the Mandry platform even more comfortable and quicker.",
+                        "Desc_5": "Direct Communication with Hosts: To ensure maximum convenience and clarity, you have the option to communicate directly with accommodation hosts. This allows you to discuss all details related to accessibility and special needs before booking, ensuring your requirements are fully considered.",
+                        "Desc_6": "Medical Personnel and Caregiver Services: To ensure your safety and comfort during your travels, we provide medical personnel and caregiver services. You can request these services when booking, and we will ensure that qualified professionals are at your disposal.",
+                        "Desc_7": "At Mandry, we believe that everyone has the right to comfortable and safe travels. Our platform provides all the necessary conditions for people with special needs so that you can enjoy new places without worrying about the details.",
+                        "Title_2": "Mandry Cares About Comfort and Convenience",
+                        "Unfold": {
+                            "Title_1": "How is the availability of specified amenities confirmed for the 'Adapted' category?",
+                            "Desc_1": "Using special cameras, we create 3D models of each house in this category. We then analyze them to confirm the characteristics of the accessible environment.",
+                            "Title_2": "How to use filters during the search?",
+                            "Desc_2": "If you enable the filters, we will only show listings with the necessary amenities. Read about how to search for accommodations and Experiences with accessible environments.",
+                            "Title_3": "How does Mandry verify elements of the accessible environment?",
+                            "Desc_3": "Hosts are required to upload photographs of the accessible environment. Experience organizers provide descriptions of such amenities. Then Mandry specialists verify the accuracy of the photos and the quality of the text.",
+                            "Title_4": "Can I bring an accompanying person to an Experience?",
+                            "Desc_4": "Experience organizers may allow accompanying persons to participate in the event for free. Accompanying persons are considered to be individuals aged 18 and over who assist persons with disabilities, mental disorders, or chronic illnesses. Review the rules for accompanying persons.",
+                            "Title_5": "Can I bring a service animal?",
+                            "Desc_5": "Service animals are essential to their owners. Therefore, during booking, guests are not required to inform about the presence of a service animal. However, we recommend doing so to avoid misunderstandings. Review the rules regarding service animals.",
+                            "Title_6": "How can hosts assist guests with special needs?",
+                            "Desc_6": "Accessibility requirements vary for each individual. Therefore, we train hosts on how to write clear and understandable descriptions and strongly recommend communicating with guests, asking and answering questions. Learn how to provide a warm welcome to guests with limited mobility. Review the policy regarding guests with special needs.",
+                            "Title_7": "How to add elements of the accessible environment to the listing?",
+                            "Desc_7": "Creating an accessible environment isn’t too complicated. Hosts can describe each room separately. Each element of the accessible environment needs to be confirmed with a clear photograph. Learn how to add elements of the accessible environment to your accommodation listing. Here you can read how to do the same for Experiences."
+                        },
+                        "News": {
+                            "Header": "Latest News with Care at Mandry",
+                            "Title_1": "Updated Rules for Hosting Guests with Disabilities",
+                            "Desc_1": "The Mandry portal is implementing updated standards for hosting guests with disabilities, ensuring comfort and safety. Mandry announces that...",
+                            "Title_2": "New Services at Mandry: Caregiver.",
+                            "Desc_2": "Mandry launches medical accompaniment and caregiver services for travelers with special needs. The Mandry portal...",
+                            "Title_3": "New Search: Filters for Accessible Housing",
+                            "Desc_3": "Mandry is implementing an enhanced search filter for people with disabilities. A new search filter has appeared on the Mandry platform that..."
+                        }
                     }
                 }
             }
         }
     },
-
     "FavsPage": {
         "Caption": "Favourites",
         "Edit": "Edit"
     },
-
     "SearchPage": {
         "SearchPanel": {
             "Filters": {
@@ -455,11 +593,284 @@
             }
         }
     },
-
     "Popups": {
         "Destinations": {
             "Empty": "Not found",
             "Loading": "Searching..."
         }
+    },
+    "Titles": {
+        "AccountPage": "Profile - Navigation",
+        "FavouritesPage": "Profile - Favorites",
+        "ProfileInfoPage": "Profile - Information",
+        "NotificationsPage": "Profile - Notifications",
+        "ProfilePage": "Profile",
+        "VerificationPage": "Profile - Verification",
+        "TravelsPage": "Profile - Travels",
+        "ContactsPage": "Contacts",
+        "FooterCommunityChat": "Community Chat",
+        "FooterFeedback": "Requests and Complaints",
+        "FooterInvestments": "For Investors",
+        "NewsPage": "News",
+        "PromotionsSection": "Promotional Offers",
+        "HelpCenter": "Help Center",
+        "HousingLoading": "Loading Housing Information",
+        "PaymentPage": "Booking - {{name}}",
+        "SearchPage": "Search"
+    },
+    "Components": {
+        "News": {
+            "More": "More"
+        }
+    },
+    "InvestmentsPage": {
+        "Header": "Attractiveness for Investors Investing in Mandry",
+        "HeaderPanel": {
+            "Title": "Help Center",
+            "BreadCrumbs": {
+                "Crumb1": "Home",
+                "Crumb2": "All Topics",
+                "Crumb3": "For Investors"
+            }
+        },
+        "Intro": {
+            "Text1": "Mandry is not just a rental platform. It’s an innovative project that connects travelers with hosts and hotels, offering unique accommodation options and reliable service. Investing in Mandry is an opportunity to be part of a growing market and to achieve stable profits.",
+            "Text2": "Investing in Mandry is an opportunity to support a promising project in the tourism industry, combining technological innovations, effective management, and enormous growth potential. We invite investors to join the platform's development and benefit from the growth of the tourism market together with Mandry!",
+            "Text3": "Investments in the Mandry platform offer a stable prospect due to the growing market for tourism services and high demand for short-term rental housing."
+        },
+        "Advantages": {
+            "Header": "Key Advantages for Investors:",
+            "Text1": "High Growth Potential of the Tourism Market The tourism industry continues to demonstrate steady growth, especially in the alternative accommodation segment, such as private homes, apartments, and local hotels. The Mandry platform is focused on travelers seeking authentic experiences and attractive offers, creating excellent conditions for rapid user growth.",
+            "Text2": "Flexible and Innovative Business Model Unlike many other market players, Mandry offers hosts low commissions and transparent cooperation terms, attracting more landlords and hotels. This allows the platform to quickly increase the number of accommodation listings, which in turn stimulates increased demand among travelers.",
+            "Text3": "Expansion into International Markets Mandry plans active expansion into international markets, starting with countries in Europe and Asia, significantly increasing the potential for attracting new clients and increasing profits. Investing in the platform at this stage of expansion opens unique opportunities for investors to maximize returns from business growth.",
+            "Text4": "Loyalty Programs for Travelers and Hosts Mandry actively implements innovative bonus programs for travelers and hosts, enhancing user loyalty and reducing marketing costs and new customer acquisition. Investors will benefit from an increase in the number of loyal users, positively impacting the platform’s revenue stability.",
+            "Text5": "Technological Innovations Mandry is developing its own mobile app, providing travelers with easy access to booking accommodations and allowing hosts to manage listings effortlessly. Investments in technological solutions will enhance platform efficiency and increase competitiveness.",
+            "Text6": "Transparent Financial Model Mandry adheres to a transparent business model, providing investors with a clear understanding of financial results and future prospects. With precise cost control and effective resource management, the platform can ensure stable income for its investors."
+        },
+        "Packages": {
+            "Header": "Here are four investment packages for the Mandry platform, where investors can choose different levels of investment—from $10,000 to $200,000:",
+            "Text": "Investing in the Mandry platform is a profitable opportunity for investors looking for a promising and rapidly growing business in the tourism service sector. The platform offers unique opportunities for market expansion and increased profitability, making investments in Mandry reliable and promising.",
+            "ButtonText": "Contact Us",
+            "Package1": {
+                "Header": "Starter Package – $10,000",
+                "Item1": "Return on Investment: within 24-36 months",
+                "Item2": "Annual Income: $2,000 – $3,000",
+                "Item3": "Features: This package allows the investor to join the project in its early stages with minimal risk. You will receive a 2-3% annual return, the opportunity to participate in special promotions of the platform, and priority access to new Mandry features."
+            },
+            "Package2": {
+                "Header": "Strategic Package – $50,000",
+                "Item1": "Return on Investment: within 18-24 months",
+                "Item2": "Annual Income: $10,000 – $15,000",
+                "Item3": "Features: The investor will gain access to strategic decisions and participation in the platform's development. This package provides a stable source of income, increased profits with the growing popularity of Mandry, as well as a share in the company."
+            },
+            "Package3": {
+                "Header": "Premium Package – $100,000",
+                "Item1": "Return on Investment: within 12-18 months",
+                "Item2": "Annual Income: $20,000 – $30,000",
+                "Item3": "Features: This package gives the investor significant influence over Mandry's business strategy. The investor receives an annual return of 20-30% on investments, a share in the company, and priority participation in new projects and international expansions of the platform."
+            },
+            "Package4": {
+                "Header": "Exclusive Package – $200,000",
+                "Item1": "Return on Investment: within 9-12 months",
+                "Item2": "Annual Income: $40,000 – $60,000",
+                "Item3": "Features: The maximum package, which provides exclusive access to project management and voting rights on key business decisions. The investor becomes the main partner of the platform, receiving the highest income and the opportunity to influence the further development of Mandry, including global expansion."
+            }
+        },
+        "News": {
+            "Header": "Latest News",
+            "Item1": {
+                "Header": "Mandry—New Opportunities for Investors.",
+                "Text": "Dear Investors! We are pleased to announce the rapid growth of the Mandry platform, which has become a favorite destination for travelers seeking..."
+            },
+            "Item2": {
+                "Header": "Launching an Innovative Bonus Program!",
+                "Text": "Mandry is pleased to announce the launch of an innovative bonus program for travelers, which will create a new incentive for attracting users and..."
+            },
+            "Item3": {
+                "Header": "Mandry is Always Looking for New Investment Markets.",
+                "Text": "We are happy to report that Mandry is expanding its collaboration with hotels and private hosts in new regions. Thanks to this step, the platform..."
+            }
+        }
+    },
+    "FeedbackPage": {
+        "Title": "Help Center",
+        "BreadCrumbs": {
+            "Crumb1": "Home",
+            "Crumb2": "All Topics",
+            "Crumb3": "Write a Review or Complaint"
+        },
+        "Header": "Your Thoughts Matter",
+        "Intro": {
+            "Header": "Reviews and Complaints: A Path to Improving Your Experience on 'Mandra'",
+            "Text1": "We believe that every user’s opinion matters. Reviews and complaints help us not only maintain a high level of service but also continuously improve our product. Every review you leave is an opportunity for us to understand what we are doing right and what needs work.",
+            "Text2": "Complaints, although sometimes unpleasant, are an invaluable source of information. They allow us to respond quickly to issues and rectify them.",
+            "Text3": "Thanks to your honest and constructive criticism, we can create a safe, comfortable, and convenient environment for all users of 'Mandra'—both for those renting out their properties and those seeking the best accommodation options.",
+            "Text4": "We encourage you to share your experiences—both positive and negative. Your opinion helps make 'Mandra' better for each of us. Thank you for your support and active participation in the platform's development!"
+        },
+        "Feedback": {
+            "Header": "Reviews: Why They Matter and How They Change Business?",
+            "Text1": "In today's world, reviews have become an integral part of any business's success. They act as a mirror reflecting how customers perceive a product or service. But why are reviews so important?",
+            "Text2": "Reviews are a powerful tool for business development, building trust, and improving quality. They represent the voice of customers that companies cannot ignore. Therefore, any business striving for success should pay close attention to reviews and continuously work to make them the best they can be.",
+            "Items": {
+                "Item1": {
+                    "Header": "1. Trust and Reputation",
+                    "Text": "When potential customers seek information about a product or service, they often look to the experiences of others. Reviews provide social proof of quality. The more positive reviews, the more new customers."
+                },
+                "Item2": {
+                    "Header": "2. Improving Product Quality",
+                    "Text": "There are no perfect products or services, and reviews help identify weaknesses. With feedback, we can quickly address issues and make necessary changes, enhancing overall customer satisfaction."
+                },
+                "Item3": {
+                    "Header": "3. Building Customer Relationships",
+                    "Text": "Responding to reviews shows that we care about our customers' opinions. This increases loyalty. Even negative reviews can become a basis for growth if we respond correctly."
+                },
+                "Item4": {
+                    "Header": "4. Increasing Online Visibility",
+                    "Text": "Search engine algorithms and review platforms, such as Google, pay attention to the quantity and quality of reviews. The more positive reviews we receive, the higher our ranking in search results."
+                },
+                "Item5": {
+                    "Header": "5. Motivation for Employees",
+                    "Text": "When the team sees that their work is appreciated, it boosts their confidence and motivation to work even better. Positive reviews are not just about customers; they also reflect the internal culture of the company."
+                },
+                "Item6": {
+                    "Header": "You can leave a review at the link",
+                    "ButtonText": "Write a Review"
+                }
+            }
+        },
+        "Complaints": {
+            "Header": "Complaints: Why They Are Just as Important as Reviews?",
+            "Text1": "Customer complaints are often perceived by businesses as a negative factor. However, complaints are extremely valuable for the company. They provide opportunities for growth, improvement, and maintaining high-quality service. Let’s explore why complaints are important and why they should be taken seriously.",
+            "Text2": "Complaints are not just criticism but a source of development and improvement. A proper approach to them allows us not only to correct mistakes but also to create even better products and services. A successful business is one that knows how to listen to its customers and respond to their needs, even when expressed through complaints.",
+            "Items": {
+                "Item1": {
+                    "Header": "1. Identifying Problems",
+                    "Text": "Complaints help us see what may not always be noticeable. They often point to systemic issues affecting customer experience. Through complaints, we can promptly correct deficiencies."
+                },
+                "Item2": {
+                    "Header": "2. Opportunities for Improvement",
+                    "Text": "When a customer expresses dissatisfaction, it’s a chance for us to review our processes, enhance our products, or improve our service. The more attention we pay to these remarks, the more effectively we develop."
+                },
+                "Item3": {
+                    "Header": "3. Increasing Loyalty",
+                    "Text": "A proper response to a complaint can turn a dissatisfied customer into a loyal advocate for the company. When we respond promptly, the customer feels heard. This builds trust."
+                },
+                "Item4": {
+                    "Header": "4. Avoiding Reputational Risks",
+                    "Text": "Negative comments, especially if not addressed in a timely manner, can impact a company's reputation. Timely responses to complaints help avoid such situations and maintain a positive image."
+                },
+                "Item5": {
+                    "Header": "5. Learning from Mistakes",
+                    "Text": "No business is immune to mistakes. However, complaints provide an opportunity to learn from these mistakes and avoid repeating them in the future. They help eliminate weaknesses."
+                },
+                "Item6": {
+                    "Header": "You can leave a complaint at the link",
+                    "ButtonText": "Write a Complaint"
+                }
+            }
+        },
+        "Call": {
+            "Header": "Sometimes there are emergencies or conflicts that need to be resolved immediately!",
+            "Text1": "You can report a party, a noise complaint, or concerns about the neighborhood here.",
+            "Text2": "Send us a message using the button below. Our team will investigate the request and get back to you via email.",
+            "Text3": "In emergencies: if you feel in danger or are concerned about your or someone else's well-being, please contact local emergency services immediately.",
+            "Text4": "If there’s a party or a disturbance happening nearby, please contact Local Support.",
+            "ButtonText1": "Report a Problem",
+            "ButtonText2": "Request a Callback"
+        },
+        "News": {
+            "Header": "Latest News",
+            "Item1": {
+                "Header": "What is the forum useful for? Get professional answers to your questions.",
+                "Text": "For property owners: The forum helps understand how to better present their properties, what services to add to attract..."
+            },
+            "Item2": {
+                "Header": "Rules for using chat for property owners on 'Mandra'.",
+                "Text": "Respectful communication: Please adhere to communication etiquette, respect the opinions and rights of other users..."
+            },
+            "Item3": {
+                "Header": "'Mandra' Forum — your space for communication, experience, and interaction.",
+                "Text": "In a world where online platforms are becoming an integral part of our daily lives, 'Mandra' offers something unique..."
+            }
+        }
+    },
+    "CommunityChat": {
+        "Title": "Community Chat",
+        "Header": "Communicate and grow together with host users like you",
+        "BreadCrumbs": {
+            "Crumb1": "Home",
+            "Crumb2": "All Topics",
+            "Crumb3": "Community Chat"
+        },
+        "Intro": {
+            "Text1": "The community forum on the ‘Mandri’ platform is a unique space for communication, sharing experiences, and interaction among all platform participants. Whether you are a property owner looking to list your advertisement or a traveler searching for the perfect place to relax, the forum will provide you with plenty of opportunities.",
+            "Text2": "The community forum on the ‘Mandri’ platform is a unique space for communication, sharing experiences, and interaction among all platform participants. Whether you are a property owner looking to list your advertisement or a traveler searching for the perfect place to relax, the forum will provide you with plenty of opportunities. It’s a place to receive helpful tips, find inspiration for new travels, and discuss important issues with other community members.",
+            "Text3": "On the forum, you can share your own travel experiences, discuss favorite destinations, and get recommendations from experienced travelers. Property owners can find useful tips on improving their offerings and interacting with guests. Join the discussions, ask questions, and discover new opportunities on our platform!",
+            "Labels": {
+                "Label1": "Ask about your listing",
+                "Label2": "Tips for your space",
+                "Label3": "Help for your business",
+                "Label4": "Support during booking",
+                "Label5": "Community Café",
+                "Label6": "Host Circle"
+            }
+        },
+        "About": {
+            "Header": "What the community forum provides:",
+            "Text1": "<textDec>Advice and recommendations from experienced participants:</textDec> You will find useful tips from property owners who have successfully listed their properties. They will help you avoid common mistakes and make your offering more appealing to guests.",
+            "Text2": "<textDec>Feedback and support:</textDec> Travelers can share their impressions and provide feedback about the places they’ve visited. This helps improve service quality and makes the experience on the ‘Mandri’ platform even more comfortable.",
+            "Text3": "<textDec>Opportunity to resolve any issues:</textDec> If you have questions or difficulties while using the platform, you will always find help from other participants or the ‘Mandri’ support team on the forum.",
+            "Text4": "<textDec>Exchange of ideas and inspiration:</textDec> The forum is also a great place to seek new ideas and inspiration. Here, you can discuss new travel trends, learn about unusual destinations, or propose your ideas for improving the platform.",
+            "Text5": "The forum helps all participants of the ‘Mandri’ platform feel part of a community where everyone can find support, assistance, and inspiration. It’s a place where trust is built between property owners and travelers, and where new ideas and projects emerge.",
+            "Text6": "Join the ‘Mandri’ forum and become part of a vibrant community where everyone can find something valuable for themselves!"
+        },
+        "News": {
+            "Header": "Current Community News",
+            "Items": {
+                "Item1": {
+                    "Header": "What’s useful about the forum? Get professional answers to your questions.",
+                    "Text": "For property owners: The forum helps understand how to better present your property, what services to add to attract..."
+                },
+                "Item2": {
+                    "Header": "Rules for using the chat for property owners on ‘Mandri’.",
+                    "Text": "Respectful communication: Please adhere to communication etiquette, respecting the opinions and rights of other users..."
+                },
+                "Item3": {
+                    "Header": "The ‘Mandri’ forum — your space for communication, experience, and interaction.",
+                    "Text": "In a world where online platforms are becoming an integral part of our daily lives, ‘Mandri’ offers something unique..."
+                }
+            }
+        }
+    },
+    "Notifications": {
+        "NotificationsList": {
+            "Header": "All Messages",
+            "SearchPlaceholder": "Search among all messages",
+            "NoNotification": "You have no messages",
+            "NoNotificationDescription": "When you receive a new message, it will appear here.",
+            "ClearSort": "Clear all filters"
+        },
+        "NotificationsDropdown": {
+            "Unread": "Unread",
+            "All": "All",
+            "Travels": "Travels",
+            "Support": "Support"
+        },
+        "NotificationsModal": {
+            "Header": "Notification Settings",
+            "Archive": "Archive",
+            "Feedback": "Leave Feedback"
+        },
+        "DetailsList": {
+            "Header": "Details"
+        }
+    },
+    "Travels": {
+        "Header": "Travels",
+        "NoReserved": "No reserved travels... yet!",
+        "NoReservedDesc": "It's time to pack your bags and plan a new adventure.",
+        "StartSearch": "Start searching",
+        "CantFindRes": "Can't find your reservation here?",
+        "ToFAQ": "Visit the Help Center"
     }
 }
