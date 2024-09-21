@@ -872,5 +872,10 @@
         "StartSearch": "Start searching",
         "CantFindRes": "Can't find your reservation here?",
         "ToFAQ": "Visit the Help Center"
+    },
+    "Currency": {
+        "USD": "Dollar",
+        "EUR": "Euro",
+        "UAH": "Hryvnia"
     }
 }

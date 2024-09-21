@@ -103,14 +103,14 @@ export default function HelpCenter() {
                     </div>
 
                     <div className='panel-link'
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/community-chat')}
                     >
                         <img src={messagesIcon} />
                         {t('MainPage.Sections.Footer.Pages.HelpCenter.Panels.Chat')}
                     </div>
 
                     <div className='panel-link'
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/disabled')}
                     >
                         <img src={wheelchairIcon} />
                         {t('MainPage.Sections.Footer.Pages.HelpCenter.Panels.Accessibility')}
@@ -131,7 +131,7 @@ export default function HelpCenter() {
                     </div>
 
                     <div className='panel-link'
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/investments')}
                     >
                         <img src={housePlusIcon} />
                         {t('MainPage.Sections.Footer.Pages.HelpCenter.Panels.Temporary')}
@@ -145,7 +145,7 @@ export default function HelpCenter() {
                     </div>
 
                     <div className='panel-link'
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/feedback')}
                     >
                         <img src={chartIcon} />
                         {t('MainPage.Sections.Footer.Pages.HelpCenter.Panels.QoC')}
@@ -180,7 +180,7 @@ export default function HelpCenter() {
                     </div>
 
                     <div className='panel-link'
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/mandrysafe')}
                     >
                         <img src={shieldIcon} />
                         {t('MainPage.Sections.Footer.Pages.HelpCenter.Panels.Safety')}
