@@ -182,6 +182,113 @@
             "Link": "Add Interests"
         }
     },
+    "Modals": {
+        "TextPrompt": {
+            "ContinueButtonLabel": "Continue"
+        },
+        "SignUp": {
+            "PasswordConfirmation": "Confirm password"
+        },
+        "SignUpAgreement": {
+            "Caption": "Our Community Guidelines",
+            "Definition": "<decoratedName>Mandry</decoratedName> is a community open to all.",
+            "ProceedToAgreement": "To ensure this, we ask you to accept the commitments listed below.",
+            "Agreement": "I agree to treat all members of the Mandry community with respect, without judgment or prejudice, regardless of their race, religion, national origin, ethnicity, skin color, physical abilities, gender, gender identity, sexual orientation, or age.",
+            "More": "Learn more",
+            "ContinueBtnLabel": "Agree and Continue",
+            "BackBtnLabel": "Back"
+        },
+        "Rules": {
+            "Caption": "Our Community Guidelines",
+            "Definition": "<decoratedName>Mandry</decoratedName> is a community open to all.",
+            "ProceedToAgreement": "To ensure this, we ask you to accept the commitments listed below.",
+            "Agreement": "I agree to treat all members of the Mandry community with respect, without judgment or prejudice, regardless of their race, religion, national origin, ethnicity, skin color, physical abilities, gender, gender identity, sexual orientation, or age.",
+            "BackButton": "Back",
+            "Rules": {
+                "Caption": "About the Community Guidelines",
+                "Rule1": {
+                    "Title": "Why is this commitment required on Mandry?",
+                    "Text1": "This commitment is a crucial step in building a global community where everyone belongs. Discrimination prevents hosts, guests, and their families from feeling welcome, and we will not tolerate it. We can build an inclusive Mandry community only if everyone understands this mission and helps us achieve it."
+                },
+                "Rule2": {
+                    "Title": "What happens if I refuse to accept the commitment?",
+                    "Text1": "If you refuse to accept the commitment, you will not be able to host guests or book through Mandry. You will only have the option to delete your account. Once the account is deleted, any booked trips will be canceled. You will still be able to browse Mandry but will not be able to make bookings or host guests."
+                },
+                "Rule3": {
+                    "Title": "What should I do if, as a host, I’m unsure if it’s safe to accept bookings from any user?",
+                    "Text1": "If you share your accommodation with a guest, you can limit access to guests of your gender.",
+                    "Text2": "Under this policy, you can also decline a guest for other reasons, but not based on race, religion, national origin, ethnicity, sexual orientation, or age.",
+                    "Text3": "Overall, when considering a booking request, reflect on your reasons to ensure that bias does not influence your decision."
+                },
+                "Rule4": {
+                    "Title": "What should I do if local laws prohibit hosting certain guests?",
+                    "Text1": "Clearly post any legal restrictions in your listing, specifying that this is a legal requirement in your region and that you are complying with local laws."
+                },
+                "Rule5": {
+                    "Title": "Can I decline requests from guests with disabilities if I believe my property is not suitable for them?",
+                    "Text1": "In most cases, Mandry hosts are not required to modify their properties to meet the standards set by the U.S. Americans with Disabilities Act (ADA). However, you cannot decline a booking request based on a guest's actual or perceived disability. You should provide accurate information about the availability (or lack) of accessibility features in your property, allowing the guest to make an informed decision."
+                },
+                "Rule6": {
+                    "Title": "What if I have additional questions about the commitment?",
+                    "Text1": "Check the frequently asked questions in the <link1>Non-discrimination Help Center.</link1> You can also visit our <link2>Host Resources</link2>, which contain answers to common host questions regarding Mandry's Non-discrimination Policy."
+                }
+                
+            }
+        },
+        "SignUpError": {
+            "InvalidData": {
+                "Caption": "Invalid data!",
+                "Text": "Enter valid information to continue registration."
+            },
+            "UserExist": {
+                "Caption": "An account with this information already exists!",
+                "Text": "Enter correct information to continue registration, or <signInLink>sign in.</signInLink>"
+            },
+            "Unknown": {
+                "Caption": "Unknown error!",
+                "Text": "An unknown error occurred during registration."
+            }
+        },
+        "CreateProfile": {
+            "Caption": "Create a Profile",
+            "Greet": "Welcome to <decoratedName>Mandry</decoratedName>",
+            "Text": "Discover places to stay and unique experiences around the world.",
+            "ButtonLabel": "Continue"
+        },
+        "Filters": {
+            "Header": "Filters",
+            "Clear": "Clear All",
+            "Search": "Show {{number}}+",
+            "Sections": {
+                "AppliedFilters": {
+                    "Header": "Selected"
+                },
+                "Rooms": {
+                    "Header": "Rooms and Beds"
+                },
+                "Price": {
+                    "Header": "Price Range",
+                    "Label": "Per night",
+                    "PriceRange": "<currencyDec>{{currency}}</currencyDec> {{valueFrom}} - <currencyDec>{{currency}}</currencyDec> {{valueTo}}+"
+                },
+                "Category": {
+                    "Header": "Property Type"
+                },
+                "Features": {
+                    "Header": "Amenities"
+                },
+                "Reservations": {
+                    "Header": "Booking Options",
+                    "Instant": "Instant Booking",
+                    "Self": "Self Check-in",
+                    "Pets": "Pet-friendly"
+                },
+                "Languages": {
+                    "Header": "Host Language"
+                }
+            }
+        }
+    },
     "Validation": {
         "SignIn": {
             "Messages": {
@@ -193,7 +300,36 @@
                 "Password": {
                     "Required": "Password is required.",
                     "FailedAttempt": "Could not send code to this phone number. Try using another number."
+                },
+                "Phone": {
+                    "Required": "Phone number is required.",
+                    "FailedAttempt": "Unable to send the code to this phone number. Please try a different number."
                 }
+            }
+        },
+        "SignUp": {
+            "Name": {
+                "Required": "Name is required."
+            },
+            "BirthDate": {
+                "Required": "Birth date is required.",
+                "Invalid": "Invalid birth date."
+            },
+            "Email": {
+                "Required": "Email is required.",
+                "Invalid": "Enter a valid email address."
+            },
+            "Password": {
+                "Required": "Enter a password.",
+                "Invalid": "Enter a valid password format.",
+                "NotEqual": "Passwords do not match."
+            },
+            "Phone": {
+                "Required": "Enter a phone number."
+            },
+            "Attempt": {
+                "Invalid": "Invalid credentials, please ensure all requirements are met.",
+                "Conflict": "An account with these details already exists."
             }
         }
     },
@@ -558,6 +694,7 @@
         "Caption": "Favourites",
         "Edit": "Edit"
     },
+
     "SearchPage": {
         "SearchPanel": {
             "Filters": {
@@ -575,6 +712,7 @@
                     }
                 },
                 "FilterRooms": {
+                    "NotSelected": "Not selected",
                     "Selector": {
                         "Label": "Rooms and sleeping spaces",
                         "Options": {
@@ -591,6 +729,10 @@
                     "Label": "Filters"
                 }
             }
+        },
+        "SearchResult": {
+            "Bedrooms_one": "{{number}} bedroom",
+            "Bedrooms_many": "{{number}} bedrooms"
         }
     },
     "Popups": {
@@ -701,11 +843,11 @@
         },
         "Header": "Your Thoughts Matter",
         "Intro": {
-            "Header": "Reviews and Complaints: A Path to Improving Your Experience on 'Mandra'",
+            "Header": "Reviews and Complaints: A Path to Improving Your Experience on 'Mandry'",
             "Text1": "We believe that every user’s opinion matters. Reviews and complaints help us not only maintain a high level of service but also continuously improve our product. Every review you leave is an opportunity for us to understand what we are doing right and what needs work.",
             "Text2": "Complaints, although sometimes unpleasant, are an invaluable source of information. They allow us to respond quickly to issues and rectify them.",
-            "Text3": "Thanks to your honest and constructive criticism, we can create a safe, comfortable, and convenient environment for all users of 'Mandra'—both for those renting out their properties and those seeking the best accommodation options.",
-            "Text4": "We encourage you to share your experiences—both positive and negative. Your opinion helps make 'Mandra' better for each of us. Thank you for your support and active participation in the platform's development!"
+            "Text3": "Thanks to your honest and constructive criticism, we can create a safe, comfortable, and convenient environment for all users of 'Mandry'—both for those renting out their properties and those seeking the best accommodation options.",
+            "Text4": "We encourage you to share your experiences—both positive and negative. Your opinion helps make 'Mandry' better for each of us. Thank you for your support and active participation in the platform's development!"
         },
         "Feedback": {
             "Header": "Reviews: Why They Matter and How They Change Business?",
@@ -718,7 +860,7 @@
                 },
                 "Item2": {
                     "Header": "2. Improving Product Quality",
-                    "Text": "There are no perfect products or services, and reviews help identify weaknesses. With feedback, we can quickly address issues and make necessary changes, enhancing overall customer satisfaction."
+                    "Text": "There are no perfect products or services, and reviews help identify issues. With feedback, we can quickly address issues and make necessary changes, enhancing overall customer satisfaction."
                 },
                 "Item3": {
                     "Header": "3. Building Customer Relationships",
@@ -877,5 +1019,298 @@
         "USD": "Dollar",
         "EUR": "Euro",
         "UAH": "Hryvnia"
+    },
+
+    "HousingPage": {
+        "Copied": "Link copied to clipboard",
+
+        "Sections": {
+            "Components": {
+                "Bedrooms_one": "bedroom",
+                "Bedrooms_many": "bedrooms",
+
+                "BedroomsNumbered_one": "{{number}} bedroom",
+                "BedroomsNumbered_many": "{{number}} bedrooms",
+
+                "Guests_one": "guest",
+                "Guests_many": "guests",
+
+                "GuestsNumbered_one": "{{number}} guest",
+                "GuestsNumbered_many": "{{number}} guests",
+
+                "Bathrooms_one": "bathroom",
+                "Bathrooms_many": "bathrooms",
+
+                "BathroomsNumbered_one": "{{number}} bathroom",
+                "BathroomsNumbered_many": "{{number}} bathrooms"
+            },
+
+            "Description": {
+                "MoreButton": "More",
+                "LessButton": "Show less"
+            },
+
+            "Bedrooms": {
+                "Header": "Sleeping arrangements",
+                "BedroomTitle": "Bedroom",
+                "BedSizeOne_one": "{{number}} single bed",
+                "BedSizeOne_many": "{{number}} single beds",
+
+                "BedSizeTwo_one": "{{number}} double bed",
+                "BedSizeTwo_many": "{{number}} double beds"
+            },
+
+            "Features": {
+                "Header": "Amenities",
+                "MoreBtn": "Show all ({{number}})",
+                "LessBtn": "Show less"
+            },
+
+            "Calendar": {
+                "ClearBtn": "Clear",
+                "Header1_one": "{{location}}: {{duration}} night",
+                "Header1_many": "{{location}}: {{duration}} nights",
+                "Header2": "{{startDate}} - {{endDate}}",
+                "Header2Empty": "No dates selected"
+            },
+
+            "IInfo": {
+                "Header": "Important Information",
+                "More": "Learn more",
+                "HouseRules": {
+                    "Header": "House rules",
+                    "Description": "You are staying in someone else's home, so please treat it with care and respect."
+                },
+                "Safety": {
+                    "Header": "Safety guidelines",
+                    "Description": "To avoid surprises, review these important details about your host’s property."
+                },
+                "Refund": {
+                    "Header": "Cancellation policy",
+                    "Description": "Make sure you are satisfied with the host's rules. In rare cases, you may be eligible for a refund under the <linkA>Mandry Force Majeure Policy.</linkA>",
+                    "RefundCleaning": "Cleaning fee is refundable if canceled before arrival.",
+                    "RefundMoreLink": "More about cancellation policy",
+                    "Statements": {
+                        "FullRefund": {
+                            "TimeHeader": "Within",
+                            "TimeBody": "48 hours of booking",
+                            "DescHeader": "Full refund",
+                            "DescBody": "Full refund: you will receive 100% of the amount paid."
+                        },
+                        "HalfRefund": {
+                            "TimeHeader": "Until",
+                            "TimeBody": "{{dateTime}}",
+                            "DescHeader": "Partial refund",
+                            "DescBody": "You will receive 50% of the night cost. The service fee is non-refundable."
+                        },
+                        "NoRefund": {
+                            "TimeHeader": "After",
+                            "TimeBody": "{{dateTime}}",
+                            "DescHeader": "No refund",
+                            "DescBody": "No refund is available for this booking."
+                        }
+                    }
+                }
+            },
+
+            "OwnerInfo": {
+                "OwnerStatus": "Host",
+                "ReviewsLabel": "Reviews",
+                "RatingLabel": "Rating",
+                "OwnerFromLabel": "Years hosting",
+                "LanguagesNotSpecified": "Languages not specified",
+                "ResidenceNotSpecified": "Residence not specified",
+                "AboutMeNotSpecified": "The host hasn't written anything about themselves yet",
+                "ResponseSpeed": "Response speed: {{time}}",
+                "ResponseTime": "Responds within a few hours",
+                "More": "More",
+                "TextToOwner": "Message host"
+            }
+        },
+
+        "RentSections": {
+            "Price": {
+                "BasePrice": "<priceText>{{currency}} {{price}}</priceText> per night",
+
+                "Travelers_zero": "Number of guests not specified",
+                "Travelers_one": "{{number}} guest",
+                "Travelers_many": "{{number}} guests",
+
+                "PriceFromNights_one": "<fontLink>{{currency}} {{price}} x {{nightsCount}} night</fontLink>",
+                "PriceFromNights_many": "<fontLink>{{currency}} {{price}} x {{nightsCount}} nights</fontLink>",
+
+                "Discount": "<fontLink>Long stay discount</fontLink>",
+                "CleaningFee": "<fontLink>Cleaning fee</fontLink>",
+                "Taxes": "<fontLink>Taxes</fontLink>",
+
+                "TravelersLabel": "Travelers",
+                "FromLabel": "Check-in",
+                "ToLabel": "Check-out",
+
+                "ButtonSignin": "Sign in",
+                "ButtonReservation": "Reserve",
+                "NoPaymentLabel": "You don't have to pay yet",
+
+                "PriceSummary": {
+                    "Header": "Price breakdown",
+                    "NoItems": "Dates not selected",
+                    "NightPrice": "{{currency}} {{value}}",
+                    "TotalPriceLabel": "Total price",
+                    "TotalPriceValued": "{{currency}} {{value}}"
+                },
+
+                "PriceTotalLabel": "Total",
+                "PriceTotalPrice": "{{currency}} {{value}}",
+
+                "DiscountPopup": {
+                    "Available": "Discount available for bookings of 14 days or more.",
+                    "Unavailable": "Discount unavailable for this booking period"
+                },
+
+                "CleaningFeePopup": "The host charges a one-time payment to cover the cleaning costs of the property.",
+                "TaxesPopup": "This helps support our platform and offer various services, like 24/7 travel support, along with VAT."
+            },
+
+            "Rating": {
+                "ReviewsCount_one": "{{number}} review",
+                "ReviewsCount_many": "{{number}} reviews"
+            }
+        }
+    },
+
+    "PaymentPage": {
+        "Modal": {
+            "Awaiting": "We are preparing your trip",
+            "Analysis": "Analyzing payment details",
+            "ConfirmationHeader": "Confirm your card",
+            "ConfirmationText": "You need to confirm this card with your bank before we proceed with the payment process.",
+            "ConfirmationConnect": "Connect to bank",
+            "Confirmation": "Connect to bank"
+        },
+        "Sections": {
+            "Header": {
+                "Header": "Confirmation and Payment"
+            },
+            "Data": {
+                "Header": "Your trip",
+                "DatesHeader": "Dates",
+                "DatesValues": "{{dateOne}} - {{dateTwo}}",
+                "GuestsHeader": "Guests",
+                "GuestsCount_one": "{{number}} guest",
+                "GuestsCount_many": "{{number}} guests",
+                "Edit": "Edit"
+            },
+            "Payment": {
+                "Header": "Pay using",
+                "Card": "Credit or debit card",
+                "PayPal": "PayPal",
+                "iDeal": "iDeal",
+                "Sofort": "Sofortüberweisung",
+                "GooglePay": "Google Pay",
+                "Amex": "Amex",
+
+                "Forms": {
+                    "Card": {
+                        "Number": "Card number",
+                        "Period": "Expiration date",
+                        "CVV": "CVV",
+                        "Index": "Postal code",
+                        "Location": "Country / region",
+
+                        "Validation": {
+                            "Number": {
+                                "Required": "Enter card code",
+                                "Invalid": "Check card code"
+                            },
+                            "DateAndCCV": {
+                                "Required": "Enter expiration date and CVV code",
+                                "Invalid": "Check expiration date and CVV code"
+                            },
+                            "Index": {
+                                "Required": "Enter postal code",
+                                "Invalid": "Check postal code"
+                            }
+                        }
+                    }
+                }
+            },
+            "Phone": {
+                "Header": "Required for travel",
+                "BodyHeader": "Phone number",
+                "BodyText": "Add and verify your phone number to receive travel updates.",
+                "ButtonText": "Add"
+            },
+            "Refund": {
+                "Header": "Cancellation policy",
+                "Description": "<desc1>Free cancellation within 48 hours.</desc1> <desc2>If you cancel before October 11, you will receive a partial refund.</desc2>",
+                "Expand": "Learn more",
+                "Statements": {
+                    "FullRefund": {
+                        "TimeHeader": "Within",
+                        "TimeBody": "48 hours of booking",
+                        "DescHeader": "Full refund",
+                        "DescBody": "Full refund: you will receive 100% of the amount paid."
+                    },
+                    "HalfRefund": {
+                        "TimeHeader": "Until",
+                        "TimeBody": "{{dateTime}}",
+                        "DescHeader": "Partial refund",
+                        "DescBody": "You will receive 50% of the nightly rate. The service fee is non-refundable."
+                    },
+                    "NoRefund": {
+                        "TimeHeader": "After",
+                        "TimeBody": "{{dateTime}}",
+                        "DescHeader": "No refund",
+                        "DescBody": "Funds for this booking are non-refundable."
+                    }
+                }
+            },
+            "PaymentWay": {
+                "Header": "Select payment option",
+                "FullWay": "Pay {{currency}} {{value}} now",
+                "DividedWay": "Payment in two parts",
+                "DividedWayDescription": "{{currency}} {{firstValue}} to be paid today, {{currency}} {{secondValue}} - {{date}} No additional fees. Learn more"
+            },
+            "Agreement": {
+                "Main": "By clicking the button below, I accept the terms (<linkR1>Host's house rules</linkR1>, <linkR2>Guest policies</linkR2>, <linkR3>Mandry's rebooking and refund policies</linkR3>) that Mandry may apply if I am responsible for any damages (<linkR4>charge fees according to my payment method</linkR4>). Payment terms between you and Mandry.",
+                "Secondary": "I also accept the updated <linkR1>Terms of Service</linkR1>, <linkR2>Payment Terms</linkR2> and acknowledge the <linkR3>Privacy Policy.</linkR3>",
+                "ConfirmLabel": "Confirm and pay"
+            },
+            "HousingData": {
+                "Rating_one": "{{average}} ~ {{reviews}} review",
+                "Rating_many": "{{average}} ~ {{reviews}} reviews",
+
+                "PriceFromNights_one": "{{currency}} {{price}} x {{nightsCount}} night",
+                "PriceFromNights_many": "{{currency}} {{price}} x {{nightsCount}} nights",
+
+                "PriceHeader": "More details about the price",
+
+                "Price": "{{currency}} {{value}}",
+                "Discount": "Discount",
+                "CleaningFee": "Cleaning fee",
+                "Taxes": "Taxes",
+                "Total": "Total"
+            }
+        },
+        "Done": {
+            "Header": {
+                "Header": "Your booking is confirmed",
+                "Subheader": "We have sent your trip details to {{email}}"
+            },
+            "WriteOwner": {
+                "Header": "Meet the host",
+                "Subheader": "{{name}} is ready to answer all your questions.",
+                "Write": "Message",
+                "Placeholder": "Hello, {{ownerName}}, I will be visiting {{locationName}}"
+            },
+            "Card": {
+                "Code": "Booking code"
+            }
+        }
+    },
+
+    "FavouritesPopup": {
+        "AuthPlease": "Log in to manage favorites",
+        "NoItems": "No favorite listings"
     }
 }
