@@ -1,6 +1,6 @@
 import FeatureService from "../../../../helpers/FeatureService";
 import { ReservationSettings, SummTravelers } from "../../../housing/rent/PriceSection";
-import { PaymentSettings } from "../../PaymentPage";
+import { PaymentSettings, Reservation } from "../../PaymentPage";
 
 // import starIcon from '../../../../assets/icons/meta/star.svg';
 import { useTranslation } from "react-i18next";
@@ -12,9 +12,10 @@ import { useUserSettings } from "../../../app/UserSettingsContext";
 interface HousingCardSectionProps {
     reservationSettings: ReservationSettings;
     paymentSettings: PaymentSettings;
+    reservation: Reservation | undefined
 }
 
-export default function HousingCardSection({ reservationSettings, paymentSettings }: HousingCardSectionProps) {
+export default function HousingCardSection({ reservationSettings, paymentSettings, reservation }: HousingCardSectionProps) {
     const { t } = useTranslation();
     const { currency } = useUserSettings();
 
@@ -68,7 +69,7 @@ export default function HousingCardSection({ reservationSettings, paymentSetting
                         {t('PaymentPage.Done.Card.Code')}
                     </span>
                     <span className="code__code">
-                        FR7KJ1YS3MO
+                        {reservation && reservation.code}
                     </span>
                 </div>
             </section>

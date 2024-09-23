@@ -110,7 +110,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ authState, isReady: isReady, login, logout, updateAvatar: updateAvatar }}>
-            {isReady && (children)}
+            {children}
         </AuthContext.Provider>
     );
 };

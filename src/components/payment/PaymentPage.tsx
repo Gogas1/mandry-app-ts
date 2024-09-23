@@ -8,7 +8,7 @@ import PaymentSection from './sections/PaymentSection';
 import FooterSection from '../home/FooterSection';
 import PhoneSection from './sections/PhoneSection';
 import RefundSection from './sections/RefundSection';
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, useContext, useState } from 'react';
 import PriceWaySection from './sections/PriceWaySection';
 import MainRulesSection from './sections/MainRulesSection';
 import AgreementSection from './sections/AgreementSection';
@@ -19,6 +19,7 @@ import HeaderDoneSection from './sections/done/HeaderDoneSection';
 import WriteOwnerSection from './sections/done/WriteOwnerSection';
 import HousingInfoSection from './sections/done/HousingInfoSection';
 import HousingCardSection from './sections/done/HousingCardSection';
+import AuthContext from '../auth/AuthenticationContext';
 
 export interface LongTermsBenefits {
     fullReturnAvailable: boolean;
@@ -31,8 +32,18 @@ export interface PaymentSettings {
     secondPaymentPrice: number;
     secondPaymentDate: Date | undefined;
 }
+ 
+export interface Reservation {
+    code: string;
+}
 
 export default function PaymentPage() {
+    const authContext = useContext(AuthContext);
+    if (!authContext) {
+        throw new Error('AuthContext must be used within an AuthProvider');
+    }
+    const { authState } = authContext;
+
     const location = useLocation();
     const data = location.state as ReservationSettings;
     const { t } = useTranslation();
@@ -42,6 +53,7 @@ export default function PaymentPage() {
 
     const [done, setDone] = useState(false);
 
+    const [reservation, setReservation] = useState<Reservation>();
     const [overlayOpened, setOverlayOpened] = useState(false);
     const [longTermsBenefits] = useState(calculateLongTermsBenefits(data.selecetedDates.dateOne));
     const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({
@@ -49,6 +61,34 @@ export default function PaymentPage() {
         secondPaymentPrice: 0,
         secondPaymentDate: undefined
     });
+
+
+
+    const handleReservationCreation = async () => {
+        try {
+            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + '/reservation/create';
+            const result = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authState.token}`
+                }, 
+                body: JSON.stringify({
+                    dateFrom: data.selecetedDates.dateOne.toISOString(),
+                    dateTo: data.selecetedDates.dateTwo.toISOString(),
+                    housingId: data.housingData.id
+                })
+            });
+
+            if(result.ok) {
+                const reservation = await result.json();
+                setReservation(reservation as Reservation);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
     
     const handleSecondPaymentWaySelection = (selected: boolean) => {
         if(longTermsBenefits.secondPaymentDate) {
@@ -77,7 +117,8 @@ export default function PaymentPage() {
         setOverlayOpened(false);
     }
 
-    const handleModalSuccess = () => {
+    const handleModalSuccess = async () => {
+        await handleReservationCreation();
         setDone(true);
     }
 
@@ -136,7 +177,7 @@ export default function PaymentPage() {
                         {!done ? (
                             <HousingDataSection reservationSettings={data} paymentSettings={paymentSettings} />
                         ) : (
-                            <HousingCardSection reservationSettings={data} paymentSettings={paymentSettings}  />
+                            <HousingCardSection reservationSettings={data} paymentSettings={paymentSettings} reservation={reservation} />
                         )}
                     </div>
                 </div>

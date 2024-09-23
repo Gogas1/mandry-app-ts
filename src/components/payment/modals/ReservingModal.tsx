@@ -41,7 +41,7 @@ export default function ReservingModal({ closeModal, onSuccess }: ReservingModal
 
             changeToConfirmation();
 
-        }, 1000);
+        }, 2000);
     }
 
     const changeToConfirmation = () => {
@@ -50,7 +50,7 @@ export default function ReservingModal({ closeModal, onSuccess }: ReservingModal
             const showButtonValue = true;
             setShowButton(showButtonValue);
 
-        }, 1750);
+        }, 2750);
     }
 
     const changeToConnection = () => {

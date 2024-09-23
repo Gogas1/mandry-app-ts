@@ -33,13 +33,14 @@ import MandrySafe from './components/footer/FooterMandrySafe';
 import CancelReservation from './components/footer/FooterCancelReservation';
 import Disabled from './components/footer/FooterDisabled';
 import { APIProvider } from '@vis.gl/react-google-maps';
+import i18n from './i18n';
 
 function App() {
   const GApiKey = import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY;
 
   return (
     <>
-      <APIProvider apiKey={GApiKey}>
+      <APIProvider apiKey={GApiKey} language={i18n.language}>
         <AuthProvider>
           <Router>
             <ScrollToTop />

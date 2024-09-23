@@ -237,7 +237,8 @@ export default function SearchPage() {
                                     style={{ borderRadius: '15px' }}
                                     defaultCenter={housings.length > 0 ? getDefaultCenter(housings[0].locationCoords) : getDefaultCenter('')}
                                     defaultZoom={5}
-                                    disableDefaultUI={true}>
+                                    disableDefaultUI={true}
+                                    >
                                     {housings.map((item, index) => {
                                         const normalized = normalizeCoordinateString(item.locationCoords);
 
