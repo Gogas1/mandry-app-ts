@@ -34,6 +34,9 @@ import CancelReservation from './components/footer/FooterCancelReservation';
 import Disabled from './components/footer/FooterDisabled';
 import { APIProvider } from '@vis.gl/react-google-maps';
 import i18n from './i18n';
+import AdminNavigation from './components/admin/AdminNavigation';
+import AdminCategories from './components/admin/AdminCategories';
+import AdminHousing from './components/admin/AdminHousings';
 
 function App() {
   const GApiKey = import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY;
@@ -79,7 +82,12 @@ function App() {
                     <Route path='/mandrysafe' element={<MandrySafe />} />
                     <Route path='/revocation' element={<CancelReservation />} />
                     <Route path='/disabled' element={<Disabled />} />
-                </Routes>
+
+                    <Route path='/admin' element={<AdminNavigation />} />
+                    <Route path='/admin/categories' element={<AdminCategories />} />
+                    <Route path='/admin/features' element={<Features />} />
+                    <Route path='/admin/housings' element={<AdminHousing />} />
+                  </Routes>
                   <Modal />
                 </UserSettingsProvider>
               {/* </AuthorizationProvider> */}

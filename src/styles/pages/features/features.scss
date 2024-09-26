@@ -1,6 +1,8 @@
-#features-page {
+.features-page {
     padding-top: 104px;
     padding-left: 7.5px;
+    background-color: #f6f6f6;
+    width: fit-content;
 
     .translsations-creation {
         display: flex;
@@ -36,23 +38,54 @@
         padding: 8px;
         border: 1px solid #ddd;
     }
-    .translation-table {
+
+    /* Styling for the parameters table */
+    .parameter-table {
         margin-left: 20px;
-        border-collapse: collapse;
         width: auto;
+        border-collapse: collapse;
+        margin-top: 10px;
     }
+
+    .parameter-table-header {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .parameter-table-cell {
+        display: table-cell;
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .parameter-table-row {
+        &:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    }
+
+    /* Nested translations table inside parameters */
+    .translation-table {
+        margin-left: 10px;
+        width: auto;
+        border-collapse: collapse;
+    }
+
     .translation-table-header {
         background-color: #f2f2f2;
         font-weight: bold;
     }
+
     .translation-table-row {
         display: table-row;
     }
+
     .translation-table-cell {
         display: table-cell;
         padding: 8px;
         border: 1px solid #ddd;
     }
 }
-
-

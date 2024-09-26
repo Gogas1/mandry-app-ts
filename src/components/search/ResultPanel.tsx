@@ -72,7 +72,11 @@ export default function ResultPanel({ housings }: ResultPanelProps) {
                             {authState.isAuthenticated && (
                                 <HeartIcon filled={housing.isFavourite} className='favourite-icon' onClick={() => makeFavourite(housing.id)} />
                             )}
-                            <img className='image' src={FeatureService.getFeatureIcon("images/features/3.jpg")} />
+                            <img 
+                                className='image' 
+                                src={housing.images.length > 0 ? 
+                                    FeatureService.getFeatureIcon(housing.images[0].src) : 
+                                    FeatureService.getFeatureIcon("images/features/3.jpg")} />
                         </div>
                         <div className='labels'>
                             {/* <label className='labels__name'>

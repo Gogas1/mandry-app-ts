@@ -12,10 +12,13 @@ export function processTranslations(translations: Translation[]) {
         const { languageCode, key, text } = translation;
 
         if(!translationsByLanguage[languageCode]) {
+            
             translationsByLanguage[languageCode] = {};
         }
 
-        translationsByLanguage[languageCode][key] = text;
+        if(key) {
+            translationsByLanguage[languageCode][key] = text;
+        }
     });
 
     Object.keys(translationsByLanguage).forEach(languageCode => {
