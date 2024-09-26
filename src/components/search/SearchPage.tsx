@@ -218,6 +218,24 @@ export default function SearchPage() {
         setFilterSettings(filters);
     }
 
+    const handleMouseOver = (id: number) => {
+        setMarkers((prevMarkers) =>
+            prevMarkers.map((marker) =>
+                marker.id === id ? { ...marker, zIndex: 100 } : marker
+            )
+        );
+    };
+
+    const handleMouseOut = (id: number) => {
+        if (focusedMarker !== id) {
+            setMarkers((prevMarkers) =>
+                prevMarkers.map((marker) =>
+                    marker.id === id ? { ...marker, zIndex: 1 } : marker
+                )
+            );
+        }
+    };
+
     const handleMarkerFocus = (id: number) => {
         if(id === focusedMarker) {
             setFocusedMarker(-1);
@@ -267,7 +285,9 @@ export default function SearchPage() {
                                                     position={normalized} 
                                                     onClick={() => handleMarkerFocus(item.id)}
                                                     className="marker-item"
-                                                    zIndex={item.id === focusedMarker ? 100 : 1}>
+                                                    zIndex={item.id === focusedMarker || item.zIndex !== 1 ? 100 : 1}
+                                                    onMouseEnter={() => handleMouseOver(item.id)}
+                                                    onMouseLeave={() => handleMouseOut(item.id)}>
                                                     <MapMarker housing={item.housing} focused={item.id === focusedMarker} />
                                                 </AdvancedMarker>)
                                         } else {

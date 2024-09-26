@@ -41,6 +41,10 @@
             border-radius: 15px;
             overflow: hidden;
 
+            .marker-item {
+                border-radius: 15px;
+            }
+
 
             &__marker {
                 position: relative;
