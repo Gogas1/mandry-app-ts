@@ -10,9 +10,10 @@ import { Category } from "./search-panel/Section2";
 import { processTranslations } from "../../helpers/TranslationService";
 // import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
-import { Map, Marker } from "@vis.gl/react-google-maps";
+import { AdvancedMarker, Map } from "@vis.gl/react-google-maps";
 import AuthContext from "../auth/AuthenticationContext";
 import { useSearchParams } from "react-router-dom";
+import MapMarker from "./MapMarker";
 
 export interface FilterSetting {
     destination: string;
@@ -41,6 +42,9 @@ export default function SearchPage() {
     const { authState } = authContext;
 
     document.title = t("Titles.SearchPage");
+
+    const [markers, setMarkers] = useState<{ id: number, housing: Housing, zIndex: number}[]>([]);
+    const [focusedMarker, setFocusedMarker] = useState(-1);
 
     const [params, ] = useSearchParams();
 
@@ -76,7 +80,11 @@ export default function SearchPage() {
             });
             if (response.ok) {
                 const data = await response.json();
-                setHousings(data.housings as Housing[]);
+                const housings = data.housings as Housing[];
+                setHousings(housings);
+                setMarkers(housings.map((item, index) => {
+                    return { id: index, housing: item, zIndex: 1 } as { id: number, housing: Housing, zIndex: number};
+                }));
             }
         }
         catch (error) {
@@ -210,6 +218,15 @@ export default function SearchPage() {
         setFilterSettings(filters);
     }
 
+    const handleMarkerFocus = (id: number) => {
+        if(id === focusedMarker) {
+            setFocusedMarker(-1);
+        }
+        else {
+            setFocusedMarker(id);
+        }
+    }
+
     return (
         <>
             <div className="search-page">
@@ -238,12 +255,21 @@ export default function SearchPage() {
                                     defaultCenter={housings.length > 0 ? getDefaultCenter(housings[0].locationCoords) : getDefaultCenter('')}
                                     defaultZoom={5}
                                     disableDefaultUI={true}
+                                    mapId={'fcb21455b1eb3037'}
                                     >
-                                    {housings.map((item, index) => {
-                                        const normalized = normalizeCoordinateString(item.locationCoords);
+                                    {markers.map((item, index) => {
+                                        const normalized = normalizeCoordinateString(item.housing.locationCoords);
 
                                         if (normalized) {
-                                            return <Marker key={index} position={normalized} />
+                                            return ( 
+                                                <AdvancedMarker 
+                                                    key={index} 
+                                                    position={normalized} 
+                                                    onClick={() => handleMarkerFocus(item.id)}
+                                                    className="marker-item"
+                                                    zIndex={item.id === focusedMarker ? 100 : 1}>
+                                                    <MapMarker housing={item.housing} focused={item.id === focusedMarker} />
+                                                </AdvancedMarker>)
                                         } else {
                                             return null;
                                         }

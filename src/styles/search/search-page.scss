@@ -40,6 +40,180 @@
             height: 718px;
             border-radius: 15px;
             overflow: hidden;
+
+
+            &__marker {
+                position: relative;
+                display: flex;
+                padding: 7.5px;
+                flex-wrap: nowrap;
+                text-wrap: nowrap;
+                
+                border-radius: 15px;
+                background: var(--grey-80, rgba(81, 81, 81, 0.80));
+                box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+                backdrop-filter: blur(34px);
+
+                @include font-white-montserrat(14px, 700);
+
+                &:hover:not(.focused) {
+                    background: var(--Blue-light, #08B1BD);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+
+                    
+                }
+
+                &.focused {
+                    background: var(--Blue-light, #08B1BD);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
+
+                    .marker-housing {
+                        visibility: visible;
+                    } 
+                }
+
+                .marker-housing {
+                    width: 200px;
+                    visibility: collapse;
+                    left: 0;
+                    top: calc(100% + 5px);
+                    
+                    position: absolute;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+
+                    background-color: #f6f6f6;
+                    border: 1px solid #e6e6e6;
+                    border-radius: 15px;
+                    padding: 5px;
+                    box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.10), -3px 4px 5px rgba(0, 0, 0, 0.09), -6px 9px 7px rgba(0, 0, 0, 0.05), -11px 16px 8px rgba(0, 0, 0, 0.01), -17px 26px 9px rgba(0, 0, 0, 0.00);
+
+                    margin: 6px;
+
+                    .image-container {
+                        flex: 1;
+                        position: relative;
+                        overflow: hidden;
+            
+                        display: flex;
+            
+                        border-radius: 15px 15px 0 0;
+            
+                        justify-content: center;
+                        align-items: start;
+                        
+                        // cursor: pointer;
+
+                        .favourite-icon {
+                            position: absolute;
+                            left: 15px;
+                            top: 15px;
+
+                            width: 24px;
+                            height: 24px;
+                            cursor: pointer;
+                        }
+            
+                        .image {
+                            border-radius: 15px 15px 0 0; 
+                            width: 100%;
+                            height: 130px;
+                            object-fit: cover;
+                        }
+                    }
+            
+                    .labels {
+                        display: flex;
+                        flex-direction: column;
+            
+                        margin: 15px 5px 5px 5px;
+
+                        &__name {
+                            @include font-regular(14px, 700);
+                            text-wrap: wrap;
+
+                            text-decoration: none;
+                            
+                            margin-bottom: 10px;
+
+                            &:visited {
+                                @include font-regular(14px, 700);
+                            }
+                        }
+                        
+                        &__bottom {
+                            display: flex;
+                            flex-direction: row;
+
+                            justify-content: space-between;
+                        }
+
+                        &__pricing {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        &__price {
+                            display: flex;
+                            flex-direction: row;
+
+                            gap: 6px;
+                        }
+
+                        &__promo-price {
+                            color: var(--grey-light-300, var(--Color-3, #AAA));
+                            font-family: "Montserrat Alternates";
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                            text-decoration: line-through;
+                        }
+
+                        &__actual-price {
+                            color: var(--blue, #08B1BD);
+                            font-family: "Montserrat Alternates";
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+
+                        &__calculated-price {
+                            @include font-white-panels-headers(14px);
+                        }
+
+                        &__rating-wrapper {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+
+                            align-items: end;
+
+                            .rating {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+
+                                .star {
+                                    width: 20px;
+                                    height: 20px;
+            
+                                    margin-right: 6px;
+                                }
+            
+                                .average-rating {
+                                    @include font-regular(12px);
+                                }
+                            }
+
+                            
+                        }
+                    }
+                }
+            }
         }
     }
 
