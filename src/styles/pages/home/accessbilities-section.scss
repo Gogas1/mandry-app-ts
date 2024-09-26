@@ -104,7 +104,7 @@
                     }
                 }
 
-                &:nth-child(1), .slide:nth-child(2) {
+                &:nth-child(1), &:nth-child(2) {
                 
                     position: absolute;
                     top: 0;
@@ -117,8 +117,6 @@
     
                     padding: 0;
                     border: 0;
-
-                    
                 }
 
                 &:nth-child(3) {
@@ -137,7 +135,7 @@
                     left: calc(20% + 1852px);
                 }
 
-                &:nth-child(n + 2) {
+                &:nth-child(n + 3) {
                     .slide__content {
                         &__text {
                             display: flex;
@@ -146,7 +144,7 @@
 
                             padding: 20px;
 
-                            h3 {
+                            h3, .more {
                                 visibility: collapse;
                             }
 

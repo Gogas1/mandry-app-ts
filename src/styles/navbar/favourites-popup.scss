@@ -3,12 +3,12 @@
 @import url('../app/fonts.scss');
 
 .favourites-popup {
-    right: 216px;
+    right: 145px;
     top: 46px;
     position: absolute;
-    // width: 29%;
+    width: 474px;
 
-    transition: visibility 0.3s ease;
+    // transition: visibility 0.3s ease;
 
     &.closed {
         .popup-panel {
@@ -46,7 +46,7 @@
         flex-direction: column;
     
         margin: 6px;
-        padding: 30px;
+        padding: 30px 8px 30px 30px;
         background-color: rgba(81, 81, 81, 0.8);
         box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 58px 0px rgba(255, 245, 245, 0.05) inset;
         backdrop-filter: blur(34px);
@@ -55,7 +55,7 @@
 
         gap: 20px;
 
-        transition: max-height 0.3s ease-in-out, padding 0.3s;
+        // transition: max-height 0.3s ease-in-out, padding 0.3s;
 
         -webkit-mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
         mask-image: radial-gradient(circle 32.5px at calc(100% - 58px) -6px, transparent 95%, black 100%);
@@ -77,26 +77,31 @@
         }
 
         .divider {
-            width: 100%;
+            flex-shrink: 0;
+            // display: flex;
+            // width: 100%;
             height: 1px;
             background-color: #F6F6F6;
+            margin-right: 22px;
         }
 
         .favourites-list {
             display: grid;
-            grid-template-columns: repeat(2, 178px);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             overflow-y: auto;
             height: 100%;
             max-height: 400px;
             align-items: flex-start;
             
-            padding-right: 16px;
+            padding-right: 10px;
+            scrollbar-gutter: stable;
 
             gap: 20px;
             
 
             .list-item {
+                // width: calc(100% + 0px);
                 color: var(--white, #F6F6F6);
 
                 display: flex;
@@ -114,7 +119,8 @@
                 }
 
                 img {
-                    width: 178px;
+                    // width: 178px;
+                    width: 100%;
                     height: 160px;
                     height: auto;
                     border-radius: 15px;
@@ -130,6 +136,7 @@
         }
 
         .create-list-popup {
+            cursor: pointer;
             display: flex;
             height: 56px;
             padding: 7px 30px;

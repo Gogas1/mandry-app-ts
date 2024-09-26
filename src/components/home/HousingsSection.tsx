@@ -3,7 +3,7 @@ import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 import '../../styles/pages/home/housing-section.scss';
 import { HousingsImageHelper } from '../../helpers/ImageHelper';
 import { CSSProperties, useRef } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 interface HousingsSectionProps {
@@ -11,6 +11,7 @@ interface HousingsSectionProps {
 }
 
 export default function HousingsSection({ className }: HousingsSectionProps) {
+    const { t } = useTranslation();
     const sliderRef = useRef<HTMLDivElement>(null);
 
     const handeleNext = () => {
@@ -33,9 +34,7 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                 <div className='slider' ref={sliderRef}>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.BoatHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link
-                                to={`/search?category=categories.boathouse`}
-                                className='slide__content__text'>
+                            <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -44,14 +43,17 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.BoatHInfo.name}</p>
-                            </Link>
+                                <Link
+                                    to={`/search?category=categories.boathouse`} 
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.CampingHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link
-                                to={`/search?category=categories.camping`}
-                                className='slide__content__text'>
+                            <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -60,14 +62,17 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.CampingHInfo.name}</p>
-                            </Link>
+                                <Link
+                                    to={`/search?category=categories.camping`} 
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.CastleInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link 
-                                to={`/search?category=categories.castle`}
-                                className='slide__content__text'>
+                            <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -76,14 +81,17 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.CastleInfo.name}</p>
-                            </Link>
+                                <Link 
+                                    to={`/search?category=categories.castle`} 
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.FarmHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link 
-                                to={`/search?category=categories.farm`}
-                                className='slide__content__text'>
+                            <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -92,14 +100,17 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.FarmHInfo.name}</p>
-                            </Link>
+                                <Link 
+                                    to={`/search?category=categories.farm`} 
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.FlatHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link
-                                to={`/search?category=categories.flat`} 
-                                className='slide__content__text'>
+                        <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -108,14 +119,17 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.FlatHInfo.name}</p>
-                            </Link>
+                                <Link
+                                    to={`/search?category=categories.flat`} 
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='slide'>
                         <div className='slide__content' style={{ background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${HousingsImageHelper.HouseHInfo.image}) lightgray 50% / cover no-repeat` } as CSSProperties}>
-                            <Link 
-                                to={`/search?category=categories.house`}                        
-                                className='slide__content__text'>
+                            <div className='slide__content__text'>
                                 <h3>
                                     <Trans i18nKey={"MainPage.Sections.Third.Caption"}
                                         components={{
@@ -124,7 +138,12 @@ export default function HousingsSection({ className }: HousingsSectionProps) {
                                         }} />
                                 </h3>
                                 <p>{HousingsImageHelper.HouseHInfo.name}</p>
-                            </Link>
+                                <Link
+                                    to={`/search?category=categories.house`}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

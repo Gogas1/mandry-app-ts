@@ -70,15 +70,16 @@
                 padding: 84px 90px 0 90px;
                 
                 .main-caption {
-                    flex: 0.6;
+                    // flex: 0.6;
+                    width: 1000px;
 
                     user-select: none;
-                    color: #f6f6f6;
-                    font-family: "Montserrat Alternates";
-                    font-size: 120px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 91.667%;
+                    color: var(--white, #F6F6F6);
+                        font-family: "Montserrat Alternates";
+                        font-size: 120px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 110px;
                     text-align: left;
 
                     margin-bottom: 120px;
@@ -353,7 +354,7 @@
     .search-block {
         display: flex;
         height: 100%;
-        flex: 0.35;
+        width: 264px;
         align-items: start;
 
         .popup-wrapper {
@@ -364,7 +365,7 @@
 
     .search-panel-border {
         display: flex;
-        flex: 0.6;
+        // width: 100%;
         margin-top: 80px;
 
         padding: 5px;
@@ -375,7 +376,7 @@
     }
 
     .search-panel {
-        min-width: 300px;
+        min-width: 252px;
         display: flex;
         flex: 1;
         padding: 30px;

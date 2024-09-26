@@ -89,33 +89,35 @@ export default function LanguagePopup({ isOpen, closeAll }: PopupProps) {
       }
     }
 
-    return (
-        <div className={`language-popup-wrapper ${isOpen ? 'opened' : 'closed'}`}>
-          <div className='popup-border'></div>
-          <div className='popup-panel'></div>
-          <div className='popup-panel-content'>
-            <div className='text'>{t('languageSelectionLabel')}</div>
-            <div>
-              {languageOptions.length > 0 && selectedLangugageOption && (
-                <Dropdown
-                  options={languageOptions}
-                  defaultValue={selectedLangugageOption}
-                  onChange={handleChange}
-                />
-              )}
-            </div>
-            <div className='text'>{t('currencySelectionLabel')}</div>
-                {currencyOptions.length > 0 && selectedCurrencyOption && (
-                    <Dropdown
-                    options={currencyOptions}
-                    defaultValue={selectedCurrencyOption}
-                    onChange={handleCurrencyChange}
-                    />
-                )}
-          </div>
-          <div className='popup-hide' onClick={closeAll}>
-            <img src={arrowIcon} alt="arrow" />
-          </div>
+  return (
+    <div className={`language-popup-wrapper ${isOpen ? 'opened' : 'closed'}`}>
+      <div className='popup-border'></div>
+      <div className='popup-panel'></div>
+      <div className='popup-panel-content'>
+        <div className='text'>{t('languageSelectionLabel')}</div>
+        <div>
+          {languageOptions.length > 0 && selectedLangugageOption && (
+            <Dropdown
+              options={languageOptions}
+              defaultValue={selectedLangugageOption}
+              onChange={handleChange}
+              className='language-dd'
+            />
+          )}
         </div>
-    );
+        <div className='text'>{t('currencySelectionLabel')}</div>
+        {currencyOptions.length > 0 && selectedCurrencyOption && (
+          <Dropdown
+            options={currencyOptions}
+            defaultValue={selectedCurrencyOption}
+            onChange={handleCurrencyChange}
+            className='currency-dd'
+          />
+        )}
+      </div>
+      <div className='popup-hide' onClick={closeAll}>
+        <img src={arrowIcon} alt="arrow" />
+      </div>
+    </div>
+  );
 }

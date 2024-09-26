@@ -2,7 +2,7 @@
 
 .language-popup-wrapper {
     position: absolute;
-    width: 15%;
+    width: 262px;
     top: 35px;
     right: 226px;
 
@@ -52,6 +52,12 @@
         
         border-radius: 15px;
         gap: 20px;
+
+        .language-dd, .currency-dd {
+            .dropdown-menu {
+                width: 100%;
+            }
+        }
 
         .text {
             color: var(--white, #F6F6F6);

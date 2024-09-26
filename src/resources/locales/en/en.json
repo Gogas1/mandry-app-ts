@@ -334,6 +334,7 @@
         }
     },
     "MainPage": {
+        "More": "More",
         "Sections": {
             "Second": {
                 "Caption": "Top destinations"

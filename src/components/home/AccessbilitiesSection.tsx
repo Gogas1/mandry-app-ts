@@ -3,13 +3,15 @@ import arrowIcon from '../../assets/icons/meta/arrow-thin.svg';
 import '../../styles/pages/home/accessbilities-section.scss';
 import { AccessbImageHelper } from '../../helpers/ImageHelper';
 import { CSSProperties, useRef } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 interface HousingsSectionProps {
     className?: string;
 }
 
 export default function AccessbilitiesSection({ className }: HousingsSectionProps) {
+    const { t } = useTranslation();
     const sliderRef = useRef<HTMLDivElement>(null);
     
     const handeleNext = () => {
@@ -42,6 +44,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.ACInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -57,6 +64,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.PetsInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -72,6 +84,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.GarageInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -87,6 +104,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.PoolInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -102,6 +124,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.TVInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -117,6 +144,11 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                         }} />
                                 </h3>
                                 <p>{AccessbImageHelper.WashingInfo.name}</p>
+                                <Link
+                                    to={''}
+                                    className='more'>
+                                    {t('MainPage.More')}
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -130,9 +162,6 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                             <img src={arrowIcon} />
                         </button>
                     </div>      
-                </div>
-                <div className='more'>
-                    Бiльше
                 </div>
             </div>
         </div>

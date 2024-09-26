@@ -423,6 +423,7 @@
     },
 
     "MainPage": {
+        "More": "Більше",
         "Sections": {
             "Second" : {
                 "Caption": "<decoratedT>T</decoratedT>оп напря<decoratedM>M</decoratedM>ків"
