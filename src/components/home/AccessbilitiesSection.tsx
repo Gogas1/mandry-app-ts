@@ -45,7 +45,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.ACInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.conditioner`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>
@@ -65,7 +65,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.PetsInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.pets`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>
@@ -85,7 +85,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.GarageInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.garage`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>
@@ -105,7 +105,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.PoolInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.pool`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>
@@ -125,7 +125,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.TVInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.tv`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>
@@ -145,7 +145,7 @@ export default function AccessbilitiesSection({ className }: HousingsSectionProp
                                 </h3>
                                 <p>{AccessbImageHelper.WashingInfo.name}</p>
                                 <Link
-                                    to={''}
+                                    to={`/search?feature=features.washing`}
                                     className='more'>
                                     {t('MainPage.More')}
                                 </Link>

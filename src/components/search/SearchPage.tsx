@@ -106,6 +106,7 @@ export default function SearchPage() {
             languages: []
         } as FilterSetting;
         let newCategories: Category[] = [];
+        let newFeatures: Feature[] = [];
 
         const fetchCategories = async () => {
             try {
@@ -160,7 +161,8 @@ export default function SearchPage() {
                         }
                     });
 
-                    setFeaturesList(features);
+                    newFeatures = features;
+                    setFeaturesList(newFeatures);
                 }
             }
             catch (error) {
@@ -202,7 +204,12 @@ export default function SearchPage() {
                 const targetCategory = newCategories.find(c => c.nameKey === queryCategory);
                 if(targetCategory) {
                     newFilterSettings.category = targetCategory;
-                }            
+                }
+                const queryFeature = params.get('feature') ?? '';
+                const targetFeature = newFeatures.find(f => f.nameCode === queryFeature);
+                if(targetFeature) {
+                    newFilterSettings.features = [...newFilterSettings.features, targetFeature];
+                }
 
                 handleFilterChange(newFilterSettings);
                 filterHousings(newFilterSettings);
