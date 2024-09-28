@@ -21,8 +21,20 @@ import ValidationError from "../app/Validation/ValidationError";
 import CredentialValidator, { BirthDateErrorCode, EmailValidationErrorCode, NameValidationErrorCode, PasswordValidationErrorCode, PhoneValidationErrorCode } from "../../helpers/validation/CredentialValidator";
 import AgreementModal from "./AgreementModal";
 
+interface GoogleData {
+    accessToken: string;
+    id: string;
+    email: string;
+    verifiedEmail: boolean;
+    name: string;
+    givenName: string;
+    familyName: string;
+    picture: string;
+}
+
 interface SignupModalProps {
     hideModal: () => void;
+    googleData?: GoogleData;
 }
 
 export enum SignUpError {
@@ -31,7 +43,7 @@ export enum SignUpError {
     UNKNOWN = "UNKNOWN" 
 }
 
-export default function SignupModal({ hideModal }: SignupModalProps) {
+export default function SignupModal({ hideModal, googleData }: SignupModalProps) {
     const authContext = useContext(AuthContext);
     if(!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
@@ -42,10 +54,10 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const { openModal, closeModal } = useModal();
 
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
+    const [name, setName] = useState(googleData ? googleData.givenName : '');
+    const [surname, setSurname] = useState(googleData ? googleData.familyName : '');
     const [birthdate, setBirthdate] = useState<Date>(new Date());
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(googleData ? googleData.email : '');
     const [phone, setPhone] = useState('');
 
     const [password, setPassword] = useState('');
@@ -54,6 +66,8 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const [loading, ] = useState(false);
 
     const [signUpError, setSignUpError] = useState<SignUpError>();
+
+    // const [googleUserData, setGoogleUserData] = useState(googleData);
 
     const nameValidation = CredentialValidator.ValidateName(name);
     const birthdateValidation = CredentialValidator.ValidateBirthDate(birthdate);
@@ -64,8 +78,8 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const validateEPP = () => {
         let emailNotValidated = CredentialValidator.ValidateEmail(email);
-        let passwordNotValidated = CredentialValidator.ValidatePassword(password, true, passwordConfirmation);
-        let phoneNotValidated = CredentialValidator.ValidatePhone(phone);
+        let passwordNotValidated = !googleData ? CredentialValidator.ValidatePassword(password, true, passwordConfirmation) : undefined;
+        let phoneNotValidated = !googleData ? CredentialValidator.ValidatePhone(phone) : undefined;
 
         if(((emailNotValidated || passwordNotValidated) && !phoneNotValidated) || (!emailNotValidated && !passwordNotValidated)) {
             return;
@@ -89,7 +103,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
     const validateCredentials = () => {
         if(loading) return false;
 
-        if(name && birthdate && (phone || (email && validatePasswords()))) {
+        if(!nameValidation && !birthdateValidation && (!phoneValidation || (!emailValidation && validatePasswords()))) {
             return true;
         } else {
             return false;
@@ -139,56 +153,16 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
 
     const handleAgreementTrans = () => {
         if(validationPassed) {
+            console.log(googleData);
             openModal('agreement', 
                 <AgreementModal 
                     hideModal={() => { closeModal('agreement'); }}
-                    data={{ name: name, surname: surname, birthdate: birthdate, email: email, phone: phone, password: password }}
+                    data={{ name: name, surname: surname, birthdate: birthdate, email: email, phone: phone, password: password, accessToken: googleData?.accessToken }}
                     errorCodeHandler={setSignUpError}
                      />, 
                 { minWidth: '32.5%', maxWidth: '32.5%' } as CSSProperties);
         }
     }
-
-    // const handleSignUpRequest = async () => {
-    //     if(validationPassed) {
-    //         setLoading(true);
-    //         setSignUpError(undefined);
-    //         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
-
-    //         try {
-    //             const response = await fetch(url, {
-    //                 method: "POST",
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'ngrok-skip-browser-warning': 'true'
-    //                 }, 
-    //                 body: JSON.stringify({
-    //                     name: name,
-    //                     surname: surname,
-    //                     phone: phone,
-    //                     email: email,
-    //                     password: password,
-    //                     BirthDate: birthdate
-    //                 })
-    //             });
-            
-    //             if (response.ok) {
-    //                 const data = await response.json();
-    //                 login(data.token, data.userData);
-    //                 hideModal();
-    //                 navigate("/");
-    //             } else if (response.status === 400) {
-    //                 setSignUpError(SignUpError.INVALID_DATA);
-    //             } else if (response.status === 409) {
-    //                 setSignUpError(SignUpError.USER_EXIST);
-    //             }
-    //         } catch (error) {
-    //             console.error('Error:', error);
-    //         }
-    //     }
-
-    //     setLoading(false);
-    // }
 
     return (
         <>
@@ -204,13 +178,15 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                                 label={t('SignUpNameInputLabel')}
                                 onChange={nameChangeHandle}
                                 validationError={nameValidation ? true : false}
+                                outerValue={name}
                             />
                         </div>
                         <div className="input-group surname-input-group">
 
                             <TextInputMaterial 
                                 label={t('SignUpSurnameInputLabel')}
-                                onChange={surnameChangeHandle}/>
+                                onChange={surnameChangeHandle}
+                                outerValue={surname}/>
                         </div>
                         {nameValidation ? (
                             <ValidationError 
@@ -244,7 +220,9 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             <TextInputMaterial 
                                 label={t('SignUpEmailInputLabel')}
                                 onChange={emailChangeHandle}
-                                validationError={emailValidation ? true : false}/>
+                                validationError={emailValidation ? true : false} 
+                                outerValue={email}
+                                disabled={googleData ? true : false}/>
                         </div>
                         {emailValidation ? (
                             <ValidationError 
@@ -260,6 +238,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                             <PasswordField 
                                 onValueChange={passwordChangeHandle}
                                 showValidationError={passwordValidation ? true : false}
+                                disabled={googleData ? true : false}                                
                             />
                             <label>{t('SignUpPasswordReq')}</label>
                         </div>
@@ -268,6 +247,7 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                                 label={t('Modals.SignUp.PasswordConfirmation')}
                                 onValueChange={passwordConfirmationChangeHandle}
                                 showValidationError={passwordValidation ? true : false}
+                                disabled={googleData ? true : false}
                             />
                         </div>
                         {passwordValidation ? (
@@ -279,7 +259,8 @@ export default function SignupModal({ hideModal }: SignupModalProps) {
                     <div className="block phone-block">
                         <PhonePickerBlock 
                             onPhoneChange={phoneChangeHandle}
-                            validationMessage={phoneValidation ? t(GetPhoneValidationErrorKey(phoneValidation)) : ''} 
+                            validationMessage={phoneValidation ? t(GetPhoneValidationErrorKey(phoneValidation)) : ''}
+                            
                         />
                     </div>
                     <div className="agreement-text">

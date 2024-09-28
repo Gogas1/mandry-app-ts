@@ -37,6 +37,7 @@ import i18n from './i18n';
 import AdminNavigation from './components/admin/AdminNavigation';
 import AdminCategories from './components/admin/AdminCategories';
 import AdminHousing from './components/admin/AdminHousings';
+import GoogleAuthHandler from './components/app/GoogleAuthHandler';
 
 function App() {
   const GApiKey = import.meta.env.VITE_REACT_APP_GOOGLE_API_KEY;
@@ -50,6 +51,7 @@ function App() {
             <ModalProvider>
               {/* <AuthorizationProvider> */}
                 <UserSettingsProvider>
+                  <GoogleAuthHandler />
                   <Navbar />
                   <Routes>
                     <Route path='/' element={<Home />} />

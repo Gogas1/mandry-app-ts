@@ -57,7 +57,7 @@ export default function TextInputMaterial({
     };
 
     return (
-      <div className={`text-input-material ${validationError ? 'error' : ''} ${className ? className : ''}  ${focused || value || outerValue ? 'focused' : ''}`}>
+      <div className={`text-input-material ${validationError ? 'error' : ''} ${className ? className : ''}  ${focused || value || outerValue ? 'focused' : ''} ${disabled && 'disabled'}`}>
         <label className="label-material">{label}</label>
         <div className="input-container">
             <input 
@@ -72,15 +72,15 @@ export default function TextInputMaterial({
             {icon ? 
             (<img 
               src={icon} 
-              className={`${iconCursorPointer ? 'pointer' : ''}`}
-              onClick={onIconClick} />) 
+              className={`${iconCursorPointer && !disabled ? 'pointer' : ''}`}
+              onClick={!disabled ? onIconClick : undefined} />) 
             : ''} 
             <fieldset className="fieldset">
                 <legend className="legend">
                     <span>{label}</span>
                 </legend>
             </fieldset>
-        </div>    
+        </div>
       </div>
     );
 }

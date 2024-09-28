@@ -10,11 +10,13 @@ interface PasswordFieldProps {
     label?: string;
     onFocus?: () => void;
     onBlur?: () => void;
+    disabled?: boolean;
+    outerValue?: string; 
 
     showValidationError?: boolean;
 }
 
-export default function PasswordField({onValueChange, label, onFocus, onBlur, showValidationError = false}: PasswordFieldProps) {
+export default function PasswordField({onValueChange, label, onFocus, onBlur, showValidationError = false, disabled = false, outerValue }: PasswordFieldProps) {
     const { t } = useTranslation();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +34,9 @@ export default function PasswordField({onValueChange, label, onFocus, onBlur, sh
                 onIconClick={() => setShowPassword(!showPassword)}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                disabled={disabled}
                 validationError={showValidationError}
+                outerValue={outerValue}
             />
         </>
     );

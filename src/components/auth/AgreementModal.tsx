@@ -25,6 +25,8 @@ export interface AgreementModalDataHolder {
     email: string;
     phone: string;
     password: string;
+
+    accessToken?: string;
 }
 
 export default function AgreementModal({ hideModal, errorCodeHandler, data }: AgreementModalProps) {
@@ -70,8 +72,17 @@ export default function AgreementModal({ hideModal, errorCodeHandler, data }: Ag
             if(errorCodeHandler) {
                 errorCodeHandler(undefined);
             }
+
+            let url = ''
             
-            const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
+            console.log(data);
+
+            if(!data?.accessToken) {
+                url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup";
+            }
+            else {
+                url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/a/auth/signup-google";
+            }
     
             fetch(url, {
                 method: "POST",
@@ -85,7 +96,8 @@ export default function AgreementModal({ hideModal, errorCodeHandler, data }: Ag
                     phone: signUpData?.phone,
                     email: signUpData?.email,
                     password: signUpData?.password,
-                    BirthDate: signUpData?.birthdate
+                    BirthDate: signUpData?.birthdate,
+                    accesstoken: signUpData?.accessToken
                 })
             })
             .then(async (response) => {

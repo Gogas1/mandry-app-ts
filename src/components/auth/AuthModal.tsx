@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import facebookIcon from "../../assets/icons/auth/facebook.svg";
 import googleIcon from "../../assets/icons/auth/google.svg";
@@ -19,7 +19,7 @@ interface AuthModalProps {
     hideModal: () => void;
 }
 
-interface AuthUserData {
+export interface AuthUserData {
     id: number;
     name: string;
     email: string;
@@ -31,6 +31,13 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     if(!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
+
+    let currentUrl = window.location.href.split('#')[0];
+    if(currentUrl[currentUrl.length - 1] === '/') {
+        console.log(currentUrl);
+        currentUrl = currentUrl.slice(0, currentUrl.length - 1);
+    }
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=profile+email&include_granted_scopes=true&response_type=token&state=verify_token&redirect_uri=${currentUrl}&client_id=1043815729603-24gj1b4casgo3k38tnsq5dp6f4bt5k9j.apps.googleusercontent.com`
 
     const { t } = useTranslation();
 
@@ -79,7 +86,6 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
 
                 login(data.token, userData);
                 hideModal();
-                navigate("/");
               } else if (response.status === 400) {
                 setIsPhoneAttemptFailed(true);
               } else if (response.status === 401) {;
@@ -185,9 +191,11 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
                             <div className="oauth-button facebook-button">
                                 <img src={facebookIcon} alt="facebook"/>
                             </div>
-                            <div className="oauth-button google-button">
+                            <Link 
+                                to={googleAuthUrl}
+                                className="oauth-button google-button">
                                 <img src={googleIcon} alt="google"/>
-                            </div>
+                            </Link>
                             <div className="oauth-button apple-button">
                                 <img src={appleIcon} alt="apple"/>
                             </div>
