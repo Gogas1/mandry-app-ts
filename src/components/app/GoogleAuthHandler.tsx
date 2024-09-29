@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useModal } from "./ModalContext";
 import SignupModal from "../auth/SignupModal";
 import AuthContext, { User } from "../auth/AuthenticationContext";
@@ -13,10 +12,7 @@ export default function GoogleAuthHandler() {
 
     const { login, authState } = authContext;
 
-    const [params,] = useSearchParams();
-
     const { openModal, closeModal } = useModal();
-    console.log(params);
 
     useEffect(() => {
         const handleState = async () => {

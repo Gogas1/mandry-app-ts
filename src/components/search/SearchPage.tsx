@@ -219,6 +219,8 @@ export default function SearchPage() {
         }
 
         runAll();
+
+        return () => console.log(1);
     }, []);
 
     const handleFilterChange = (filters: FilterSetting) => {

@@ -54,7 +54,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: end;
+            justify-content: space-between;
 
             margin: 6px;
 
@@ -72,7 +72,9 @@
     
                 justify-content: center;
                 align-items: start;
-                
+
+                min-height: 182px;
+                max-height: 182px;
                 // cursor: pointer;
 
                 .favourite-icon {
@@ -88,12 +90,100 @@
                 .image {
                     border-radius: 15px 15px 0 0;   
                     width: 100%;
+                    height: 100%;
+
+                    transition: background 0.3s ease;
+                }
+
+                .switch-button {
+                    position: absolute;
+                    top: 50%;
+
+                    cursor: pointer;
+                    display: flex;
+                    width: 30px;
+                    height: 30px;
+                    transform: rotate(90deg);
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 48px;
+                    border: 1px solid var(--white, #F6F6F6);
+                    background: rgba(255, 255, 255, 0.03);
+                    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+                    backdrop-filter: blur(10px);
+
+                    &--left {
+                        left: 10px;
+                        
+                        img {
+                            transform: rotate(180deg);
+                            }
+                    }
+
+                    &--right {
+                        right: 10px;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .item-switcher-container {
+                    position: absolute;
+                    top: calc(100% - 15px);
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+
+                    .item-switcher {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: fit-content;
+                      
+                        .dots {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 3px; // Adjust the spacing between dots
+                            min-height: 5px;
+                        
+                            .dot {
+                                width: 5px;
+                                height: 5px;
+                                background-color: #f6f6f6;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                transition: transform 0.3s ease;
+                            }
+                        }
+                      
+                        .slider-container {
+                          position: relative;
+                          width: 100%; /* same width as the dots container */
+                          height: 5px;
+                          
+                          .slider {
+                                position: absolute;
+                                top: -5px;
+                                left: 0;
+                                width: 18px;  // Width of the wide line
+                                height: 5px;
+                                background-color: #f6f6f6;
+                                border-radius: 5px;
+                                transition: transform 0.3s ease;
+                            }
+                        }
+                    }
                 }
             }
     
             .labels {
                 display: flex;
                 flex-direction: column;
+                flex: 1;
     
                 margin: 15px 5px 5px 5px;
 
@@ -118,8 +208,10 @@
                 &__bottom {
                     display: flex;
                     flex-direction: row;
+                    flex: 1;
 
                     justify-content: space-between;
+                    align-items: flex-end;
                 }
 
                 &__pricing {
