@@ -7,11 +7,15 @@ import ttIcon from '../../assets/icons/home/tt.svg';
 import fbIcon from '../../assets/icons/home/fb.svg';
 import { Link } from "react-router-dom";
 
-export default function FooterSection() {
+interface FooterSectionProps {
+    className?: string;
+}
+
+export default function FooterSection({ className = '' }: FooterSectionProps) {
     const { t } = useTranslation();
 
     return (
-        <footer className="footer">
+        <footer className={`footer ${className}`}>
             <div className="upper-section">
                 <section aria-label="About Mandry link" className="section section--mandry">
                     <h4>

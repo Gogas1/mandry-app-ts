@@ -3,10 +3,18 @@
 .housing-page {
     background-color: #CAD3D9;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;   
+    align-items: center; 
+
+    .housing-footer {
+        width: 100%;
+    }
 
     .housing-page-content {
         position: relative;
-        padding: 94px 100px 0px 100px;
+        max-width: 1400px;
+        padding: 94px 0px 0px 0px;
         margin-bottom: 60px;
         min-height: 100vh;
 
@@ -16,9 +24,10 @@
             flex-direction: row;
             width: 100%;
             justify-content: center;
+            margin-top: 80px;
 
             img {
-                width: 100px;
+                width: 120px;
                 filter: brightness(80%);
             }
         }
@@ -127,7 +136,7 @@
 
             .data-section {
                 margin-top: 40px;
-                max-width: 65%;
+                flex: 1;
                 max-height: 100vh;
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -165,7 +174,7 @@
 
             .rent-section {
                 margin-top: 40px;
-                width: 100%;
+                width: 452px;
                 max-height: 100vh;
                 overflow-y: auto;
                 overflow-x: hidden;

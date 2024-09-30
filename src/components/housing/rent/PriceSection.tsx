@@ -196,6 +196,7 @@ export default function PriceSection({ selecetedDates, price, housingData, owner
                         icon={arrowDownIcon}
                         iconCursorPointer={true}
                         disabled={true}
+                        enableIconClick={true}
                         onIconClick={handleTravelersIconClick}
                         outerValue={formatTravelers()} />
                     <TravelersPopup 

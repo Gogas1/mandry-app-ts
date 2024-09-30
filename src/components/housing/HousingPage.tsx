@@ -325,7 +325,7 @@ export default function HousingPage() {
                     )}
 
                 </div>
-                <FooterSection />
+                <FooterSection className='housing-footer' />
             </div>
         </>
     );
