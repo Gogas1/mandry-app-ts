@@ -2,15 +2,15 @@
 
 #navbar-wrapper {
     position: absolute;
-    display: flex;
+    // display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     z-index: 1000;
     width: 100%;
 
     .popups-wrapper {
         position: relative;
-        // width: 100%;
+        width: 100%;
         padding: 0 100px;
     }
 }
@@ -20,10 +20,10 @@
     padding: 5px;
     border-radius: 15px;
     border: 1px solid #f6f6f6;
-    margin: 20px 0;
+    margin: 20px 100px 0 100px;
 
-    min-width: 1400px;
-    max-width: 1400px;
+    // min-width: 1400px;
+    // max-width: 1400px;
 
     @media screen and (max-width: 1280px) {
         margin: 5px 15px;
