@@ -1,0 +1,22 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="messenger-svgrepo-com 1" clip-path="url(#clip0_2779_913)">
+<g id="Clip path group">
+<mask id="mask0_2779_913" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<g id="a">
+<path id="Vector" d="M0 6.10352e-05H24V24.0001H0V6.10352e-05Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_2779_913)">
+<g id="Group">
+<path id="Vector_2" d="M18.5408 5.45928C14.9284 1.84691 9.07164 1.84691 5.45927 5.45928C2.33252 8.58603 1.91214 13.3944 4.19839 16.9733L3.65639 19.7573C3.58864 20.1053 3.89477 20.4114 4.24277 20.3437L7.02677 19.8017C10.6056 22.0879 15.414 21.6675 18.5408 18.5408C22.1531 14.9284 22.1531 9.07166 18.5408 5.45928Z" stroke="#F7F7F7" stroke-linejoin="round"/>
+<path id="Vector_3" d="M16.4194 10.4091L13.4143 13.4143L10.6743 10.6743L7.66901 13.6794" stroke="#F7F7F7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2779_913">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

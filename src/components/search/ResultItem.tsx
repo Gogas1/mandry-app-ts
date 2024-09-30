@@ -10,6 +10,8 @@ import { useUserSettings } from "../app/UserSettingsContext";
 import arrowIcon from '../../assets/icons/meta/arrow.svg';
 import starIcon from '../../assets/icons/meta/star.svg';
 import shareIcon from '../../assets/icons/meta/share.svg';
+import { useModal } from "../app/ModalContext";
+import ShareModal from "./share-modal/ShareModal";
 
 interface ResultItemProps {
     housing: Housing
@@ -25,6 +27,7 @@ export default function ResultItem({ housing, makeFavouriteHandler }: ResultItem
     const { t } = useTranslation();
     const { currency } = useUserSettings();
     const { authState } = authContext;
+    const { openModal, closeModal } = useModal();
 
     const [activeIndex, setActiveIndex] = useState<number>(0);
     
@@ -42,6 +45,12 @@ export default function ResultItem({ housing, makeFavouriteHandler }: ResultItem
         if(activeIndex != housing.images.length - 1) {
             setActiveIndex(activeIndex + 1);
         }
+    }
+
+    const handleShareModalCall = () => {
+        openModal('shareModal', 
+        <ShareModal housing={housing} hideModal={() => closeModal('shareModal')} />,
+        { minWidth: '590px', maxWidth: '590px'  })
     }
 
     return (
@@ -136,7 +145,7 @@ export default function ResultItem({ housing, makeFavouriteHandler }: ResultItem
                         </div>
                     </div>
                 </div>
-                <button className='share-button'>
+                <button className='share-button' onClick={handleShareModalCall}>
                     <img src={shareIcon} />
                 </button>
             </div>

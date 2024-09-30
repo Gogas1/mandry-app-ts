@@ -74,8 +74,8 @@ export default function PaymentPage() {
                     'Authorization': `Bearer ${authState.token}`
                 }, 
                 body: JSON.stringify({
-                    dateFrom: data.selecetedDates.dateOne.toISOString(),
-                    dateTo: data.selecetedDates.dateTwo.toISOString(),
+                    dateFrom: toLocalISOString(data.selecetedDates.dateOne),
+                    dateTo: toLocalISOString(data.selecetedDates.dateTwo),
                     housingId: data.housingData.id
                 })
             });
@@ -212,3 +212,17 @@ function calculateLongTermsBenefits(targetDate: Date): LongTermsBenefits {
         };
     }
 }
+
+function toLocalISOString(date: Date) {
+    const pad = (num: number) => String(num).padStart(2, '0');
+  
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);  // Months are zero-indexed
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+    const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+  
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`;
+  }
