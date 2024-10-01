@@ -14,6 +14,7 @@ interface TextInputProps {
     outerValue?: string;
     validationError?: boolean;
     disabled?: boolean; 
+    enableIconClick?: boolean;
 }
 
 export default function TextInputMaterial({ 
@@ -28,7 +29,8 @@ export default function TextInputMaterial({
   onBlur,
   outerValue = undefined,
   validationError,
-  disabled = false
+  disabled = false,
+  enableIconClick = false
   }: TextInputProps) {
     
     const [focused, setFocused] = useState(false);
@@ -72,8 +74,8 @@ export default function TextInputMaterial({
             {icon ? 
             (<img 
               src={icon} 
-              className={`${iconCursorPointer && !disabled ? 'pointer' : ''}`}
-              onClick={!disabled ? onIconClick : undefined} />) 
+              className={`${iconCursorPointer && (!disabled || enableIconClick) ? 'pointer' : ''}`}
+              onClick={!disabled || enableIconClick ? onIconClick : undefined} />) 
             : ''} 
             <fieldset className="fieldset">
                 <legend className="legend">

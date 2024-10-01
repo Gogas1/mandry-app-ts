@@ -5,18 +5,19 @@ import arrowIcon from "../../assets/icons/meta/arrow.svg";
 import '../../styles/navbar/language-menu.scss';
 import { useTranslation } from 'react-i18next';
 import Dropdown from '../app/Dropdown';
-import { useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import i18n from '../../i18n';
 import { CurrencyHelper } from '../../helpers/CurrencyHelper';
 import { useUserSettings } from '../app/UserSettingsContext';
 
 interface PopupProps {
     isOpen: boolean;
+    style?: CSSProperties
     closeAll: () => void;
 }
 
 
-export default function LanguagePopup({ isOpen, closeAll }: PopupProps) {
+export default function LanguagePopup({ isOpen, style, closeAll }: PopupProps) {
     const { t } = useTranslation();
     const userSettingsContext = useUserSettings();
 
@@ -90,7 +91,7 @@ export default function LanguagePopup({ isOpen, closeAll }: PopupProps) {
     }
 
   return (
-    <div className={`language-popup-wrapper ${isOpen ? 'opened' : 'closed'}`}>
+    <div className={`language-popup-wrapper ${isOpen ? 'opened' : 'closed'}`} style={style}>
       <div className='popup-border'></div>
       <div className='popup-panel'></div>
       <div className='popup-panel-content'>

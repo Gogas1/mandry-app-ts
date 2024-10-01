@@ -8,7 +8,7 @@ import PaymentSection from './sections/PaymentSection';
 import FooterSection from '../home/FooterSection';
 import PhoneSection from './sections/PhoneSection';
 import RefundSection from './sections/RefundSection';
-import { CSSProperties, useContext, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
 import PriceWaySection from './sections/PriceWaySection';
 import MainRulesSection from './sections/MainRulesSection';
 import AgreementSection from './sections/AgreementSection';
@@ -20,6 +20,7 @@ import WriteOwnerSection from './sections/done/WriteOwnerSection';
 import HousingInfoSection from './sections/done/HousingInfoSection';
 import HousingCardSection from './sections/done/HousingCardSection';
 import AuthContext from '../auth/AuthenticationContext';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 export interface LongTermsBenefits {
     fullReturnAvailable: boolean;
@@ -46,6 +47,8 @@ export default function PaymentPage() {
 
     const location = useLocation();
     const data = location.state as ReservationSettings;
+
+    const { updateNavbarWidth } = useUserSettings();
     const { t } = useTranslation();
     const { openModal, closeModal } = useModal();
 
@@ -74,8 +77,9 @@ export default function PaymentPage() {
                     'Authorization': `Bearer ${authState.token}`
                 }, 
                 body: JSON.stringify({
-                    dateFrom: data.selecetedDates.dateOne.toISOString(),
-                    dateTo: data.selecetedDates.dateTwo.toISOString(),
+                    dateFrom: toLocalISOString(data.selecetedDates.dateOne),
+                    dateTo: toLocalISOString(data.selecetedDates.dateTwo),
+                    fullPrice: paymentSettings.paymentPrice,                    
                     housingId: data.housingData.id
                 })
             });
@@ -111,6 +115,14 @@ export default function PaymentPage() {
             }
         }
     };
+
+    useEffect(() => {
+        updateNavbarWidth(1400);
+
+        return () => {
+            updateNavbarWidth(0);
+        }
+    }, [])
 
     const handleModalClosing = () => {
         closeModal('reservingModal');
@@ -181,7 +193,7 @@ export default function PaymentPage() {
                         )}
                     </div>
                 </div>
-                <FooterSection />
+                <FooterSection className='payment-footer' />
             </div>
         </>
     );
@@ -212,3 +224,17 @@ function calculateLongTermsBenefits(targetDate: Date): LongTermsBenefits {
         };
     }
 }
+
+function toLocalISOString(date: Date) {
+    const pad = (num: number) => String(num).padStart(2, '0');
+  
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);  // Months are zero-indexed
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+    const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+  
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`;
+  }

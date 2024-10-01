@@ -21,10 +21,13 @@ import OwnerSection from './sections/OwnerSection';
 import PriceSection from './rent/PriceSection';
 import { RatingSection } from './rent/RatingSection';
 import ReviewSection from './rent/ReviewSection';
-import InlinePopup from '../app/InlinePopup';
+// import InlinePopup from '../app/InlinePopup';
 import AuthContext from '../auth/AuthenticationContext';
 import { LongTermsBenefits } from '../payment/PaymentPage';
 import HeartIcon from '../search/HeartIcon';
+import { useModal } from '../app/ModalContext';
+import ShareModal from '../search/share-modal/ShareModal';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 type ProfileInfo = {
     education?: string;
@@ -137,6 +140,8 @@ export default function HousingPage() {
 
     const { authState } = authContext;
 
+    const { updateNavbarWidth } = useUserSettings();
+    const { openModal, closeModal } = useModal();
     const { t, ready } = useTranslation();
     const { id } = useParams();
 
@@ -188,6 +193,12 @@ export default function HousingPage() {
         };
 
         searchHousing();
+
+        updateNavbarWidth(1400);
+
+        return () => {
+            updateNavbarWidth(0)
+        };
     }, [id, ready]);
 
     const makeFavourite = async (id: string) => {
@@ -214,13 +225,21 @@ export default function HousingPage() {
         setLongTermsBenefits(CalculateLongTermsBenefits(dateOne ? dateOne : new Date()));
     }
 
-    const handleUrlCopy = async () => {
-        try {
-            const url = window.location.href;
-            await navigator.clipboard.writeText(url);
-        }
-        catch (err) {
-            console.error('Failed to copy text: ', err);
+    // const handleUrlCopy = async () => {
+    //     try {
+    //         const url = window.location.href;
+    //         await navigator.clipboard.writeText(url);
+    //     }
+    //     catch (err) {
+    //         console.error('Failed to copy text: ', err);
+    //     }
+    // }
+
+    const handleShareModalCall = () => {
+        if(housingData) {
+            openModal('shareModal', 
+            <ShareModal housing={housingData} hideModal={() => closeModal('shareModal')} />,
+            { minWidth: '590px', maxWidth: '590px'  })
         }
     }
 
@@ -235,9 +254,7 @@ export default function HousingPage() {
                                     {housingData ? housingData.name : ''}
                                 </h1>
                                 <div className='housing-actions'>
-                                    <InlinePopup popupContent={t('HousingPage.Copied')}>
-                                        <img className='action-icon' src={shareIcon} onClick={handleUrlCopy} />
-                                    </InlinePopup>
+                                    <img className='action-icon' src={shareIcon} onClick={handleShareModalCall} />
                                     {authState.isAuthenticated && (
                                         <HeartIcon
                                             filled={housingData ? housingData.isFavourite : false}
@@ -325,7 +342,7 @@ export default function HousingPage() {
                     )}
 
                 </div>
-                <FooterSection />
+                <FooterSection className='housing-footer' />
             </div>
         </>
     );

@@ -14,6 +14,7 @@ import { AdvancedMarker, Map } from "@vis.gl/react-google-maps";
 import AuthContext from "../auth/AuthenticationContext";
 import { useSearchParams } from "react-router-dom";
 import MapMarker from "./MapMarker";
+import { ColorTheme, useUserSettings } from "../app/UserSettingsContext";
 
 export interface FilterSetting {
     destination: string;
@@ -40,15 +41,21 @@ export default function SearchPage() {
     }
     const { t } = useTranslation();
     const { authState } = authContext;
+    const { updateColorTheme, updateNavbarWidth } = useUserSettings();
 
     document.title = t("Titles.SearchPage");
 
     const [markers, setMarkers] = useState<{ id: number, housing: Housing, zIndex: number}[]>([]);
     const [focusedMarker, setFocusedMarker] = useState(-1);
 
+    const [page, setPage] = useState(1);
+    const [pageSize, ] = useState(6);
+    const [pagesCount, setPagesCount] = useState(0);
+
     const [params, ] = useSearchParams();
 
     const [loading, setLoading] = useState(true);
+    const [loadingHousings, setLoadingHousings] = useState(false);
     const [housings, setHousings] = useState<Housing[]>([]);
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [featuresList, setFeaturesList] = useState<Feature[]>([]);
@@ -66,8 +73,24 @@ export default function SearchPage() {
         languages: []
     } as FilterSetting);
 
-    const filterHousings = async (settings: FilterSetting) => {
-        const queryString = toQueryString(convertToFilterSettings(settings));
+    const filterHousings = async (settings: FilterSetting, pageNumber?: number, pageSizeNumber?: number) => {
+        setLoadingHousings(true);
+        const filtersSettings = convertToFilterSettings(settings);
+        if(pageNumber) {
+            filtersSettings.page = pageNumber;
+        }
+        else {
+            filtersSettings.page = page;
+        }
+
+        if(pageSizeNumber) {
+            filtersSettings.pageSize = pageSizeNumber;
+        }
+        else {
+            filtersSettings.pageSize = pageSize;
+        }
+
+        const queryString = toQueryString(filtersSettings);
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + `/housing/filter?${queryString}`;
 
         try {
@@ -80,7 +103,9 @@ export default function SearchPage() {
             });
             if (response.ok) {
                 const data = await response.json();
+
                 const housings = data.housings as Housing[];
+                setPagesCount(data.totalPages);
                 setHousings(housings);
                 setMarkers(housings.map((item, index) => {
                     return { id: index, housing: item, zIndex: 1 } as { id: number, housing: Housing, zIndex: number};
@@ -90,6 +115,8 @@ export default function SearchPage() {
         catch (error) {
             console.error(error);
         }
+
+        setLoadingHousings(false);
     }
 
     useEffect(() => {
@@ -212,16 +239,25 @@ export default function SearchPage() {
                 }
 
                 handleFilterChange(newFilterSettings);
-                filterHousings(newFilterSettings);
+                filterHousings(newFilterSettings, page, pageSize);
             } catch (error) {
                 console.error(error);
             }
         }
 
         runAll();
+
+        updateColorTheme(ColorTheme.DARK);
+        updateNavbarWidth(1400);
+
+        return () => { 
+            updateColorTheme(ColorTheme.WHITE);
+            updateNavbarWidth(0); 
+        };
     }, []);
 
     const handleFilterChange = (filters: FilterSetting) => {
+        setPage(1);
         setFilterSettings(filters);
     }
 
@@ -252,6 +288,11 @@ export default function SearchPage() {
         }
     }
 
+    const handlePageSwitch = (pageNumber: number) => {
+        setPage(pageNumber);
+        filterHousings(filterSettings, pageNumber, pageSize);
+    }
+
     return (
         <>
             <div className="search-page">
@@ -272,7 +313,12 @@ export default function SearchPage() {
                                     priceRange={prices}
                                     searchHandler={filterHousings}
                                     filterChangeHandler={handleFilterChange} />
-                                <ResultPanel housings={housings} />
+                                <ResultPanel 
+                                    page={page}
+                                    pages={pagesCount}
+                                    housings={housings}
+                                    housingsLoading={loadingHousings}
+                                    pageSwitchHandler={handlePageSwitch} />
                             </div>
                             <div className="map-section">
                                 <Map
@@ -333,6 +379,8 @@ interface FilterSettings {
     featureIds?: string[];
     minPrice?: number;
     maxPrice?: number;
+    page?: number;
+    pageSize?: number;
     languages?: string[];
 }
 
@@ -396,6 +444,8 @@ export function toQueryString(params: FilterSettings): string {
     if (params.minPrice !== undefined) query.append('minPrice', params.minPrice.toString());
     if (params.maxPrice !== undefined) query.append('maxPrice', params.maxPrice.toString());
     if (params.languages) query.append('languages', JSON.stringify(params.languages));
+    if (params.page) query.append('page', JSON.stringify(params.page));
+    if (params.pageSize) query.append('pageSize', JSON.stringify(params.pageSize));
 
     return query.toString();
 }

@@ -8,13 +8,15 @@ import "../../styles/navbar/profile-popup.scss";
 import { useTranslation } from "react-i18next";
 import { useModal } from "../app/ModalContext";
 import AuthModal from "../auth/AuthModal";
+import { CSSProperties } from "react";
 
 interface PopupProps {
     isOpen: boolean;
+    style?: CSSProperties;
     closeAll: () => void;
 }
 
-export default function ProfilePopup({ isOpen, closeAll }: PopupProps) {
+export default function ProfilePopup({ isOpen, style, closeAll }: PopupProps) {
 
     const { t } = useTranslation();
     const { openModal, closeModal } = useModal();
@@ -26,7 +28,7 @@ export default function ProfilePopup({ isOpen, closeAll }: PopupProps) {
     }
 
     return (
-        <div id="profile-popup-wrapper" className={`${isOpen ? 'opened' : 'closed'}`}>
+        <div id="profile-popup-wrapper" className={`${isOpen ? 'opened' : 'closed'}`} style={style}>
               <div id="profile-popup-border">
                 
               </div>

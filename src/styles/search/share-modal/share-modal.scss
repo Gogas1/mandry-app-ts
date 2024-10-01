@@ -1,0 +1,127 @@
+@use '../../mixins/panel.scss' as *;
+@use '../../mixins/typography' as *;
+@use '../../mixins/buttons' as *;
+
+.share-modal-wrapper {
+    position: relative;
+    width: 100%;
+
+    .share-modal-panel {
+        @include panelInverse;
+        -webkit-mask-image: radial-gradient(circle 20px at calc(100% - 48px) calc(0%), transparent 95%, black 100%);
+        mask-image: radial-gradient(circle 20px at calc(100% - 48px) calc(0%), transparent 95%, black 100%);
+        
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .header {
+            margin: 0;
+            @include blue-heading-font(22px);
+            text-align: center;
+        }
+
+        .share-modal-divider {
+            flex-shrink: 0;
+            width: 100%;
+            border: 0;
+            height: 1px;
+            background-color: #aaa;
+            margin: 0;
+        }
+
+        .housing-info-section {
+            display: flex;
+            flex-direction: row;
+
+            .thumbnail {
+                width: 137px;
+                border-radius: 15px;
+            }
+
+            .housing-info {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include font-white(16px, 400);
+
+                p {
+                    margin: 0;
+                }
+
+                .rating-info {
+                    display: flex;
+                    flex-direction: row;                    
+                    gap: 10px;
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+
+                    span {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .option {
+                cursor: pointer;
+                width: calc(50% - 10px);
+                display: flex;
+                height: 56px;
+                padding: 7px var(--Numbers-20, 20px);
+                align-items: center;
+                gap: 10px;
+                background-color: transparent;
+
+                border-radius: 15px;
+                border: 1px solid var(--blue, #08B1BD);
+
+                @include font-white(14px, 400);
+
+                img {
+                    width: 23px;
+                    height: 23px;
+                }
+            }
+            
+        }
+    }
+
+    .share-modal-close {
+        position: absolute;
+        cursor: pointer;
+
+        top: calc(0% - 10px);
+        left: calc(100% - 69px);
+
+        display: flex;
+        width: 30px;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+
+        border: 0;
+        border-radius: 15px;
+        background: var(--grey-80, rgba(81, 81, 81, 0.80));
+        box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.05) inset, 0px 0px 68px 0px rgba(255, 255, 255, 0.15) inset;
+        backdrop-filter: blur(24px);
+
+        img {
+            width: 75%;
+        }
+    }
+}

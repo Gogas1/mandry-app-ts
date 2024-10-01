@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import crossIcon from '../../assets/icons/meta/close-cross.svg';
 
 import "../../styles/navbar/favourites-popup.scss";
-import { useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import AuthContext from "../auth/AuthenticationContext";
 import { Housing } from "../housing/HousingPage";
 import FeatureService from "../../helpers/FeatureService";
@@ -11,10 +11,11 @@ import { Link } from "react-router-dom";
 
 interface PopupProps {
     isOpen: boolean;
+    style?: CSSProperties;
     closeAll: () => void;
 }
 
-export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
+export default function FavouritesPopup({ isOpen, style, closeAll }: PopupProps) {
     const authContext = useContext(AuthContext);
     if(!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
@@ -53,7 +54,7 @@ export default function FavouritesPopup({ isOpen, closeAll }: PopupProps) {
 
     return (
         <>
-            <div className={`favourites-popup ${isOpen ? 'opened' : 'closed'}`}>
+            <div className={`favourites-popup ${isOpen ? 'opened' : 'closed'}`} style={style}>
                 <div className="popup-border"></div>
                 <div className="popup-panel">
                     <div className="favs-header">{t('FavouritesPopupHeader')}</div>
