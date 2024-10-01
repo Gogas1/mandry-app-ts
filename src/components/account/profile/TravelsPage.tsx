@@ -66,11 +66,16 @@ export default function TravelsPage() {
                 <div className='header'>
                     {t('Travels.Header')}
                 </div>
-                {reservations ? (
+                {reservations.length > 0 ? (
                     <>
+                        {reservations.length > 1 ? (
+                            <div className='travels-title'></div>
+                        ) : (
+                            <div className='travels-title'></div>
+                        )}
                         {reservations.map((reservations, index) => (
-                            <div className='fav-item' key={index}>
-
+                            <div className='reserv-item' key={index}>
+                                
                             </div>
                         ))}
                     </>
@@ -92,9 +97,15 @@ export default function TravelsPage() {
 
                 <div className='divider' />
                 <div className='cant-find-reserv'>
-                    <div className='cf-header'>
-                        {t('Travels.CantFindRes')}
-                    </div>
+                    {reservations.length > 0 ? (
+                            <div className='cf-header'>
+                                {t('Travels.CantFindRes')}
+                            </div>
+                        ) : (
+                            <div className='cf-header'>
+                                {t('Travels.CantFindRes')}
+                            </div>
+                        )}
                     <div className='to-faq'
                         onClick={() => navigate('../../help')}
                     >
