@@ -2,16 +2,18 @@ import { useTranslation } from "react-i18next";
 import arrowIcon from "../../assets/icons/meta/arrow.svg";
 
 import '../../styles/navbar/profile-links-popup.scss';
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 import AuthContext from "../auth/AuthenticationContext";
 import { Link, useNavigate } from "react-router-dom";
 
 interface PopupProps {
     isOpen: boolean;
     closeAll: () => void;
+    className?: string;
+    style?: CSSProperties;
 }
 
-export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
+export default function ProfileLinksPopup({ isOpen, className = '', style, closeAll }: PopupProps) {
     const authContext = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -54,7 +56,7 @@ export default function ProfileLinksPopup({ isOpen, closeAll }: PopupProps) {
     }
 
     return (
-        <div className={`profile-links-popup-wrapper ${isOpen ? 'opened' : 'closed'}`}>
+        <div className={`profile-links-popup-wrapper ${isOpen ? 'opened' : 'closed'} ${className}`} style={style}>
             <div className="profile-links-popup-border"></div>
             <div className="profile-links-popup-panel">
                 <div className="panel-item" onClick={handleNotificationsTransition}>

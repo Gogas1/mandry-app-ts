@@ -27,6 +27,7 @@ import { LongTermsBenefits } from '../payment/PaymentPage';
 import HeartIcon from '../search/HeartIcon';
 import { useModal } from '../app/ModalContext';
 import ShareModal from '../search/share-modal/ShareModal';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 type ProfileInfo = {
     education?: string;
@@ -139,6 +140,7 @@ export default function HousingPage() {
 
     const { authState } = authContext;
 
+    const { updateNavbarWidth } = useUserSettings();
     const { openModal, closeModal } = useModal();
     const { t, ready } = useTranslation();
     const { id } = useParams();
@@ -191,6 +193,12 @@ export default function HousingPage() {
         };
 
         searchHousing();
+
+        updateNavbarWidth(1400);
+
+        return () => {
+            updateNavbarWidth(0)
+        };
     }, [id, ready]);
 
     const makeFavourite = async (id: string) => {

@@ -14,6 +14,7 @@ import { AdvancedMarker, Map } from "@vis.gl/react-google-maps";
 import AuthContext from "../auth/AuthenticationContext";
 import { useSearchParams } from "react-router-dom";
 import MapMarker from "./MapMarker";
+import { ColorTheme, useUserSettings } from "../app/UserSettingsContext";
 
 export interface FilterSetting {
     destination: string;
@@ -40,6 +41,7 @@ export default function SearchPage() {
     }
     const { t } = useTranslation();
     const { authState } = authContext;
+    const { updateColorTheme, updateNavbarWidth } = useUserSettings();
 
     document.title = t("Titles.SearchPage");
 
@@ -102,7 +104,6 @@ export default function SearchPage() {
             if (response.ok) {
                 const data = await response.json();
 
-                console.log(data);
                 const housings = data.housings as Housing[];
                 setPagesCount(data.totalPages);
                 setHousings(housings);
@@ -246,7 +247,13 @@ export default function SearchPage() {
 
         runAll();
 
-        return () => console.log(1);
+        updateColorTheme(ColorTheme.DARK);
+        updateNavbarWidth(1400);
+
+        return () => { 
+            updateColorTheme(ColorTheme.WHITE);
+            updateNavbarWidth(0); 
+        };
     }, []);
 
     const handleFilterChange = (filters: FilterSetting) => {

@@ -8,7 +8,7 @@ import PaymentSection from './sections/PaymentSection';
 import FooterSection from '../home/FooterSection';
 import PhoneSection from './sections/PhoneSection';
 import RefundSection from './sections/RefundSection';
-import { CSSProperties, useContext, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
 import PriceWaySection from './sections/PriceWaySection';
 import MainRulesSection from './sections/MainRulesSection';
 import AgreementSection from './sections/AgreementSection';
@@ -20,6 +20,7 @@ import WriteOwnerSection from './sections/done/WriteOwnerSection';
 import HousingInfoSection from './sections/done/HousingInfoSection';
 import HousingCardSection from './sections/done/HousingCardSection';
 import AuthContext from '../auth/AuthenticationContext';
+import { useUserSettings } from '../app/UserSettingsContext';
 
 export interface LongTermsBenefits {
     fullReturnAvailable: boolean;
@@ -46,6 +47,8 @@ export default function PaymentPage() {
 
     const location = useLocation();
     const data = location.state as ReservationSettings;
+
+    const { updateNavbarWidth } = useUserSettings();
     const { t } = useTranslation();
     const { openModal, closeModal } = useModal();
 
@@ -112,6 +115,14 @@ export default function PaymentPage() {
             }
         }
     };
+
+    useEffect(() => {
+        updateNavbarWidth(1400);
+
+        return () => {
+            updateNavbarWidth(0);
+        }
+    }, [])
 
     const handleModalClosing = () => {
         closeModal('reservingModal');
@@ -182,7 +193,7 @@ export default function PaymentPage() {
                         )}
                     </div>
                 </div>
-                <FooterSection />
+                <FooterSection className='payment-footer' />
             </div>
         </>
     );
