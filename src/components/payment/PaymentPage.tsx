@@ -76,6 +76,7 @@ export default function PaymentPage() {
                 body: JSON.stringify({
                     dateFrom: toLocalISOString(data.selecetedDates.dateOne),
                     dateTo: toLocalISOString(data.selecetedDates.dateTwo),
+                    fullPrice: paymentSettings.paymentPrice,                    
                     housingId: data.housingData.id
                 })
             });
