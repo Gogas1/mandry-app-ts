@@ -117,7 +117,7 @@ export default function PaymentPage() {
     };
 
     useEffect(() => {
-        updateNavbarWidth(1400);
+        updateNavbarWidth(0);
 
         return () => {
             updateNavbarWidth(0);

@@ -9,8 +9,7 @@
     min-height: 100vh;
 
     .search-page-content {
-        max-width: 1400px;
-        padding: 104px 0px 0 0px;
+        padding: 104px 100px 0 100px;
         display: flex;
         flex-direction: row;
         flex: 1;
@@ -32,15 +31,15 @@
         .main-section {
             display: flex;
             flex-direction: column;
-            flex: 0.65;
+            width: 826px;
 
             gap: 40px;
         }
     
         .map-section {
-            flex: 0.35;
+            flex: 1;
             background-color: gray;      
-            height: 718px;
+            height: calc(100% - 150px);
             border-radius: 15px;
             overflow: hidden;
 
