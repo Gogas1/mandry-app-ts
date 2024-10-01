@@ -20,7 +20,7 @@ export default function TravelsPage() {
     const { t } = useTranslation();
     const authContext = useContext(AuthContext);
     const navigate = useNavigate();
-    const [reservations, setReservations] = useState<Reservations>({ id: '', from: '', to: '', code: '', price: '', housing: { name: '' } } as Reservations);
+    const [reservations, setReservations] = useState<Reservations[]>([]);
 
     document.title = t('Titles.TravelsPage');
 
@@ -67,7 +67,11 @@ export default function TravelsPage() {
                     {t('Travels.Header')}
                     {reservations && (
                         <>
-                            {reservations.code}
+                            {reservations.map((reservations, index) => (
+                            <div className='fav-item' key={index}>
+                                {reservations.code}
+                            </div>
+                        ))}
                         </>
                     )}
                 </div>
