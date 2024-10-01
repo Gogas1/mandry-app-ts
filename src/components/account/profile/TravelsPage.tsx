@@ -62,30 +62,34 @@ export default function TravelsPage() {
     return (
         <div className='travels-page'>
             <div className='content-container'>
-                
+
                 <div className='header'>
                     {t('Travels.Header')}
-                    {reservations && (
-                        <>
-                            {reservations.map((reservations, index) => (
+                </div>
+                {reservations ? (
+                    <>
+                        {reservations.map((reservations, index) => (
                             <div className='fav-item' key={index}>
-                                {reservations.code}
+
                             </div>
                         ))}
-                        </>
-                    )}
-                </div>
-                <div className='reservation-travels'>
-                    {t('Travels.CantFindRes')}
-                </div>
-                <div className='reservation-desc'>
-                    {t('Travels.NoReserved')}
-                </div>
-                <button className='start-search-button'
-                    onClick={() => navigate('../../search')}
-                >
-                    {t('Travels.StartSearch')}
-                </button>
+                    </>
+                ) : (
+                    <>
+                        <div className='reservation-travels'>
+                            {t('Travels.CantFindRes')}
+                        </div>
+                        <div className='reservation-desc'>
+                            {t('Travels.NoReserved')}
+                        </div>
+                        <button className='start-search-button'
+                            onClick={() => navigate('../../search')}
+                        >
+                            {t('Travels.StartSearch')}
+                        </button>
+                    </>
+                )}
+
                 <div className='divider' />
                 <div className='cant-find-reserv'>
                     <div className='cf-header'>
