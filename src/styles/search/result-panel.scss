@@ -93,8 +93,7 @@
         .search-item-wrapper {
             display: flex;
             position: relative;
-    
-            width: calc(33.33333% - 15px);
+            flex: 1 1 25%;            
             min-height: 266px;
     
             .search-item-border {

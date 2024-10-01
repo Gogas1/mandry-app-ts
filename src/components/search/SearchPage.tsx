@@ -248,7 +248,7 @@ export default function SearchPage() {
         runAll();
 
         updateColorTheme(ColorTheme.DARK);
-        updateNavbarWidth(1400);
+        updateNavbarWidth(0);
 
         return () => { 
             updateColorTheme(ColorTheme.WHITE);

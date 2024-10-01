@@ -10,6 +10,8 @@
 
     .filter-section {
         display: flex;
+        flex: 1;
+
         .border {
             border-radius: 20px;
             border: 1px solid #AAA;
@@ -61,8 +63,6 @@
         }
 
         &--1 {
-            min-width: 310px;
-
             .popup-wrapper {
                 position: relative;
                 
@@ -71,7 +71,6 @@
         }
 
         &--2 {
-            flex: 0.5;
             display: flex;
             flex-direction: column;
 
@@ -256,9 +255,9 @@
                     }
                 }
 
-                .slider-block {
+                // .slider-block {
 
-                }
+                // }
 
                 .minmax-block {
                     color: #08B1BD;
@@ -274,7 +273,7 @@
             }
         }
         &--3 {
-            flex: 0.5;
+            flex: 1;
             display: flex;
             flex-direction: column;
 

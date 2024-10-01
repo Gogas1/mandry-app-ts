@@ -194,7 +194,7 @@ export default function HousingPage() {
 
         searchHousing();
 
-        updateNavbarWidth(1400);
+        updateNavbarWidth(0);
 
         return () => {
             updateNavbarWidth(0)
