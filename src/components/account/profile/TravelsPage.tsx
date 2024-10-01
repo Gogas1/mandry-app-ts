@@ -1,13 +1,26 @@
 import { useTranslation } from 'react-i18next';
 import '../../../styles/account/profile/travels-page.scss';
-import {  useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
+
+interface Reservations {
+    id: string;
+    from: string;
+    to: string;
+    code: string;
+    price: string;
+    housing: {
+        name: string;
+        image?: string;
+    }
+}
 
 export default function TravelsPage() {
     const { t } = useTranslation();
     const authContext = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [reservations, setReservations] = useState<Reservations>({ id: '', from: '', to: '', code: '', price: '', housing: { name: '' } } as Reservations);
 
     document.title = t('Titles.TravelsPage');
 
@@ -16,16 +29,47 @@ export default function TravelsPage() {
     }
 
     useEffect(() => {
-        if(!authContext.authState.isAuthenticated) {
-            navigate('/');
-        }
+        const fetchReservations = async () => {
+            const token = authContext.authState.token;
+
+            if (token) {
+                try {
+                    const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/reservation/user-reservations";
+                    const response = await fetch(url, {
+                        method: "GET",
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            "ngrok-skip-browser-warning": "true",
+                        },
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+
+                        if (data.hasReservations) {
+                            setReservations(data.reservations);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error fetching reservations", error);
+                }
+            }
+        };
+
+        fetchReservations();
     }, []);
 
     return (
         <div className='travels-page'>
             <div className='content-container'>
+                
                 <div className='header'>
                     {t('Travels.Header')}
+                    {reservations && (
+                        <>
+                            {reservations.code}
+                        </>
+                    )}
                 </div>
                 <div className='reservation-travels'>
                     {t('Travels.CantFindRes')}
@@ -34,17 +78,17 @@ export default function TravelsPage() {
                     {t('Travels.NoReserved')}
                 </div>
                 <button className='start-search-button'
-                onClick={() => navigate('../../search')}
+                    onClick={() => navigate('../../search')}
                 >
                     {t('Travels.StartSearch')}
                 </button>
-                <div className='divider'/>
+                <div className='divider' />
                 <div className='cant-find-reserv'>
                     <div className='cf-header'>
                         {t('Travels.CantFindRes')}
                     </div>
                     <div className='to-faq'
-                    onClick={() => navigate('../../help')}
+                        onClick={() => navigate('../../help')}
                     >
                         {t('Travels.ToFAQ')}
                     </div>
