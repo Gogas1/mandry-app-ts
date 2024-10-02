@@ -81,8 +81,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
             verifyToken();
         }
-
-        setIsReady(true);
     }, []);
 
     const login = (token: string, user: User) => {

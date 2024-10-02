@@ -29,11 +29,13 @@ export default function TravelsPage() {
         throw new Error('AuthContext must be used within an AuthProvider');
     }
 
+    const { isReady } = authContext;
+
     useEffect(() => {
         const fetchReservations = async () => {
             const token = authContext.authState.token;
 
-            if (token) {
+            if (token && isReady) {
                 try {
                     const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/reservation/user-reservations";
                     const response = await fetch(url, {
@@ -58,7 +60,7 @@ export default function TravelsPage() {
         };
 
         fetchReservations();
-    }, []);
+    }, [isReady]);
 
     return (
         <div className='travels-page'>
