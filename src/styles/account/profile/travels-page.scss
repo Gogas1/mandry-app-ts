@@ -29,7 +29,111 @@
 
             margin-bottom: 30px;
         }
-        
+
+        .travels-title {
+            color: var(--grey-dark, #515151);
+
+            font-family: Comfortaa;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 120%;
+
+            margin-bottom: 30px;
+        }
+
+        .reserv-item {
+            cursor: pointer;
+            display: flex;
+            padding: 30px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+            border: 1px solid #E6E6E6;
+            background: var(--white, #F6F6F6);
+            box-shadow: -25px 37px 12px 0px rgba(0, 0, 0, 0.00), -16px 24px 11px 0px rgba(0, 0, 0, 0.01), -9px 13px 10px 0px rgba(0, 0, 0, 0.05), -4px 6px 7px 0px rgba(0, 0, 0, 0.09), -1px 1px 4px 0px rgba(0, 0, 0, 0.10);
+
+            &__content {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                .reserv-item-img {
+                    width: 50%;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .reserv-item-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    width: 50%;
+
+                    &__name {
+                        color: var(--grey-dark, #515151);
+                        font-family: Comfortaa;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 120%;
+                    }
+
+                    &__date {
+                        color: var(--grey-dark, #515151);
+                        font-family: Comfortaa;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%; /* 19.2px */
+                    }
+
+                    .divider-blue {
+                        height: 1px;
+                        width: 100%;
+
+                        background-color: var(--Blue-light, #08B1BD);
+                    }
+
+                    &__price {
+                        display: flex;
+                        flex-direction: row;
+
+                        justify-content: space-between;
+
+                        color: var(--grey-dark, #515151);
+
+                        font-family: "Montserrat Alternates";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                    }
+
+                    &__code {
+                        display: flex;
+                        flex-direction: row;
+
+                        justify-content: space-between;
+
+                        color: var(--grey-dark, #515151);
+
+                        font-family: "Montserrat Alternates";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+
         .reservation-travels {
             color: var(--grey-dark, #515151);
 
@@ -60,7 +164,7 @@
             display: flex;
             width: 250px;
             height: 56px;
-            
+
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -68,7 +172,7 @@
 
             border-radius: 15px;
             border: 1px solid var(--blue, #08B1BD);
-            
+
             background-color: #F6F6F6;
             color: var(--blue, #08B1BD);
 
@@ -88,11 +192,12 @@
 
             margin-bottom: 20px;
         }
-        
+
         .cant-find-reserv {
             display: flex;
             flex-direction: row;
             gap: 10px;
+
             .cf-header {
                 color: var(--grey-dark, #515151);
 
@@ -100,7 +205,7 @@
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 120%; 
+                line-height: 120%;
             }
 
             .to-faq {
@@ -109,7 +214,8 @@
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 120%; /* 14.4px */
+                line-height: 120%;
+                /* 14.4px */
                 text-decoration-line: underline;
 
                 cursor: pointer;

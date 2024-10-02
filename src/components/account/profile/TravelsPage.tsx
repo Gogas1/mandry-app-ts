@@ -3,6 +3,7 @@ import '../../../styles/account/profile/travels-page.scss';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
+import FeatureService from '../../../helpers/FeatureService';
 
 interface Reservations {
     id: string;
@@ -68,24 +69,34 @@ export default function TravelsPage() {
                 </div>
                 {reservations.length > 0 ? (
                     <>
-                        {reservations.length > 1 ? (
-                            <div className='travels-title'></div>
+                        {reservations.length > 1 ? (    
+                            <div className='travels-title'>{t('Travels.TitleMult')}</div>
                         ) : (
-                            <div className='travels-title'></div>
+                            <div className='travels-title'>{t('Travels.TitleSing')}</div>
                         )}
                         {reservations.map((reservations, index) => (
                             <div className='reserv-item' key={index}>
-                                
+                                <div className='reserv-item__content'>
+                                    <div className='reserv-item-img'><img src={reservations.housing.image && FeatureService.getFeatureIcon(reservations.housing.image[0])}></img></div>
+                                    <div className='reserv-item-info'>
+                                        <div className='reserv-item-info__name'>{reservations.housing.name}</div> 
+                                        <div className='reserv-item-info__date'>{`${reservations.from} - ${reservations.to}`}</div> 
+                                        <div className='divider-blue'></div>
+                                        <div className='reserv-item-info__price'>{t('Travels.Total')} {reservations.price}</div> 
+                                        <div className='divider-blue'></div>
+                                        <div className='reserv-item-info__code'>{t('Travels.Code')} {reservations.code}</div> 
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </>
                 ) : (
                     <>
                         <div className='reservation-travels'>
-                            {t('Travels.CantFindRes')}
+                            {t('Travels.NoReserved')}
                         </div>
                         <div className='reservation-desc'>
-                            {t('Travels.NoReserved')}
+                            {t('Travels.NoReservedDesc')}
                         </div>
                         <button className='start-search-button'
                             onClick={() => navigate('../../search')}
@@ -99,7 +110,7 @@ export default function TravelsPage() {
                 <div className='cant-find-reserv'>
                     {reservations.length > 0 ? (
                             <div className='cf-header'>
-                                {t('Travels.CantFindRes')}
+                                {t('Travels.ResNotMatch')}
                             </div>
                         ) : (
                             <div className='cf-header'>
