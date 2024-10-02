@@ -10,7 +10,7 @@ import facebookIcon from '../../../assets/icons/share/facebook.svg';
 import messageIcon from '../../../assets/icons/share/message.svg';
 import messengerIcon from '../../../assets/icons/share/messenger.svg';
 import moreIcon from '../../../assets/icons/share/more.svg';
-import twitterIcon from '../../../assets/icons/share/twitter.svg';
+// import twitterIcon from '../../../assets/icons/share/twitter.svg';
 import wupIcon from '../../../assets/icons/share/wup.svg';
 import xIcon from '../../../assets/icons/share/xicon.svg';
 
