@@ -43,10 +43,10 @@
         }
 
         .reserv-item {
-            cursor: pointer;
+            width: 646px;
             display: flex;
             padding: 30px;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             gap: 10px;
             margin-bottom: 30px;
@@ -62,7 +62,9 @@
                 gap: 20px;
 
                 .reserv-item-img {
-                    width: 50%;
+                    width: 293px;
+                    border-radius: 15px;
+                    overflow: hidden;
 
                     img {
                         width: 100%;

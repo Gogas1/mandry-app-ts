@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthenticationContext';
 import FeatureService from '../../../helpers/FeatureService';
+import { useUserSettings } from '../../app/UserSettingsContext';
 
 interface Reservations {
     id: string;
@@ -13,12 +14,13 @@ interface Reservations {
     price: string;
     housing: {
         name: string;
-        image?: string;
+        imageUrl?: string;
     }
 }
 
 export default function TravelsPage() {
     const { t } = useTranslation();
+    const { currency } = useUserSettings();
     const authContext = useContext(AuthContext);
     const navigate = useNavigate();
     const [reservations, setReservations] = useState<Reservations[]>([]);
@@ -76,17 +78,27 @@ export default function TravelsPage() {
                         ) : (
                             <div className='travels-title'>{t('Travels.TitleSing')}</div>
                         )}
-                        {reservations.map((reservations, index) => (
+                        {reservations.map((reservation, index) => (
                             <div className='reserv-item' key={index}>
                                 <div className='reserv-item__content'>
-                                    <div className='reserv-item-img'><img src={reservations.housing.image && FeatureService.getFeatureIcon(reservations.housing.image[0])}></img></div>
+                                    <div className='reserv-item-img'><img src={reservation.housing.imageUrl ? 
+                                        FeatureService.getFeatureIcon(reservation.housing.imageUrl) : 
+                                        FeatureService.getFeatureIcon("images/features/3.jpg")}></img></div>
                                     <div className='reserv-item-info'>
-                                        <div className='reserv-item-info__name'>{reservations.housing.name}</div> 
-                                        <div className='reserv-item-info__date'>{`${reservations.from} - ${reservations.to}`}</div> 
+                                        <div className='reserv-item-info__name'>{reservation.housing.name}</div> 
+                                        <div className='reserv-item-info__date'>{`${FormatDateLongShort(reservation.from)} - ${FormatDateLongShort(reservation.to)}`}</div> 
                                         <div className='divider-blue'></div>
-                                        <div className='reserv-item-info__price'>{t('Travels.Total')} {reservations.price}</div> 
+                                        <div className='reserv-item-info__price'>{t('Travels.Total')} 
+                                            <span>
+                                                {t('PaymentPage.Sections.HousingData.Price',
+                                                    {
+                                                        currency: currency,
+                                                        value: reservation.price ? reservation.price : 231,
+                                                    }
+                                                )}</span>
+                                    </div> 
                                         <div className='divider-blue'></div>
-                                        <div className='reserv-item-info__code'>{t('Travels.Code')} {reservations.code}</div> 
+                                        <div className='reserv-item-info__code'>{t('Travels.Code')} {reservation.code}</div> 
                                     </div>
                                 </div>
                             </div>
@@ -129,3 +141,11 @@ export default function TravelsPage() {
         </div>
     )
 }
+
+const FormatDateLongShort = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, {
+        day: '2-digit',
+        month: 'short'
+    });
+};
