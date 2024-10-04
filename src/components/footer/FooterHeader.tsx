@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+// import { useNavigate } from 'react-router-dom';
 import NotificationSearch from '../account/profile/notifications/NotificationSearch';
 import '../../styles/pages/footer/footer-header.scss'
 
@@ -10,6 +11,11 @@ interface HeaderProps {
 
 export default function FooterHeader({ title, className = '', breadcrumbs = [] }: HeaderProps) {
     const { t } = useTranslation();
+    // const navigate = useNavigate();
+
+    // const handleLinkClick = () => {
+    //     // navigate(breadcrumdslinks)
+    // }
 
     return (
         <div className={`footer-header ${className}`}>

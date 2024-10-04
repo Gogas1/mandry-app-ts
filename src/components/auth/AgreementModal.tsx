@@ -6,7 +6,7 @@ import '../../styles/auth/agreement-modal.scss';
 import { useModal } from '../app/ModalContext';
 import SignupModal, { SignUpError } from './SignupModal';
 import { CSSProperties, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import AuthContext from './AuthenticationContext';
 import CommunityRulesModal from './CommunityRulesModal';
 import SignupErrorModal from './SignupErrorModal';
@@ -32,7 +32,7 @@ export interface AgreementModalDataHolder {
 export default function AgreementModal({ hideModal, errorCodeHandler, data }: AgreementModalProps) {
     const { t } = useTranslation();
     const { closeModal, openModal } = useModal();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     if(!authContext) {
         throw new Error('AuthContext must be used within an AuthProvider');
@@ -138,7 +138,6 @@ export default function AgreementModal({ hideModal, errorCodeHandler, data }: Ag
                 login(data.token, data.userData);
                 hideModal();
                 closeModal('signup');
-                navigate("/");
                 openModal(
                     'createProfile', 
                     <CreateProfileModal hideModal={() => closeModal('createProfile')} />,

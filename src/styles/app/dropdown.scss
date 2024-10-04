@@ -24,9 +24,10 @@
   }
   
   .arrow {
-    transition: transform 0.3s ease;
-    transform: rotate(90deg);
+    // transition: transform 0.2s ease;
+    transform: rotate(0deg);
+
     &.opened {
-      transform: rotate(0deg);
+      transform: rotate(180deg);
     }
   }

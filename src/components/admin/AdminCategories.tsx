@@ -79,6 +79,10 @@ export default function AdminCategories() {
         }));
     };
 
+    const handleDataPack = () => {
+        packTranslations();
+    }
+
     const handleTranslationInputChange = (lang: string, field: 'name', value: string) => {
         setTranslations(prevTranslations => ({
             ...prevTranslations,
@@ -92,7 +96,7 @@ export default function AdminCategories() {
     const createFeatureHandle = async (event: FormEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
-        packTranslations();
+        // packTranslations();
 
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/c/add";
 
@@ -139,6 +143,7 @@ export default function AdminCategories() {
                                 </div>
                             ))}
                         </div>
+                        <button onClick={handleDataPack}>Pack data</button>
                         <button onClick={createFeatureHandle}>Create</button>
                     </div>
                     <table style={tableStyle}>

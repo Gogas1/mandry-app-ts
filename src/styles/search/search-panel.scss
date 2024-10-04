@@ -106,23 +106,28 @@
                         user-select: none;
 
                         img {
-                            transition: transform 0.3s ease-in-out;
+                            // transition: transform 0.3s ease-in-out;
     
                             &.opened {
-                                transform: rotate(0deg);
+                                transform: rotate(180deg);
                             }
     
                             &.closed {
-                                transform: rotate(90deg);
+                                transform: rotate(0deg);
                             }
                         }
                     }
 
                     .type-dropdown {
                         position: absolute;
+                        width: 275px;
 
                         top: calc(100% + 10px);
-                        left: calc(100% - 24px);                       
+                        left: calc(100% - 24px);    
+                        
+                        .item {
+                            padding-left: 20px;
+                        }
                     }
 
                     &--rooms {

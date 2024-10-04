@@ -76,10 +76,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                     }
                 } catch (error) {
                     console.log('AuthContext error', error);
+                    setIsReady(true);
                 }
             };
 
             verifyToken();
+        }
+        else {
+            setIsReady(true);
         }
     }, []);
 

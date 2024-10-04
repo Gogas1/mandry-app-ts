@@ -10,8 +10,9 @@ import facebookIcon from '../../../assets/icons/share/facebook.svg';
 import messageIcon from '../../../assets/icons/share/message.svg';
 import messengerIcon from '../../../assets/icons/share/messenger.svg';
 import moreIcon from '../../../assets/icons/share/more.svg';
-import twitterIcon from '../../../assets/icons/share/twitter.svg';
+// import twitterIcon from '../../../assets/icons/share/twitter.svg';
 import wupIcon from '../../../assets/icons/share/wup.svg';
+import xIcon from '../../../assets/icons/share/xicon.svg';
 
 import '../../../styles/search/share-modal/share-modal.scss';
 import { useTranslation } from "react-i18next";
@@ -84,7 +85,7 @@ export default function ShareModal({ housing, hideModal }: ShareModalProps) {
                         </button>
 
                         <button className="option">
-                            <img src={twitterIcon} />
+                            <img src={xIcon} />
                             Twitter
                         </button>
 
