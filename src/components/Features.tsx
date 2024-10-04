@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import "../styles/pages/features/features.scss"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AuthContext from "./auth/AuthenticationContext";
 import i18n from "../i18n";
 import FeatureService from "../helpers/FeatureService";
@@ -53,7 +53,7 @@ export default function Features() {
     const [isFeaturesLoading, setIsFeaturesLoading] = useState(true);
     const [isFeaturesLoadingErrorOccured, setIsFeaturesLoadingErrorOccured] = useState(false);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const authContext  = useContext(AuthContext);
 
     const languages = i18n.languages;
@@ -176,11 +176,11 @@ export default function Features() {
     const createFeatureHandle = async (event: FormEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
-        packTranslations();
+        // packTranslations();
 
-        if (featureIconFile) {
-            await handleFileUpload(featureIconFile);
-        }
+        // if (featureIconFile) {
+        //     await handleFileUpload(featureIconFile);
+        // }
 
         const url = import.meta.env.VITE_REACT_APP_BACKEND_URL + "/f/create";
 
@@ -240,6 +240,14 @@ export default function Features() {
             }
         ]);
     };
+
+    const handleDataPack = async () => {
+        packTranslations();
+
+        if (featureIconFile) {
+            await handleFileUpload(featureIconFile);
+        }
+    }
 
     return (
         <>
@@ -363,7 +371,9 @@ export default function Features() {
                         ))}
                         <button onClick={addParameter}>Add Parameter</button>
                     </div>
-                    
+                    <div className="button-group">
+                        <button onClick={handleDataPack}>Pack data</button>
+                    </div>
                     <div className="button-group">
                         <button onClick={createFeatureHandle}>Create</button>
                     </div>

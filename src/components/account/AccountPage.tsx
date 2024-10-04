@@ -40,6 +40,7 @@ export default function AccountPage() {
     useEffect(() => {
         const fetchData = async () => {
             const token = authContext.authState.token;
+            console.log({ token, isReady });
 
             if (token && isReady) {
                 try {

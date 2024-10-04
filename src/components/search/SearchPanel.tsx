@@ -237,7 +237,7 @@ export default function SearchPanel(
                                 <div className='feature-main'>
                                     <img src={FeatureService.getFeatureIcon(feature.featureIcon.src)} className='feature-icon' />
                                     <div className='feature-name'>
-                                        {t(feature.nameCode)}
+                                        {cropName(t(feature.nameCode))}
                                     </div>
                                 </div>
                                 <CheckboxRound
@@ -272,4 +272,12 @@ function formatDates(firstDate: Date | undefined, secondDate: Date | undefined):
 
     // Return the formatted dates with a space if one of the dates is missing
     return `${formattedFirstDate} - ${formattedSecondDate}`;
+}
+
+function cropName(name: string) {
+    if(name.length > 12) {
+        return name.slice(0, 11) + '...';
+    }
+
+    return name;
 }
