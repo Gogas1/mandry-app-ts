@@ -27,7 +27,12 @@ export default function Disabled() {
     return (
         <div className='disabled-page'>
             <div className='content-container'>
-                <FooterHeader title='MainPage.Sections.Footer.Pages.Disabled.Title' />
+                <FooterHeader 
+                    title={t('MainPage.Sections.Footer.Pages.Disabled.Title')} 
+                    breadcrumbs={[
+                        t('MainPage.Sections.Footer.Pages.Disabled.BreadCrumbs.Crumb1'),
+                        t('MainPage.Sections.Footer.Pages.Disabled.BreadCrumbs.Crumb2')
+                    ]}    />
                 <div className='start-title'>{t('MainPage.Sections.Footer.Pages.Disabled.Header')}</div>
                 <img className='start-image' src={peopleOutdoorImage}></img>
 

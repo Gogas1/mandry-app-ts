@@ -24,8 +24,7 @@ export default function FooterFeedback() {
                         title={t('FeedbackPage.Title')}
                         breadcrumbs={[
                             t('FeedbackPage.BreadCrumbs.Crumb1'),
-                            t('FeedbackPage.BreadCrumbs.Crumb2'),
-                            t('FeedbackPage.BreadCrumbs.Crumb3')
+                            t('FeedbackPage.BreadCrumbs.Crumb2')
                         ]}
                     />
                     <h1 className="footer-feedback__header">

@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import '../../styles/pages/footer/footer-cancel-reserv.scss';
 
 import FooterSection from '../home/FooterSection';
@@ -17,14 +16,16 @@ import peopleTalkingImage from '../../assets/images/footer/revocation/people_tal
 
 export default function CancelReservation() {
     const { t } = useTranslation();
-    // const navigate = useNavigate();
 
     document.title = t('MainPage.Sections.Footer.Pages.CancelReservation.PageTitle');
 
     return (
         <div className='cancel-reservation-page'>
             <div className='content-container'>
-                <FooterHeader title='MainPage.Sections.Footer.Pages.CancelReservation.CancelationTitle' />
+                <FooterHeader 
+                    title='MainPage.Sections.Footer.Pages.CancelReservation.CancelationTitle'
+                    
+                    />
                 <div className='start-title'>{t('MainPage.Sections.Footer.Pages.CancelReservation.Header')}</div>
                 <div className='text-image-block'>
                     <div className='image-block'>

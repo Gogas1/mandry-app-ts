@@ -33,7 +33,14 @@ export default function HelpCenter() {
     return (
         <div className='start-business-page'>
             <div className='content-container'>
-                <FooterHeader title='MainPage.Sections.Footer.Pages.StartBusiness.Header' />
+                <FooterHeader 
+                    title={t('MainPage.Sections.Footer.Pages.StartBusiness.Header')} 
+                    breadcrumbs={[
+                        t('MainPage.Sections.Footer.Pages.StartBusiness.BreadCrumbs.Crumb1'),
+                        t('MainPage.Sections.Footer.Pages.StartBusiness.BreadCrumbs.Crumb2'),
+                        t('MainPage.Sections.Footer.Pages.StartBusiness.BreadCrumbs.Crumb3')
+                    ]}
+                    />
                 <div className='start-title'>{t('MainPage.Sections.Footer.Pages.StartBusiness.Title')}</div>
                 <div className='block-start'>
                     <div className='block-start__map'>

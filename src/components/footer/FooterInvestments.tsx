@@ -24,8 +24,7 @@ export default function FooterInvestments() {
                         title={t('InvestmentsPage.HeaderPanel.Title')}
                         breadcrumbs={[
                             t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb1'),
-                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb2'),
-                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb3')
+                            t('InvestmentsPage.HeaderPanel.BreadCrumbs.Crumb2')
                         ]} />
                     {/* <FooterHeader /> */}
                     <h1 className="footer-investments__header">

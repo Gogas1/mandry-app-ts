@@ -19,7 +19,6 @@
     "travelersServicePats": "Подорожуєте із твариною-помічником?",
     "languageSelectionLabel": "Мова",
     "currencySelectionLabel": "Валюта",
-
     "SignInAuthModalLabel": "Вхід",
     "WelcomeBackAuthModalLabel": "Раді вітати знов!",
     "EnterCredsAuthModalLabel": "Введіть ваші дані для входу",
@@ -35,7 +34,6 @@
     "SignUpAuthModalLabel": "Зареєструйся",
     "EmailInputAuthModalPlaceholder": "Введіть свою пошту",
     "PasswordInputAuthModalPlaceholder": "Введіть пароль",
-
     "MondayHeader": "Пн",
     "TuesdayHeader": "Вт",
     "WednesdayHeader": "Ср",
@@ -43,7 +41,6 @@
     "FridayHeader": "Пт",
     "SaturdayHeader": "Сб",
     "SundayHeader": "Нд",
-
     "JanuaryName": "Січень",
     "FebruaryName": "Лютий",
     "MarchName": "Березень",
@@ -56,7 +53,6 @@
     "OctoberName": "Жовтень",
     "NovemberName": "Листопад",
     "DecemberName": "Грудень",
-
     "JanuaryShort": "Січ.",
     "FebruaryShort": "Лют.",
     "MarchShort": "Берез.",
@@ -69,10 +65,8 @@
     "OctoberShort": "Жовт.",
     "NovemberShort": "Листоп.",
     "DecemberShort:": "Груд.",
-
     "FavouritesPopupHeader": "Додати до вподобань",
     "CreateFavsListBtnText": "Створити новий список вподобаного",
-
     "SignUpFinishHeader": "Завершіть реєстрацію",
     "SignUpNamesBlockHeader": "Офіційне ім’я",
     "SignUpNameInputLabel": "Ім’я в посвідченні особи ",
@@ -87,17 +81,13 @@
     "SignUpContinueButtonLabel": "Погодитися і продовжити",
     "SignUpMarketingAgreement": "Mandry надсилатиме вам пропозиції для учасників, ідеї та натхнення, маркетингові електронні листи та push-повідомлення. Ви можете в будь-який час відмовитися від отримання цих повідомлень у налаштуваннях акаунта або безпосередньо в маркетинговому сповіщенні.",
     "SignUpWaiverText": "Я не хочу отримувати маркетингові повідомлення від Mandry.",
-    "SignUpAgreement": "Натискаючи Погодитися і продовжити, я погоджуюся з такими правилами Mandry : Умови обслуговування, Умови здійснення платежів, Політика недискримінації та Політика конфіденційності."
-    ,
+    "SignUpAgreement": "Натискаючи Погодитися і продовжити, я погоджуюся з такими правилами Mandry : Умови обслуговування, Умови здійснення платежів, Політика недискримінації та Політика конфіденційності.",
     "SignUpPasswordLabel": "Пароль",
     "SignUpPhoneLabel": "Телефон",
     "SignUpPasswordReq": "Має містити не менше 8 символів, серед яких має бути принаймні один спеціальний символ або цифра.",
     "SignUpPasswordConfirmationLabel": "Повторно введіть пароль",
-
     "DatePickerCalendarClearButton": "Очистити",
-
     "PasswordFieldDefaultLabel": "Пароль",
-
     "NavbarPopupProfileLinksNotificationsLink": "Повідомлення",
     "NavbarPopupProfileLinksTravelsLink": "Подорожі",
     "NavbarPopupProfileLinksFavouritesLink": "Обране",
@@ -105,7 +95,6 @@
     "NavbarPopupProfileLinksAccountLink": "Акаунт",
     "NavbarPopupProfileLinksHelpLink": "Довідковий центр",
     "NavbarPopupProfileLinksLogOut": "Вийти",
-
     "AccountPageHeader": "Акаунт",
     "AccountPageProfileLink": "Перейти до профілю",
     "AccountPageCredentialsLinkHeaderLabel": "Особисті дані",
@@ -128,7 +117,6 @@
     "AccountPageTravelBodyText": "Додайте робочу електронну адресу і скористайтеся додатковими привілеями для ділових поїздок",
     "AccountPageBonusesLinkHeaderLabel": "Бонус і купон за запрошених учасників",
     "AccountPageBonusesBodyText": "У вас є бонуси та купони за запрошених учасників на суму 0. Докладніше.",
-
     "Profile": {
         "Status": "Гість",
         "Verification": {
@@ -144,7 +132,6 @@
             "Button": "Створити профіль"
         }
     },
-
     "VerificationPage": {
         "Privacy": {
             "Header": "Ваша приватність",
@@ -169,7 +156,6 @@
             }
         }
     },
-
     "ProfileInfo": {
         "Header": "Ваш профіль",
         "Discl": "інформація, яку ви надасте, буде використано на Mandry, щоб інші гості й господарі мали змогу познайомитися з вами. Докладніше ",
@@ -222,7 +208,7 @@
                     "Header": "Моя професія",
                     "Body": "Моя професія"
                 }
-            } ,
+            },
             "Languages": {
                 "Label": "Мови, якими я розмовляю",
                 "Modal": {
@@ -269,7 +255,6 @@
             "Link": "Додати інтереси"
         }
     },
-
     "Modals": {
         "TextPrompt": {
             "ContinueButtonLabel": "Продовжити"
@@ -320,7 +305,6 @@
                     "Title": "Що робити, якщо у мене виникли додаткові запитання щодо зобов’язання?",
                     "Text1": "Ознайомтеся з відповідями на поширені запитання в <link1>Довідковому центрі з недискримінації.</link1> Також можна переглянути наші <link2>ресурси для господарів</link2>, які містять відповіді на поширені запитання господарів щодо Політики недискримінації Mandry."
                 }
-                
             }
         },
         "SignUpError": {
@@ -377,7 +361,6 @@
             }
         }
     },
-    
     "Validation": {
         "SignIn": {
             "Messages": {
@@ -421,11 +404,10 @@
             }
         }
     },
-
     "MainPage": {
         "More": "Більше",
         "Sections": {
-            "Second" : {
+            "Second": {
                 "Caption": "<decoratedT>T</decoratedT>оп напря<decoratedM>M</decoratedM>ків"
             },
             "Third": {
@@ -533,6 +515,11 @@
                         "NewsDesc_3": "Mandry впроваджує покращений фільтр пошуку для людей з інвалідністю На платформі Mandry з’явився новий фільтр пошуку, який..."
                     },
                     "StartBusiness": {
+                        "BreadCrumbs": {
+                            "Crumb1": "Довідковий центр",
+                            "Crumb2": "Розпочніть свій бізнес с Мандри",
+                            "Crumb3": "MandrySafe"
+                        },
                         "PageTitle": "Бізнес",
                         "Header": "Варіанти скасування бронювання",
                         "Title": "Розпочніть свій бізнес з Мандри і заробляйте",
@@ -630,8 +617,11 @@
                         "NewsTitle_3": "Почніть свій бізнес з Mandry: нові можливості.",
                         "NewsDesc_3": "Mandry запускає програму \"Mandry Start\", яка допомагає новим господарям легко розпочати бізнес із оренди житла. Ви отримуєте доступ..."
                     },
-
                     "MandrySafe": {
+                        "BreadCrumbs": {
+                            "Crumb1": "Довідковий центр",
+                            "Crumb2": "MandrySafe"
+                        },
                         "PageTitle": "MandrySafe",
                         "Header": "MandrySafe",
                         "Title": "Відповіді на основні питання MandrySafe",
@@ -738,6 +728,10 @@
                         }
                     },
                     "Disabled": {
+                        "BreadCrumbs": {
+                            "Crumb1": "Довідковий центр",
+                            "Crumb2": "Підримка людей з інвалідністю"
+                        },
                         "PageTitle": "Доступність та підтримка",
                         "Title": "Підтримка людей з інвалідністю",
                         "Header": "Доступність та турбота для людей з особливими потребами",
@@ -781,12 +775,10 @@
             }
         }
     },
-
     "FavsPage": {
         "Caption": "Обране",
         "Edit": "Редагувати"
     },
-    
     "SearchPage": {
         "SearchPanel": {
             "Filters": {
@@ -836,14 +828,12 @@
                 }
             }
         },
-
         "SearchResult": {
             "Bedrooms_one": "{{number}} спальня",
             "Bedrooms_few": "{{number}} спальні",
             "Bedrooms_many": "{{number}} спалень"
         }
     },
-
     "Features": {
         "Wifi": "Wi-Fi",
         "AC": "Кондиціонер",
@@ -852,67 +842,54 @@
         "Kitchen": "Кухня",
         "Washing": "Пральна машина"
     },
-
     "Popups": {
         "Destinations": {
             "Empty": "Не знайдено",
             "Loading": "Пошук..."
         }
     },
-
     "HousingPage": {
         "Copied": "Посилання скопійовано в буфер обміну",
-
         "Sections": {
             "Components": {
                 "Bedrooms_one": "спальня",
                 "Bedrooms_few": "спальні",
                 "Bedrooms_many": "спалень",
-
                 "BedroomsNumbered_one": "{{number}} спальня",
                 "BedroomsNumbered_few": "{{number}} спальні",
                 "BedroomsNumbered_many": "{{number}} спалень",
-
                 "Guests_one": "гість",
                 "Guests_few": "гості",
                 "Guests_many": "гостей",
-
                 "GuestsNumbered_one": "{{number}} гість",
                 "GuestsNumbered_few": "{{number}} гості",
                 "GuestsNumbered_many": "{{number}} гостей",
-
                 "Bathrooms_one": "ванна кімната",
                 "Bathrooms_few": "ванні кімнати",
                 "Bathrooms_many": "ванних кімнат",
-
                 "BathroomsNumbered_one": "{{number}} ванна кімната",
                 "BathroomsNumbered_few": "{{number}} ванні кімнати",
                 "BathroomsNumbered_many": "{{number}} ванних кімнат"
             },
-
             "Description": {
                 "MoreButton": "Більше",
                 "LessButton": "Згорнути"
             },
-
             "Bedrooms": {
                 "Header": "Місце для сну",
                 "BedroomTitle": "Спальня",
                 "BedSizeOne_one": "{{number}} односпальне ліжко",
                 "BedSizeOne_few": "{{number}} односпальні ліжка",
                 "BedSizeOne_many": "{{number}} односпальних ліжок",
-
                 "BedSizeTwo_one": "{{number}} двоспальне ліжко",
                 "BedSizeTwo_few": "{{number}} двоспальні ліжка",
                 "BedSizeTwo_many": "{{number}} двоспальних ліжок"
             },
-
             "Features": {
                 "Header": "Зручності",
                 "MoreBtn": "Показати всі ({{number}})",
                 "LessBtn": "Згорнути"
             },
-
             "Calendar": {
                 "ClearBtn": "Очистити",
                 "Header1_one": "{{location}}: {{duration}} ніч",
@@ -921,7 +898,6 @@
                 "Header2": "{{startDate}} р. - {{endDate}} р.",
                 "Header2Empty": "Період не обраний"
             },
-
             "IInfo": {
                 "Header": "Важлива інформація",
                 "More": "Дізнатись більше",
@@ -935,8 +911,8 @@
                 },
                 "Refund": {
                     "Header": "Правила скасування бронювання",
-                    "Description": "Переконайтеся, що вас задовольняють правила цього господаря. У рідкісних випадках ви можете мати право на повернення коштів усупереч цим правилам відповідно до <linkA>Правил Mandry щодо форс-мажорних обставин.</linkA>"
-                    ,"RefundCleaning": "Плата за прибирання повертається в разі скасування бронювання до прибуття.",
+                    "Description": "Переконайтеся, що вас задовольняють правила цього господаря. У рідкісних випадках ви можете мати право на повернення коштів усупереч цим правилам відповідно до <linkA>Правил Mandry щодо форс-мажорних обставин.</linkA>",
+                    "RefundCleaning": "Плата за прибирання повертається в разі скасування бронювання до прибуття.",
                     "RefundMoreLink": "Докладніше про правила скасування бронювань",
                     "Statements": {
                         "FullRefund": {
@@ -957,12 +933,11 @@
                             "DescHeader": "Без повернення коштів",
                             "DescBody": "Кошти за це бронювання не повертаються."
                         }
-                    }                    
+                    }
                 }
             },
-            
             "OwnerInfo": {
-                "OwnerStatus" : "Господар",
+                "OwnerStatus": "Господар",
                 "ReviewsLabel": "Відгуки",
                 "RatingLabel": "Рейтинг",
                 "OwnerFromLabel": "Років прийому",
@@ -975,32 +950,25 @@
                 "TextToOwner": "Написати господарю"
             }
         },
-
         "RentSections": {
             "Price": {
                 "BasePrice": "<priceText>{{currency}} {{price}}</priceText> ніч",
-
                 "Travelers_zero": "Кількість гостей не вказана",
                 "Travelers_one": "{{number}} гість",
                 "Travelers_few": "{{number}} гостя",
                 "Travelers_many": "{{number}} гостей",
-                
                 "PriceFromNights_one": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ніч</fontLink>",
                 "PriceFromNights_few": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ночі</fontLink>",
                 "PriceFromNights_many": "<fontLink>{{currency}} {{price}} x {{nightsCount}} ночей</fontLink>",
-
                 "Discount": "<fontLink>Знижка на тривале бронювання</fontLink>",
                 "CleaningFee": "<fontLink>Плата за прибирання</fontLink>",
                 "Taxes": "<fontLink>Податки</fontLink>",
-
                 "TravelersLabel": "Мандрівники",
                 "FromLabel": "Прибуття",
                 "ToLabel": "Виїзд",
-
                 "ButtonSignin": "Вхід",
                 "ButtonReservation": "Бронювання",
                 "NoPaymentLabel": "Поки що ви нічого не платите",
-
                 "PriceSummary": {
                     "Header": "Структура базової ціни",
                     "NoItems": "Дати не обрані",
@@ -1008,29 +976,22 @@
                     "TotalPriceLabel": "Загальна ціна",
                     "TotalPriceValued": "{{currency}} {{value}}"
                 },
-
                 "PriceTotalLabel": "Усього",
                 "PriceTotalPrice": "{{currency}} {{value}}",
-
                 "DiscountPopup": {
                     "Available": "Знижка доступна, оскільки ви бронюєте одразу на 14 днів.",
                     "Unavailable": "Знижка недоступна для такого періоду бронювання"
                 },
-
                 "CleaningFeePopup": "Господар стягує одноразовий платіж для покриття вартості прибирання свого помешкання.",
                 "TaxesPopup": "Це допомагає розвивати нашу платформу та пропонувати різні послуги, наприклад підтримку 24/7 під час подорожі. Разом із ПДВ."
             },
-
             "Rating": {
                 "ReviewsCount_one": "{{number}} відгук",
                 "ReviewsCount_few": "{{number}} відгуки",
                 "ReviewsCount_many": "{{number}} відгуків"
             }
-            
         }
-        
     },
-
     "Notifications": {
         "NotificationsList": {
             "Header": "Усі повідомлення",
@@ -1054,7 +1015,6 @@
             "Header": "Подробиці"
         }
     },
-
     "PaymentPage": {
         "Modal": {
             "Awaiting": "Ми вже готуємо вашу подорож",
@@ -1065,8 +1025,8 @@
             "Confirmation": "З'єднатися з банком"
         },
         "Sections": {
-            "Header": { 
-                "Header": "Підтвердження і оплата" 
+            "Header": {
+                "Header": "Підтвердження і оплата"
             },
             "Data": {
                 "Header": "Ваша подорож",
@@ -1086,7 +1046,6 @@
                 "Sofort": "Sofortüberweisung",
                 "GooglePay": "Google Pay",
                 "Amex": "Amex",
-
                 "Forms": {
                     "Card": {
                         "Number": "Номер картки",
@@ -1094,7 +1053,6 @@
                         "CVV": "CVV",
                         "Index": "Індекс",
                         "Location": "Країна / регіон",
-
                         "Validation": {
                             "Number": {
                                 "Required": "Введіть код картки",
@@ -1158,13 +1116,10 @@
                 "Rating_one": "{{average}} ~ {{reviews}} відгук",
                 "Rating_few": "{{average}} ~ {{reviews}} відгуки",
                 "Rating_many": "{{average}} ~ {{reviews}} відгуків",
-
                 "PriceFromNights_one": "{{currency}} {{price}} x {{nightsCount}} ніч",
                 "PriceFromNights_few": "{{currency}} {{price}} x {{nightsCount}} ночі",
                 "PriceFromNights_many": "{{currency}} {{price}} x {{nightsCount}} ночей",
-
                 "PriceHeader": "Детальніше про ціну",
-
                 "Price": "{{currency}} {{value}}",
                 "Discount": "Знижка",
                 "CleaningFee": "Плата за прибирання",
@@ -1188,7 +1143,6 @@
             }
         }
     },
-
     "Travels": {
         "Header": "Подорожі",
         "TitleSing": "Заброньована подорож.",
@@ -1196,33 +1150,29 @@
         "NoReserved": "Немає заброньованих подорожей...поки що!",
         "NoReservedDesc": "Час пакувати валізи і планувати нову пригоду.",
         "Total": "Усього",
-        "Code":"Код бронювання",
+        "Code": "Код бронювання",
         "StartSearch": "Почати пошук",
         "CantFindRes": "Не можете знайти тут своє бронювання?",
         "ResNotMatch": "Ваше бронювання не відповідає дійсності?",
         "ToFAQ": "Відвідати Довідковий центр"
     },
-
     "Currency": {
         "USD": "Долар",
         "EUR": "Євро",
         "UAH": "Гривня"
     },
-
     "Components": {
         "News": {
             "More": "Більше"
         }
     },
-
     "InvestmentsPage": {
         "Header": "Привабливість для інвесторів, які інвестують в Mandry",
         "HeaderPanel": {
-            "Title": "Довідковий центр",
+            "Title": "Інвесторам",
             "BreadCrumbs": {
-                "Crumb1": "Головна",
-                "Crumb2": "Усі теми",
-                "Crumb3": "Для інвесторів"
+                "Crumb1": "Довідковий центр",
+                "Crumb2": "Інвесторам"
             }
         },
         "Intro": {
@@ -1284,13 +1234,11 @@
             }
         }
     },
-
     "FeedbackPage": {
-        "Title": "Довідковий центр",
+        "Title": "Написати запит або скаргу",
         "BreadCrumbs": {
-            "Crumb1": "Головна",
-            "Crumb2": "Усі теми",
-            "Crumb3": "Написати відгук або скаргу"
+            "Crumb1": "Довідковий центр",
+            "Crumb2": "Написати запит або скаргу"
         },
         "Header": "Ваші думки дуже важливі",
         "Intro": {
@@ -1327,7 +1275,7 @@
                 },
                 "Item6": {
                     "Header": "Відгук можете залишити за посиланням",
-                    "ButtonText": "Написати відгук"                    
+                    "ButtonText": "Написати відгук"
                 }
             }
         },
@@ -1358,7 +1306,7 @@
                 },
                 "Item6": {
                     "Header": "Скаргу можете залишити за посиланням",
-                    "ButtonText": "Написати скаргу"                    
+                    "ButtonText": "Написати скаргу"
                 }
             }
         },
@@ -1387,14 +1335,12 @@
             }
         }
     },
-
     "CommunityChat": {
         "Title": "Чат спільноти",
         "Header": "Спілкуйтесь і розвивайтесь разом з користувачами господарями, як ви",
         "BreadCrumbs": {
-            "Crumb1": "Головна",
-            "Crumb2":"Усі теми",
-            "Crumb3": "Чат спільноти"
+            "Crumb1": "Довідковий центр",
+            "Crumb2": "Чат спільноти"
         },
         "Intro": {
             "Text1": "Форум спільноти на платформі «Мандри» - це унікальний простір для спілкування, обміну досвідом та взаємодії всіх учасників платформи. Незалежно від того, чи є ви власником житла, який бажає розмістити своє оголошення, або мандрівником, який шукає ідеальне місце для відпочинку, форум надасть вам масу можливостей.",
@@ -1436,7 +1382,6 @@
             }
         }
     },
-
     "Titles": {
         "AccountPage": "Профіль - навігація",
         "FavouritesPage": "Профіль - обране",
@@ -1456,7 +1401,6 @@
         "PaymentPage": "Бронювання - {{name}}",
         "SearchPage": "Пошук"
     },
-    
     "FavouritesPopup": {
         "AuthPlease": "Увійдіть для роботи з обраним",
         "NoItems": "Немає обраного житла"

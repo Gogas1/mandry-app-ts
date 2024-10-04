@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import facebookIcon from "../../assets/icons/auth/facebook.svg";
 import googleIcon from "../../assets/icons/auth/google.svg";
@@ -49,7 +49,7 @@ export default function AuthModal({ hideModal }: AuthModalProps) {
     const [isPhoneAttemptFailed, setIsPhoneAttemptFailed] = useState(false);
     
     const { login } = authContext;
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const { openModal, closeModal } = useModal();
 

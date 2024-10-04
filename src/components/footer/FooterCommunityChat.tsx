@@ -1,5 +1,4 @@
 import { Trans, useTranslation } from "react-i18next";
-import { useNavigate } from 'react-router-dom';
 import FooterHeader from "./FooterHeader";
 
 import '../../styles/footer/footer-community-chat.scss';
@@ -19,7 +18,6 @@ import FooterSection from '../home/FooterSection';
 
 export default function FooterCommunityChat() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     document.title = t('Titles.FooterCommunityChat');
 
@@ -31,8 +29,7 @@ export default function FooterCommunityChat() {
                         title={t('CommunityChat.Title')}
                         breadcrumbs={[
                             t('CommunityChat.BreadCrumbs.Crumb1'),
-                            t('CommunityChat.BreadCrumbs.Crumb2'),
-                            t('CommunityChat.BreadCrumbs.Crumb3')
+                            t('CommunityChat.BreadCrumbs.Crumb2')
                         ]}
                     />
                     <h1 className="footer-community-chat__header">

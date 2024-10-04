@@ -147,5 +147,5 @@ export default function HousingDataSection({ reservationSettings, paymentSetting
 function GetHousingFirstImage(housingData: Housing): string {
     if(housingData.images.length < 1) return '';
     
-    return housingData.images[1].src;
+    return housingData.images[0].src;
 }

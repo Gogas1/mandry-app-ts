@@ -13,7 +13,13 @@ export default function MandrySafe() {
     return (
         <div className='mandy-safe-page'>
             <div className='content-container'>
-                <FooterHeader title='MainPage.Sections.Footer.Pages.MandrySafe.Header' />
+                <FooterHeader 
+                    title={'MainPage.Sections.Footer.Pages.MandrySafe.Header'}
+                    breadcrumbs={[
+                        t('MainPage.Sections.Footer.Pages.MandrySafe.BreadCrumbs.Crumb1'),
+                        t('MainPage.Sections.Footer.Pages.MandrySafe.BreadCrumbs.Crumb2')
+                    ]}
+                    />
                 <div className='start-title'>{t('MainPage.Sections.Footer.Pages.MandrySafe.Title')}</div>
                 <div className='text-panel'>
                     <div className='title-bold'>{t('MainPage.Sections.Footer.Pages.MandrySafe.Title_1')}</div>

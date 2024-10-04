@@ -43,6 +43,7 @@
         }
 
         .reserv-item {
+            cursor: pointer;
             width: 646px;
             display: flex;
             padding: 30px;
@@ -67,7 +68,8 @@
                     overflow: hidden;
 
                     img {
-                        width: 100%;
+                        width: 293px;
+                        height: 230px;
                     }
                 }
 
