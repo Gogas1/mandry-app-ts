@@ -186,7 +186,7 @@ export default function SearchPanel(
                             <div className="input-group">
                                 <img src={calendarIcon} alt='destination' className='inner-icon'/>
                                 <TextFieldMy 
-                                    label={t('SearchPage.SearchPanel.Filters.Filter1.Period')}
+                                    label={cropName(t('SearchPage.SearchPanel.Filters.Filter1.Period'), 16)}
                                     text={formatDates(filters.period?.startDate, filters.period?.endDate)}
                                     onFocus={onDatesFieldFocus}
                                     onBlur={onDatesFieldBlur} 
@@ -274,9 +274,9 @@ function formatDates(firstDate: Date | undefined, secondDate: Date | undefined):
     return `${formattedFirstDate} - ${formattedSecondDate}`;
 }
 
-function cropName(name: string) {
-    if(name.length > 12) {
-        return name.slice(0, 11) + '...';
+function cropName(name: string, length: number = 12) {
+    if(name.length > length) {
+        return name.slice(0, length - 1) + '...';
     }
 
     return name;

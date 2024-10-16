@@ -104,7 +104,8 @@ export default function SearchPage() {
             if (response.ok) {
                 const data = await response.json();
 
-                const housings = data.housings as Housing[];
+                const housingsM = data.housings as Housing[];
+                const housings = housingsM.filter(h => h.name);
                 setPagesCount(data.totalPages);
                 setHousings(housings);
                 setMarkers(housings.map((item, index) => {
@@ -400,7 +401,7 @@ const normalizeCoordinateString = (coordStr: string): Coordinate | null => {
 const getDefaultCenter = (coordStr: string): Coordinate => {
     const normalized = normalizeCoordinateString(coordStr);
 
-    if (!normalized) return { lat: 50.45466, lng: 30.5238 };
+    if (!normalized) return { lat: 49.203785, lng: 13.480359 };
     else {
         return normalized;
     }

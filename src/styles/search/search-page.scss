@@ -39,9 +39,10 @@
         .map-section {
             flex: 1;
             background-color: gray;      
-            height: calc(100% - 150px);
+            height: calc(130vh - 150px);
             border-radius: 15px;
             overflow: hidden;
+            margin-bottom: 132px;
 
             .marker-item {
                 border-radius: 15px;

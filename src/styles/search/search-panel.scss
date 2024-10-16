@@ -57,9 +57,11 @@
         }
 
         .filter-panel {
+            min-width: 262px;
+            max-width: 262px;
             border-radius: 15px;
             border: 1px solid #AAA;
-            padding: 20px;
+            padding: 20px;            
         }
 
         &--1 {
@@ -278,7 +280,6 @@
             }
         }
         &--3 {
-            flex: 1;
             display: flex;
             flex-direction: column;
 
